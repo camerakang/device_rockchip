@@ -66,12 +66,28 @@ class DiscoveryTests(unittest.TestCase):
         cameras = self.discover({"/dev/media1": topology(0, 1, "/dev/video4"),
                                  "/dev/media2": topology(1, 5, "/dev/video18")})
         args = types.SimpleNamespace(mode="hardware", fps=30, exposure_us=1000,
-                                     edge="rising", dry_run=True)
+                                     edge="rising", dry_run=True, format="raw8")
         with patch.object(camera.subprocess, "run") as execute, \
              patch.object(camera, "run") as read, contextlib.redirect_stdout(io.StringIO()):
             camera.configure(cameras, args)
         execute.assert_not_called()
         read.assert_not_called()
+
+    def test_raw12_configures_both_mbus_and_fourcc_without_losing_fourcc_space(self):
+        cameras = self.discover({"/dev/media1": topology(0, 1, "/dev/video4"),
+                                 "/dev/media2": topology(1, 5, "/dev/video18")})
+        args = types.SimpleNamespace(mode="free", fps=320, exposure_us=1000,
+                                     edge="rising", dry_run=True, format="raw12")
+        with patch.object(camera, "execute") as execute, \
+             contextlib.redirect_stdout(io.StringIO()):
+            camera.configure(cameras, args)
+        commands = [call.args[0] for call in execute.call_args_list]
+        media_commands = [c for c in commands if c[0] == "media-ctl"]
+        capture_commands = [c for c in commands if "--set-fmt-video" in c]
+        self.assertEqual(len(media_commands), 2)
+        self.assertTrue(all("Y12_1X12/720x544@1/320" in c[-1] for c in media_commands))
+        self.assertEqual(len(capture_commands), 2)
+        self.assertTrue(all(c[-1].endswith("pixelformat=Y12 ") for c in capture_commands))
 
     def test_quantized_exposure_is_returned_for_pair_comparison(self):
         with patch.object(camera, "execute"), patch.object(camera.time, "sleep"), \

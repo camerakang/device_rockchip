@@ -27,8 +27,8 @@ def find_chip(root=Path("/sys/class/pwm")):
 
 
 def timing(fps, pulse_us):
-    if not math.isfinite(fps) or not 1 <= fps <= 100:
-        raise ValueError("--fps must be between 1 and 100 for initial bring-up")
+    if not math.isfinite(fps) or not 1 <= fps <= 530:
+        raise ValueError("--fps must be between 1 and 530; camera limits depend on bit depth")
     if not math.isfinite(pulse_us) or pulse_us <= 0:
         raise ValueError("--pulse-us must be positive")
     period = round(1_000_000_000 / fps)
@@ -85,8 +85,11 @@ def main():
     except (OSError, RuntimeError, ValueError) as exc:
         print(f"PWM trigger error: {exc}", file=sys.stderr)
         return 1
-    print(f"J9 pin 12: {args.action}; PWM={chip.name}; "
-          f"frequency={1_000_000_000 / period:.6f} Hz; pulse={duty / 1000:g} us")
+    if args.action == "stop":
+        print(f"J9 pin 12: stopped; PWM={chip.name}")
+    else:
+        print(f"J9 pin 12: started; PWM={chip.name}; "
+              f"frequency={1_000_000_000 / period:.6f} Hz; pulse={duty / 1000:g} us")
     return 0
 
 

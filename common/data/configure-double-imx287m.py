@@ -16,6 +16,12 @@ import sys
 import time
 from pathlib import Path
 
+FORMATS = {
+    "raw8": ("Y8_1X8", "GREY"),
+    "raw10": ("Y10_1X10", "Y10 "),
+    "raw12": ("Y12_1X12", "Y12 "),
+}
+
 
 def run(command):
     return subprocess.check_output(command, text=True).strip()
@@ -95,10 +101,11 @@ def configure(cameras, args):
     # Configure both cameras while acquisition is stopped; V4L2 owns
     # image format, ROI, frame rate, and trigger mode/source state.
     exposures = []
+    mbus, fourcc = FORMATS[args.format]
     for camera in cameras.values():
         execute(["v4l2-ctl", "-d", camera["subdev"],
                  "--set-ctrl", "trigger_mode=0,roi_x=0,roi_y=0"], args.dry_run)
-        fmt = f'"{camera["sensor"]}":0[fmt:Y8_1X8/720x544@1/{args.fps} field:none]'
+        fmt = f'"{camera["sensor"]}":0[fmt:{mbus}/720x544@1/{args.fps} field:none]'
         execute(["media-ctl", "-d", camera["media"], "--set-v4l2", fmt], args.dry_run)
         # These camera-specific properties are not represented by the
         # vendor V4L2 controls. Do not change format/ROI/FPS with raw I2C.
@@ -118,7 +125,7 @@ def configure(cameras, args):
         execute(["v4l2-ctl", "-d", camera["subdev"], "--set-ctrl",
                  f"trigger_src=1,trigger_mode={mode}"], args.dry_run)
         execute(["v4l2-ctl", "-d", camera["video"], "--set-fmt-video",
-                 "width=720,height=544,pixelformat=GREY"], args.dry_run)
+                 f"width=720,height=544,pixelformat={fourcc}"], args.dry_run)
         capture = ["v4l2-ctl", "-d", camera["video"], "--stream-mmap=4",
                    "--stream-count=100", f"--stream-to=cam{index}.raw"]
         print(f"CAM{index}: media={camera['media']}, video={camera['video']}, "
@@ -132,6 +139,8 @@ def configure(cameras, args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mode", choices=("free", "hardware"), required=True)
+    parser.add_argument("--format", choices=tuple(FORMATS), default="raw8",
+                        help="MIPI monochrome bit depth (default: raw8)")
     parser.add_argument("--fps", type=int, default=30,
                         help="camera timing limit; start validation at 30 fps")
     parser.add_argument("--exposure-us", type=int, default=1000)
