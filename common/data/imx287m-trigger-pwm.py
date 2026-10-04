@@ -41,7 +41,7 @@ def timing(fps, pulse_us):
 def control(chip, action, period, duty):
     pwm = chip / "pwm0"
     if action == "stop":
-        if pwm.exists():
+        if pwm.exists() and (pwm / "enable").read_text().strip() == "1":
             (pwm / "enable").write_text("0")
         return
     if not pwm.exists():
@@ -52,15 +52,23 @@ def control(chip, action, period, duty):
             time.sleep(0.01)
         else:
             raise RuntimeError("Timed out waiting for PWM14 export")
-    (pwm / "enable").write_text("0")
+    if (pwm / "enable").read_text().strip() == "1":
+        (pwm / "enable").write_text("0")
     try:
+        # Linux rejects any PWM apply with a zero period, even disabling an
+        # already-disabled channel or setting duty to zero. Initialize period
+        # first on a freshly exported channel; existing channels must clear
+        # their duty before shortening the period.
+        if int((pwm / "period").read_text()) == 0:
+            (pwm / "period").write_text(str(period))
         (pwm / "duty_cycle").write_text("0")
         (pwm / "period").write_text(str(period))
         (pwm / "polarity").write_text("normal")
         (pwm / "duty_cycle").write_text(str(duty))
         (pwm / "enable").write_text("1")
     except Exception:
-        (pwm / "enable").write_text("0")
+        if (pwm / "enable").read_text().strip() == "1":
+            (pwm / "enable").write_text("0")
         raise
 
 

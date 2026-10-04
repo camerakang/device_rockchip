@@ -2,6 +2,7 @@ import importlib.util
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 spec = importlib.util.spec_from_file_location(
@@ -39,6 +40,29 @@ class TriggerTests(unittest.TestCase):
             chip = Path(temp)
             pwm.control(chip, "stop", 33333333, 100000)
             self.assertFalse((chip / "export").exists())
+
+    def test_fresh_channel_sets_period_before_other_pwm_writes(self):
+        with tempfile.TemporaryDirectory() as temp:
+            chip = Path(temp)
+            channel = chip / "pwm0"
+            channel.mkdir()
+            for name, value in (("period", "0"), ("duty_cycle", "0"),
+                                ("enable", "0"), ("polarity", "inversed")):
+                (channel / name).write_text(value)
+            write = Path.write_text
+
+            def kernel_write(path, value):
+                if int((channel / "period").read_text()) == 0 and path.name != "period":
+                    raise OSError(22, "Invalid argument")
+                return write(path, value)
+
+            with patch.object(Path, "write_text", kernel_write):
+                pwm.control(chip, "stop", 33333333, 100000)
+                pwm.control(chip, "start", 33333333, 100000)
+                pwm.control(chip, "stop", 33333333, 100000)
+            self.assertEqual((channel / "period").read_text(), "33333333")
+            self.assertEqual((channel / "duty_cycle").read_text(), "100000")
+            self.assertEqual((channel / "enable").read_text(), "0")
 
 
 if __name__ == "__main__":
