@@ -1,0 +1,15 @@
+[Unit]
+Description=LubanCat4 dual IMX287M web test console
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/dual-imx287m-web
+ExecStart=/usr/bin/python3 -u /opt/dual-imx287m-web/app.py --port 8080
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target

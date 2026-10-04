@@ -1,0 +1,4 @@
+capture-worker
+__pycache__/
+tests/__pycache__/
+*.jpg
