@@ -31,6 +31,24 @@ class ConfigurationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_config({'fps': 319.5})
 
+    def test_raw8_hardware_boundary(self):
+        self.assertEqual(validate_config({'format': 'raw8', 'fps': 522})['camera_fps'], 523)
+        with self.assertRaises(ValueError):
+            validate_config({'format': 'raw8', 'fps': 523})
+        self.assertEqual(validate_config({'format': 'raw8', 'fps': 523, 'mode': 'free'})['fps'], 523)
+
+    def test_gain_values_and_modes(self):
+        self.assertEqual(validate_config({})['gain_mode'], 'auto')
+        self.assertEqual(validate_config({'gain_mode': 'manual', 'gain_db': 6.2})['gain_db'], 6.2)
+        self.assertEqual(validate_config({'auto_gain_max_db': 48})['auto_gain_max_db'], 48)
+        for field in ('gain_db', 'auto_gain_max_db'):
+            for value in (-0.1, 48.1, 6.25, True, '6', None, float('nan'), float('inf')):
+                with self.subTest(field=field, value=value), self.assertRaises(ValueError):
+                    validate_config({field: value})
+        for value in ('once', 0, {}, None):
+            with self.assertRaises(ValueError):
+                validate_config({'gain_mode': value})
+
     def test_pipe_short_reads_and_eof(self):
         class Fragmented(io.BytesIO):
             def read(self, size):
@@ -79,6 +97,7 @@ class HttpTests(unittest.TestCase):
     def test_bad_config_and_cross_origin(self):
         self.assertEqual(self.request('/api/start', b'{"format":{}}')[0], 400)
         self.assertEqual(self.request('/api/start', b'{"fps":320}')[0], 400)
+        self.assertEqual(self.request('/api/start', b'{"gain_db":48.1}')[0], 400)
         self.assertEqual(self.request('/api/start', b'{}', {'Origin': 'http://other-host'})[0], 403)
         self.assertEqual(self.request('/api/start', b'{}')[0], 200)
         self.assertEqual(self.request('/api/stop', b'{}')[0], 200)

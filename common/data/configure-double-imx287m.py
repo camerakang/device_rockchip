@@ -8,6 +8,7 @@ Register definitions follow VEYE rk35xx_veye_bsp e4516077e1fe.
 
 import argparse
 import glob
+import math
 import re
 import shlex
 import shutil
@@ -110,6 +111,12 @@ def configure(cameras, args):
         # These camera-specific properties are not represented by the
         # vendor V4L2 controls. Do not change format/ROI/FPS with raw I2C.
         registers = [(0x0C04, 0), (0x0C10, args.exposure_us)]  # manual exposure
+        if args.gain_mode is not None:
+            registers += [(0x0C1C, 0)]
+            if args.gain_mode == "manual":
+                registers += [(0x0C20, gain_units(args.gain_db))]
+            else:
+                registers += [(0x0C24, gain_units(args.auto_gain_max_db)), (0x0C1C, 2)]
         if args.mode == "hardware":
             registers += [(0x040C, 1), (0x1000, 0),  # one frame, no delay
                           (0x1004, 0 if args.edge == "rising" else 1),
@@ -136,6 +143,12 @@ def configure(cameras, args):
         print("--fps sets camera timing; the external pulse rate sets the capture rate.")
 
 
+def gain_units(value):
+    if not math.isfinite(value) or not 0 <= value <= 48 or abs(value * 10 - round(value * 10)) > 1e-7:
+        raise ValueError("增益必须为 0–48 dB，步进 0.1 dB")
+    return round(value * 10)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mode", choices=("free", "hardware"), required=True)
@@ -144,9 +157,18 @@ def main():
     parser.add_argument("--fps", type=int, default=30,
                         help="camera timing limit; start validation at 30 fps")
     parser.add_argument("--exposure-us", type=int, default=1000)
+    parser.add_argument("--gain-mode", choices=("auto", "manual"),
+                        help="omit to preserve the camera's existing gain settings")
+    parser.add_argument("--gain-db", type=float, default=0)
+    parser.add_argument("--auto-gain-max-db", type=float, default=20)
     parser.add_argument("--edge", choices=("rising", "falling"), default="rising")
     parser.add_argument("--dry-run", action="store_true", help="detect devices and print writes")
     args = parser.parse_args()
+    try:
+        gain_units(args.gain_db)
+        gain_units(args.auto_gain_max_db)
+    except ValueError as error:
+        parser.error(str(error))
     if not 1 <= args.fps <= 530:
         parser.error("--fps must be in [1, 530]; actual limits depend on firmware")
     if not 1 <= args.exposure_us < 1_000_000 / args.fps:

@@ -65,7 +65,7 @@ button:disabled{opacity:.5;cursor:wait}
 .placeholder{display:grid;place-content:center;text-align:center;height:100%;color:#38516b}
 .placeholder span{font-size:45px;font-weight:300}
 .placeholder p{font-size:12px;margin-top:8px}
-.camera-toolbar{display:flex;justify-content:space-between;padding:11px 17px;border-bottom:1px solid var(--border);font-size:10px;color:var(--muted)}
+.camera-toolbar{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;padding:11px 17px;border-bottom:1px solid var(--border);font-size:10px;color:var(--muted)}
 .camera-toolbar>div{display:flex;gap:17px;align-items:center}
 .camera-toolbar a{color:#afc2d9;text-decoration:none}
 .camera-toolbar button{color:#afc2d9;background:none;border:0;font-size:10px;line-height:1.6;padding:0}

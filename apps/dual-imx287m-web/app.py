@@ -22,7 +22,8 @@ from PIL import Image, ImageOps
 BASE = Path(__file__).resolve().parent
 HEADER = struct.Struct("<4sIIIQQQddII")
 DEFAULT = dict(mode="hardware", format="raw12", fps=319.4, exposure_us=1000,
-               preview_fps=20, auto_contrast=True)
+               preview_fps=20, auto_contrast=True, gain_mode="auto", gain_db=0,
+               auto_gain_max_db=20)
 LIMITS = dict(raw8=523, raw10=437, raw12=320)
 
 
@@ -30,6 +31,12 @@ def validate_config(body):
     if not isinstance(body, dict) or set(body) - set(DEFAULT):
         raise ValueError("无效的配置字段")
     config = dict(DEFAULT, **body)
+    if not isinstance(config["gain_mode"], str) or config["gain_mode"] not in ("auto", "manual"):
+        raise ValueError("增益模式必须为自动或手动")
+    for key in ("gain_db", "auto_gain_max_db"):
+        value = config[key]
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or not 0 <= value <= 48 or abs(value * 10 - round(value * 10)) > 1e-7:
+            raise ValueError("增益范围为 0–48 dB，步进 0.1 dB")
     if not isinstance(config["mode"], str) or not isinstance(config["format"], str) or config["mode"] not in ("hardware", "free") or config["format"] not in LIMITS:
         raise ValueError("请选择有效的采集模式和位深")
     for key in ("fps", "exposure_us", "preview_fps"):
@@ -43,6 +50,8 @@ def validate_config(body):
         raise ValueError(f"当前位深的帧率范围为 1–{limit}")
     if config["format"] == "raw12" and config["mode"] == "hardware" and config["fps"] > 319.4:
         raise ValueError("本机 RAW12 外同步请使用 ≤319.4 Hz；320 Hz 实测会降到160 fps")
+    if config["format"] == "raw8" and config["mode"] == "hardware" and config["fps"] > 522:
+        raise ValueError("本机 RAW8 外同步请使用 ≤522 Hz；523 Hz 及以上实测丢失触发")
     if not 1 <= config["preview_fps"] <= 30:
         raise ValueError("网页预览帧率范围为 1–30")
     camera_fps = min(limit, math.ceil(config["fps"] * (2 if config["mode"] == "hardware" else 1)))
@@ -92,7 +101,8 @@ class Engine:
     def empty_frame():
         return dict(jpeg=None, revision=0, sequence=None, frames=0, dropped=0,
                     timestamp_ns=0, fps=0, mean=0, bits=12, last_seen=0,
-                    previews=collections.deque(maxlen=40), trigger_count=0, trigger_lost=0)
+                    previews=collections.deque(maxlen=40), trigger_count=0, trigger_lost=0,
+                    gain_db=None)
 
     def log(self, message):
         with self.condition:
@@ -146,6 +156,8 @@ class Engine:
             try:
                 self.command([self.configure_tool, "--mode", config["mode"], "--format", config["format"],
                               "--fps", str(config["camera_fps"]), "--exposure-us", str(config["exposure_us"]),
+                              "--gain-mode", config["gain_mode"], "--gain-db", str(config["gain_db"]),
+                              "--auto-gain-max-db", str(config["auto_gain_max_db"]),
                               "--edge", "rising"])
                 helper = load_helper(self.configure_tool)
                 self.camera_nodes = helper.discover()
@@ -237,10 +249,22 @@ class Engine:
                         with self.condition:
                             self.phase, self.error = "error", f"CAM{index} 采集进程退出，已停止共同触发"
                         break
-                if self.phase != "running" or self.config["mode"] != "hardware" or time.monotonic() < next_counters:
+                if self.phase != "running" or time.monotonic() < next_counters:
                     continue
                 next_counters = time.monotonic() + 2
                 for index, camera in self.camera_nodes.items():
+                    try:
+                        reply = self.command(["i2ctransfer", "-f", "-y", str(camera["bus"]), "w2@0x3b",
+                                              "0x0c", "0x28", "r4"], timeout=2, log_output=False)
+                        gain = int.from_bytes(bytes(int(x, 16) for x in reply.split()), "big") / 10
+                        with self.condition:
+                            self.frames[index]["gain_db"] = gain
+                    except Exception as exc:
+                        with self.condition:
+                            self.frames[index]["gain_db"] = None
+                        self.log(f"CAM{index} 增益读取失败：{exc}")
+                    if self.config["mode"] != "hardware":
+                        continue
                     try:
                         reply = self.command(["i2ctransfer", "-f", "-y", str(camera["bus"]), "w2@0x3b",
                                               "0x04", "0x18", "r4"], timeout=2, log_output=False)
