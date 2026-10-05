@@ -1,0 +1,16 @@
+[Unit]
+Description=MSCAM fusion application on the fixed LubanCat4 platform
+After=network.target
+ConditionPathIsExecutable=/apprun/current/core/mscam_cored
+ConditionPathExists=/apprun/current/config/mscam.conf
+Conflicts=dual-imx287m-web.service
+
+[Service]
+Type=simple
+WorkingDirectory=/apprun/current
+ExecStart=/apprun/current/core/mscam_cored --config-path /apprun/current/config/mscam.conf
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
