@@ -48,4 +48,6 @@ sudo systemctl enable --now mscam-core
 
 2026-10-05：参考 Core 使用新根文件系统的依赖交叉编译为 ARM64，`MSCAM_REQUIRE_RKMPP=ON`、ZLMediaKit 开启；在新根文件系统内通过 105 个测试用例、705 项断言。采集程序 compact RAW12 自检和网页的 6 个 Python 测试通过。新系统运行库放到 LubanCat4 的独立 chroot，MPP H.264/H.265 的 720×544 编码/解码往返通过；Core RKMPP/RGA 路径通过 H.264 编码/解码 30 帧和 H.265 编码 30 帧。GStreamer 1.22.9 能加载 Rockchip 插件，`videotestsrc → mpph264enc → h264parse → mppvideodec → fakesink` 的 30 帧管线正常到达 EOS。
 
-这些验证没有替换开发板原系统，最终 IMG 仍需烧录后验证启动、桌面和双相机。源码提交、软件包版本和参考程序校验分别保存在镜像 `/usr/share/mscam/platform/sources.lock`、`packages.lock`、`runtime.sha256`。固定版本指这份经过校验的 IMG；从联网 apt 源重建时需按版本清单核对，不能假定远端软件包永远不变。
+2026-10-05 用户烧录后，在 `192.168.3.234` 验证新镜像正常启动，SSH、NetworkManager、lightdm 和双摄网页服务均运行，系统失败服务为 0。rootfs 自动扩容至 115G，参考程序和字体校验通过。两路 RAW12 约 319.4 fps，720×544 JPEG 截图可读取；10 秒观察期间 V4L2 丢帧均为 0，触发丢失计数均为 1 且未增加。MPP H.264/H.265 硬件往返、GStreamer H.264 硬件管线和 Core RKMPP/RGA 测试在烧录后的实际系统上再次通过；相机格式枚举包含 Y8/Y10/Y12。桌面服务已检查，显示效果尚未目视确认。
+
+源码提交、软件包版本和参考程序校验分别保存在镜像 `/usr/share/mscam/platform/sources.lock`、`packages.lock`、`runtime.sha256`。烧录后的验证日志保存在 `output/fusion-base/post-flash`，不会改动已固定 IMG 的内容或校验和。固定版本指这份经过校验的 IMG；从联网 apt 源重建时需按版本清单核对，不能假定远端软件包永远不变。
