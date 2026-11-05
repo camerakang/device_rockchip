@@ -1,0 +1,3 @@
+deb https://ports.ubuntu.com/ubuntu-ports focal main universe
+deb https://ports.ubuntu.com/ubuntu-ports focal-updates main universe
+deb https://ports.ubuntu.com/ubuntu-ports focal-security main universe

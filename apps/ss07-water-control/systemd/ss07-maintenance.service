@@ -1,0 +1,34 @@
+[Unit]
+Requires=ss07-config-recover.service
+After=ss07-config-recover.service
+Description=SS-07 narrow configuration and recording lock service
+After=local-fs.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=ss07-storage
+Group=ss07-recordings
+SupplementaryGroups=ss07-state ss07-config
+WorkingDirectory=/opt/ss07/current
+ExecStart=/opt/ss07/current/tools/ss07 maintenance-worker --config /etc/ss07/system.json --active-config /etc/ss07-active/system.json --application-socket-dir /run/ss07-apply --application-user root --state-dir /run/ss07 --catalog /var/lib/ss07/catalog.sqlite --audit /var/lib/ss07/maintenance.sqlite --api-user ss07-api
+Environment=PYTHONDONTWRITEBYTECODE=1
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=8
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ReadWritePaths=/etc/ss07 /run/ss07 /var/lib/ss07 -/data/ss07
+DevicePolicy=closed
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

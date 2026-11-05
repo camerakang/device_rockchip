@@ -1,0 +1,169 @@
+{
+  "version": "0.6.1",
+  "evidence_kind": "software_build_and_emulation",
+  "whole_project_complete": false,
+  "hardware_verified": false,
+  "deployed": false,
+  "committed": false,
+  "pushed": false,
+  "flashed": false,
+  "target_abi": "rk3588-abi-20261023.json",
+  "native": {
+    "camera_version": "ss07-camera 0.3.1 (GStreamer 1.18.5)",
+    "binary_sha256": "12bb93740e5af4f7868974b727e4245e06b030ebf6ae7e2fe60d47cd8bae7a00",
+    "compiler_version": "10.3.1",
+    "sysroot_lock_sha256": "afd52e71cbb35773984f92b141a65ce3e8632264466b42a92c9adae1faaee285",
+    "dependency_elfs_verified": 20,
+    "manifest": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/arm64-20261023/native-compat/manifest.json",
+    "abi_evidence": "arm64-native-abi.json"
+  },
+  "arm64_management": {
+    "evidence_kind": "arm64_qemu_management_tests",
+    "runtime": {
+      "python": "3.8.10",
+      "machine": "aarch64",
+      "sqlite": "3.31.1",
+      "openssl": "OpenSSL 1.1.1f  31 Mar 2020"
+    },
+    "tests": 102,
+    "returncode": 0,
+    "elapsed_seconds": 49.899,
+    "isolation": "bwrap user/mount namespace, read-only sysroot/app, private tmp/dev",
+    "hardware_validated": false,
+    "deployed": false
+  },
+  "arm64_media": {
+    "evidence_kind": "arm64_qemu_synthetic",
+    "hardware_validated": false,
+    "deployed": false,
+    "qemu_version": "qemu-aarch64 version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.31)",
+    "camera_version": "ss07-camera 0.3.1 (GStreamer 1.18.5)",
+    "mediamtx_version": "v1.21.2",
+    "caddy_version": "v2.11.7 h1:yj0Y4fYZGPkSvibBJ1sTWE33xC0fxztVyXEW5iIdUT4=",
+    "go_emulator_workaround": "GODEBUG=madvdontneed=0",
+    "plugins_loaded": [
+      "v4l2src",
+      "h264parse",
+      "queue",
+      "capsfilter",
+      "rtph264pay",
+      "udpsink"
+    ],
+    "production_rejects_synthetic": true,
+    "missing_device_rejected": true,
+    "rtp_packets": 89,
+    "rtp_sequence_gaps": 0,
+    "complete_access_units": 21,
+    "decoded_stream": {
+      "codec_name": "h264",
+      "width": 320,
+      "height": 240,
+      "decoded_frames": 21,
+      "decoder": "host GStreamer openh264dec; fixed raw caps and EOS required"
+    },
+    "native_sigterm_exit": 0,
+    "binary_sha256": "12bb93740e5af4f7868974b727e4245e06b030ebf6ae7e2fe60d47cd8bae7a00"
+  },
+  "browser_regression": {
+    "result": "passed",
+    "channels": 6,
+    "completed_counts": {
+      "sdi": 9,
+      "down": 9,
+      "back": 9,
+      "left": 9,
+      "right": 9,
+      "front": 9
+    },
+    "logout_revocation": {
+      "native_media_sessions": 0,
+      "six_recorders_continue": true
+    },
+    "orphan_revocation": {
+      "native_media_sessions": 0,
+      "six_recorders_continue": true
+    },
+    "evidence": "arm64-browser-regression.json"
+  },
+  "application_package": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/arm64-20261023/arm64-package/ss07-0.6.1-linux-arm64.tar.gz",
+    "sha256": "c9aceaf5f5c6a11b51680cba7f128429c281b2e53a1dec6cb6dc14e2ec9834c4",
+    "bytes": 46626859,
+    "verification": {
+      "evidence_kind": "arm64_extracted_package_smoke",
+      "archive_sha256": "c9aceaf5f5c6a11b51680cba7f128429c281b2e53a1dec6cb6dc14e2ec9834c4",
+      "files_verified": 81,
+      "symlinks_verified": 1,
+      "contains_synthetic_binary": false,
+      "hardware_ready": false,
+      "runtime": "ARM64 Python 3.8.10/QEMU mount namespace; extracted package code only",
+      "api_health": {
+        "request_id": "a97d0af1-caca-4e14-af1c-87a70f280da2",
+        "data": {
+          "api": "RUNNING",
+          "app_version": "0.6.1",
+          "hardware_ready": false
+        }
+      },
+      "api_status_available": true,
+      "sigterm_exit": 0,
+      "deployed": false,
+      "firmware_image": false
+    }
+  },
+  "sdk_boot_components": {
+    "evidence": "sdk-boot-build.json",
+    "complete": true,
+    "kernel": "6.1.99-rk3588",
+    "modules": 300,
+    "artifact_hashes_verified": 612,
+    "boot_tested": false,
+    "full_img": false
+  },
+  "packaging_guards": [
+    {
+      "check": "stale_native",
+      "returncode": 2,
+      "rejected": true,
+      "reason": "package-arm64.py: error: native build/validation does not match the production binary and current lock"
+    },
+    {
+      "check": "mixed_architecture",
+      "returncode": 2,
+      "rejected": true,
+      "reason": "stage-rootfs.py: error: camera, media and gateway architectures do not match"
+    },
+    {
+      "check": "existing_build",
+      "returncode": 2,
+      "rejected": true,
+      "reason": "build-arm64.py: error: output must not exist"
+    },
+    {
+      "check": "existing_sysroot",
+      "returncode": 2,
+      "rejected": true,
+      "reason": "prepare-arm64-sysroot.py: error: output must not exist"
+    },
+    {
+      "check": "non_arm_elf",
+      "returncode": 1,
+      "rejected": true,
+      "reason": "ValueError: not an ARM64 little-endian ELF: /usr/bin/true"
+    }
+  ],
+  "test_limits": [
+    "All video sources are explicitly synthetic. No camera, sonar, USB-RS485 or recording disk operated.",
+    "QEMU 6.2 Go executable version checks used the explicit madvdontneed=0 workaround; no production unit change.",
+    "Only management tests used the ARM64 Python runtime. Six-channel browser/recording regression ran native amd64 components.",
+    "SDK current-source components are built; new rootfs/boot/initrd/final IMG and real boot remain incomplete."
+  ],
+  "remaining": [
+    "rootfs/boot/initrd/IMG",
+    "per-worker config apply and recovery",
+    "install/upgrade/rollback",
+    "sonar framework and vendor protocol",
+    "explicitly authorized board deployment",
+    "actual USB/SE2017/timecode/disk/LAN and eight-hour system acceptance"
+  ]
+}

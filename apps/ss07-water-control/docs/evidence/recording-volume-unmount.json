@@ -1,0 +1,1 @@
+{"evidence_kind": "synthetic_test", "filesystem": "tmpfs", "lazy_unmount_gate": "passed", "native_fd_no_system_disk_fallback": "passed", "hardware_verified": false}

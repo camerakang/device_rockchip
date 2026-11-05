@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SS-07 native RTSPS access",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "enabled", "port"],
+  "properties": {
+    "schema_version": {"const": 1, "type": "integer"},
+    "enabled": {"type": "boolean"},
+    "port": {"type": "integer", "minimum": 1024, "maximum": 65535},
+    "plain_port": {"type": "integer", "minimum": 1024, "maximum": 65535, "description": "Optional LAN plaintext RTSP/TCP listener for ffmpeg/Node clients; must differ from port"}
+  }
+}

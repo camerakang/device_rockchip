@@ -1,0 +1,152 @@
+{
+  "evidence_kind": "offline_full_image_readback",
+  "complete": true,
+  "image": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-candidate/firmware/SS07-0.6.1-LubanCat4-V1-6.1.99-rk3588.img",
+  "image_sha256": "ea64ce13c5d93dc02ff0d3ff51d5f062c4ae69ec2bad4b075fb6c62842bdc660",
+  "image_build_manifest_sha256": "c43d21a016f715c8c0d6d61c7273dfb24975d1bffa386b2f1af01ddc8331e705",
+  "verifier_sha256": "e0ba679236e25b1b459bb662b9e6c19f9eae165fe9e83c45973d1652e948da4d",
+  "hardware_validated": false,
+  "boot_tested": false,
+  "deployed": false,
+  "commands": [
+    {
+      "argv": [
+        "/home/forlinx/workspace/LubanCat_SDK/tools/linux/Linux_Pack_Firmware/rockdev/rkImageMaker",
+        "-unpack",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-candidate/firmware/SS07-0.6.1-LubanCat4-V1-6.1.99-rk3588.img",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/rkfw"
+      ],
+      "log": "unpack-rkfw.log",
+      "returncode": 0,
+      "elapsed_seconds": 3.195
+    },
+    {
+      "argv": [
+        "/home/forlinx/workspace/LubanCat_SDK/tools/linux/Linux_Pack_Firmware/rockdev/afptool",
+        "-unpack",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/rkfw/firmware.img",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/payload"
+      ],
+      "log": "unpack-rkaf.log",
+      "returncode": 0,
+      "elapsed_seconds": 11.359
+    },
+    {
+      "argv": [
+        "e2fsck",
+        "-fn",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/payload/rootfs.img"
+      ],
+      "log": "rootfs-fsck.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.194
+    },
+    {
+      "argv": [
+        "e2fsck",
+        "-fn",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/payload/boot.img"
+      ],
+      "log": "boot-fsck.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.005
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/rootfs-ownership.state",
+        "--",
+        "debugfs",
+        "-R",
+        "rdump / \"/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/rootfs-readback\"",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/payload/rootfs.img"
+      ],
+      "log": "rootfs-readback.log",
+      "returncode": 0,
+      "elapsed_seconds": 1.034
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/rootfs-ownership.state",
+        "--",
+        "/usr/bin/python3",
+        "/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control/packaging/image-tree.py",
+        "--root",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/rootfs-readback",
+        "--output",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/rootfs-readback.json"
+      ],
+      "log": "rootfs-inventory.log",
+      "returncode": 0,
+      "elapsed_seconds": 2.146
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/boot-ownership.state",
+        "--",
+        "debugfs",
+        "-R",
+        "rdump / \"/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/boot-readback\"",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/payload/boot.img"
+      ],
+      "log": "boot-readback.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.17
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/boot-ownership.state",
+        "--",
+        "/usr/bin/python3",
+        "/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control/packaging/image-tree.py",
+        "--root",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/boot-readback",
+        "--output",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/boot-readback.json"
+      ],
+      "log": "boot-inventory.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.094
+    },
+    {
+      "argv": [
+        "debugfs",
+        "-f",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/rootfs-stat.commands",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/payload/rootfs.img"
+      ],
+      "log": "rootfs-inodes.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.858
+    },
+    {
+      "argv": [
+        "lsinitramfs",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/boot-readback/initrd-6.1.99-rk3588"
+      ],
+      "log": "initrd-contents.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.131
+    }
+  ],
+  "package_file": "embedded bytes and regenerated mapping verified",
+  "payload_files_verified": 6,
+  "rootfs_entries_verified": 13554,
+  "rootfs_inode_metadata_sha256": "e7a930b7e8754612c77b3a584b4e854d9173dc1677a7afe0710ceee161af6a1a",
+  "rootfs_readback_sha256": "94643d9067f9f7d2bf870c21b9f14bd61bbd2636cab747d97c9192a892d78a2b",
+  "kernel_release": "6.1.99-rk3588",
+  "module_count": 300,
+  "boot_components_match_current_build": true,
+  "services_provisioned": false,
+  "recording_storage_created": false,
+  "machine_identity_cleared": true,
+  "default_passwords_locked": true,
+  "service_ownership_verified": true
+}

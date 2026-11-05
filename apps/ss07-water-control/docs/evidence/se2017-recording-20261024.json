@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "se2017_no_signal_recording_validation",
+  "recorded_at_host_utc": "2026-10-24T09:11:23.475019+00:00",
+  "source": "rtsp://192.168.3.47:5554/live/av",
+  "source_kind": "real_encoder_output_with_no_sdi_input",
+  "human_confirmed_sdi_camera_connected": false,
+  "storage_kind": "explicit_isolated_directory_fixture",
+  "recording_metadata_evidence_kind": "synthetic_test",
+  "physical_sdi_input_verified": false,
+  "physical_recording_disk_verified": false,
+  "board_application_deployed": false,
+  "production_mount_gate_modified": false,
+  "production_mount_gate_exercised": false,
+  "test_recorder_volume_supplied_directly": true,
+  "http_mount_lease_replaced_only_in_test": true,
+  "result": "passed",
+  "completed_segments": 4,
+  "container_tracks": [
+    {
+      "relative_path": "isolated-test-recordings/e0b7f2c99d1d4417948cdb956ea7cc01/sdi/2026-10-24_09-06-56-336766.mp4",
+      "sha256": "08a2fd9234b20301ad46fb0fb0682070cc9e82d58aa282a7dbaca29f8f3b8aeb",
+      "size_bytes": 80204,
+      "tracks": [
+        {
+          "handler": "vide",
+          "entries": [
+            {
+              "codec_sample_entry": "avc1",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "handler": "soun",
+          "entries": [
+            {
+              "codec_sample_entry": "mp4a",
+              "channels": 2,
+              "sample_rate": 48000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "relative_path": "isolated-test-recordings/e0b7f2c99d1d4417948cdb956ea7cc01/sdi/2026-10-24_09-06-58-403898.mp4",
+      "sha256": "1d9dc630b1c4631931ef1fbff83face131fe5d726c5502f1025002a4bb586e39",
+      "size_bytes": 77470,
+      "tracks": [
+        {
+          "handler": "vide",
+          "entries": [
+            {
+              "codec_sample_entry": "avc1",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "handler": "soun",
+          "entries": [
+            {
+              "codec_sample_entry": "mp4a",
+              "channels": 2,
+              "sample_rate": 48000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "relative_path": "isolated-test-recordings/e0b7f2c99d1d4417948cdb956ea7cc01/sdi/2026-10-24_09-07-00-406721.mp4",
+      "sha256": "666ca20e040b8608eae0b667075d8550044cd0858c8fb7acbfc3508976dc852a",
+      "size_bytes": 77469,
+      "tracks": [
+        {
+          "handler": "vide",
+          "entries": [
+            {
+              "codec_sample_entry": "avc1",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "handler": "soun",
+          "entries": [
+            {
+              "codec_sample_entry": "mp4a",
+              "channels": 2,
+              "sample_rate": 48000
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "relative_path": "isolated-test-recordings/e0b7f2c99d1d4417948cdb956ea7cc01/sdi/2026-10-24_09-07-02-409941.mp4",
+      "sha256": "346f66e5f3fe696b86fda15114e93ce60c4b4be6fc148ddf9f098ad2327623d0",
+      "size_bytes": 9600,
+      "tracks": [
+        {
+          "handler": "vide",
+          "entries": [
+            {
+              "codec_sample_entry": "avc1",
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "handler": "soun",
+          "entries": [
+            {
+              "codec_sample_entry": "mp4a",
+              "channels": 2,
+              "sample_rate": 48000
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "restored": 4,
+    "incomplete": 0,
+    "rejected": 0,
+    "missing": 0
+  },
+  "recorder_stop_preserves_live_source": true,
+  "export_sha256": "666ca20e040b8608eae0b667075d8550044cd0858c8fb7acbfc3508976dc852a",
+  "range_export": "passed",
+  "browser": {
+    "evidence_kind": "isolated_storage_real_encoder_no_signal",
+    "hardware_verified": false,
+    "physical_sdi_input_verified": false,
+    "physical_recording_disk_verified": false,
+    "result": "passed",
+    "channel_filter": "passed",
+    "timecode_filter": null,
+    "decoded": {
+      "width": 1920,
+      "height": 1080,
+      "frames": 5,
+      "current": 0.089505,
+      "duration": 2.021556,
+      "error": null
+    },
+    "seek": {
+      "width": 1920,
+      "height": 1080,
+      "frames": 38,
+      "current": 1,
+      "duration": 2.021556,
+      "error": null
+    },
+    "range_responses": [
+      {
+        "status": 206,
+        "mimeType": "video/mp4"
+      }
+    ]
+  },
+  "process_exits": {
+    "recorder": 0,
+    "monitor_media": 0
+  },
+  "limitations": [
+    "Human confirmed no SDI camera is connected; recorded black output does not prove camera capture or SDI timing.",
+    "This runs on the development host with an explicit test directory, not a nominal 1 TB recording disk or RK service deployment.",
+    "MP4 includes AVC video and a 48 kHz stereo mp4a track; this is container and video-playback evidence, not physical audio or audio-quality acceptance.",
+    "The fixture volume and its test metadata are not published as real hardware status. Production missing-disk policy remains unchanged."
+  ],
+  "evidence_files": {
+    "recording-probe.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/recording-probe.py",
+      "sha256": "58c8fa0f24771fd760b6e152c29e6bb0e91bfb7c0fc2eac0ee22f1547c5e24af"
+    },
+    "result.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/result.json",
+      "sha256": "1ae5f53215ffdcd701bc47fcfb7814d4a8315e6604265005293d3d98b5410dee"
+    },
+    "browser-recording.cjs": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/browser-recording.cjs",
+      "sha256": "b1b3c39a1249bb25bf2a52b6d1f12c44db03e14c40d0557e408bb68b96d60c01"
+    },
+    "browser-recording.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/browser-recording.json",
+      "sha256": "9db2be2b01d34bb56290d76c864da25e96d2f56658b3865e49d83efddfafa1f6"
+    },
+    "browser.log": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/browser.log",
+      "sha256": "f9f371faf236985523aa5ee4d97a0c87c9bd1146bdeebe0768f054e4a8670bcc"
+    },
+    "recording-playback.png": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/recording-playback.png",
+      "sha256": "249875b6f7773705b527b5b7dc7b8d29540515010826ca5dc7c4dd23148f18bd"
+    },
+    "inspect-recorded-tracks.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/inspect-recorded-tracks.py",
+      "sha256": "6eab1ecc6c1235925b1780211776a4c9adaaf5e4b21127eef534b9cfd3813d87"
+    },
+    "recorded-tracks.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/recorded-tracks.json",
+      "sha256": "29d44a5a265b550e4950ac72d38c0e71496f5d6eaf0bddf7c46a5f48be99a6bb"
+    },
+    "media.log": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/media.log",
+      "sha256": "7a8bb194ec9522844f06a8a054a89251adf8d3d06292d99a3c6115f9ee80f147"
+    },
+    "recorder-tail.log": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/recorder-tail.log",
+      "sha256": "456fa02076ef77e2f8e2ecfbab9e8c2dc2efe5c077f6967b6f2056dcdbd11a4e"
+    },
+    "test-config.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-recording-20261024/test-config.json",
+      "sha256": "320f7d92f84c7120a68be5e829cbcd2531c2d0103343911f3057d834c9e5798e"
+    }
+  }
+}

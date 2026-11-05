@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-26T11:15:12.701624+00:00",
+  "artifact": "ss07-five-720p25-production-acceptance-stage",
+  "result": "partial_acceptance_continuing",
+  "whole_project_complete": false,
+  "whole_project_passed": false,
+  "application_version": "0.10.2",
+  "application_deployed": true,
+  "image_flashed": false,
+  "image_boot_tested": false,
+  "standard": {
+    "USB_channels": 5,
+    "format": "native H264 passthrough",
+    "width": 1280,
+    "height": 720,
+    "fps": "25/1",
+    "controllers": "2+2+1",
+    "full_scope_retained": true
+  },
+  "checks": {
+    "five_actual_webrtc_decode": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/browser-live-formal-0.10.2-result.json",
+      "sha256": "a993f39840ff6b4ba7b7529159f7253ca7c985262120f04dffe7e0b84d88199f",
+      "bytes": 18795
+    },
+    "api_restart_and_per_camera_service_recovery": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/browser-recovery-result.json",
+      "sha256": "177114bc070280c475901e74da36022172118ee92c4149f28a62afc9c55f3b8e",
+      "bytes": 47135
+    },
+    "actual_uvc_interface_reenumeration": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/browser-usb-recovery-result.json",
+      "sha256": "917eaf96c31fd75042d3dcc2c2d460a0cc78c4bf591e1d80e2f10a228161c775",
+      "bytes": 50307
+    },
+    "actual_ui_configuration_CAS_selective_apply_and_restore": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/browser-config-result.json",
+      "sha256": "b330963d1830a105df308b47d2f6b511fafbd2954e07cccb41279b4d9981cf7d",
+      "bytes": 8970
+    },
+    "production_https_roles_CSRF_and_logout": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/http-role-result.json",
+      "sha256": "986b1a9637f62fc2e0d7487a7680924f1076dfc18b019f25afb7236a86a5bdea",
+      "bytes": 1276
+    },
+    "original_accounts_restored": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/role-restore-result.json",
+      "sha256": "c21e5d51f38ab421972fc1953a60f9c530034155f502828359960169a72c8e7b",
+      "bytes": 54
+    },
+    "https_CA_verification": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/https-ca-validation.json",
+      "sha256": "9bcf6b0b4ea66c37ab9756e3f99521f8035f98b0c3b1d483803ecafaf6a7ba95",
+      "bytes": 351
+    },
+    "read_only_actual_storage_gates": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/board-readonly-gates.json",
+      "sha256": "c09b911d4f37c1be3194c072925bc92d9eb995866360871f028611cbb5c6fa74",
+      "bytes": 7321
+    },
+    "arm64_240_tests": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/arm64-management-0.10.2/result.json",
+      "sha256": "3530e42ccfa42ed82a45e5642c9990f5b6b9b3f4ab2154735ca6b9d257a8f6ba",
+      "bytes": 393
+    },
+    "host_240_tests": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/source-package-0.10.2.log",
+      "sha256": "85c0229b4a8f859ddd6e66e2d8938aead50105a0751cb956980a3c5e935f5040",
+      "bytes": 24131
+    },
+    "runtime_files_match_workspace": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/runtime-files-match-0.10.2.json",
+      "sha256": "d5fec221c795dbf89c62d91cb313d1a715f67c18571dcadbd30c0aaef9da4fe4",
+      "bytes": 9240
+    },
+    "unchanged_components_between_0_10_1_and_0_10_2": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/unchanged-media-configuration-components.json",
+      "sha256": "ddcf8af945b23fefffba6241e0dabeee4ba43757bbba98b6093020aac95f0f8f",
+      "bytes": 2837
+    },
+    "image_readback": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/image-readback-0.10.2/result.json",
+      "sha256": "4c80bc7ed2d7f0ca96a6e6704a630dcdd0cfd9d178118bc34662fe92ec330eda",
+      "bytes": 6164
+    },
+    "image_userland": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/image-userland-0.10.2/result.json",
+      "sha256": "830113a16aebac57564995240d03b3d925c04805cf51edda8364adc91cf6eca1",
+      "bytes": 19575
+    },
+    "serena_memory_integrity": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/serena-memories-check-final.log",
+      "sha256": "ace2caebc6afcc65ade3759fed56085c8f728fde0e0ffc36d53b0ce30ad632b1",
+      "bytes": 43
+    }
+  },
+  "artifacts": {
+    "arm64_application": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/arm64-0.10.2/ss07-0.10.2-linux-arm64.tar.gz",
+      "sha256": "cffb4218b8368750db5433f28353a57a3f3abed20a4dc3076eb420bfa84bf62a",
+      "bytes": 46758750
+    },
+    "full_RKFW_image": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/image-0.10.2/firmware/SS07-0.10.2-LubanCat4-V1-6.1.99-rk3588.img",
+      "sha256": "3e5f1447a76875d60511477b24f43b1c9cfd7542fe6b08e82edac4eee859f78f",
+      "bytes": 3364815434
+    },
+    "image_build_manifest": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/image-0.10.2/manifest.json",
+      "sha256": "8eec9e761b4fa0e3472b068a4ecfa13b8641d6b7d1140bab5aed873e8ddedf3c",
+      "bytes": 7877
+    }
+  },
+  "runtime_files_verified": 92,
+  "continuous_observation": {
+    "complete": false,
+    "target_seconds": 28800,
+    "current_attempt": 3,
+    "stage_snapshot": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/soak-03/stage-snapshot.json",
+      "sha256": "3eef52d77233782528175c3fc7a0ddfe2f3e80acd579a9120bffb50cb1aea67f",
+      "bytes": 23504
+    },
+    "board_unit": "ss07-acceptance-720p25-20261026-03.service",
+    "board_pid_at_capture": "79890",
+    "browser_unit": "ss07-acceptance-browser-720p25-20261026-03.service",
+    "browser_pid_at_capture": 608644,
+    "browser_started_at_utc": "2026-10-26T11:10:07.662Z",
+    "current_progress_directory": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/soak-03",
+    "capture_has_drops": true,
+    "previous_attempts_do_not_count_as_complete": true,
+    "scope": "Five actual USB monitoring streams; recording disabled due absent independent data volume. Does not complete six-stream monitoring plus recording R07."
+  },
+  "fixed_issues": [
+    {
+      "version": "0.10.1",
+      "problem": "Production Pion local interface enumeration failed with netlinkrib address family not supported",
+      "fix": "Allow AF_NETLINK in ss07-media.service; remove diagnostic permission override after formal deployment"
+    },
+    {
+      "version": "0.10.2",
+      "problem": "GET /api/v1/logs without query returned 422",
+      "fix": "Empty query uses access/limit defaults; malformed and duplicate fields still reject; regression first reproduced before fix"
+    }
+  ],
+  "retained_limitations": [
+    "V4L2 lost-frame, invalid-NAL and browser presentation-drop records are retained; no zero-drop claim",
+    "Per-camera startup retries and transient unavailable states are retained",
+    "UVC driver unbind/rebind is not electrical cable removal or physical direction verification",
+    "Read-only storage rejection is not actual recording acceptance",
+    "No measured end-to-end latency or calibrated exposure synchronization",
+    "Deployment required nonrecursive /etc directory ownership repair and manual service-cache reload in initial failed recovery; not a full OS security or automatic interrupted-install proof",
+    "Private CA duplicate-extension repair is separately recorded; no system trust change"
+  ],
+  "pending_full_acceptance": [
+    "Real independent recording volume, six-channel completed segments/replay/export/retention and disk fault recovery",
+    "Valid SDI camera input; black NoSignal encoder output is insufficient",
+    "Actual sonar vendor protocol/driver, five sensors, timing and acoustic interference",
+    "Dedicated timecode RS485 adapter/binding/UART parameters, physical zero TX and real event association",
+    "Eight-hour full six-stream monitoring AND recording, latency and resource/fault analysis",
+    "Cold boot/power loss/new IMG boot and independence of external motion system"
+  ],
+  "retained_failed_evidence": {
+    "initial_installs_and_recoveries": [
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/board-install.log",
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/board-install-trace.log",
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/board-recover-missing-target.log"
+    ],
+    "first_WHEP_failures": [
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/browser-live-failure-01.json",
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/browser-live-failure-02.json"
+    ],
+    "certificate_validation_failure": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/https-openssl-chain.log",
+      "sha256": "71766a1102aff8fa4c0f556b27681d45a43579e194e2ddfc3e150e7553f0b5bb",
+      "bytes": 1433
+    },
+    "log_query_failure": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/http-log-query-diagnostics.json",
+      "sha256": "539b94caa289c79eb504956d39103215e965ee213b5d88c2b686a75489a03bfe",
+      "bytes": 422
+    },
+    "log_query_regression_before_fix": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/log-query-regression-before.log",
+      "sha256": "0b19fc97bfc16a5da1e25ef6d3c776c69dc521c2dedcaa3401c919bb246f44b6",
+      "bytes": 822
+    },
+    "configuration_harness_failures": [
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/browser-config-attempt-01-failure.json",
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/browser-config-attempt-02-failure.json",
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/browser-config-attempt-03-failure.json"
+    ],
+    "long_observation_attempts": [
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/soak-attempt-01",
+      "/home/forlinx/workspace/LubanCat_SDK/output/ss07/acceptance-720p25-20261026/soak-02"
+    ]
+  },
+  "documentation_note": "This is a dated stage snapshot. Later outcome requires fresh unit/PID/progress and final result files. Updated documentation and this evidence were written after ARM64 application packaging; original package and IMG bytes are preserved. Final source archive hashes are in the external delivery manifest to avoid self-reference."
+}

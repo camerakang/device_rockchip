@@ -1,0 +1,16 @@
+{
+  "hardware_verified": false,
+  "evidence_kind": "software_process_test",
+  "disabled": {
+    "result": "passed",
+    "reason": "recording_disabled",
+    "recording_started": false,
+    "clean_stop": true
+  },
+  "missing_volume": {
+    "result": "passed",
+    "reason": "mount_missing",
+    "recording_started": false,
+    "clean_stop": true
+  }
+}

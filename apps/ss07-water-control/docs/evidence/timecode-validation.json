@@ -1,0 +1,49 @@
+{
+  "version": "0.5.0",
+  "evidence_kind": "software_validation",
+  "hardware_verified": false,
+  "python_tests": [
+    {
+      "version": "3.8.20",
+      "tests": 84,
+      "result": "passed"
+    },
+    {
+      "version": "3.10.12",
+      "tests": 84,
+      "result": "passed"
+    }
+  ],
+  "integration": "timecode-recording-integration.json",
+  "staging": "timecode-staging.json",
+  "systemd": "timecode-systemd.json",
+  "target_readonly_capability": "rk3588-timecode-capability-20261023.json",
+  "logs": {
+    "logs/integration.log": "2ad046793a3f1d5fccd73ac3ccf712c275f1579488cca16417cbb239cb3f518d",
+    "logs/staging.log": "6030cec0e2f85cf0b8226d4b925ed3c27c014284fb5dfe77c1e318c2a867faeb",
+    "logs/tests-python310.log": "da81153641b766f6ddf6901ecde407f2b033e0f5245ae3481e164d2a233e66a3",
+    "logs/tests-python38.log": "a04d47df90db68bf5dac3a05aed71776a381cf9af0fd1a07a858d90952fcf55f"
+  },
+  "recorder_duration_regression": {
+    "observed_native_values": [
+      "1.6400000000000001",
+      "1.6800000000000002"
+    ],
+    "behavior": "bounded decimal parse, nearest millisecond, invalid or out-of-range values rejected",
+    "source": "https://github.com/bluenviron/mediamtx/blob/v1.21.2/internal/core/path.go#L999"
+  },
+  "not_verified": [
+    "physical RS485 zero TX",
+    "USB receive-to-SOF calibration",
+    "real six video sources",
+    "real 1 TB recording volume",
+    "sonar acquisition and tags",
+    "ARM64 app execution",
+    "full SDK image",
+    "8 hour hardware acceptance"
+  ],
+  "actual_deployment": false,
+  "git_commit": false,
+  "git_push": false,
+  "firmware_flash": false
+}

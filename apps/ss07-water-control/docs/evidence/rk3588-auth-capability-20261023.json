@@ -1,0 +1,18 @@
+{
+  "evidence_kind": "read_only_target_capability",
+  "observed_at_utc": "2026-10-23T07:08:06.138233+00:00",
+  "target": "192.168.3.233",
+  "machine": "aarch64",
+  "python": "3.8.10",
+  "openssl": "OpenSSL 1.1.1f  31 Mar 2020",
+  "scrypt_parameters": {
+    "n": 32768,
+    "r": 8,
+    "p": 3,
+    "dklen": 32,
+    "maxmem": 67108864
+  },
+  "scrypt_seconds": 0.4516983740031719,
+  "hardware_opened": false,
+  "application_deployed": false
+}

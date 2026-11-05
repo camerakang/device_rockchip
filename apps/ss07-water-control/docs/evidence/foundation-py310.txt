@@ -1,0 +1,36 @@
+make: Entering directory '/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control'
+python3 -m unittest discover -s tests -v
+test_config_lifecycle_and_exit_codes (test_cli.CLITests) ... ok
+test_staged_app_runs_and_sigterm_stops_cleanly (test_cli.CLITests) ... ok
+test_all_read_endpoints (test_foundation.APITests) ... ok
+test_missing_hardware_is_not_healthy (test_foundation.APITests) ... ok
+test_partial_client_does_not_block_status (test_foundation.APITests) ... ok
+test_write_and_unimplemented_rejected (test_foundation.APITests) ... ok
+test_corrupt_json (test_foundation.ConfigTests) ... ok
+test_default_no_invented_parameters (test_foundation.ConfigTests) ... ok
+test_duplicate_bindings_and_addresses (test_foundation.ConfigTests) ... ok
+test_invalid_contracts (test_foundation.ConfigTests) ... ok
+test_stable_binding_and_requested_mode (test_foundation.ConfigTests) ... ok
+test_error_timeout_and_output_bound (test_foundation.ProbeTests) ... ok
+test_missing_tool (test_foundation.ProbeTests) ... ok
+test_saved_real_inventory_identity_and_mode (test_services.DeviceTests) ... ok
+test_events_snapshot_client_limit_and_http_availability (test_services.EventTests) ... ok
+test_static_assets_and_path_confinement (test_services.EventTests) ... ok
+test_concurrent_expected_revision_allows_one_writer (test_services.PersistenceTests) ... ok
+test_conflict_backup_and_pending_restart (test_services.PersistenceTests) ... ok
+test_invalid_disk_config_does_not_replace_runtime (test_services.PersistenceTests) ... ok
+test_no_overwrite_and_no_symlink (test_services.PersistenceTests) ... ok
+test_replace_failure_keeps_previous_configuration (test_services.PersistenceTests) ... ok
+test_strict_schema_and_url (test_services.PersistenceTests) ... ok
+test_boot_future_replay_and_restart (test_services.SnapshotTests) ... ok
+test_duplicate_does_not_refresh_age_and_stale_hides_payload (test_services.SnapshotTests) ... ok
+test_heartbeat_does_not_make_old_frame_healthy (test_services.SnapshotTests) ... ok
+test_reject_symlink_and_oversized_files (test_services.SnapshotTests) ... ok
+test_synthetic_evidence_rejected (test_services.SnapshotTests) ... ok
+test_mount_missing_readonly_systemdisk_and_eligible (test_services.StorageTests) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 3.597s
+
+OK
+make: Leaving directory '/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control'

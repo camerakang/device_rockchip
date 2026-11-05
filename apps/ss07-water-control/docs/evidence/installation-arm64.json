@@ -1,0 +1,15 @@
+{
+  "evidence_kind": "arm64_qemu_management_tests",
+  "runtime": {
+    "python": "3.8.10",
+    "machine": "aarch64",
+    "sqlite": "3.31.1",
+    "openssl": "OpenSSL 1.1.1f  31 Mar 2020"
+  },
+  "tests": 152,
+  "returncode": 0,
+  "elapsed_seconds": 52.118,
+  "isolation": "bwrap user/mount namespace, read-only sysroot/app, private tmp/dev",
+  "hardware_validated": false,
+  "deployed": false
+}

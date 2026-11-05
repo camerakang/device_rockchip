@@ -1,0 +1,572 @@
+{
+  "evidence_kind": "synthetic_test",
+  "app_version": "0.7.0",
+  "hardware_validated": false,
+  "observed_at_utc": "2026-10-23T11:10:20Z",
+  "deployed": false,
+  "result": "passed",
+  "lifecycle_backend": "local real subprocesses; systemd backend not exercised",
+  "apply": {
+    "transaction": {
+      "schema_version": 1,
+      "operation_id": "b1c24fc2-71a0-4eea-8bfc-94027df05dff",
+      "actor": "admin",
+      "phase": "APPLIED",
+      "previous_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "target_revision": "4e96e44d992a279ce07fc96712a0deb930b76ffd02a9226fc985dba0446d0ac7",
+      "services": [
+        "api"
+      ],
+      "results": {
+        "api": {
+          "state": "VERIFIED",
+          "reason": "running_required",
+          "instance_id": "9db20489-2e8f-4d2e-a3e9-be7df7c43be6",
+          "service_revision": "4e96e44d992a279ce07fc96712a0deb930b76ffd02a9226fc985dba0446d0ac7"
+        }
+      },
+      "error": null,
+      "configuration_restored": false
+    },
+    "native_media_and_recorder_identity_unchanged": true,
+    "six_recorders_continue": true,
+    "counts": {
+      "back": 6,
+      "down": 6,
+      "front": 6,
+      "left": 6,
+      "right": 6,
+      "sdi": 6
+    }
+  },
+  "rollback": {
+    "transaction": {
+      "schema_version": 1,
+      "operation_id": "4bd6cc20-fe05-451a-9ceb-f5adea8f476c",
+      "actor": "admin",
+      "phase": "ROLLED_BACK",
+      "previous_revision": "4e96e44d992a279ce07fc96712a0deb930b76ffd02a9226fc985dba0446d0ac7",
+      "target_revision": "525191bc726ce878fbf59c4700ae17863c932f4ed9cfdc7191309a3d7ef6c22a",
+      "services": [
+        "api",
+        "gateway"
+      ],
+      "results": {
+        "api": {
+          "state": "VERIFIED",
+          "reason": "running_required",
+          "instance_id": "8a1a17d0-2b86-417e-905f-4c1460ed694b",
+          "service_revision": "4e96e44d992a279ce07fc96712a0deb930b76ffd02a9226fc985dba0446d0ac7"
+        },
+        "gateway": {
+          "state": "VERIFIED",
+          "reason": "running_required",
+          "instance_id": "76e34994-88e6-45e4-aeb1-cc0b366ed670",
+          "service_revision": "3be972d44703eaf548dd3c0c57cfa728f70a450f54d2a1378bd2e3a3984b65c0"
+        }
+      },
+      "error": "configuration_health_timeout",
+      "configuration_restored": true
+    },
+    "native_media_and_recorder_identity_unchanged": true,
+    "six_recorders_continue": true,
+    "counts": {
+      "back": 22,
+      "down": 22,
+      "front": 22,
+      "left": 22,
+      "right": 22,
+      "sdi": 22
+    }
+  },
+  "browser": {
+    "result": "passed",
+    "evidence_kind": "synthetic_test",
+    "hardware_verified": false,
+    "ui_save_preview_apply": true,
+    "session_restart_requires_login": true,
+    "successful_apply": true,
+    "occupied_listener_automatic_rollback": true,
+    "desired_edit_retained": true,
+    "unconfigured_device_label": true,
+    "application_audit_export": true,
+    "decoded": {
+      "before": [
+        {
+          "channel": "front",
+          "frames": 70,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "back",
+          "frames": 70,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "left",
+          "frames": 45,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "right",
+          "frames": 45,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "down",
+          "frames": 70,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "sdi",
+          "frames": 70,
+          "width": 640,
+          "hidden": true
+        }
+      ],
+      "afterApply": [
+        {
+          "channel": "front",
+          "frames": 45,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "back",
+          "frames": 45,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "left",
+          "frames": 45,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "right",
+          "frames": 45,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "down",
+          "frames": 45,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "sdi",
+          "frames": 45,
+          "width": 640,
+          "hidden": true
+        }
+      ],
+      "afterRollback": [
+        {
+          "channel": "front",
+          "frames": 47,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "back",
+          "frames": 47,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "left",
+          "frames": 47,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "right",
+          "frames": 47,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "down",
+          "frames": 47,
+          "width": 640,
+          "hidden": true
+        },
+        {
+          "channel": "sdi",
+          "frames": 47,
+          "width": 640,
+          "hidden": true
+        }
+      ]
+    },
+    "javascript_exceptions": []
+  },
+  "lifecycle_actions": [
+    {
+      "action": "start",
+      "service": "media",
+      "monotonic_us": "278834551457"
+    },
+    {
+      "action": "start",
+      "service": "camera.front",
+      "monotonic_us": "278834551981"
+    },
+    {
+      "action": "start",
+      "service": "camera.back",
+      "monotonic_us": "278834552461"
+    },
+    {
+      "action": "start",
+      "service": "camera.left",
+      "monotonic_us": "278834553553"
+    },
+    {
+      "action": "start",
+      "service": "camera.right",
+      "monotonic_us": "278834556426"
+    },
+    {
+      "action": "start",
+      "service": "camera.down",
+      "monotonic_us": "278834557095"
+    },
+    {
+      "action": "start",
+      "service": "timecode",
+      "monotonic_us": "278834559968"
+    },
+    {
+      "action": "start",
+      "service": "storage",
+      "monotonic_us": "278834563302"
+    },
+    {
+      "action": "start",
+      "service": "maintenance",
+      "monotonic_us": "278834564671"
+    },
+    {
+      "action": "start",
+      "service": "api",
+      "monotonic_us": "278834566266"
+    },
+    {
+      "action": "start",
+      "service": "gateway",
+      "monotonic_us": "278834567246"
+    },
+    {
+      "action": "stop",
+      "service": "api",
+      "monotonic_us": "278847839430"
+    },
+    {
+      "action": "start",
+      "service": "api",
+      "monotonic_us": "278848059533"
+    },
+    {
+      "action": "stop",
+      "service": "api",
+      "monotonic_us": "278854846719"
+    },
+    {
+      "action": "stop",
+      "service": "gateway",
+      "monotonic_us": "278855063797"
+    },
+    {
+      "action": "start",
+      "service": "api",
+      "monotonic_us": "278855100078"
+    },
+    {
+      "action": "start",
+      "service": "gateway",
+      "monotonic_us": "278855101511"
+    },
+    {
+      "action": "stop",
+      "service": "gateway",
+      "monotonic_us": "278880141116"
+    },
+    {
+      "action": "stop",
+      "service": "api",
+      "monotonic_us": "278881260850"
+    },
+    {
+      "action": "start",
+      "service": "api",
+      "monotonic_us": "278881264167"
+    },
+    {
+      "action": "start",
+      "service": "gateway",
+      "monotonic_us": "278881265657"
+    }
+  ],
+  "consumer_status": {
+    "media": {
+      "state": "RUNNING",
+      "age_ms": 18,
+      "reason": null,
+      "instance_id": "bbee2f36-4dc6-4d47-bed4-df9540422a31",
+      "seq": "56",
+      "observed_monotonic_us": "278888918856",
+      "config_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "service_revision": "6e9277b5b8e36ccd1d1feb0b11a6e298f3458e44cc274a9710ee69ff39c41d16",
+      "payload": {
+        "version": "v1.21.2",
+        "streams": {
+          "front": {
+            "ready": true,
+            "codec": "H264",
+            "last_data_monotonic_us": "278888918843",
+            "bytes_received": "1063853",
+            "reason": null
+          },
+          "back": {
+            "ready": true,
+            "codec": "H264",
+            "last_data_monotonic_us": "278888918843",
+            "bytes_received": "1063853",
+            "reason": null
+          },
+          "left": {
+            "ready": true,
+            "codec": "H264",
+            "last_data_monotonic_us": "278888918843",
+            "bytes_received": "1063853",
+            "reason": null
+          },
+          "right": {
+            "ready": true,
+            "codec": "H264",
+            "last_data_monotonic_us": "278888918843",
+            "bytes_received": "1063853",
+            "reason": null
+          },
+          "down": {
+            "ready": true,
+            "codec": "H264",
+            "last_data_monotonic_us": "278888918843",
+            "bytes_received": "1063853",
+            "reason": null
+          },
+          "sdi": {
+            "ready": true,
+            "codec": "H264",
+            "last_data_monotonic_us": "278888918843",
+            "bytes_received": "967647",
+            "reason": null
+          }
+        },
+        "recording_enabled": false
+      }
+    },
+    "camera.front": {
+      "state": "UNAVAILABLE",
+      "age_ms": 216,
+      "reason": null,
+      "instance_id": "1d4462f3-48c4-407a-b6a6-d0103c1dbbc2",
+      "seq": "55",
+      "observed_monotonic_us": "278888720796",
+      "config_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "service_revision": "7b07046e00dc501f750bc34e9e7699934da382cac12f364d75eb092d8c2bdf77",
+      "payload": {
+        "reason": "camera_unconfigured"
+      }
+    },
+    "camera.back": {
+      "state": "UNAVAILABLE",
+      "age_ms": 206,
+      "reason": null,
+      "instance_id": "2a50cda9-90f9-46b3-818c-c3732f172071",
+      "seq": "55",
+      "observed_monotonic_us": "278888731268",
+      "config_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "service_revision": "7b07046e00dc501f750bc34e9e7699934da382cac12f364d75eb092d8c2bdf77",
+      "payload": {
+        "reason": "camera_unconfigured"
+      }
+    },
+    "camera.left": {
+      "state": "UNAVAILABLE",
+      "age_ms": 217,
+      "reason": null,
+      "instance_id": "41df4517-2d40-440e-a054-54714609a44f",
+      "seq": "55",
+      "observed_monotonic_us": "278888720789",
+      "config_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "service_revision": "7b07046e00dc501f750bc34e9e7699934da382cac12f364d75eb092d8c2bdf77",
+      "payload": {
+        "reason": "camera_unconfigured"
+      }
+    },
+    "camera.right": {
+      "state": "UNAVAILABLE",
+      "age_ms": 207,
+      "reason": null,
+      "instance_id": "cf3d83e7-f5a0-4158-a72f-9ec788f38b81",
+      "seq": "55",
+      "observed_monotonic_us": "278888730847",
+      "config_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "service_revision": "7b07046e00dc501f750bc34e9e7699934da382cac12f364d75eb092d8c2bdf77",
+      "payload": {
+        "reason": "camera_unconfigured"
+      }
+    },
+    "camera.down": {
+      "state": "UNAVAILABLE",
+      "age_ms": 206,
+      "reason": null,
+      "instance_id": "536164e9-8ccc-4b86-9729-999229a27d57",
+      "seq": "55",
+      "observed_monotonic_us": "278888731846",
+      "config_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "service_revision": "7b07046e00dc501f750bc34e9e7699934da382cac12f364d75eb092d8c2bdf77",
+      "payload": {
+        "reason": "camera_unconfigured"
+      }
+    },
+    "timecode": {
+      "state": "UNAVAILABLE",
+      "age_ms": 100,
+      "reason": null,
+      "instance_id": "556aba38-7673-4373-ad7f-018b81099e24",
+      "seq": "109",
+      "observed_monotonic_us": "278888837342",
+      "config_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "service_revision": "1a5747099b732cf4c741a32c079baaaf71944e3848467b61a08df078ffc9d5d8",
+      "payload": {
+        "tag": {
+          "schema_version": 1,
+          "rk_boot_id": "00758ceb-2a21-41c1-a248-664eeba1ab7a",
+          "receiver_instance_id": "556aba38-7673-4373-ad7f-018b81099e24",
+          "mapping_id": null,
+          "local_monotonic_us": "278888835332",
+          "timestamp_basis": "status_observation",
+          "quality": "UNAVAILABLE",
+          "reason": "no_prior_sample",
+          "source_epoch": null,
+          "source_sequence": null,
+          "source_time_us": null,
+          "source_received_monotonic_us": null,
+          "source_age_us": null,
+          "estimated_time_us": null,
+          "uncertainty_us": null,
+          "origin_monotonic_us": null,
+          "origin_basis": "usb_receive_uncalibrated",
+          "source_valid": false,
+          "mapping_started_monotonic_us": null,
+          "valid_until_monotonic_us": null,
+          "evidence_kind": "device_observation"
+        },
+        "accepted_samples": "0",
+        "rejected_samples": "0",
+        "last_rejection": null,
+        "retained_anchors": 0,
+        "retained_epoch_ids": 0,
+        "clock_fault": false,
+        "read_only": true,
+        "software_tx_bytes": "0",
+        "serial_connected": false,
+        "connections": 0,
+        "receiver_state": "UNAVAILABLE",
+        "reason": "timecode_not_configured",
+        "wire": {
+          "frames": "0",
+          "invalid_frames": "0",
+          "discarded_bytes": "0",
+          "partial_timeouts": "0",
+          "buffered_bytes": 0
+        },
+        "journal": {
+          "error": null,
+          "queued_events": 0,
+          "dropped_events": "0",
+          "last_committed_monotonic_us": "278887939700"
+        },
+        "snapshot_error": null
+      }
+    },
+    "storage": {
+      "state": "RUNNING",
+      "age_ms": 776,
+      "reason": null,
+      "instance_id": "228af5fb-0298-4bd8-9f59-2358602a0cd3",
+      "seq": "52",
+      "observed_monotonic_us": "278888161844",
+      "config_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "service_revision": "7cb50de552b5d390f25b3a5f95fbce5e1e17d25586687d6f1a88bb1166b51826",
+      "payload": {
+        "recording_enabled": true,
+        "recording_active": false,
+        "gate": "RECORDING",
+        "volume_uuid": "application-integration",
+        "session_id": "945259295fd740569c93ccac024be99b",
+        "channels_recording": [],
+        "completed_segments": 144,
+        "last_completed_monotonic_us": "278887849766",
+        "free_bytes": "70260862976",
+        "reason": null
+      }
+    },
+    "maintenance": {
+      "state": "RUNNING",
+      "age_ms": 808,
+      "reason": null,
+      "instance_id": "0d21ff39-886b-4a51-8107-8be7fcccd0cb",
+      "seq": "54",
+      "observed_monotonic_us": "278888129341",
+      "config_revision": "e38526786828f08fbf3c66359d22f3a2cbbfbb89bb82f342581fd8b9fb156c10",
+      "service_revision": "7ff423703a5b6fa7326218ba656429fde1569fe3e217368915f2030581d3196f",
+      "payload": {
+        "reason": null,
+        "operations": [
+          "config.update",
+          "recording.lock",
+          "config.plan",
+          "config.apply",
+          "config.recover"
+        ]
+      }
+    },
+    "api": {
+      "state": "RUNNING",
+      "age_ms": 571,
+      "reason": null,
+      "instance_id": "8a1a17d0-2b86-417e-905f-4c1460ed694b",
+      "seq": "8",
+      "observed_monotonic_us": "278888366295",
+      "config_revision": "4e96e44d992a279ce07fc96712a0deb930b76ffd02a9226fc985dba0446d0ac7",
+      "service_revision": "4e96e44d992a279ce07fc96712a0deb930b76ffd02a9226fc985dba0446d0ac7",
+      "payload": {
+        "reason": null
+      }
+    },
+    "gateway": {
+      "state": "RUNNING",
+      "age_ms": 342,
+      "reason": null,
+      "instance_id": "76e34994-88e6-45e4-aeb1-cc0b366ed670",
+      "seq": "8",
+      "observed_monotonic_us": "278888595738",
+      "config_revision": "4e96e44d992a279ce07fc96712a0deb930b76ffd02a9226fc985dba0446d0ac7",
+      "service_revision": "3be972d44703eaf548dd3c0c57cfa728f70a450f54d2a1378bd2e3a3984b65c0",
+      "payload": {
+        "reason": null
+      }
+    }
+  }
+}

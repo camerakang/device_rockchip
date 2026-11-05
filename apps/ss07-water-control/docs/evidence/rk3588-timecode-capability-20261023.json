@@ -1,0 +1,17 @@
+{
+  "evidence_kind": "read_only_target_capability",
+  "observed_at_utc": "2026-10-23T05:48:03.098139Z",
+  "target": "192.168.3.233",
+  "python": "3.8.10",
+  "machine": "aarch64",
+  "constants": {
+    "B500000": 4101,
+    "TIOCEXCL": 21516,
+    "TIOCNXCL": 21517
+  },
+  "socket_seqpacket": true,
+  "selector": "EpollSelector",
+  "nofollow": true,
+  "serial_opened": false,
+  "application_deployed": false
+}

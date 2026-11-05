@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "mediamtx": {
+    "version": "v1.21.2",
+    "source": "https://github.com/bluenviron/mediamtx",
+    "license": "MIT",
+    "assets": {
+      "linux_amd64": {
+        "url": "https://github.com/bluenviron/mediamtx/releases/download/v1.21.2/mediamtx_v1.21.2_linux_amd64.tar.gz",
+        "sha256": "121be6e00397e473a95d83c75f4fcd3819a6af3b0e1a50889cba43ab4fab6a27",
+        "binary_sha256": "0ffb7f18210d08ee38cb16668c4f3a2c96622e69d401119c0026d078a2b89523"
+      },
+      "linux_arm64": {
+        "url": "https://github.com/bluenviron/mediamtx/releases/download/v1.21.2/mediamtx_v1.21.2_linux_arm64.tar.gz",
+        "sha256": "180a235374a548d9133cdd5e20f5dbd8b01317be1c86e0d7e66df585dc42ed6f",
+        "binary_sha256": "f8676d0ed8f210453a722fdad76fe6e52cf764fdcf9930e8c7d242d02da57c2b"
+      }
+    }
+  },
+  "caddy": {
+    "version": "v2.11.7",
+    "source": "https://github.com/caddyserver/caddy",
+    "license": "Apache-2.0",
+    "assets": {
+      "linux_amd64": {
+        "url": "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_linux_amd64.tar.gz",
+        "sha256": "727b91701a392de6ebc5027509f548bf39979e5216340d0faed8fa5e69c84f8b",
+        "binary_sha256": "678ade3bfc088749c81a681adc603333ee0bb023b6a6cfe3c0f58bef8ff854e9"
+      },
+      "linux_arm64": {
+        "url": "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_linux_arm64.tar.gz",
+        "sha256": "d8fc6d179a5d283028a472a5618564f6ad8a86fed513e64f032b3b0b7cc45e42",
+        "binary_sha256": "0019d864a2cdee41c3675cb2a26185833c5d9540a48f5a6729142c0413461b60"
+      }
+    }
+  },
+  "native": {
+    "language": "C++17",
+    "gstreamer_minimum": "1.18",
+    "target_observed": "1.18.5",
+    "host_tested": "1.20.3",
+    "runtime_plugins": ["v4l2src", "capsfilter", "h264parse", "queue", "rtph264pay", "udpsink"],
+    "synthetic_test_only_plugins": ["videotestsrc", "x264enc"]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "evidence_kind": "arm64_systemd_static_validation",
+  "result": "passed",
+  "systemd_version": "systemd 245 (245.4-4ubuntu3.24)",
+  "returncode": 0,
+  "units": {
+    "ss07-api.service": "7528d8b3b7bde7ee12cac0d3fba9486a1b6f7934fe86d3c1e2c65a90ca222635",
+    "ss07-application.service": "9792670a25b0f71339e5914f8a1d6584c8a53bda46338e73b4fc80a5add0bdbf",
+    "ss07-camera@.service": "2a354249f44a22472b307839ee24d01ef20dfcec4414ba770cb67baf4dada451",
+    "ss07-config-recover.service": "c1ba1bf8b4da5fc4861b6ce98b5428d336684780bf8db2a649b9a08e6834ab16",
+    "ss07-gateway.service": "038f1c087c2130057823437dd8cbccf49c66c40e76c582fed70ec62f9b192097",
+    "ss07-maintenance.service": "9c5ff5eb43a7a33ecf39cbfdaaa33a136adab9ae99964eb5ded21fddce4f778a",
+    "ss07-media.service": "a8f9997570f3f797f5543c4522dfbea88f27bd90f0e6cd094b111f04aadd1abc",
+    "ss07-release-recover.service": "029d370a00610749d81433651aee62b8f0b74e4ede38512fa556b8801971dc5c",
+    "ss07-storage.service": "97f2ec667ac467c46a044b6f3a95b9187c55027ddf25dd0ddf6206ba3cac0a9e",
+    "ss07-timecode.service": "943fade6b8cbc55f2b1a2632b903524f06e62fc6ea0488a75103486bbc0c0d9c",
+    "ss07.target": "ba394360cfcfb37738542df4acb7ab43bfc40546f5e26d0ba0dba064e5f9afc6"
+  },
+  "dropins": {
+    "etc/systemd/system/ss07-api.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-application.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-camera@back.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-camera@down.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-camera@front.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-camera@left.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-camera@right.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-config-recover.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-gateway.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-maintenance.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-media.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-storage.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+    "etc/systemd/system/ss07-timecode.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb"
+  },
+  "recovery_helper_sha256": "63b06a2c1c8b595e7352e27baa5aaec6b150d8d172d4b7e3729d077d32f68866",
+  "executable_paths_rewritten": false,
+  "services_started": false,
+  "host_users_changed": false,
+  "live_service_permissions_verified": false,
+  "hardware_verified": false
+}

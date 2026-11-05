@@ -1,0 +1,38 @@
+[Unit]
+Requires=ss07-config-recover.service
+After=ss07-config-recover.service
+Description=SS-07 direct-access status and maintenance API
+After=local-fs.target ss07-media.service ss07-maintenance.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=ss07-api
+Group=ss07-web
+SupplementaryGroups=ss07-state ss07-recordings
+WorkingDirectory=/opt/ss07/current
+ExecStart=/opt/ss07/current/tools/ss07 serve --direct-access --config /etc/ss07-active/system.json --desired-config /etc/ss07/system.json --state-dir /run/ss07 --catalog /var/lib/ss07/catalog.sqlite --timecode-journal /var/lib/ss07/timecode/journal.sqlite --sonar-journal /var/lib/ss07/sonar/samples.sqlite --sonar-catalog /var/lib/ss07/sonar/archives.sqlite --accounts /etc/ss07-credentials/accounts.json --api-clients /etc/ss07-credentials/api-clients.json --gateway-config /etc/ss07-gateway/network.json --access-audit /var/lib/ss07-api/access.sqlite --maintenance-user ss07-storage --maintenance-audit /var/lib/ss07/maintenance.sqlite --application-audit /var/lib/ss07-apply/audit.sqlite --rtsp-audit /var/lib/ss07-media/access.sqlite --media-cleanup-state /run/ss07-api/media.json
+ExecStopPost=/opt/ss07/current/tools/ss07 close-webrtc --cleanup-state /run/ss07-api/media.json
+RuntimeDirectory=ss07-api
+RuntimeDirectoryMode=0700
+Environment=PYTHONDONTWRITEBYTECODE=1
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+NoNewPrivileges=yes
+PrivateTmp=yes
+DevicePolicy=closed
+ProtectSystem=strict
+ReadOnlyPaths=-/data/ss07 -/var/lib/ss07
+ReadWritePaths=/var/lib/ss07-api /run/ss07
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET
+CapabilityBoundingSet=
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

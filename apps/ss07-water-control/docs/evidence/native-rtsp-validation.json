@@ -1,0 +1,182 @@
+{
+  "evidence_kind": "software_validation",
+  "version": "0.9.0",
+  "date": "2026-10-23",
+  "result": "passed",
+  "hardware_verified": false,
+  "deployed": false,
+  "flashed": false,
+  "committed": false,
+  "pushed": false,
+  "whole_project_complete": false,
+  "arm64_tests": {
+    "tests": 166,
+    "python": "3.8.10",
+    "sqlite": "3.31.1",
+    "openssl": "1.1.1f",
+    "source": "native-rtsp-arm64.json"
+  },
+  "native_rtsp": {
+    "result": "passed",
+    "source": "native-rtsp-integration.json",
+    "native_client": {
+      "runtime": "GStreamer 1.20.3",
+      "received_access_units": 78,
+      "tls_validation": "all",
+      "test_ca_scope": "this client only",
+      "password_in_argv_or_url": false,
+      "decoded_frames": 62
+    },
+    "revocation_observed_seconds": 0.112,
+    "six_streams": {
+      "front": {
+        "decoded_frames": 324,
+        "rtp_packets": 1978,
+        "sequence_gaps": 0
+      },
+      "back": {
+        "decoded_frames": 324,
+        "rtp_packets": 1978,
+        "sequence_gaps": 0
+      },
+      "left": {
+        "decoded_frames": 324,
+        "rtp_packets": 1978,
+        "sequence_gaps": 0
+      },
+      "right": {
+        "decoded_frames": 324,
+        "rtp_packets": 1978,
+        "sequence_gaps": 0
+      },
+      "down": {
+        "decoded_frames": 324,
+        "rtp_packets": 1978,
+        "sequence_gaps": 0
+      },
+      "sdi": {
+        "decoded_frames": 324,
+        "rtp_packets": 1978,
+        "sequence_gaps": 0
+      }
+    },
+    "completed_segments": 78
+  },
+  "https_regression": {
+    "result": "passed",
+    "source": "native-rtsp-https.json"
+  },
+  "upgrade": {
+    "result": "passed",
+    "old_version": "0.8.0",
+    "new_version": "0.9.0",
+    "source": "native-rtsp-upgrade.json",
+    "old_native_listener_closed": true
+  },
+  "systemd": {
+    "source": "native-rtsp-systemd.json",
+    "version": "245.4-4ubuntu3.24",
+    "static_only": true
+  },
+  "package": {
+    "source": "native-rtsp-package.json",
+    "sha256": "de0e8b75ab3584750e8262092e60a6122b991d50ea9da85020ed09bded8adfdc",
+    "files": 124,
+    "symlinks": 1,
+    "workspace_runtime_files": 78
+  },
+  "dependency_sources": "native-rtsp-upstream.json",
+  "client_only_dependencies": {
+    "scope": "test client only; no packages installed; no runtime dependency change",
+    "packages": {
+      "gstreamer1.0-plugins-bad_1.20.3-0ubuntu1.1_amd64.deb": "3e8e4b24f7ee296d273625e04215d1f8b78f177f2a682a544f26055bc70849aa",
+      "libsrtp2-1_2.4.2-2_amd64.deb": "9d495d7a5668e4ba40357cf4a965ff61958068345ce57574ab5f0f1c497653cc"
+    },
+    "files": {
+      "plugins/libgstsrtp.so": "43e57033b3fa2474c81ab3af9ebf6cf50db48ca1ddc11f4601d8b5c959e608a7",
+      "lib/libsrtp2.so.1": "d0a1c10081dbf5dc053522aa9ea871a389e5416d8794fa60e243e20a6185a26d"
+    }
+  },
+  "limits": [
+    "synthetic_test sources; real USB/SE2017 not connected or accepted",
+    "real UID/groups and LAN TLS/ICE not exercised",
+    "revocation latency measured on development host, not a hard realtime promise",
+    "full IMG still 0.6.1; new image recipe updated but not rebuilt",
+    "sonar wire protocol, timecode binding/UART remainder and physical data disk pending"
+  ],
+  "failures_retained": [
+    "integration-01: client timeout during rejection",
+    "integration-02: stale heartbeat mistaken for recovered listener",
+    "integration-04: native test client assertion; fixture stopped, root cause unproven",
+    "integration-05/06: missing client plugins",
+    "integration-07: sample started mid-GOP; insufficient decoded frames"
+  ],
+  "runtime_source_sha256": {
+    "src/camera/main.cpp": "0034bc97dd971d8b6ce40872f004d743bf14df7d605114170b8c9c32c95871c9",
+    "src/ss07/__init__.py": "ea7e19336bf49941d1a8b16777b7932cfc0742c45a94c94513e757fc65a970dd",
+    "src/ss07/__main__.py": "be5d632da7d067a9dffa2c232fbf8c6b6545adf213a0e9f6d768ec43ddd48ed8",
+    "src/ss07/accounts.py": "4f03a22898fabebdf1de2ee4493f23ff6096cffca24e10f3e410896d4910c385",
+    "src/ss07/api.py": "2b94bc3ce9082f7123f77fb3c0181503ef61dd38d80e4f5b732420d8acdd6209",
+    "src/ss07/application.py": "868bb30b13d5147043585b28a862e10e263373c8f51281a7c755dee5a4951e9e",
+    "src/ss07/application_worker.py": "0aa5e3fdb54bda2175cbaa7108a34de43f772584978a32e7d20659ea7f73b9fd",
+    "src/ss07/audit.py": "6738f7e08200ad20446ff811a8ead94b913145c725bc2399e619412aea0d0c7e",
+    "src/ss07/auth.py": "a478cf3be32e40a06d370547cef687f71798d98459157bae4f071a9b4c2c5cc6",
+    "src/ss07/camera.py": "a00a9dd7c203a21c35e494bca8fcc331c8cdc99a744eb707119ca854ade11eaa",
+    "src/ss07/catalog.py": "56913bd41ebc69c5b053f7112503107f013d9bff7fd7548bea4b636f1128291c",
+    "src/ss07/config.py": "edf92920a041a81d41966f575285c44aab0891761c21bdfb98fdaff1041b2968",
+    "src/ss07/config_runtime.py": "68435116ac7637cccfa5dfc4beea3983b9f4d21d4b5e74568bfce43f82d7c243",
+    "src/ss07/devices.py": "88b7b836215e9c3403977234bb43060f16cdbf049a463714a016b381b4dec49a",
+    "src/ss07/gateway.py": "9bb1d498fe4cfc63fd67c1f3cfccc8ba746037422ce9672a96160a4499b46658",
+    "src/ss07/maintenance.py": "a707182579d5c507c119333a011c3373db43058b0fb9f2df9a432e7c74635535",
+    "src/ss07/media.py": "3840036e61e39b8645c1b05e966d308a3f04e7476f1c1f05d7a8ba5582fa6a0a",
+    "src/ss07/media_sessions.py": "64fc67077e4d2fb4333a4d931b4ed867298e996c3a9e7af3606cd39f9357717e",
+    "src/ss07/mp4.py": "4ca85fe964c99a7c23c3e437ed8f563e26748994b326be8385a7279be2552d89",
+    "src/ss07/persistence.py": "44bc5ad73599c7fcd59975d17543f0da19ccb0ba4b647b96614d60124001bd3f",
+    "src/ss07/probe.py": "d026db6f08b2757e7f65245ab0ef85a033c76fa63a19d3b5ec5b291ed36aaf50",
+    "src/ss07/provisioning.py": "99257c9c23f3448dd72cea301a58be2279d56ec986880a352ff788d14437cdda",
+    "src/ss07/recorder.py": "2913f865b768ab135f915dcdc649f26f258088408bc5b66d7758087fc35c3132",
+    "src/ss07/recording_http.py": "42eb7b55f952e284842bf61c0bde9e04db19e0a562e81e46d0e51af57962ccd8",
+    "src/ss07/release_contract.py": "ad3d7832ddf3b7c4cd6efddb8e3ef7f1f2fe1db0442c1f88595231ce589d28c2",
+    "src/ss07/release_install.py": "3c5fea74755ed3c37d8da283ed70d6d4a2d3ff809b15bb661c51d0bd5a00dfe3",
+    "src/ss07/release_package.py": "0f38564dc3aac97ee6ad7596f09353c21e039ad4049173419dc190353a7930a2",
+    "src/ss07/release_restore.py": "63b06a2c1c8b595e7352e27baa5aaec6b150d8d172d4b7e3729d077d32f68866",
+    "src/ss07/rtsp_access.py": "afd6d712dae40b3dc6feafebc547d074429d260b8a000e74aff4ff0cefbc1da6",
+    "src/ss07/serial_receive.py": "7ffcd239a64082b0c833d41e1a0d79b2ae2df4aadcd3294f7b76ca3d45dd8fe7",
+    "src/ss07/snapshots.py": "e56c1be4d5191e1380f853257b726727d99a028ad8bb977a391dfc5a815003db",
+    "src/ss07/state.py": "b710d1b6ba8656bd2c0f75631bc769699c47df6678ed2a8d7846b2e3fd3f4ad1",
+    "src/ss07/storage.py": "cac7071c14405213ab00e9de46a56b4df0c4db8e983d8e4b32f8faae1aba0895",
+    "src/ss07/timecode_http.py": "cdde90aea64c6aeda285361b711af0920d4ca9e05badb2cde232f0b3184b9ab6",
+    "src/ss07/timecode_ipc.py": "717fb016dcf8097628bd8ab53776198f43a44b194510a7e5c6a41952d81e1358",
+    "src/ss07/timecode_journal.py": "2cd47fa872c9526624f166e82ca5df6f44e830f90315174d123cd35cbc428e7a",
+    "src/ss07/timecode_model.py": "18d581c9969aed80709ebc96dfe203a23f7c223bbcdee3dab11602e5ee41321a",
+    "src/ss07/timecode_status.py": "1b55037adcab287782c0b57af486bce95da6de1f6b14e6842b7475e922607646",
+    "src/ss07/timecode_wire.py": "256afa89f02085d33f8b9210525b83ee03e0596c8eb2dbbe0ee847eda9475130",
+    "src/ss07/timecode_worker.py": "9e5eab04fabe61b3f80e0e9305a3c57a4a6f5ffab4bcf49c4af7f7c890fb0444",
+    "src/ss07/volume.py": "113164cdf535267cfff56d866bbb75215dd7fa7b8c0e20e7b1e74d58d58715da",
+    "src/ss07/worker.py": "dafbe3aa52e0a64011570e19b024799bc9f5ca5630cb933e0264aca5d6903849",
+    "config/board-rk3588.example.json": "6800a251d6975b53a5608bc9879f8a5d4796e6d9d9ace06ace589bc70cc44e1d",
+    "config/gateway.example.json": "46240a8ada5b609c92d5942c4e214567e2145540caed2e81a092e3dff12ec72a",
+    "config/rtsp.example.json": "9ba859c4e1e97873ab174651ea61324df7f66f8282aef1a442f9eb97b0f006ac",
+    "config/rtsp.schema.json": "a80ee76a406d9cb0e7d15e3e98a0803ba47cc79523ad9d6b1a6c340c125d95db",
+    "config/system.example.json": "840ea528fd4e07070dba57eb1d63467f61da4f410aabe15d6bcf5a28353a3166",
+    "config/system.schema.json": "b27e786e75973c9f6eba10a7a924d2cc8be2a3a2bbecb8988e14ce87720edd5a",
+    "systemd/ss07-api.service": "7528d8b3b7bde7ee12cac0d3fba9486a1b6f7934fe86d3c1e2c65a90ca222635",
+    "systemd/ss07-application.service": "9792670a25b0f71339e5914f8a1d6584c8a53bda46338e73b4fc80a5add0bdbf",
+    "systemd/ss07-camera@.service": "2a354249f44a22472b307839ee24d01ef20dfcec4414ba770cb67baf4dada451",
+    "systemd/ss07-config-recover.service": "c1ba1bf8b4da5fc4861b6ce98b5428d336684780bf8db2a649b9a08e6834ab16",
+    "systemd/ss07-gateway.service": "038f1c087c2130057823437dd8cbccf49c66c40e76c582fed70ec62f9b192097",
+    "systemd/ss07-maintenance.service": "9c5ff5eb43a7a33ecf39cbfdaaa33a136adab9ae99964eb5ded21fddce4f778a",
+    "systemd/ss07-media.service": "a8f9997570f3f797f5543c4522dfbea88f27bd90f0e6cd094b111f04aadd1abc",
+    "systemd/ss07-storage.service": "97f2ec667ac467c46a044b6f3a95b9187c55027ddf25dd0ddf6206ba3cac0a9e",
+    "systemd/ss07-sysusers.conf": "124a25a1a1bd9188407679ced17c66d3e5fb3f45511772a324e21cd9e69c358e",
+    "systemd/ss07-timecode.service": "943fade6b8cbc55f2b1a2632b903524f06e62fc6ea0488a75103486bbc0c0d9c",
+    "systemd/ss07-tmpfiles.conf": "7ec073030974a461d8a086a4e62c7a562dee46e73176d4e77fb750c2646e0d11",
+    "web/app.js": "fcece5d359d577788e54dce6cf95d1fbacc88709cf0a9e38f4c2c8abd37aa766",
+    "web/index.html": "c4ca7a1490eef9d8db9b449e067b61ed463d7a362b5968df8d42446eff8d4a45",
+    "web/maintenance.js": "52d4d121e6e162c00c0619ffe15dfa941a8e74250bc37cc91454b7f3a3c6af31",
+    "web/player.js": "f565ee16883031d6216ff4ea3d4a5557a457e2809783a742585e769324c98c91",
+    "web/recordings.js": "3e61bafec3bfbc3cf18a46d0441d231053caefd5d02250dd80e076704148d219",
+    "web/session.js": "f6c0636e8dc3ae1c6af9b28472594fc5e9fc092d5da8101f678dfb9c152c81eb",
+    "web/style.css": "58b00c8c9e59df9599f6aa5a0c11a4463378a1c22d48148024f9379235870439"
+  }
+}

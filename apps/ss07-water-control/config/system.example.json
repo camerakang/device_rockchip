@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "device_id": "ss07-unassigned",
+  "api": {
+    "host": "127.0.0.1",
+    "port": 8077
+  },
+  "cameras": {
+    "front": {
+      "binding": null,
+      "mode": null
+    },
+    "back": {
+      "binding": null,
+      "mode": null
+    },
+    "left": {
+      "binding": null,
+      "mode": null
+    },
+    "right": {
+      "binding": null,
+      "mode": null
+    },
+    "down": {
+      "binding": null,
+      "mode": null
+    }
+  },
+  "sdi": {
+    "rtsp_url": null
+  },
+  "sonar": {
+    "binding": null,
+    "uart": {
+      "baud": null,
+      "data_bits": null,
+      "parity": null,
+      "stop_bits": null
+    },
+    "vendor_protocol": null,
+    "nodes": {
+      "front": {
+        "address": null
+      },
+      "back": {
+        "address": null
+      },
+      "left": {
+        "address": null
+      },
+      "right": {
+        "address": null
+      },
+      "down": {
+        "address": null
+      }
+    }
+  },
+  "timecode": {
+    "binding": null,
+    "uart": {
+      "baud": null,
+      "data_bits": null,
+      "parity": null,
+      "stop_bits": null
+    },
+    "read_only": true,
+    "wire_version": "0x12"
+  },
+  "storage": {
+    "recording_enabled": false,
+    "filesystem_uuid": null,
+    "segment_seconds": 300,
+    "reserve_bytes": "50000000000",
+    "retention_days": null,
+    "mountpoint": "/data/ss07",
+    "recordings_dir": "/data/ss07/recordings"
+  }
+}

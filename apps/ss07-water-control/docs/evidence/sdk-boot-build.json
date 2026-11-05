@@ -1,0 +1,60 @@
+{
+  "artifact": "ss07-sdk-boot-components",
+  "sources": {
+    "kernel-6.1": {
+      "commit": "6d69dd475bce666e8889f4b3bcc79f38bf1b3646",
+      "source": "/home/forlinx/workspace/LubanCat_SDK/kernel-6.1",
+      "snapshot": "git archive HEAD",
+      "archive_sha256": "32d1c16f7b9a6b92353cfea8bdfe007bb4699efa13922101252794e16a2295b3"
+    },
+    "u-boot": {
+      "commit": "ce67cf027de25347c5c790c3087f6e663f4f3d56",
+      "source": "/home/forlinx/workspace/LubanCat_SDK/u-boot",
+      "snapshot": "git archive HEAD",
+      "archive_sha256": "29a79e5223d8315ebe5931bdf4b6a69d81df60451e8794a8f901f901358013da"
+    },
+    "rkbin": {
+      "commit": "58a39b47f77a26a1e110fa1a1ce80bcfcb0b3505",
+      "source": "/home/forlinx/workspace/LubanCat_SDK/rkbin",
+      "snapshot": "git archive HEAD",
+      "archive_sha256": "84951ff10a7d7de1820cac27d0a21b0fd7d2336112cd234fe9c742fca170bd2c"
+    }
+  },
+  "kernel_defconfig": "lubancat_linux_rk3588_defconfig",
+  "dtb": "rk3588-lubancat-generic",
+  "uboot_defconfig": "rk3588",
+  "compiler_sha256": "dbe5ae7c2dd5ec9416f0adc79ea808a438235bd2c76a23d3f0320d600e0e99d4",
+  "compiler_version": "aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 10.3-2021.07 (arm-10.29)) 10.3.1 20210621",
+  "complete": true,
+  "boot_tested": false,
+  "firmware_image": false,
+  "vendor_blobs": "DDR/SPL/BL31/BL32 from the pinned rkbin commit; not rebuilt from source",
+  "kernel_release": "6.1.99-rk3588",
+  "output_directory": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/arm64-20261023/sdk-boot-fixed",
+  "manifest_sha256": "ad420d8f1609e81a0b776617140dc4f918f6c1299cbbf6ac74c2cdac4621ccfe",
+  "artifact_count_verified": 612,
+  "modules": 300,
+  "dtbs": 13,
+  "commands": [
+    {
+      "log": "kernel-config.log",
+      "returncode": 0,
+      "elapsed_seconds": 1.706
+    },
+    {
+      "log": "kernel-build.log",
+      "returncode": 0,
+      "elapsed_seconds": 372.625
+    },
+    {
+      "log": "kernel-modules.log",
+      "returncode": 0,
+      "elapsed_seconds": 2.771
+    },
+    {
+      "log": "uboot-build.log",
+      "returncode": 0,
+      "elapsed_seconds": 11.509
+    }
+  ]
+}

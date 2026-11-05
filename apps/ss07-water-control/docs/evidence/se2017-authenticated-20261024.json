@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "authenticated_se2017_and_application_transport",
+  "recorded_at_host_utc": "2026-10-24T08:59:10.997068+00:00",
+  "host": "192.168.3.47",
+  "authentication_succeeded": true,
+  "credential_source": "human supplied in this thread; password entered without echo",
+  "password_saved": false,
+  "session_cookie_saved": false,
+  "model": "SE2017",
+  "firmware": "V1.0.0.9",
+  "hardware": "V1.3",
+  "system_mode": "Ethernet",
+  "video_source": "SDI",
+  "input_status": "SDI NoSignal N/A",
+  "configured_video": {
+    "sOutputDataType": "H.264",
+    "sResolution": "1920*1080",
+    "sFrameRate": "60",
+    "sRCMode": "VBR",
+    "iMaxRate": 8192,
+    "iGOP": 30,
+    "sH264Profile": "highP"
+  },
+  "rtsp_url": "rtsp://192.168.3.47:5554/live/av",
+  "rtsp_alias": "rtsp://192.168.3.47:5554/av",
+  "rtsp_auth_required_for_test": false,
+  "rtsp_describe": [
+    {
+      "url": "rtsp://192.168.3.47:5554/av",
+      "status": "RTSP/1.0 200 OK",
+      "content_length_matches": true
+    },
+    {
+      "url": "rtsp://192.168.3.47:5554/live/av",
+      "status": "RTSP/1.0 200 OK",
+      "content_length_matches": true
+    }
+  ],
+  "direct_decode": {
+    "evidence_kind": "real_encoder_rtsp_decode_probe",
+    "observed_at_host_utc": "2026-10-24T08:53:44.732208+00:00",
+    "client_arch": "x86_64",
+    "runtime": "GStreamer 1.20.3",
+    "url": "rtsp://192.168.3.47:5554/live/av",
+    "transport": "tcp",
+    "encoder_input_status": "SDI NoSignal N/A",
+    "physical_sdi_input_verified": false,
+    "camera_frames_verified": false,
+    "configuration_changed": false,
+    "rtsp_play_requested": true,
+    "source_access_units": 123,
+    "decoded_frames": 121,
+    "decoded_caps": "video/x-raw, format=(string)I420, width=(int)1920, height=(int)1080, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)60/1",
+    "first_decoded_buffer_sha256": "b7abff52f3b3fb5afab503776920ac12039b848a86f1245ad4f8809eb1fc8056",
+    "elapsed_seconds": 2.1111540389829315,
+    "pts_delta_ns": "1998699026",
+    "errors": [],
+    "passed": true,
+    "scope": "Existing encoder output can be received and decoded on the development host while SDI reports NoSignal; this is not a valid SDI camera feed or RK performance acceptance."
+  },
+  "application_transport": {
+    "evidence_kind": "actual_encoder_application_transport",
+    "observed_at_host_utc": "2026-10-24T08:56:52.300904+00:00",
+    "source": "rtsp://192.168.3.47:5554/live/av",
+    "input_status": "SDI NoSignal N/A",
+    "physical_sdi_input_verified": false,
+    "board_application_deployed": false,
+    "encoder_configuration_changed": false,
+    "media_observation": {
+      "ready": true,
+      "codec": "H264",
+      "last_data_monotonic_us": "357226942935",
+      "bytes_received": "44777",
+      "reason": null
+    },
+    "site_config_revision": "93e5d60bf5594f49cf78c39500c393feaa3ab5e1f5948cf37c5b96b2cb3143ab",
+    "browser": {
+      "evidence_kind": "actual_encoder_browser_transport",
+      "result": "passed",
+      "client_arch": "x86_64",
+      "input_status": "SDI NoSignal N/A",
+      "physical_sdi_input_verified": false,
+      "camera_frames_verified": false,
+      "first": {
+        "frames": 71,
+        "width": 1920,
+        "height": 1080,
+        "hidden": true,
+        "message": "正在连接视频",
+        "connection": "connected"
+      },
+      "later": {
+        "frames": 143,
+        "width": 1920,
+        "height": 1080,
+        "hidden": true,
+        "message": "正在连接视频",
+        "connection": "connected"
+      },
+      "stats": [
+        {
+          "framesDecoded": 147,
+          "framesDropped": 0,
+          "packetsReceived": 148,
+          "packetsLost": 0,
+          "frameWidth": 1920,
+          "frameHeight": 1080,
+          "framesPerSecond": 60
+        }
+      ],
+      "usb_unavailable": true,
+      "sonars_invalid": true,
+      "recording_enabled": false,
+      "media_timestamp_basis": "media_ingress_activity",
+      "scope": "SE2017 -> production MediaMTX/media-worker -> API WHEP proxy -> Chromium; no SDI camera acceptance"
+    },
+    "result": "passed",
+    "process_exits": {
+      "api": 0,
+      "media-worker": 0
+    }
+  },
+  "site_configuration": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/system.observed.json",
+    "sha256": "22f79bb90d548d558af541a546cfa16e27c4df7231617afb6c2097c694e3cf98",
+    "revision": "93e5d60bf5594f49cf78c39500c393feaa3ab5e1f5948cf37c5b96b2cb3143ab",
+    "changed_from_frozen_board_example": [
+      "sdi.rtsp_url"
+    ],
+    "deployed": false,
+    "recording_enabled": false,
+    "sonar_protocol": null,
+    "timecode_other_uart_parameters_unconfirmed": true
+  },
+  "optional_read_errors": [
+    {
+      "endpoint": "/video/1",
+      "error": {
+        "code": 500,
+        "message": "[json.exception.out_of_range.401] array index 1 is out of range"
+      }
+    },
+    {
+      "endpoint": "/network-http",
+      "error": {
+        "code": 500,
+        "message": "[json.exception.out_of_range.401] array index 0 is out of range"
+      }
+    },
+    {
+      "endpoint": "/network-rtspmc",
+      "error": {
+        "code": 500,
+        "message": "[json.exception.out_of_range.401] array index 0 is out of range"
+      }
+    }
+  ],
+  "configuration_changed_on_device": false,
+  "encoder_reboot_requested": false,
+  "rtsp_play_requested": true,
+  "board_application_deployed": false,
+  "physical_sdi_input_verified": false,
+  "physical_camera_frames_verified": false,
+  "full_project_complete": false,
+  "limitations": [
+    "Input status reports SDI NoSignal; decoded black encoder output is not a valid SDI camera feed.",
+    "Native decode and production MediaMTX/API/Chromium transport ran on the x86_64 development host, not the RK application deployment.",
+    "Short-session zero-loss browser counters do not prove six-channel performance, latency targets, storage behavior or eight-hour endurance."
+  ],
+  "evidence_files": {
+    "read-only-probe.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/read-only-probe.py",
+      "sha256": "77c2e234f4106f3ffac28f64ef52807f6c7ca22a92e92a5fb0675031c227e408"
+    },
+    "result.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/result.json",
+      "sha256": "d484c50326fc1f88b1b206dfed46c0689836fab00ac3773fc2dcfde6ad613568"
+    },
+    "rtsp-describe.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/rtsp-describe.json",
+      "sha256": "85bd4c7ca7a14a77eb14ad1a6a852e036eadab44d763a869511b9d0743ea5a17"
+    },
+    "decode-probe.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/decode-probe.py",
+      "sha256": "fb8b208142befd2b3801f122484ec624d85f9fa0f907811e858309bb0c468023"
+    },
+    "decode-result.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/decode-result.json",
+      "sha256": "f4af42dd789c99cb77649006432abe0fde77cb1ca743b14baf4a1bf31b802125"
+    },
+    "decode.stderr.log": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/decode.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "decode-runtime/manifest.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/decode-runtime/manifest.json",
+      "sha256": "e5a61e98231e0c5f185dc53953a34f4770ae5507a08d6ac2dad14bdec4729d00"
+    },
+    "relay-probe.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/relay-probe.py",
+      "sha256": "57ccf7227ec9c520f2c09e8a89fdf1437c786109ee53f9d7dab460e4af695d70"
+    },
+    "relay-result.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/relay-result.json",
+      "sha256": "6dbab0aa82cf57613acfc3479c1d3e53f9304af58e4ef8e0a71137b72a5eb9f5"
+    },
+    "browser-se2017.cjs": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/browser-se2017.cjs",
+      "sha256": "5d48e1e116faed204c746fef9a80b735f7713b27da5a1a637ff232152e94b189"
+    },
+    "browser.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/browser.json",
+      "sha256": "2c130d08536647e6ccdb6660d9cd4453b82e286231d659778662844249ab0a50"
+    },
+    "browser.log": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/browser.log",
+      "sha256": "0b1981da081bc43e387b72b0a4cf51c46c37996a58c033241a1efa99af6d50c2"
+    },
+    "status.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/status.json",
+      "sha256": "52c1ef552370f28acf0ad17b824857812ac2fdfe6c6a86d1385761b580fcdeff"
+    },
+    "system.observed.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/system.observed.json",
+      "sha256": "22f79bb90d548d558af541a546cfa16e27c4df7231617afb6c2097c694e3cf98"
+    },
+    "se2017-browser.png": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/se2017-browser.png",
+      "sha256": "3f03f9552eda1cb0633b8cfbdf82a91dbe9e379202a8db147cb4f36c8f5d9c44"
+    }
+  }
+}

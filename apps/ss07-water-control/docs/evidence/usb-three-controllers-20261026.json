@@ -1,0 +1,1939 @@
+{
+  "evidence_kind": "real_three_usb_controller_and_camera_swap_diagnostics",
+  "generated_at_host_utc": "2026-10-26T03:04:04.181411+00:00",
+  "previous_evidence": "usb-concurrency-20261026.json",
+  "board": "192.168.3.233",
+  "kernel": "5.10.160",
+  "hardware_input": true,
+  "synthetic_media": false,
+  "initial_wrong_port_move": {
+    "evidence_kind": "real_topology_only_after_second_camera_move",
+    "capture_started": false,
+    "all_five_enumerated": true,
+    "active_camera_users": {
+      "command": [
+        "fuser",
+        "/dev/video8",
+        "/dev/video0",
+        "/dev/video2",
+        "/dev/video4",
+        "/dev/video6"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "capture_paths": {
+      "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.2:1.0-video-index0": "/dev/video8",
+      "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0": "/dev/video0",
+      "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.1:1.0-video-index0": "/dev/video2",
+      "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0": "/dev/video4",
+      "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0": "/dev/video6"
+    },
+    "physical_camera_paths": [
+      "/sys/devices/platform/fc880000.usb/usb2/2-1/2-1.2",
+      "/sys/devices/platform/fc880000.usb/usb2/2-1/2-1.3",
+      "/sys/devices/platform/usbdrd3_0/fc000000.usb/xhci-hcd.9.auto/usb7/7-1/7-1.3/7-1.3.1",
+      "/sys/devices/platform/usbdrd3_0/fc000000.usb/xhci-hcd.9.auto/usb7/7-1/7-1.3/7-1.3.2",
+      "/sys/devices/platform/usbdrd3_0/fc000000.usb/xhci-hcd.9.auto/usb7/7-1/7-1.3/7-1.3.3"
+    ],
+    "controller_groups": {
+      "fc880000": [
+        "1.2",
+        "1.3"
+      ],
+      "fc000000": [
+        "1.3.1",
+        "1.3.2",
+        "1.3.3"
+      ]
+    },
+    "finding": "The second moved camera shares fc880000 with the first. This change did not introduce a third controller. User was asked to use the unique blue USB3-A socket instead.",
+    "files": [
+      {
+        "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-07/board-inventory.py",
+        "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+      },
+      {
+        "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-07/inventory.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-07/inventory.stdout.json",
+        "sha256": "34f01b55beb6693822079b9dbba9c152bef0fece618cd7563e9b03f808bbdcef"
+      }
+    ]
+  },
+  "three_independent_controller_1080p25": {
+    "evidence_kind": "real_three_controller_three_camera_bounded_capture",
+    "observed_at_host_utc": "2026-10-26T02:49:02.620370+00:00",
+    "common_capture_interval_seconds": 29.597553207015153,
+    "usb_event_monitor_returncode": 124,
+    "passed": true,
+    "app_deployed": false,
+    "serial_opened": false,
+    "board_media_files_written": false,
+    "scope": "Three temporary existing-GStreamer captures to SSH stdout. No five-camera, product worker, browser, storage or sustained-load acceptance. Expected event-monitor timeout return code is 124.",
+    "channels": {
+      "front": {
+        "channel": "front",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+        "bytes": 511494,
+        "sha256": "5f939aa93e1efa9e41007b9366b5889013cc1f797dda50681ce85614f2801296",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 24.96797095185631,
+        "max_au_arrival_gap_seconds": 0.08590971201192588,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "gst_debug_lost_frames_reported": false
+      },
+      "back": {
+        "channel": "back",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.1:1.0-video-index0",
+        "bytes": 1637546,
+        "sha256": "d6502520f35aad76514e6580601345fb2636feafcf51ef50e3eb65760524cc28",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 25.001571557373534,
+        "max_au_arrival_gap_seconds": 0.07780251296935603,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "gst_debug_lost_frames_reported": false
+      },
+      "down": {
+        "channel": "down",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+        "bytes": 1405279,
+        "sha256": "d206c7d498bb133abba0f63ddf29f71facf4c582c827c411db7d555216f01328",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 24.979926934466672,
+        "max_au_arrival_gap_seconds": 0.08135490003041923,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "gst_debug_lost_frames_reported": false
+      }
+    }
+  },
+  "three_controller_libavcodec_decode": {
+    "evidence_kind": "real_three_controller_camera_offline_decode",
+    "results": [
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/front/capture.h264",
+        "sha256": "5f939aa93e1efa9e41007b9366b5889013cc1f797dda50681ce85614f2801296",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 750,
+        "expected_parsed_aus": 750,
+        "decoded_frames": 750,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.6738433779682964,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      },
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/back/capture.h264",
+        "sha256": "d6502520f35aad76514e6580601345fb2636feafcf51ef50e3eb65760524cc28",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 750,
+        "expected_parsed_aus": 750,
+        "decoded_frames": 750,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.8315028559882194,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      },
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/down/capture.h264",
+        "sha256": "d206c7d498bb133abba0f63ddf29f71facf4c582c827c411db7d555216f01328",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 750,
+        "expected_parsed_aus": 750,
+        "decoded_frames": 750,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.8309552160208113,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      }
+    ],
+    "downloaded_gstreamer_libav_plugin_used": false,
+    "reason": "Offline validation of all three actual captures using installed opaque libavcodec APIs.",
+    "no_packages_installed": true,
+    "references": [
+      "https://ffmpeg.org/doxygen/4.4/group__lavc__decoding.html"
+    ],
+    "all_frame_counts_match": true
+  },
+  "three_controller_openh264_decode": {
+    "evidence_kind": "real_three_camera_capture_offline_decode",
+    "channels": {
+      "front": {
+        "channel": "front",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "5f939aa93e1efa9e41007b9366b5889013cc1f797dda50681ce85614f2801296",
+        "decoded_frames": 745,
+        "unique_decoded_frame_hashes": 745,
+        "decoded_caps": "video/x-raw, width=(int)1920, height=(int)1080, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 6.185921665979549,
+        "passed": false,
+        "scope": "Offline development-host decode of actual concurrently captured USB camera output. No RK decode, concurrent browser or image-quality acceptance."
+      },
+      "back": {
+        "channel": "back",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "d6502520f35aad76514e6580601345fb2636feafcf51ef50e3eb65760524cc28",
+        "decoded_frames": 750,
+        "unique_decoded_frame_hashes": 750,
+        "decoded_caps": "video/x-raw, width=(int)1920, height=(int)1080, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 6.535832608991768,
+        "passed": true,
+        "scope": "Offline development-host decode of actual concurrently captured USB camera output. No RK decode, concurrent browser or image-quality acceptance."
+      },
+      "down": {
+        "channel": "down",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "d206c7d498bb133abba0f63ddf29f71facf4c582c827c411db7d555216f01328",
+        "decoded_frames": 738,
+        "unique_decoded_frame_hashes": 738,
+        "decoded_caps": "video/x-raw, width=(int)1920, height=(int)1080, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 6.432953952986281,
+        "passed": false,
+        "scope": "Offline development-host decode of actual concurrently captured USB camera output. No RK decode, concurrent browser or image-quality acceptance."
+      }
+    },
+    "passed": false,
+    "decoded_channel_count": 3,
+    "requested_channel_count": 3,
+    "available_capture_decode_checks_passed": false,
+    "skipped_channels": [],
+    "hardware_input": true,
+    "decoder_host_arch": "x86_64",
+    "scope": "Only available sufficiently long hardware captures are decoded offline on the development host. Overall three-camera result remains failed when any capture is missing."
+  },
+  "interrupted_five_attempt": {
+    "active_channel_count": 2,
+    "active_common_capture_interval_seconds": 29.958971451967955,
+    "evidence_kind": "real_three_controller_five_camera_bounded_capture",
+    "observed_at_host_utc": "2026-10-26T02:51:14.163590+00:00",
+    "common_capture_interval_seconds": 0,
+    "usb_event_monitor_returncode": 124,
+    "passed": false,
+    "app_deployed": false,
+    "serial_opened": false,
+    "board_media_files_written": false,
+    "scope": "Five temporary existing-GStreamer captures to SSH stdout. Overall five-camera check requires every channel. No product worker, browser, storage or sustained-load acceptance. Expected event-monitor timeout return code is 124.",
+    "channels": {
+      "front": {
+        "channel": "front",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+        "bytes": 449003,
+        "sha256": "50bb30e5064909796162cebef9e5570bb2bd65bf8a61ec6f63cb7f156ea1ce85",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 24.997574924022206,
+        "max_au_arrival_gap_seconds": 0.0659335189848207,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "gst_debug_lost_frames_reported": true
+      },
+      "back": {
+        "channel": "back",
+        "returncode": 1,
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.1:1.0-video-index0",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 0,
+        "access_units": 0,
+        "arrival_fps": null,
+        "max_au_arrival_gap_seconds": null,
+        "errors": [
+          {
+            "message": "gst-resource-error-quark: Cannot identify device '/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.1:1.0-video-index0'. (3)",
+            "debug": "v4l2_calls.c(607): gst_v4l2_open (): /GstPipeline:pipeline0/GstV4l2Src:camera:\nsystem error: No such file or directory"
+          }
+        ],
+        "warnings": [],
+        "original_mode_restored": false,
+        "eos": false,
+        "gst_debug_lost_frames_reported": false
+      },
+      "down": {
+        "channel": "down",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+        "bytes": 1186473,
+        "sha256": "f6d84e2922444a770c438b54c567cdf1c3a3220ac31ef572851af96ef021040f",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 25.000858297182944,
+        "max_au_arrival_gap_seconds": 0.06904929399024695,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "gst_debug_lost_frames_reported": false
+      },
+      "left": {
+        "channel": "left",
+        "returncode": 1,
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 0,
+        "access_units": 0,
+        "arrival_fps": null,
+        "max_au_arrival_gap_seconds": null,
+        "errors": [
+          {
+            "message": "gst-resource-error-quark: Cannot identify device '/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0'. (3)",
+            "debug": "v4l2_calls.c(607): gst_v4l2_open (): /GstPipeline:pipeline0/GstV4l2Src:camera:\nsystem error: No such file or directory"
+          }
+        ],
+        "warnings": [],
+        "original_mode_restored": false,
+        "eos": false,
+        "gst_debug_lost_frames_reported": false
+      },
+      "right": {
+        "channel": "right",
+        "returncode": 1,
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 0,
+        "access_units": 0,
+        "arrival_fps": null,
+        "max_au_arrival_gap_seconds": null,
+        "errors": [
+          {
+            "message": "gst-resource-error-quark: Cannot identify device '/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0'. (3)",
+            "debug": "v4l2_calls.c(607): gst_v4l2_open (): /GstPipeline:pipeline0/GstV4l2Src:camera:\nsystem error: No such file or directory"
+          }
+        ],
+        "warnings": [],
+        "original_mode_restored": false,
+        "eos": false,
+        "gst_debug_lost_frames_reported": false
+      }
+    }
+  },
+  "staggered_five_1080p25": {
+    "active_channel_count": 3,
+    "active_common_capture_interval_seconds": 26.102326221007388,
+    "evidence_kind": "real_three_controller_five_camera_staggered_capture",
+    "observed_at_host_utc": "2026-10-26T02:54:08.606833+00:00",
+    "common_capture_interval_seconds": 0,
+    "usb_event_monitor_returncode": 124,
+    "passed": false,
+    "app_deployed": false,
+    "serial_opened": false,
+    "board_media_files_written": false,
+    "scope": "Five temporary existing-GStreamer captures to SSH stdout. Overall five-camera check requires every channel. No product worker, browser, storage or sustained-load acceptance. Expected event-monitor timeout return code is 124. Uses the existing read-only registry, launches the next channel after output or failure, and waits 0.5 seconds between starts. This changes two probe conditions; it cannot identify the cause of earlier Hub resets.",
+    "channels": {
+      "front": {
+        "channel": "front",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+        "bytes": 526481,
+        "sha256": "760420e9db78118b08eb8c146dee2acb7be726c73fd127bdd1da75c190addaa1",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 25.00043067079838,
+        "max_au_arrival_gap_seconds": 0.07305695896502584,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": false
+      },
+      "back": {
+        "channel": "back",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.1:1.0-video-index0",
+        "bytes": 2201748,
+        "sha256": "53e11d94388ae377d6e19a7d290af662a54d831a9db3de9060e82791597107c2",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 25.01061793559929,
+        "max_au_arrival_gap_seconds": 0.055299984000157565,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": false
+      },
+      "down": {
+        "channel": "down",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+        "bytes": 1333920,
+        "sha256": "f6dbef52a4a5c03df4bdc1f2ab1b9170166af8b03c036f0f8d46725526469474",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 25.01175964278227,
+        "max_au_arrival_gap_seconds": 0.07261830603238195,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": false
+      },
+      "left": {
+        "channel": "left",
+        "returncode": 1,
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 0,
+        "access_units": 0,
+        "arrival_fps": null,
+        "max_au_arrival_gap_seconds": null,
+        "errors": [
+          {
+            "message": "gst-resource-error-quark: Failed to allocate required memory. (13)",
+            "debug": "gstv4l2src.c(660): gst_v4l2src_decide_allocation (): /GstPipeline:pipeline0/GstV4l2Src:camera:\nBuffer pool activation failed"
+          }
+        ],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": false,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": false
+      },
+      "right": {
+        "channel": "right",
+        "returncode": 1,
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 0,
+        "access_units": 0,
+        "arrival_fps": null,
+        "max_au_arrival_gap_seconds": null,
+        "errors": [
+          {
+            "message": "gst-resource-error-quark: Failed to allocate required memory. (13)",
+            "debug": "gstv4l2src.c(660): gst_v4l2src_decide_allocation (): /GstPipeline:pipeline0/GstV4l2Src:camera:\nBuffer pool activation failed"
+          }
+        ],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": false,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": false
+      }
+    }
+  },
+  "staggered_five_1080p25_available_decode": {
+    "evidence_kind": "real_three_controller_active_captures_offline_decode",
+    "results": [
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/front/capture.h264",
+        "sha256": "760420e9db78118b08eb8c146dee2acb7be726c73fd127bdd1da75c190addaa1",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 750,
+        "expected_parsed_aus": 750,
+        "decoded_frames": 750,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.6817899369634688,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      },
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/back/capture.h264",
+        "sha256": "53e11d94388ae377d6e19a7d290af662a54d831a9db3de9060e82791597107c2",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 750,
+        "expected_parsed_aus": 750,
+        "decoded_frames": 750,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.9328070269548334,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      },
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/down/capture.h264",
+        "sha256": "f6dbef52a4a5c03df4bdc1f2ab1b9170166af8b03c036f0f8d46725526469474",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 750,
+        "expected_parsed_aus": 750,
+        "decoded_frames": 750,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.8184600899694487,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      }
+    ],
+    "downloaded_gstreamer_libav_plugin_used": false,
+    "reason": "Offline validation of all three actual captures using installed opaque libavcodec APIs.",
+    "no_packages_installed": true,
+    "references": [
+      "https://ffmpeg.org/doxygen/4.4/group__lavc__decoding.html"
+    ],
+    "all_frame_counts_match": true
+  },
+  "five_720p25_diagnostic": {
+    "active_channel_count": 5,
+    "active_common_capture_interval_seconds": 21.052105017006397,
+    "evidence_kind": "real_three_controller_five_camera_720p25_diagnostic_capture",
+    "observed_at_host_utc": "2026-10-26T02:56:46.784876+00:00",
+    "common_capture_interval_seconds": 21.052105017006397,
+    "usb_event_monitor_returncode": 124,
+    "passed": false,
+    "app_deployed": false,
+    "serial_opened": false,
+    "board_media_files_written": false,
+    "scope": "Five 720p25 diagnostic temporary existing-GStreamer captures to SSH stdout. This diagnostic does not replace the 1080p25 goal. Overall five-camera 720p25 check requires every channel. No product worker, browser, storage or sustained-load acceptance. Expected event-monitor timeout return code is 124. Uses the existing read-only registry, launches the next channel after output or failure, and waits 0.5 seconds between starts. This changes two probe conditions; it cannot identify the cause of earlier Hub resets.",
+    "channels": {
+      "front": {
+        "channel": "front",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+        "bytes": 293567,
+        "sha256": "38e014ddb251632827011895be4168755577c970bb52db4697013dc823568a87",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 25.007971419445326,
+        "max_au_arrival_gap_seconds": 0.07856228301534429,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": true
+      },
+      "left": {
+        "channel": "left",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0",
+        "bytes": 475874,
+        "sha256": "aa75ce28dc189eec942564c9b083ae2249927e0be9bea278f647c8ad37ab2aa8",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 25.00597451409528,
+        "max_au_arrival_gap_seconds": 0.07643522502621636,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": false
+      },
+      "down": {
+        "channel": "down",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+        "bytes": 691470,
+        "sha256": "bfef03a82a713de6f966394a489704499d73e9a2c78a8e7373f1f2928f82c81b",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 750,
+        "arrival_fps": 22.81301934316803,
+        "max_au_arrival_gap_seconds": 0.09161569800926372,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": true
+      },
+      "back": {
+        "channel": "back",
+        "returncode": 1,
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.1:1.0-video-index0",
+        "bytes": 144136,
+        "sha256": "60b4e51e5ea0a63c408b91cec2002c7f15abd9e4e371873a831dc8c45380f874",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 539,
+        "access_units": 539,
+        "arrival_fps": 12.220781343179443,
+        "max_au_arrival_gap_seconds": 0.16428096097661182,
+        "errors": [
+          {
+            "message": "Timed out before EOS"
+          }
+        ],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": false,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": true
+      },
+      "right": {
+        "channel": "right",
+        "returncode": 0,
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0",
+        "bytes": 433308,
+        "sha256": "6d57e957efe98804eb176dfe5eb91f3de2432d7433c2a12d337407cde6f401bc",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffer_count": 750,
+        "access_units": 749,
+        "arrival_fps": 25.01165976449922,
+        "max_au_arrival_gap_seconds": 0.07073653204133734,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": true
+      }
+    }
+  },
+  "five_720p25_libavcodec_decode": {
+    "evidence_kind": "real_five_camera_720p25_offline_decode",
+    "results": [
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/front/capture.h264",
+        "sha256": "38e014ddb251632827011895be4168755577c970bb52db4697013dc823568a87",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 750,
+        "expected_parsed_aus": 750,
+        "decoded_frames": 750,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.305441977980081,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      },
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/back/capture.h264",
+        "sha256": "60b4e51e5ea0a63c408b91cec2002c7f15abd9e4e371873a831dc8c45380f874",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 539,
+        "expected_parsed_aus": 539,
+        "decoded_frames": 537,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.2178594510187395,
+        "passed": false,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      },
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/left/capture.h264",
+        "sha256": "aa75ce28dc189eec942564c9b083ae2249927e0be9bea278f647c8ad37ab2aa8",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 750,
+        "expected_parsed_aus": 750,
+        "decoded_frames": 750,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.3357208259985782,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      },
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/right/capture.h264",
+        "sha256": "6d57e957efe98804eb176dfe5eb91f3de2432d7433c2a12d337407cde6f401bc",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 749,
+        "expected_parsed_aus": 749,
+        "decoded_frames": 749,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.3311393619515002,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      },
+      {
+        "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/down/capture.h264",
+        "sha256": "bfef03a82a713de6f966394a489704499d73e9a2c78a8e7373f1f2928f82c81b",
+        "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+        "decoder": "native libavcodec h264",
+        "aud_delimited_packets": 750,
+        "expected_parsed_aus": 750,
+        "decoded_frames": 750,
+        "eof": true,
+        "errors": [],
+        "elapsed_seconds": 0.3552405819646083,
+        "passed": true,
+        "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+      }
+    ],
+    "downloaded_gstreamer_libav_plugin_used": false,
+    "reason": "Offline validation of all three actual captures using installed opaque libavcodec APIs.",
+    "no_packages_installed": true,
+    "references": [
+      "https://ffmpeg.org/doxygen/4.4/group__lavc__decoding.html"
+    ],
+    "all_frame_counts_match": false
+  },
+  "five_720p25_openh264_available_decode": {
+    "evidence_kind": "real_five_camera_720p25_capture_offline_decode",
+    "channels": {
+      "front": {
+        "channel": "front",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "38e014ddb251632827011895be4168755577c970bb52db4697013dc823568a87",
+        "decoded_frames": 750,
+        "unique_decoded_frame_hashes": 749,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 2.7345389170222916,
+        "passed": true,
+        "scope": "Offline development-host decode of actual concurrently captured USB camera output. No RK decode, concurrent browser or image-quality acceptance."
+      },
+      "left": {
+        "channel": "left",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "aa75ce28dc189eec942564c9b083ae2249927e0be9bea278f647c8ad37ab2aa8",
+        "decoded_frames": 750,
+        "unique_decoded_frame_hashes": 750,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 2.828856859006919,
+        "passed": true,
+        "scope": "Offline development-host decode of actual concurrently captured USB camera output. No RK decode, concurrent browser or image-quality acceptance."
+      },
+      "down": {
+        "channel": "down",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "bfef03a82a713de6f966394a489704499d73e9a2c78a8e7373f1f2928f82c81b",
+        "decoded_frames": 736,
+        "unique_decoded_frame_hashes": 736,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 2.7722885149996728,
+        "passed": false,
+        "scope": "Offline development-host decode of actual concurrently captured USB camera output. No RK decode, concurrent browser or image-quality acceptance."
+      },
+      "right": {
+        "channel": "right",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "6d57e957efe98804eb176dfe5eb91f3de2432d7433c2a12d337407cde6f401bc",
+        "decoded_frames": 749,
+        "unique_decoded_frame_hashes": 749,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 749,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 2.7948978019994684,
+        "passed": true,
+        "scope": "Offline development-host decode of actual concurrently captured USB camera output. No RK decode, concurrent browser or image-quality acceptance."
+      }
+    },
+    "passed": false,
+    "decoded_channel_count": 4,
+    "requested_channel_count": 5,
+    "available_capture_decode_checks_passed": false,
+    "skipped_channels": [
+      "back"
+    ],
+    "hardware_input": true,
+    "decoder_host_arch": "x86_64",
+    "scope": "Only available sufficiently long hardware captures are decoded offline on the development host. Overall five-camera result remains failed when any capture is missing."
+  },
+  "slow_camera_alone_before_swap": {
+    "720p25": {
+      "registry_unchanged": true,
+      "requested": {
+        "codec": "H264",
+        "width": 1280,
+        "height": 720,
+        "fps": "25/1",
+        "buffers": 125
+      },
+      "access_units": 125,
+      "source_buffer_count": 125,
+      "arrival_fps": 12.125570837282046,
+      "errors": [],
+      "original_mode_restored": true
+    },
+    "1080p25": {
+      "registry_unchanged": true,
+      "requested": {
+        "codec": "H264",
+        "width": 1920,
+        "height": 1080,
+        "fps": "25/1",
+        "buffers": 125
+      },
+      "access_units": 125,
+      "source_buffer_count": 125,
+      "arrival_fps": 12.197867421480206,
+      "errors": [],
+      "original_mode_restored": true
+    },
+    "720p30": {
+      "registry_unchanged": true,
+      "requested": {
+        "codec": "H264",
+        "width": 1280,
+        "height": 720,
+        "fps": "30/1",
+        "buffers": 125
+      },
+      "access_units": 125,
+      "source_buffer_count": 125,
+      "arrival_fps": 13.209576782750192,
+      "errors": [],
+      "original_mode_restored": true
+    }
+  },
+  "sequential_single_camera_swap": {
+    "evidence_kind": "real_camera_port_swap_sequential_single_captures",
+    "simultaneous": false,
+    "scope": "User swapped the cameras previously labelled back/down between the ordinary and blue USB-A sockets. Labels follow that reported physical swap; this is a sequential short capture with the other cameras idle, not five-camera acceptance.",
+    "app_deployed": false,
+    "serial_opened": false,
+    "board_media_files_written": false,
+    "channels": {
+      "back": {
+        "channel": "back",
+        "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+        "returncode": 0,
+        "bytes": 130640,
+        "sha256": "0abb2829c8a58f5be21183e3ae6aac7d65d92a8a4047670702ffe15997dd4a23",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 125
+        },
+        "source_buffer_count": 125,
+        "access_units": 122,
+        "arrival_fps": 13.57494765317186,
+        "max_au_arrival_gap_seconds": 0.08753628795966506,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": true
+      },
+      "down": {
+        "channel": "down",
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.1:1.0-video-index0",
+        "returncode": 0,
+        "bytes": 320730,
+        "sha256": "54cb7df25c98fad6881b64a6cdd3dd522a064c4685f0051ba3e44c9c217d6837",
+        "board_result_present": true,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 125
+        },
+        "source_buffer_count": 125,
+        "access_units": 124,
+        "arrival_fps": 24.982868226623445,
+        "max_au_arrival_gap_seconds": 0.058193223958369344,
+        "errors": [],
+        "warnings": [],
+        "original_mode_restored": true,
+        "eos": true,
+        "registry_unchanged": true,
+        "gst_debug_lost_frames_reported": false
+      }
+    }
+  },
+  "topology_after_swap": {
+    "board_reported_time": "2026-10-26T11:03:07.925995+08:00",
+    "capture_paths": {
+      "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0": "/dev/video2",
+      "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.1:1.0-video-index0": "/dev/video8",
+      "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0": "/dev/video0",
+      "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0": "/dev/video4",
+      "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0": "/dev/video6"
+    },
+    "channels": {
+      "front": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+      "back": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+      "left": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0",
+      "right": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0",
+      "down": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.1:1.0-video-index0"
+    },
+    "usb_tree": "/:  Bus 08.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 5000M\n    |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/4p, 5000M\n        |__ Port 3: Dev 3, If 0, Class=Hub, Driver=hub/4p, 5000M\n/:  Bus 07.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 480M\n    |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/4p, 480M\n        |__ Port 3: Dev 3, If 0, Class=Hub, Driver=hub/4p, 480M\n            |__ Port 2: Dev 5, If 0, Class=Video, Driver=uvcvideo, 480M\n            |__ Port 2: Dev 5, If 1, Class=Video, Driver=uvcvideo, 480M\n            |__ Port 2: Dev 5, If 2, Class=Audio, Driver=snd-usb-audio, 480M\n            |__ Port 2: Dev 5, If 3, Class=Audio, Driver=snd-usb-audio, 480M\n            |__ Port 2: Dev 5, If 4, Class=Communications, Driver=cdc_acm, 480M\n            |__ Port 2: Dev 5, If 5, Class=CDC Data, Driver=cdc_acm, 480M\n            |__ Port 3: Dev 6, If 4, Class=Communications, Driver=cdc_acm, 480M\n            |__ Port 3: Dev 6, If 2, Class=Audio, Driver=snd-usb-audio, 480M\n            |__ Port 3: Dev 6, If 0, Class=Video, Driver=uvcvideo, 480M\n            |__ Port 3: Dev 6, If 5, Class=CDC Data, Driver=cdc_acm, 480M\n            |__ Port 3: Dev 6, If 3, Class=Audio, Driver=snd-usb-audio, 480M\n            |__ Port 3: Dev 6, If 1, Class=Video, Driver=uvcvideo, 480M\n/:  Bus 06.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 5000M\n/:  Bus 05.Port 1: Dev 1, Class=root_hub, Driver=xhci-hcd/1p, 480M\n/:  Bus 04.Port 1: Dev 1, Class=root_hub, Driver=ohci-platform/1p, 12M\n/:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=ohci-platform/1p, 12M\n/:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=ehci-platform/1p, 480M\n    |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/4p, 480M\n        |__ Port 1: Dev 20, If 5, Class=CDC Data, Driver=cdc_acm, 480M\n        |__ Port 1: Dev 20, If 3, Class=Audio, Driver=snd-usb-audio, 480M\n        |__ Port 1: Dev 20, If 1, Class=Video, Driver=uvcvideo, 480M\n        |__ Port 1: Dev 20, If 4, Class=Communications, Driver=cdc_acm, 480M\n        |__ Port 1: Dev 20, If 2, Class=Audio, Driver=snd-usb-audio, 480M\n        |__ Port 1: Dev 20, If 0, Class=Video, Driver=uvcvideo, 480M\n        |__ Port 3: Dev 12, If 0, Class=Video, Driver=uvcvideo, 480M\n        |__ Port 3: Dev 12, If 1, Class=Video, Driver=uvcvideo, 480M\n        |__ Port 3: Dev 12, If 2, Class=Audio, Driver=snd-usb-audio, 480M\n        |__ Port 3: Dev 12, If 3, Class=Audio, Driver=snd-usb-audio, 480M\n        |__ Port 3: Dev 12, If 4, Class=Communications, Driver=cdc_acm, 480M\n        |__ Port 3: Dev 12, If 5, Class=CDC Data, Driver=cdc_acm, 480M\n/:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=ehci-platform/1p, 480M\n    |__ Port 1: Dev 17, If 0, Class=Video, Driver=uvcvideo, 480M\n    |__ Port 1: Dev 17, If 1, Class=Video, Driver=uvcvideo, 480M\n    |__ Port 1: Dev 17, If 2, Class=Audio, Driver=snd-usb-audio, 480M\n    |__ Port 1: Dev 17, If 3, Class=Audio, Driver=snd-usb-audio, 480M\n    |__ Port 1: Dev 17, If 4, Class=Communications, Driver=cdc_acm, 480M\n    |__ Port 1: Dev 17, If 5, Class=CDC Data, Driver=cdc_acm, 480M\n",
+    "direction_limit": "Roles follow user-reported moves and the observed disconnect/reconnect paths, not unique serial numbers or image-confirmed mounting directions. Reboot stability remains unverified."
+  },
+  "conclusions": [
+    "Three independent controllers sustained three bounded simultaneous 1080p25 captures, each with 750 source buffers, 750 AUs and 750 independently decoded frames. This does not establish production or eight-hour acceptance.",
+    "The next five-stream attempt suffered a Type-C controller/Hub remove/add and is not usable for five-stream performance. Retrying with the existing read-only GStreamer registry and staggered startup retained three active 1080p25 streams while the other two failed STREAMON ENOSPC. Two probe conditions changed; the earlier disconnect cause is not established.",
+    "On a 2+2+1 controller distribution, all five 720p25 streams started, but one produced 539 source buffers/AUs and timed out at about 12.2fps; another averaged 22.8fps. Independent libavcodec decoded 537/539 AUs on the timed-out stream. The five-stream capture and decode checks failed.",
+    "The slow camera remained near 12-13fps in three single-stream mode checks. After swapping it with the blue-port camera, slowness followed the camera, while the other camera delivered about 25fps at the former slow port. Lens illumination/settings/device behavior require investigation; this observation does not prove an exposure cause.",
+    "OpenH264 decoded fewer frames than parsed on some otherwise libavcodec-decodable captures. Failed counts and the first local invocation missing isolated library paths are preserved. Client compatibility is unresolved."
+  ],
+  "five_camera_1080p25_accepted": false,
+  "five_camera_720p25_accepted": false,
+  "production_browser_storage_and_long_load_accepted": false,
+  "count_limit": "Individual probe exit codes can indicate a bounded buffer-count path only; they do not certify requested fps, absence of drops, picture quality or whole-system acceptance. Aggregate results retain cadence, EOS, decoded-frame counts and failures.",
+  "pending": "User asked to point the slow camera, now at the blue USB-A socket, toward a bright unobstructed scene before one further bounded capture. No result assumed.",
+  "preserved": {
+    "app_deployed": false,
+    "serial_opened": false,
+    "board_media_files_written": false,
+    "usb_power_or_quirk_parameters_changed": false,
+    "camera_exposure_controls_changed": false,
+    "production_configuration_changed": false,
+    "source_runtime_build_files_checked": 154,
+    "source_runtime_build_differences": [],
+    "frozen_archives_rebuilt": false
+  },
+  "references": [
+    "https://doc.embedfire.com/linux/rk3588/quick_start/zh/latest/quick_start/lubancat/lubancat4.html",
+    "https://www.ideasonboard.org/uvc/faq/"
+  ],
+  "raw_files": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-07/board-inventory.py",
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-07/inventory.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-07/inventory.stdout.json",
+      "bytes": 78994,
+      "sha256": "34f01b55beb6693822079b9dbba9c152bef0fece618cd7563e9b03f808bbdcef"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-07/topology-summary.json",
+      "bytes": 2248,
+      "sha256": "c30783401d0b145e98128d14018a86cbff497b59df9d370a98015cd55239096f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/back/capture-result.json",
+      "bytes": 111865,
+      "sha256": "636497a35c0053cfe7332907bf32c92aafd8dde26ca6d8e3042c8026583e1d7c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/back/capture.h264",
+      "bytes": 1637546,
+      "sha256": "d6502520f35aad76514e6580601345fb2636feafcf51ef50e3eb65760524cc28"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/back/capture.stderr.log",
+      "bytes": 61367,
+      "sha256": "e3b8aa84c650a33b6e656c37e39dc36bb221a59665c2e879203b6e116af35e2a"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/back/decode-result.json",
+      "bytes": 891,
+      "sha256": "70c352af03729a0a1a9a9bae81354ce6c246864ddfd07d6dafa33338921f3835"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/back/frame-100.png",
+      "bytes": 1077318,
+      "sha256": "282aeabc64ab903f5182caf11ad798da3a42fa64e24eb7d22e4d3c912124dc5b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/board-capture.py",
+      "bytes": 6906,
+      "sha256": "1a9e5ecfdb75351357c4225133a7ac099881e9572a502ca362cbed2f2e12e911"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/board-inventory.py",
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/capture-summary.json",
+      "bytes": 408962,
+      "sha256": "4de5083d7b0ca5287d5e21b8227ce899b560373b3e09d197bfc12bcb15bd2007"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/decode-libavcodec.py",
+      "bytes": 4855,
+      "sha256": "1dd3f22b84e2f14a97961b3151b1ef64628cc5ea9aaa97a479d2622a90cc8cd8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/decode-openh264-retry.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/decode-openh264-retry.stdout.log",
+      "bytes": 300,
+      "sha256": "54832b7af2e1baba9a1cdf2c65ed4e53f6b1cac90ed0dfdb2fd4fcceb7f3626f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/decode-openh264.py",
+      "bytes": 5947,
+      "sha256": "01871a621b5aec0049c17c360cbabe21219d237cc9f66c3ec00a3c5b47e6626d"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/decode-openh264.stderr.log",
+      "bytes": 1362,
+      "sha256": "826bdc63d10ba46cde2671a1a19ffda88c6597c43588d3e691a9c2055cc2945e"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/decode-openh264.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/decode-summary.json",
+      "bytes": 3369,
+      "sha256": "ec908a9b1d405b4e4de56636ff6a673b1d9744528096ef27824e0793b1a2a616"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/decode.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/decode.stdout.log",
+      "bytes": 517,
+      "sha256": "3df55a10c89db4405dd9c26e1c02b54f2a5ff99af63d398db561e9bc2af79e97"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/down/capture-result.json",
+      "bytes": 111656,
+      "sha256": "b2a90a9ce31e39cec49a5f59319c753fc1b8fe304410c41b30ee59ddb8fc74f4"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/down/capture.h264",
+      "bytes": 1405279,
+      "sha256": "d206c7d498bb133abba0f63ddf29f71facf4c582c827c411db7d555216f01328"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/down/capture.stderr.log",
+      "bytes": 61191,
+      "sha256": "cf81c6d29cadef99f41f38a2034ce576bfc0ba4a5ade56af6feb9ee5d9a826ae"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/down/decode-result.json",
+      "bytes": 892,
+      "sha256": "1c191dd7d01f5dc5887be94fefaea9bfa0a284134fa7c684c5b9fe5b7327d7f0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/down/frame-100.png",
+      "bytes": 1335122,
+      "sha256": "4198c28aa52dba20df1fdbde57cde3cfd7abee6d52be1cedfaa7d494089aa82b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/front/capture-result.json",
+      "bytes": 111349,
+      "sha256": "737386fffcf8aa621aff7feb44e7c57a692367294ee226892a969eed97dc7874"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/front/capture.h264",
+      "bytes": 511494,
+      "sha256": "5f939aa93e1efa9e41007b9366b5889013cc1f797dda50681ce85614f2801296"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/front/capture.stderr.log",
+      "bytes": 60856,
+      "sha256": "1125650c207aeaa2949c4d5f6063db73068fbf15382fbc74f185af288c90d11c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/front/decode-result.json",
+      "bytes": 893,
+      "sha256": "bd79b24d6c1113c651b936856a2184912b7df25996f3a47b59889733cb9e7a6f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/front/frame-100.png",
+      "bytes": 410161,
+      "sha256": "fc2946f3ea947ec00158709db7e3c37584b29b69db24a08d95509fd17ab515cc"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/inventory-stream-start.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/inventory-stream-start.stdout.json",
+      "bytes": 78930,
+      "sha256": "f97dabbcea15648aad6b3cecef2fee3183965d4207b1fc5d29e1c1c8976c406a"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/inventory.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/inventory.stdout.json",
+      "bytes": 78930,
+      "sha256": "53f972efe3e2538c568d2e672c6b4671a71df5a032d39da1b7f41cc210c078af"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/libavcodec-result.json",
+      "bytes": 2530,
+      "sha256": "6ce595d4c72ab2e05485b04d2644f30a4afa841e9b937f6db40c86123f4e1a4e"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/run-three.py",
+      "bytes": 3995,
+      "sha256": "0db1fb38c4e8edcad34e7e49a24ff6cdb0d3506b533674268a2e2040ec491f74"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/usb-events.log",
+      "bytes": 72,
+      "sha256": "b43a577b0cb59fa978db0d466bea851e64a4a9c317ecd8cadf6ce93022618bad"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/usb-events.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/back/capture-result.json",
+      "bytes": 3246,
+      "sha256": "08ec1b4041d5f917b9d39751a67141fd75bf7eedc76d03f9ca59240452686aa0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/back/capture.h264",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/back/capture.stderr.log",
+      "bytes": 3147,
+      "sha256": "5b18707cd58617021dde93b920a748e292b0383502a7e7a1182e8e5496f81664"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/board-capture.py",
+      "bytes": 7089,
+      "sha256": "a6a832b29594abbc38e005fe23977005837442b4ef7b80bb7a8d40e0559a7f5b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/board-inventory.py",
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/capture-summary.json",
+      "bytes": 283130,
+      "sha256": "5c08fcb6f6d5ef0bd4f820b324b40b3343172199136aa49a01579a67cabf0add"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/down/capture-result.json",
+      "bytes": 111485,
+      "sha256": "7b3a0c8dafe8474e0ecd3ce37f21c1829a22ec66ec40d61a8e535985f14bfbc6"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/down/capture.h264",
+      "bytes": 1186473,
+      "sha256": "f6d84e2922444a770c438b54c567cdf1c3a3220ac31ef572851af96ef021040f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/down/capture.stderr.log",
+      "bytes": 61247,
+      "sha256": "06f99c1c46b7c7f872d499dda9c73e85bfd67f2ba16c72b7e15b46d9d40bb500"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/front/capture-result.json",
+      "bytes": 111332,
+      "sha256": "7ae6aa6b2a86bcf50a862d0b841a417f4628ce17889ee2555570af8a557c1ad2"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/front/capture.h264",
+      "bytes": 449003,
+      "sha256": "50bb30e5064909796162cebef9e5570bb2bd65bf8a61ec6f63cb7f156ea1ce85"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/front/capture.stderr.log",
+      "bytes": 61268,
+      "sha256": "37cab5350fca15e84715ff731e8bf0ef58cce00564110ac5ec566c89391781d2"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/inventory-after.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/inventory-after.stdout.json",
+      "bytes": 78856,
+      "sha256": "d98a3c8095d1a62852fc44109a94d46c3e15b8618fbbd84b83899fd8a8671615"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/inventory-stream-start.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/inventory-stream-start.stdout.json",
+      "bytes": 78990,
+      "sha256": "c40bb32cd1771cd5732119ddc788570b9ef05589e061706a16be16c26578b32e"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/left/capture-result.json",
+      "bytes": 3248,
+      "sha256": "70b5ea9e1b379a03c2bfb4e5b6923d0fef78d096daacc40b221170360c515d25"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/left/capture.h264",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/left/capture.stderr.log",
+      "bytes": 3149,
+      "sha256": "9cc9c455fd0c7dcc7a5570a79ccecc996bbeeb769274f7ed06952ff62c59257f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/registry-and-kernel.log",
+      "bytes": 281529,
+      "sha256": "e123da593cfa13a5d740451f5ab7549061243159fea88ffac6ed77c42db61320"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/registry-and-kernel.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/right/capture-result.json",
+      "bytes": 3248,
+      "sha256": "88db03baf6ddf65802a07b30251a7dcd35377d28f2dceff0a002e10877ac7770"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/right/capture.h264",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/right/capture.stderr.log",
+      "bytes": 3148,
+      "sha256": "9422533e12a751adb5e70169e8aa93914577fd9c4d8233d5d48beab18ac8e58e"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/run-five.py",
+      "bytes": 4512,
+      "sha256": "df7fe410673ff8f598252fd21f1f75df4979ad49fe37a3fecdb8edea39f3c54f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/usb-events.log",
+      "bytes": 56676,
+      "sha256": "427dad078d98c29d7f9887971f4fc668278eb9b3d744859757b8a20a984a849b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-09/usb-events.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/back/capture-result.json",
+      "bytes": 112174,
+      "sha256": "1a95c23192c58ff48adfc74127df777d4d4bd7bdb0ca22849e1a1e08803f391c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/back/capture.h264",
+      "bytes": 2201748,
+      "sha256": "53e11d94388ae377d6e19a7d290af662a54d831a9db3de9060e82791597107c2"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/back/capture.stderr.log",
+      "bytes": 61891,
+      "sha256": "c5040af6ef882f77dcdf415092ac442238faf94d719546e847925cdddc85955a"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/board-capture.py",
+      "bytes": 7490,
+      "sha256": "865f7ce20a3cfd1dec7b20290c677747682caa9f01343d68f4afeed3a5e5fbf4"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/board-inventory.py",
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/capture-summary.json",
+      "bytes": 418171,
+      "sha256": "cfcac13d31afbf0612a54e45d06adc4bf527d73b7b0fbc25035bc90a0ff3d76b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/decode-libavcodec.py",
+      "bytes": 4864,
+      "sha256": "825b81b2ae32796c35fbecb791a23dc09ad28d5d170d3f8eec6d17fbcd84da1c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/decode.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/decode.stdout.log",
+      "bytes": 517,
+      "sha256": "dfabfc3389ee1ee03520dc6d904cdbaa796da1fd060176e666e5c2f466374174"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/down/capture-result.json",
+      "bytes": 111789,
+      "sha256": "ad504b387eaafb01a59e08ef490783f0de3400640fd9c808552984b490ee76f4"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/down/capture.h264",
+      "bytes": 1333920,
+      "sha256": "f6dbef52a4a5c03df4bdc1f2ab1b9170166af8b03c036f0f8d46725526469474"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/down/capture.stderr.log",
+      "bytes": 61539,
+      "sha256": "01586790b01d12fc1a9b05b57baf93414fdaeed57cb4c266d473373f956e08f8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/front/capture-result.json",
+      "bytes": 111576,
+      "sha256": "946f744144dbea9e6df4d4854fd65a063a0bf8e7c70466868fd1c8e4a31f5a66"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/front/capture.h264",
+      "bytes": 526481,
+      "sha256": "760420e9db78118b08eb8c146dee2acb7be726c73fd127bdd1da75c190addaa1"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/front/capture.stderr.log",
+      "bytes": 61298,
+      "sha256": "0c758fda93122a5ac160bac0d52c85240bcdbfed9f0c5210425e2c7224ed1ca5"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/inventory-after.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/inventory-after.stdout.json",
+      "bytes": 78867,
+      "sha256": "788738c1823c08c78978c1c6ff48ddb2de75d413a549772703616c0cc8951c8f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/inventory-stream-start.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/inventory-stream-start.stdout.json",
+      "bytes": 78856,
+      "sha256": "216d6ee53b58d02ff8c1592928192684819bc7f0e45e3b1eeaebbcd033abce3b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/left/capture-result.json",
+      "bytes": 3754,
+      "sha256": "12fdc1e414524d900cb7ae531ae08737eccbcf502a33dfdf1e0b6669d0bd8126"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/left/capture.h264",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/left/capture.stderr.log",
+      "bytes": 4011,
+      "sha256": "53e9665754ba343e1aaaeeafa7ad9d0745d709cf0da6891fa8465168f4eb9084"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/libavcodec-result.json",
+      "bytes": 2539,
+      "sha256": "d8c7ef6fef25a0502cb129869a6d503bc43753d57b04f2212cb235bccd29ab0b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/right/capture-result.json",
+      "bytes": 3755,
+      "sha256": "af4b6b8bf4c0069bf790ccccfd83bb23d244b8e9cd489fe1091320f1fc7b3831"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/right/capture.h264",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/right/capture.stderr.log",
+      "bytes": 4011,
+      "sha256": "0e7278712ae5fac4ce4725647ab9d0378a2f1b3acecdec6bb533484db6861e5b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/run-five.py",
+      "bytes": 4960,
+      "sha256": "7ce148d52fa760ac43d9ad739e1870e32a1a55c75bc6567ed2c768be045bb7d4"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/usb-events.log",
+      "bytes": 72,
+      "sha256": "b43a577b0cb59fa978db0d466bea851e64a4a9c317ecd8cadf6ce93022618bad"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-10/usb-events.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/back/capture-result.json",
+      "bytes": 81073,
+      "sha256": "e962beca2dec3e72abe59311bc764c542fc7b98918d629e38bca484ab593302e"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/back/capture.h264",
+      "bytes": 144136,
+      "sha256": "60b4e51e5ea0a63c408b91cec2002c7f15abd9e4e371873a831dc8c45380f874"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/back/capture.stderr.log",
+      "bytes": 45254,
+      "sha256": "a0658307c01ae40e8b79f0e1d1d8abc51f4715263b72d2f5d3a1af4203a7e719"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/board-capture.py",
+      "bytes": 7483,
+      "sha256": "46552ca65a25d40c119021d99ecfac32c7f42f124b54ca157b7ac4cad1f93173"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/board-inventory.py",
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/capture-summary.json",
+      "bytes": 643535,
+      "sha256": "1a679f862b7f44e9eeff3026b3afa3b9f61936e00f0641293ed5aab1a38792c3"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/controls-readonly.log",
+      "bytes": 1892,
+      "sha256": "8c32a6e00b9c964fc2660f9bc656b876978bb39b6ed4fc05d81d363c54dd509f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/controls-readonly.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/decode-libavcodec.py",
+      "bytes": 4868,
+      "sha256": "d5bae8dda61683155b9bdec6a205462ebc6b84490deaaaf924b85a1cc0d4ecf4"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/decode-openh264.py",
+      "bytes": 5958,
+      "sha256": "d2571fa0f070261f89b968edca44135a5fa79eed0dab4dd84a2ca01d2bbac4fb"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/decode-openh264.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/decode-openh264.stdout.log",
+      "bytes": 365,
+      "sha256": "9d8d5a0632a42a7b821bd6f4af5e816d015912d951d4e48071d5028822ae9285"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/decode-summary.json",
+      "bytes": 4348,
+      "sha256": "d11e1db183c36f32ce3f73dad92ccf7a1bbedeebde352190301259ab13e9c6fd"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/decode.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/decode.stdout.log",
+      "bytes": 863,
+      "sha256": "c89bf33734363dbed3163e7619a54ee6ae8dc12fd4817c32654ba3dd97b5f76c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/down/capture-result.json",
+      "bytes": 111631,
+      "sha256": "1fbf715610fe91126b2bc9e52ecd9e450537602a8233cd228df6484d61d8f1b5"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/down/capture.h264",
+      "bytes": 691470,
+      "sha256": "bfef03a82a713de6f966394a489704499d73e9a2c78a8e7373f1f2928f82c81b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/down/capture.stderr.log",
+      "bytes": 61558,
+      "sha256": "6e84a89154f67273f0549523553b838a56a01c23aa851dc11133e132a5fa5217"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/down/decode-result.json",
+      "bytes": 892,
+      "sha256": "90d7159bcb2464a364444937171a6c50ba43c9a65a9391d16ba9225fe31503d8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/down/frame-100.png",
+      "bytes": 616726,
+      "sha256": "8c9aaee36ed56ed96c24342a0d73d8dacbedb3debaca64fbe1914260e6daf335"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/front/capture-result.json",
+      "bytes": 110964,
+      "sha256": "d7d6d4eb568700589816ab0bfdb9bd871aed5be4b174a3e40d5d4e98d23ae31b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/front/capture.h264",
+      "bytes": 293567,
+      "sha256": "38e014ddb251632827011895be4168755577c970bb52db4697013dc823568a87"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/front/capture.stderr.log",
+      "bytes": 60888,
+      "sha256": "5b6a062c6974de8358534c2160432b3a8a73c94489557d7abe39aa24e06ee027"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/front/decode-result.json",
+      "bytes": 892,
+      "sha256": "780e959747e740c31d0627508578468e4ff663242e7b804cc0f73c24074bf69a"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/front/frame-100.png",
+      "bytes": 267817,
+      "sha256": "ab552f1241ab451079b3b1fbc17d8910bdee1afc0403c82eb7aef331ec8a95e8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/inventory-stream-start.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/inventory-stream-start.stdout.json",
+      "bytes": 78815,
+      "sha256": "ac60ba36250763633a63f2c15fcab002cd5ef8dea4c64ed7538fc6cb252d219a"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/inventory.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/inventory.stdout.json",
+      "bytes": 78815,
+      "sha256": "91e09a51edec9c6ec223096ba08469a1a86b36be473a0708b0e1160176447b19"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/left/capture-result.json",
+      "bytes": 111524,
+      "sha256": "ba224a862e80a0351a15fda7677826afd027d92ab079f2e04261cd849c9e790f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/left/capture.h264",
+      "bytes": 475874,
+      "sha256": "aa75ce28dc189eec942564c9b083ae2249927e0be9bea278f647c8ad37ab2aa8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/left/capture.stderr.log",
+      "bytes": 61242,
+      "sha256": "81d9ba1169f4804b7969f4344f7656533a81fe0d07f1de9be39aa9f54bcc8738"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/left/decode-result.json",
+      "bytes": 890,
+      "sha256": "ff1a11b64855ffefd6175ce57ec182306b87f7fba6d425d3b5bebcb821c11647"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/left/frame-100.png",
+      "bytes": 704836,
+      "sha256": "8c705b16e7f3aff229c6d57f051c743bc57ca9bf90369bce2747a5addf75458a"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/libavcodec-result.json",
+      "bytes": 3949,
+      "sha256": "6019ae924f13e77dae0fd8955282eaeee0adfe591a8220e450ec86d57820d378"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/right/capture-result.json",
+      "bytes": 111543,
+      "sha256": "40b66a4eafbce0ad999293d2e29019f6080a72f8bea77102fb9a05090008b214"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/right/capture.h264",
+      "bytes": 433308,
+      "sha256": "6d57e957efe98804eb176dfe5eb91f3de2432d7433c2a12d337407cde6f401bc"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/right/capture.stderr.log",
+      "bytes": 61488,
+      "sha256": "147b5432b33aa902ab1a10f62fc063607b60bcbf28136b781ebb629e668c333b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/right/decode-result.json",
+      "bytes": 892,
+      "sha256": "a1aad265abe680dc3b1da92f691d87047c5c279798c868204212f97b1a7d6a02"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/right/frame-100.png",
+      "bytes": 669959,
+      "sha256": "371239192bb94229780171c6e5bef3e4e8c9dd161f07b927c1eeade12e1a0954"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/run-five.py",
+      "bytes": 5016,
+      "sha256": "e7ccaec7147f228123ef328a4a05a3929185c6bdbe4827dfc4897fc8011955a8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/usb-events.log",
+      "bytes": 72,
+      "sha256": "b43a577b0cb59fa978db0d466bea851e64a4a9c317ecd8cadf6ce93022618bad"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/usb-events.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/back-single-1080p25.h264",
+      "bytes": 344948,
+      "sha256": "aa80879c4c1e240c070ca01ab7d8d221efed0413e91440eab69de69411109646"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/back-single-1080p25.json",
+      "bytes": 19475,
+      "sha256": "9ad525e6dbd1309b92a35881ce1ca1fd4eb3205d6b625f3b624bd50ec6382253"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/back-single-1080p25.stderr.log",
+      "bytes": 13372,
+      "sha256": "bf519d4d1751b51ea2c9e485a6645ed41439f6cad50237084053dc835092b012"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/back-single-720p30.h264",
+      "bytes": 282303,
+      "sha256": "f002eaa1a6ead24f0e3d92dab9d5713b5c37caeae83c96cf8cbd42d4d2f986a8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/back-single-720p30.json",
+      "bytes": 19409,
+      "sha256": "1cf181a33363f0b1358951caf27687d27b3ce1472097661de3c8e1058949db19"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/back-single-720p30.stderr.log",
+      "bytes": 13124,
+      "sha256": "0a3f5b6619209eed618e56cc92dcf9b919a4b41b78048837f1319ed178b9777d"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/back-single.h264",
+      "bytes": 290045,
+      "sha256": "cebd26d07a453066cb270ee3b7abffcbd670ceea067145e3ef4491e1e421b184"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/back-single.json",
+      "bytes": 19385,
+      "sha256": "74d27ac4d285928fa5cae919764bf255c0366a4a2de36249cd1bc55a4f85133b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/back-single.stderr.log",
+      "bytes": 13302,
+      "sha256": "1337dadc25ed18a68ee2881bd5815ad2417963c24796c12dc16c6672fd52d195"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/board-capture-1080p25.py",
+      "bytes": 7485,
+      "sha256": "529c90c8ba5ad114207c6ad1e8c3d50e42bd9e37eb66d1c5295d342e7aac8b72"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/board-capture-720p30.py",
+      "bytes": 7483,
+      "sha256": "379059d8aff1cdaa5af46202b9bdeb8f2cd0c98809f55bf65939f6e85f7f91c7"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/board-capture.py",
+      "bytes": 7483,
+      "sha256": "46552ca65a25d40c119021d99ecfac32c7f42f124b54ca157b7ac4cad1f93173"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-12/board-inventory.py",
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/back/capture-result.json",
+      "bytes": 21828,
+      "sha256": "0bdf2a521bbf73f15dc7150f20f4c5df7e43c2ab37c0dbe3adc34974f0890fcb"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/back/capture.h264",
+      "bytes": 130640,
+      "sha256": "0abb2829c8a58f5be21183e3ae6aac7d65d92a8a4047670702ffe15997dd4a23"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/back/capture.stderr.log",
+      "bytes": 13370,
+      "sha256": "f181c024f33bf9c5c61f8a2ff389f85492b16d698d83bb33b256e13a89952ca2"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/back/decode-result.json",
+      "bytes": 893,
+      "sha256": "f49e358fcff8b2ed74135e7612194542bb7ab173eb1cebc6e20c20bdaabce759"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/back/frame-100.png",
+      "bytes": 283334,
+      "sha256": "c1ff375eb18b4f6cf488395b4fa1589bf706ba162b86caff1c4e176ad673c931"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/board-capture.py",
+      "bytes": 7485,
+      "sha256": "529c90c8ba5ad114207c6ad1e8c3d50e42bd9e37eb66d1c5295d342e7aac8b72"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/board-inventory.py",
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/capture-summary.json",
+      "bytes": 52889,
+      "sha256": "7d12a833e0367216193886b8e76ab6aec1bfb7dfc21bdfd1d436b28012e02f84"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/decode-frame-samples.py",
+      "bytes": 4652,
+      "sha256": "fc23661584d4182a3d4c2df810fe329130de6324176f324cb98024332371cca7"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/decode-frame-samples.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/decode-frame-samples.stdout.log",
+      "bytes": 120,
+      "sha256": "1ca9fd44f81973fa5291e2c2681aee94ac7cb7b543ea3fccaf8330c17b816f97"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/down/capture-result.json",
+      "bytes": 21878,
+      "sha256": "9f9f9715e13eb7ca066952ff7c9743f83a3e6e20c5b20899d8215b12135e1bee"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/down/capture.h264",
+      "bytes": 320730,
+      "sha256": "54cb7df25c98fad6881b64a6cdd3dd522a064c4685f0051ba3e44c9c217d6837"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/down/capture.stderr.log",
+      "bytes": 13189,
+      "sha256": "124f9a54c508a99effebe8aa9e48b23707892474f81a22736089d733e31261db"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/down/decode-result.json",
+      "bytes": 893,
+      "sha256": "845a21dadad514f76a89c5c8c140284780d67234cbe22e80c3dac173644f7b86"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/down/frame-100.png",
+      "bytes": 1020162,
+      "sha256": "fcfd20e3a6a7f044f57b3ee8026a21f34dc5b841cdff83fc43eacc4232bb2b7c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/inventory-after.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/inventory-after.stdout.json",
+      "bytes": 78785,
+      "sha256": "6b7edb3f09dabf1a30d5bf195791322fe76a847080478b2931df5776cb91fe82"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/inventory.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/inventory.stdout.json",
+      "bytes": 78785,
+      "sha256": "b890cbffc57d44883a0fa123d0fb1186b177bccbbc5ccb32464da64169638814"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/run-two-singles.py",
+      "bytes": 2465,
+      "sha256": "70f6b3d5987b6fc95135f74f5bc2e70691f56eee047b1d9f423e67cd3950c6d3"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-13/summarize-evidence.py",
+      "bytes": 7737,
+      "sha256": "97a8b3dda1d1e1f9002e768ce1e58573849925a02d943481c1228d31cfce62ef"
+    }
+  ]
+}

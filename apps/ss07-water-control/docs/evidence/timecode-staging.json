@@ -1,0 +1,23 @@
+{
+  "hardware_verified": false,
+  "evidence_kind": "software_process_test",
+  "unconfigured_timecode": {
+    "result": "passed",
+    "serial_opened": false,
+    "quality": "UNAVAILABLE",
+    "history_api": "passed",
+    "clean_stop": true
+  },
+  "disabled": {
+    "result": "passed",
+    "reason": "recording_disabled",
+    "recording_started": false,
+    "clean_stop": true
+  },
+  "missing_volume": {
+    "result": "passed",
+    "reason": "mount_missing",
+    "recording_started": false,
+    "clean_stop": true
+  }
+}

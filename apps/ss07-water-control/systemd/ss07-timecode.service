@@ -1,0 +1,37 @@
+[Unit]
+Requires=ss07-config-recover.service
+After=ss07-config-recover.service
+Description=SS-07 receive-only timecode and recording association
+After=local-fs.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=ss07-timecode
+Group=ss07-recordings
+SupplementaryGroups=dialout ss07-state
+WorkingDirectory=/opt/ss07/current
+ExecStart=/opt/ss07/current/tools/ss07 timecode-worker --config /etc/ss07-active/system.json --state-dir /run/ss07 --timecode-journal /var/lib/ss07/timecode/journal.sqlite
+Environment=PYTHONDONTWRITEBYTECODE=1
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=5
+KillMode=control-group
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ReadWritePaths=/run/ss07 /var/lib/ss07/timecode
+DevicePolicy=closed
+DeviceAllow=char-ttyUSB r
+DeviceAllow=char-ttyACM r
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

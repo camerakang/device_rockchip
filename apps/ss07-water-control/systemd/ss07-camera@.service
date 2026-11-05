@@ -1,0 +1,30 @@
+[Unit]
+Requires=ss07-config-recover.service
+After=ss07-config-recover.service
+Description=SS-07 native H264 camera (%i)
+After=ss07-media.service
+
+[Service]
+Type=simple
+DynamicUser=yes
+User=ss07-camera
+SupplementaryGroups=video ss07-state
+WorkingDirectory=/opt/ss07/current
+ExecStart=/opt/ss07/current/tools/ss07 camera-worker --config /etc/ss07-active/system.json --state-dir /run/ss07 --binary /opt/ss07/current/bin/ss07-camera --channel %i
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=8
+KillMode=control-group
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/run/ss07
+DevicePolicy=closed
+DeviceAllow=char-video4linux rw
+RestrictAddressFamilies=AF_UNIX AF_INET AF_NETLINK
+CapabilityBoundingSet=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

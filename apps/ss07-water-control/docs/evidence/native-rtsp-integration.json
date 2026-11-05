@@ -1,0 +1,138 @@
+{
+  "result": "passed",
+  "evidence_kind": "synthetic_test",
+  "hardware_verified": false,
+  "deployed": false,
+  "scope": "actual media supervisor/native RTSPS/verified TLS/six H264 decode/recorders/browser coexistence",
+  "denied": {
+    "anonymous": 401,
+    "bad_password": 401,
+    "unknown_path": 400,
+    "query_token": 401,
+    "publish": 401
+  },
+  "untrusted_certificate_rejected": true,
+  "plaintext_rejected": true,
+  "roles_read": [
+    "monitor",
+    "reader",
+    "maintainer"
+  ],
+  "native_gstreamer_client": {
+    "runtime": "GStreamer 1.20.3",
+    "received_access_units": 78,
+    "tls_validation": "all",
+    "test_ca_scope": "this client only",
+    "password_in_argv_or_url": false,
+    "decoded_frames": 62
+  },
+  "per_channel_limit": "four; fifth denied",
+  "browser": {
+    "evidence_kind": "synthetic_test",
+    "hardware_verified": false,
+    "result": "passed",
+    "decoded": [
+      {
+        "channel": "front",
+        "frames": 55,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "back",
+        "frames": 55,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "left",
+        "frames": 55,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "right",
+        "frames": 55,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "down",
+        "frames": 55,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "sdi",
+        "frames": 55,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      }
+    ],
+    "main_switch": "passed",
+    "offline_cleanup": "passed"
+  },
+  "api_restart_preserves_native_reads": true,
+  "account_revocation_seconds": 0.112,
+  "recording_continues_after_revocation": {
+    "down": 11,
+    "sdi": 11,
+    "right": 11,
+    "left": 11,
+    "front": 11,
+    "back": 11
+  },
+  "missing_accounts_revokes_and_recovers": true,
+  "six_rtsps_decoders": {
+    "front": {
+      "decoded_frames": 324,
+      "rtp_packets": 1978,
+      "sequence_gaps": 0
+    },
+    "back": {
+      "decoded_frames": 324,
+      "rtp_packets": 1978,
+      "sequence_gaps": 0
+    },
+    "left": {
+      "decoded_frames": 324,
+      "rtp_packets": 1978,
+      "sequence_gaps": 0
+    },
+    "right": {
+      "decoded_frames": 324,
+      "rtp_packets": 1978,
+      "sequence_gaps": 0
+    },
+    "down": {
+      "decoded_frames": 324,
+      "rtp_packets": 1978,
+      "sequence_gaps": 0
+    },
+    "sdi": {
+      "decoded_frames": 324,
+      "rtp_packets": 1978,
+      "sequence_gaps": 0
+    }
+  },
+  "audit_kinds": [
+    "RTSP_ACCESS_START",
+    "RTSP_LOGIN_FAILED",
+    "RTSP_LOGIN_OK",
+    "RTSP_REVOKE"
+  ],
+  "completed_counts": {
+    "down": 13,
+    "sdi": 13,
+    "right": 13,
+    "left": 13,
+    "back": 13,
+    "front": 13
+  }
+}

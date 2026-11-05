@@ -1,0 +1,646 @@
+{
+  "evidence_kind": "synthetic_test",
+  "result": "passed",
+  "app_version": "0.9.0",
+  "hardware_verified": false,
+  "deployed": false,
+  "lifecycle_backend": "real local subprocesses; systemd/UID permissions and physical power loss are not exercised",
+  "packages": {
+    "old": "23249385e1ad9d666aaf91d59d96e66a78898885e6e7970a17eeb8aaf9ee8768",
+    "new": "de0e8b75ab3584750e8262092e60a6122b991d50ea9da85020ed09bded8adfdc"
+  },
+  "phases": {
+    "initial_install": {
+      "version": "0.8.0",
+      "operation_id": "ba02e4e8-f42c-4fce-a8a6-00caed8b5547",
+      "activated": false,
+      "software_health_verified": false,
+      "hardware_verified": false
+    },
+    "old_running": {
+      "version": "0.8.0",
+      "six_recorders_continue": true,
+      "completed_segments": {
+        "back": 2,
+        "down": 4,
+        "front": 4,
+        "left": 2,
+        "right": 2,
+        "sdi": 4
+      },
+      "https_relogin": true,
+      "configuration_and_credentials_preserved": true,
+      "existing_recordings_preserved": 0,
+      "native_rtsp_enabled": false,
+      "recording_metadata_and_content_checked": true,
+      "live_worker_count": 12
+    },
+    "upgrade_transaction": {
+      "version": "0.9.0",
+      "operation_id": "983136ad-37bb-4a77-be74-b5ed7ab77bc1",
+      "activated": true,
+      "software_health_verified": true,
+      "hardware_verified": false
+    },
+    "upgraded": {
+      "version": "0.9.0",
+      "six_recorders_continue": true,
+      "completed_segments": {
+        "back": 5,
+        "down": 7,
+        "front": 7,
+        "left": 5,
+        "right": 5,
+        "sdi": 7
+      },
+      "https_relogin": true,
+      "configuration_and_credentials_preserved": true,
+      "existing_recordings_preserved": 18,
+      "native_rtsp_enabled": true,
+      "recording_metadata_and_content_checked": true,
+      "live_worker_count": 12
+    },
+    "manual_rollback_transaction": {
+      "version": "0.8.0",
+      "operation_id": "f8029688-6d9c-46b0-a661-557c7a785b20",
+      "activated": true,
+      "software_health_verified": true,
+      "hardware_verified": false
+    },
+    "manual_rollback": {
+      "version": "0.8.0",
+      "six_recorders_continue": true,
+      "completed_segments": {
+        "back": 9,
+        "down": 11,
+        "front": 11,
+        "left": 9,
+        "right": 9,
+        "sdi": 11
+      },
+      "https_relogin": true,
+      "configuration_and_credentials_preserved": true,
+      "existing_recordings_preserved": 36,
+      "native_rtsp_enabled": false,
+      "recording_metadata_and_content_checked": true,
+      "live_worker_count": 12
+    },
+    "failed_upgrade_automatic_recovery": {
+      "version": "0.8.0",
+      "six_recorders_continue": true,
+      "completed_segments": {
+        "back": 20,
+        "down": 22,
+        "front": 22,
+        "left": 19,
+        "right": 19,
+        "sdi": 21
+      },
+      "https_relogin": true,
+      "configuration_and_credentials_preserved": true,
+      "existing_recordings_preserved": 60,
+      "native_rtsp_enabled": false,
+      "recording_metadata_and_content_checked": true,
+      "live_worker_count": 12
+    },
+    "interrupted_journal_boot_recovery": {
+      "version": "0.8.0",
+      "six_recorders_continue": true,
+      "completed_segments": {
+        "back": 25,
+        "down": 27,
+        "front": 27,
+        "left": 25,
+        "right": 25,
+        "sdi": 27
+      },
+      "https_relogin": true,
+      "configuration_and_credentials_preserved": true,
+      "existing_recordings_preserved": 121,
+      "native_rtsp_enabled": false,
+      "recording_metadata_and_content_checked": true,
+      "live_worker_count": 12
+    }
+  },
+  "lifecycle_actions": [
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287826571757"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-release-recover.service"
+      ],
+      "at_us": "287826571762"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287826589312"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287827014995"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287838989096"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-release-recover.service"
+      ],
+      "at_us": "287838989099"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-application.service"
+      ],
+      "at_us": "287839002059"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-api.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07-camera@down.service",
+        "ss07-camera@right.service",
+        "ss07-camera@left.service",
+        "ss07-camera@back.service",
+        "ss07-camera@front.service",
+        "ss07-media.service",
+        "ss07.target",
+        "ss07-config-recover.service"
+      ],
+      "at_us": "287839165925"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287840068547"
+    },
+    {
+      "action": "reset-failed",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287840070476"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287840070479"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287845400726"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-release-recover.service"
+      ],
+      "at_us": "287845400729"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-application.service"
+      ],
+      "at_us": "287845415947"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-api.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07-camera@down.service",
+        "ss07-camera@right.service",
+        "ss07-camera@left.service",
+        "ss07-camera@back.service",
+        "ss07-camera@front.service",
+        "ss07-media.service",
+        "ss07.target",
+        "ss07-config-recover.service"
+      ],
+      "at_us": "287845630427"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287846586095"
+    },
+    {
+      "action": "reset-failed",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287846587464"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287846587467"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287851660977"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-release-recover.service"
+      ],
+      "at_us": "287851660980"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-application.service"
+      ],
+      "at_us": "287851675932"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-api.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07-camera@down.service",
+        "ss07-camera@right.service",
+        "ss07-camera@left.service",
+        "ss07-camera@back.service",
+        "ss07-camera@front.service",
+        "ss07-media.service",
+        "ss07.target",
+        "ss07-config-recover.service"
+      ],
+      "at_us": "287851739643"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287852350455"
+    },
+    {
+      "action": "reset-failed",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287852351560"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287852351563"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-application.service",
+        "ss07-api.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07-camera@down.service",
+        "ss07-camera@right.service",
+        "ss07-camera@left.service",
+        "ss07-camera@back.service",
+        "ss07-camera@front.service",
+        "ss07-media.service",
+        "ss07.target",
+        "ss07-config-recover.service"
+      ],
+      "at_us": "287867461630"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287868374071"
+    },
+    {
+      "action": "reset-failed",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287868374076"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287868374077"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287873431695"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-release-recover.service"
+      ],
+      "at_us": "287873431698"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-application.service"
+      ],
+      "at_us": "287873444795"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-api.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07-camera@down.service",
+        "ss07-camera@right.service",
+        "ss07-camera@left.service",
+        "ss07-camera@back.service",
+        "ss07-camera@front.service",
+        "ss07-media.service",
+        "ss07.target",
+        "ss07-config-recover.service"
+      ],
+      "at_us": "287873558970"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287874284673"
+    },
+    {
+      "action": "reset-failed",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287874285929"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287874285932"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-application.service",
+        "ss07-api.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07-camera@down.service",
+        "ss07-camera@right.service",
+        "ss07-camera@left.service",
+        "ss07-camera@back.service",
+        "ss07-camera@front.service",
+        "ss07-media.service",
+        "ss07.target",
+        "ss07-config-recover.service"
+      ],
+      "at_us": "287878610751"
+    },
+    {
+      "action": "stop",
+      "units": [
+        "ss07-application.service",
+        "ss07-api.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07-camera@down.service",
+        "ss07-camera@right.service",
+        "ss07-camera@left.service",
+        "ss07-camera@back.service",
+        "ss07-camera@front.service",
+        "ss07-media.service",
+        "ss07.target",
+        "ss07-config-recover.service"
+      ],
+      "at_us": "287879782745"
+    },
+    {
+      "action": "daemon-reload",
+      "units": [],
+      "at_us": "287879878402"
+    },
+    {
+      "action": "reset-failed",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287879878408"
+    },
+    {
+      "action": "start",
+      "units": [
+        "ss07-api.service",
+        "ss07-application.service",
+        "ss07-config-recover.service",
+        "ss07-gateway.service",
+        "ss07-maintenance.service",
+        "ss07-media.service",
+        "ss07-storage.service",
+        "ss07-timecode.service",
+        "ss07.target",
+        "ss07-camera@front.service",
+        "ss07-camera@back.service",
+        "ss07-camera@left.service",
+        "ss07-camera@right.service",
+        "ss07-camera@down.service"
+      ],
+      "at_us": "287879878409"
+    }
+  ]
+}

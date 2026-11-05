@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "readonly_hardware_readiness",
+  "observed_at_host_utc": "2026-10-24T08:38:20.653931+00:00",
+  "board_ip": "192.168.3.233",
+  "board_reported_time": "2026-10-24T16:38:21.600419+08:00",
+  "board_clock_calibrated": false,
+  "kernel": "5.10.160",
+  "usb_video_character_devices": [],
+  "usb_serial_character_devices": [],
+  "stable_video_links": [],
+  "stable_serial_links": [],
+  "video_named_entries": [
+    {
+      "path": "/dev/video-dec0",
+      "is_symlink": false,
+      "target": null,
+      "target_exists": true
+    },
+    {
+      "path": "/dev/video-enc0",
+      "is_symlink": false,
+      "target": null,
+      "target_exists": true
+    }
+  ],
+  "block_devices": [
+    {
+      "name": "mmcblk0",
+      "size": 125069950976,
+      "type": "disk",
+      "fstype": null,
+      "mountpoint": null,
+      "children": [
+        {
+          "name": "mmcblk0p1",
+          "size": 8388608,
+          "type": "part",
+          "fstype": null,
+          "mountpoint": null
+        },
+        {
+          "name": "mmcblk0p2",
+          "size": 134217728,
+          "type": "part",
+          "fstype": "ext2",
+          "mountpoint": "/boot"
+        },
+        {
+          "name": "mmcblk0p3",
+          "size": 124918939136,
+          "type": "part",
+          "fstype": "ext4",
+          "mountpoint": "/"
+        }
+      ]
+    },
+    {
+      "name": "mmcblk0boot0",
+      "size": 4194304,
+      "type": "disk",
+      "fstype": null,
+      "mountpoint": null
+    },
+    {
+      "name": "mmcblk0boot1",
+      "size": 4194304,
+      "type": "disk",
+      "fstype": null,
+      "mountpoint": null
+    }
+  ],
+  "application_present": false,
+  "se2017": {
+    "host": "192.168.3.47",
+    "observed_at_host_utc": "2026-10-24T08:38:21.698969+00:00",
+    "authenticated": false,
+    "configuration_changed": false,
+    "80": {
+      "open": true
+    },
+    "554": {
+      "open": false,
+      "error": "[Errno 111] Connection refused"
+    },
+    "http_status": 200,
+    "avmatrix_page": true
+  },
+  "capture_started": false,
+  "serial_opened": false,
+  "application_deployed": false,
+  "configuration_changed": false,
+  "hardware_acceptance_passed": false,
+  "raw_evidence": {
+    "board-readonly.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/readiness-20261024-followup-01/board-readonly.py",
+      "sha256": "2e4b54119fcfd6ae191cd1c10fcccf820e3cbd1d935937671d495a6809b90c53"
+    },
+    "board-stderr.log": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/readiness-20261024-followup-01/board-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "board-stdout.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/readiness-20261024-followup-01/board-stdout.json",
+      "sha256": "69de907ae28376dbccd01730c0867839c3c0f3aed55d9b7372f30eb49dea6cde"
+    },
+    "se2017.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/readiness-20261024-followup-01/se2017.json",
+      "sha256": "ed8584d5a2881891f74b6b1222fa3224ee79ee99d4cb2d8909553138c6935ce9"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "evidence_kind": "arm64_qemu_synthetic",
+  "hardware_validated": false,
+  "deployed": false,
+  "qemu_version": "qemu-aarch64 version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.31)",
+  "camera_version": "ss07-camera 0.3.1 (GStreamer 1.18.5)",
+  "mediamtx_version": "v1.21.2",
+  "caddy_version": "v2.11.7 h1:yj0Y4fYZGPkSvibBJ1sTWE33xC0fxztVyXEW5iIdUT4=",
+  "go_emulator_workaround": "GODEBUG=madvdontneed=0",
+  "plugins_loaded": [
+    "v4l2src",
+    "h264parse",
+    "queue",
+    "capsfilter",
+    "rtph264pay",
+    "udpsink"
+  ],
+  "production_rejects_synthetic": true,
+  "missing_device_rejected": true,
+  "rtp_packets": 89,
+  "rtp_sequence_gaps": 0,
+  "complete_access_units": 21,
+  "decoded_stream": {
+    "codec_name": "h264",
+    "width": 320,
+    "height": 240,
+    "decoded_frames": 21,
+    "decoder": "host GStreamer openh264dec; fixed raw caps and EOS required"
+  },
+  "native_sigterm_exit": 0,
+  "binary_sha256": "12bb93740e5af4f7868974b727e4245e06b030ebf6ae7e2fe60d47cd8bae7a00"
+}

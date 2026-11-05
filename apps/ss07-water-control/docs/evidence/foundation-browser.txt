@@ -1,0 +1,8 @@
+2026-10-23 — local x86_64 development host, Chromium headless shell.
+PASS: loaded real local HTTP status page and received SSE snapshots.
+PASS: six video status cards and five null sonar readings; no simulated media or distances.
+PASS: stopped EventSource and advanced client observation age; stale/disconnected display shown.
+PASS: app.js syntax check with Node.js v24.18.0.
+PASS: systemd-analyze verify of the template with /opt/ss07/current replaced by the workspace path; no service installed or started.
+Host unit scan also emitted unrelated netplan permission and snapd RestartMode warnings; SS-07 unit check exited 0.
+This is frontend/software verification, not hardware acquisition or production deployment.

@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-23",
+  "version": "0.3.0",
+  "unit_tests": {
+    "CPython_3.10.12": {
+      "tests": 37,
+      "result": "passed"
+    },
+    "CPython_3.8.20": {
+      "tests": 37,
+      "result": "passed"
+    }
+  },
+  "native": {
+    "architecture": "x86_64",
+    "compiler": "GNU C++ 11.4.0",
+    "gstreamer": "1.20.3",
+    "warnings_as_errors": true,
+    "result": "passed"
+  },
+  "systemd_templates": "systemd-analyze verify exited 0; unrelated host netplan permission and snapd RestartMode warnings",
+  "target": "read-only plugin check only; not deployed",
+  "hardware_verified": false
+}

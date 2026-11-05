@@ -1,0 +1,10 @@
+[Match]
+Name=eth* en*
+Type=ether
+
+[Network]
+DHCP=yes
+
+[DHCP]
+UseNTP=yes
+RouteMetric=100

@@ -1,0 +1,415 @@
+{
+  "architecture": "arm64",
+  "interpreter": "/lib/ld-linux-aarch64.so.1",
+  "dynamic_dependency_closure": {
+    "/home/forlinx/workspace/LubanCat_SDK/output/ss07/arm64-20261023/native-compat/build/ss07-camera": {
+      "sha256": "12bb93740e5af4f7868974b727e4245e06b030ebf6ae7e2fe60d47cd8bae7a00",
+      "needed": [
+        "libgstreamer-1.0.so.0",
+        "libgobject-2.0.so.0",
+        "libglib-2.0.so.0",
+        "libstdc++.so.6",
+        "libm.so.6",
+        "libgcc_s.so.1",
+        "libc.so.6"
+      ],
+      "version_requirements": {
+        "libgcc_s.so.1": [
+          "GCC_3.0"
+        ],
+        "libstdc++.so.6": [
+          "GLIBCXX_3.4.9",
+          "CXXABI_1.3.9",
+          "CXXABI_1.3",
+          "GLIBCXX_3.4.21",
+          "GLIBCXX_3.4"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "usr/lib/aarch64-linux-gnu/libgstreamer-1.0.so.0.1805.0": {
+      "sha256": "2b5ff82bd2bbed7cfa91dcd42678bc6e733809361b46c58f379608670540eb48",
+      "needed": [
+        "libgobject-2.0.so.0",
+        "libglib-2.0.so.0",
+        "libgmodule-2.0.so.0",
+        "libm.so.6",
+        "libdl.so.2",
+        "libunwind.so.8",
+        "libdw.so.1",
+        "libpthread.so.0",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "libm.so.6": [
+          "GLIBC_2.29"
+        ],
+        "libdl.so.2": [
+          "GLIBC_2.17"
+        ],
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libpthread.so.0": [
+          "GLIBC_2.17"
+        ],
+        "libdw.so.1": [
+          "ELFUTILS_0.122"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "usr/lib/aarch64-linux-gnu/libgobject-2.0.so.0.6400.6": {
+      "sha256": "5b35483b6f12754ce599c06697d5f02c5324c7e7fba814508eb0ff6c36e2247f",
+      "needed": [
+        "libglib-2.0.so.0",
+        "libffi.so.7",
+        "libpthread.so.0",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libffi.so.7": [
+          "LIBFFI_BASE_7.0"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "usr/lib/aarch64-linux-gnu/libglib-2.0.so.0.6400.6": {
+      "sha256": "7356bca8c03880b56480d8eca268e016782b3aff11f19ebe39dd4bcb58b976c5",
+      "needed": [
+        "libpcre.so.3",
+        "libpthread.so.0",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libpthread.so.0": [
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.28",
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/libpcre.so.3.13.3": {
+      "sha256": "b6ccce09fc872ac6a60a836c6ab942f837b22eb96548e70a389c975b9d7388e8",
+      "needed": [
+        "libpthread.so.0",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "libpthread.so.0": [
+          "GLIBC_2.17"
+        ],
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/libpthread-2.31.so": {
+      "sha256": "48b97fe853633c03a391d99253f16f91b72c613f1d70919726fb79ccf3b17dc3",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17",
+          "GLIBC_PRIVATE"
+        ],
+        "libc.so.6": [
+          "GLIBC_PRIVATE",
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/libc-2.31.so": {
+      "sha256": "1c2b5ed433cad8a0d4761165c9ac2a543dfaa6174b9457425194cee7f4bac0cf",
+      "needed": [
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17",
+          "GLIBC_PRIVATE"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/ld-2.31.so": {
+      "sha256": "a982ca6f7cac01f10f03a41fd366fcca7cc511714b688549e75d517945fd42a8",
+      "needed": [],
+      "version_requirements": {},
+      "target_search_paths": []
+    },
+    "usr/lib/aarch64-linux-gnu/libffi.so.7.1.0": {
+      "sha256": "f7b659d2801e8045d42bb8de7f19ddca596e8f06598674552f42d1af53c54ce0",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "usr/lib/aarch64-linux-gnu/libgmodule-2.0.so.0.6400.6": {
+      "sha256": "ab671fe51d793bfdfb37066cdbcb848ac8470c7450259de25d4c15952b53c9a6",
+      "needed": [
+        "libglib-2.0.so.0",
+        "libdl.so.2",
+        "libpthread.so.0",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libpthread.so.0": [
+          "GLIBC_2.17"
+        ],
+        "libdl.so.2": [
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/libdl-2.31.so": {
+      "sha256": "2ec79c71745859480b32ba49785f217d73be250ed4342b6b33f27608f3d6cebd",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_PRIVATE",
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_PRIVATE",
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/libm-2.31.so": {
+      "sha256": "c03d27fd2570214ae7ecdba7654553b8948ef26e3b790915fc475779b61e930e",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_PRIVATE",
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "usr/lib/aarch64-linux-gnu/libunwind.so.8.0.1": {
+      "sha256": "bc91bef95a8f38ca8d9cd52af65311eaadf6f581a28a0d5a995ac96a319ce422",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1",
+        "liblzma.so.5"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "liblzma.so.5": [
+          "XZ_5.0"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/liblzma.so.5.2.4": {
+      "sha256": "39295b2a71893ae067c387bdb4d47374e6eefd5e11e92a8f37919a7774c8679f",
+      "needed": [
+        "libpthread.so.0",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libpthread.so.0": [
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "usr/lib/aarch64-linux-gnu/libdw-0.176.so": {
+      "sha256": "615ea8f264ea174d8e5c6a1dfa6b0e49ae952a873a0134bb173807d140f129c6",
+      "needed": [
+        "libelf.so.1",
+        "libdl.so.2",
+        "libz.so.1",
+        "liblzma.so.5",
+        "libbz2.so.1.0",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "libz.so.1": [
+          "ZLIB_1.2.2.3"
+        ],
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libdl.so.2": [
+          "GLIBC_2.17"
+        ],
+        "liblzma.so.5": [
+          "XZ_5.0"
+        ],
+        "libelf.so.1": [
+          "ELFUTILS_1.5",
+          "ELFUTILS_1.6",
+          "ELFUTILS_1.7",
+          "ELFUTILS_1.3",
+          "ELFUTILS_1.0"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": [
+        "/usr/lib/aarch64-linux-gnu/elfutils"
+      ]
+    },
+    "usr/lib/aarch64-linux-gnu/libelf-0.176.so": {
+      "sha256": "553251e36788683e49403312b429a8a5c54236309ea85f63a090b4e612b3b6e0",
+      "needed": [
+        "libz.so.1",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/libz.so.1.2.11": {
+      "sha256": "f7421fde8036391750dc2b1dd7299a0a3305a93cb95846fcc381590f565215c1",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/libbz2.so.1.0.4": {
+      "sha256": "0a206719f432ddec3e01a85d30200e7f2ad96ff2c3cac2a0a49fb67100087b30",
+      "needed": [
+        "libc.so.6",
+        "ld-linux-aarch64.so.1"
+      ],
+      "version_requirements": {
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.28": {
+      "sha256": "d5106b70d2682294dee634486749ee06cf24ac830190996dcab95a246ebc152b",
+      "needed": [
+        "libm.so.6",
+        "libc.so.6",
+        "ld-linux-aarch64.so.1",
+        "libgcc_s.so.1"
+      ],
+      "version_requirements": {
+        "libm.so.6": [
+          "GLIBC_2.17"
+        ],
+        "ld-linux-aarch64.so.1": [
+          "GLIBC_2.17"
+        ],
+        "libgcc_s.so.1": [
+          "GCC_4.2.0",
+          "GCC_3.3",
+          "GCC_3.0"
+        ],
+        "libc.so.6": [
+          "GLIBC_2.18",
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    },
+    "lib/aarch64-linux-gnu/libgcc_s.so.1": {
+      "sha256": "42e40b1edf78999d41d763cb169c70b563e8b5dbc665e072380f96832ad4a407",
+      "needed": [
+        "libc.so.6"
+      ],
+      "version_requirements": {
+        "libc.so.6": [
+          "GLIBC_2.17"
+        ]
+      },
+      "target_search_paths": []
+    }
+  },
+  "hardware_validated": false
+}

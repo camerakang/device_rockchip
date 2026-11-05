@@ -1,0 +1,37 @@
+[Unit]
+Requires=ss07-config-recover.service
+After=ss07-config-recover.service
+Description=SS-07 HTTPS browser gateway
+After=network-online.target ss07-api.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=ss07-gateway
+Group=ss07-gateway
+SupplementaryGroups=ss07-state
+WorkingDirectory=/opt/ss07/current
+ExecStart=/opt/ss07/current/tools/ss07 gateway-worker --config /etc/ss07-active/system.json --gateway-config /etc/ss07-gateway/network.json --binary /opt/ss07/current/bin/caddy --state-dir /run/ss07
+Environment=PYTHONDONTWRITEBYTECODE=1 XDG_DATA_HOME=/var/lib/ss07-gateway XDG_CONFIG_HOME=/var/lib/ss07-gateway
+StateDirectory=ss07-gateway
+StateDirectoryMode=0700
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=8
+KillMode=control-group
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ReadWritePaths=/run/ss07
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

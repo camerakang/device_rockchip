@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "project_version": "0.6.0",
+  "evidence_kind": "software_validation",
+  "observed_at_utc": "2026-10-23T07:19:44.466310+00:00",
+  "result": "passed",
+  "hardware_verified": false,
+  "unit_tests": [
+    {
+      "python": "3.10.12",
+      "tests": 102,
+      "result": "passed",
+      "log": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/auth-20261023/unit-3.10.12.log",
+      "sha256": "f948d8e0a23bfdc8b48578b66d72af887892c453fdfe507099c5d7831ba0bf3e"
+    },
+    {
+      "python": "3.8.20",
+      "tests": 102,
+      "result": "passed",
+      "log": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/auth-20261023/unit-3.8.20.log",
+      "sha256": "22facd13ad809aadb29ac9d72b57253889fefbbc5cc64a3b27ae05780be2b2c2"
+    }
+  ],
+  "integration": {
+    "file": "auth-integration.json",
+    "scope": "six native synthetic H264 streams, independent recording, HTTPS browser roles and maintenance",
+    "completed_segments_during_auth_checks": 54,
+    "logout_and_stop_hook_preserve_recording": true,
+    "zero_browser_javascript_exceptions": true
+  },
+  "staging": {
+    "file": "auth-staging.json",
+    "runtime_files_match_current_source": true
+  },
+  "systemd": {
+    "file": "auth-systemd.json",
+    "units": 7,
+    "static_only": true,
+    "live_privilege_separation_not_yet_deployed": true
+  },
+  "dependencies": {
+    "mediamtx": {
+      "amd64": {
+        "version": "v1.21.2",
+        "platform": "linux_amd64",
+        "archive_sha256": "121be6e00397e473a95d83c75f4fcd3819a6af3b0e1a50889cba43ab4fab6a27",
+        "binary_sha256": "0ffb7f18210d08ee38cb16668c4f3a2c96622e69d401119c0026d078a2b89523"
+      },
+      "arm64": {
+        "version": "v1.21.2",
+        "platform": "linux_arm64",
+        "archive_sha256": "180a235374a548d9133cdd5e20f5dbd8b01317be1c86e0d7e66df585dc42ed6f",
+        "binary_sha256": "f8676d0ed8f210453a722fdad76fe6e52cf764fdcf9930e8c7d242d02da57c2b"
+      }
+    },
+    "caddy": {
+      "amd64": {
+        "version": "v2.11.7",
+        "platform": "linux_amd64",
+        "archive_sha256": "727b91701a392de6ebc5027509f548bf39979e5216340d0faed8fa5e69c84f8b",
+        "binary_sha256": "678ade3bfc088749c81a681adc603333ee0bb023b6a6cfe3c0f58bef8ff854e9"
+      },
+      "arm64": {
+        "version": "v2.11.7",
+        "platform": "linux_arm64",
+        "archive_sha256": "d8fc6d179a5d283028a472a5618564f6ad8a86fed513e64f032b3b0b7cc45e42",
+        "binary_sha256": "0019d864a2cdee41c3675cb2a26185833c5d9540a48f5a6729142c0413461b60"
+      }
+    }
+  },
+  "target_capability": "rk3588-auth-capability-20261023.json",
+  "known_limits": [
+    "No actual RK3588 application deployment or six-camera acceptance",
+    "Sonar hardware and vendor protocol absent; no fabricated packets or samples",
+    "USB-RS485 timecode baud confirmed at 500000; binding and remaining UART parameters unconfirmed",
+    "Nominal 1 TB recording disk absent; real volume performance and failures untested",
+    "Configuration saves are pending restart; per-worker apply and rollback remain",
+    "Real LAN certificate and ICE connectivity acceptance, external RTSP authorization remain",
+    "ARM64 native camera ABI package, current-source full SDK IMG and 8-hour hardware acceptance remain"
+  ],
+  "deployment_performed": false,
+  "commit_performed": false,
+  "push_performed": false,
+  "flash_performed": false,
+  "artifact_directory": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/auth-20261023"
+}

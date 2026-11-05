@@ -1,0 +1,27 @@
+{
+  "evidence_kind": "software_static_test",
+  "hardware_verified": false,
+  "service_enabled": false,
+  "host_users_changed": false,
+  "unit_files": [
+    "ss07-api.service",
+    "ss07-camera@.service",
+    "ss07-gateway.service",
+    "ss07-maintenance.service",
+    "ss07-media.service",
+    "ss07-storage.service",
+    "ss07-timecode.service"
+  ],
+  "systemd_verify_exit": 0,
+  "sysusers_exit": 0,
+  "temporary_users": [
+    "ss07-api",
+    "ss07-gateway",
+    "ss07-storage",
+    "ss07-timecode"
+  ],
+  "exec_paths_replaced_with_staging_for_validation": true,
+  "data_directory_created": false,
+  "credentials_created": false,
+  "live_systemd_service_permissions_verified": false
+}

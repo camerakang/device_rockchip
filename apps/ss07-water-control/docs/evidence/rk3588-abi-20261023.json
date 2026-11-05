@@ -1,0 +1,75 @@
+{
+  "evidence_kind": "read_only_target_abi",
+  "observed_at_utc": "2026-10-23T07:30:52.887713+00:00",
+  "target": "192.168.3.233",
+  "machine": "aarch64",
+  "kernel": "5.10.160",
+  "libc": [
+    "glibc",
+    "2.31"
+  ],
+  "packages": [
+    {
+      "package": "libc6",
+      "status": 0,
+      "value": "libc6:arm64 2.31-0ubuntu9.18"
+    },
+    {
+      "package": "libstdc++6",
+      "status": 0,
+      "value": "libstdc++6:arm64 10.5.0-1ubuntu1~20.04"
+    },
+    {
+      "package": "libgcc-s1",
+      "status": 0,
+      "value": "libgcc-s1:arm64 10.5.0-1ubuntu1~20.04"
+    },
+    {
+      "package": "libglib2.0-0",
+      "status": 0,
+      "value": "libglib2.0-0:arm64 2.64.6-1~ubuntu20.04.9"
+    },
+    {
+      "package": "libgstreamer1.0-0",
+      "status": 0,
+      "value": "libgstreamer1.0-0:arm64 1.18.5-1"
+    },
+    {
+      "package": "libgstreamer-plugins-base1.0-0",
+      "status": 0,
+      "value": "libgstreamer-plugins-base1.0-0:arm64 1.16.3-0ubuntu1.4"
+    },
+    {
+      "package": "libgstreamer-plugins-bad1.0-0",
+      "status": 0,
+      "value": "libgstreamer-plugins-bad1.0-0:arm64 1.16.3-0ubuntu1.1"
+    },
+    {
+      "package": "gstreamer1.0-plugins-base",
+      "status": 0,
+      "value": "gstreamer1.0-plugins-base:arm64 1.16.3-0ubuntu1.4"
+    },
+    {
+      "package": "gstreamer1.0-plugins-good",
+      "status": 0,
+      "value": "gstreamer1.0-plugins-good:arm64 1.16.3-0ubuntu1.3"
+    },
+    {
+      "package": "gstreamer1.0-plugins-bad",
+      "status": 0,
+      "value": "gstreamer1.0-plugins-bad:arm64 1.16.3-0ubuntu1.1"
+    },
+    {
+      "package": "python3",
+      "status": 0,
+      "value": "python3:arm64 3.8.2-0ubuntu2"
+    },
+    {
+      "package": "systemd",
+      "status": 0,
+      "value": "systemd:arm64 245.4-4ubuntu3.24"
+    }
+  ],
+  "application_deployed": false,
+  "hardware_opened": false
+}

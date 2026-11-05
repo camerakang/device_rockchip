@@ -1,0 +1,22 @@
+{
+  "api/openapi.yaml": {
+    "url": "https://raw.githubusercontent.com/bluenviron/mediamtx/v1.21.2/api/openapi.yaml",
+    "sha256": "bd38cc3cb2bbf28026aa609ef9e8ed14657e96d1e081dadf319a7fa4f2790c50"
+  },
+  "internal/auth/manager.go": {
+    "url": "https://raw.githubusercontent.com/bluenviron/mediamtx/v1.21.2/internal/auth/manager.go",
+    "sha256": "e7ad144baced877d599fb833f45c4725f2507b495aa362f64b63769dd5416d6c"
+  },
+  "internal/servers/rtsp/session.go": {
+    "url": "https://raw.githubusercontent.com/bluenviron/mediamtx/v1.21.2/internal/servers/rtsp/session.go",
+    "sha256": "d8ebac91727164ae502588c6e7d0ffd070eeb3b38519396e8b1aae23353c03fb"
+  },
+  "internal/servers/rtsp/conn.go": {
+    "url": "https://raw.githubusercontent.com/bluenviron/mediamtx/v1.21.2/internal/servers/rtsp/conn.go",
+    "sha256": "f0c67af30d09f17a69b0bf13ccc60543c8f45da82f91a4b9014aeb2458ba5af4"
+  },
+  "mediamtx.yml": {
+    "url": "https://raw.githubusercontent.com/bluenviron/mediamtx/v1.21.2/mediamtx.yml",
+    "sha256": "4c663835344be785f9816cae8239073ec1616e17231e1aa89c2155a79c4ae054"
+  }
+}

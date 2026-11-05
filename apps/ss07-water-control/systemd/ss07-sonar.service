@@ -1,0 +1,37 @@
+[Unit]
+Requires=ss07-config-recover.service
+After=ss07-config-recover.service
+Description=SS-07 sonar polling, diagnostic history and data-volume archive
+After=local-fs.target ss07-timecode.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=ss07-sonar
+Group=ss07-recordings
+SupplementaryGroups=dialout ss07-state
+WorkingDirectory=/opt/ss07/current
+ExecStart=/opt/ss07/current/tools/ss07 sonar-worker --config /etc/ss07-active/system.json --state-dir /run/ss07 --sonar-journal /var/lib/ss07/sonar/samples.sqlite --sonar-catalog /var/lib/ss07/sonar/archives.sqlite
+Environment=PYTHONDONTWRITEBYTECODE=1
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=5
+KillMode=control-group
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ReadWritePaths=/run/ss07 /var/lib/ss07/sonar -/data/ss07
+DevicePolicy=closed
+DeviceAllow=char-ttyUSB rw
+DeviceAllow=char-ttyACM rw
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

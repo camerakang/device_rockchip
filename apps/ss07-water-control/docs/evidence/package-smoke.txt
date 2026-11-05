@@ -1,0 +1,2 @@
+{"valid": true, "revision": "aeaae27644b9e9d77be375b68db1f6dfbfcfb7589c178175f55e771256591a7a", "hardware_verified": false}
+PASS: tar SHA256, all file hashes, extracted CLI validation, independent HTTP process, 6 unavailable streams, 5 invalid sonar readings, unavailable timecode, recording disabled; process cleaned up.

@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "public_origin": "https://127.0.0.1:8443",
+  "listen_ip": "127.0.0.1",
+  "ice_ip": "127.0.0.1",
+  "certificate": "/etc/ss07-tls/server.crt",
+  "private_key": "/etc/ss07-tls/server.key"
+}

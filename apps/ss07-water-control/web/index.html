@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SS-07 视频与声呐控制台</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Icons: Tabler Icons (MIT), https://github.com/tabler/tabler-icons ; palette: Tabler (MIT), https://github.com/tabler/tabler -->
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-dashboard" viewBox="0 0 24 24"><path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1"/><path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1"/><path d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1"/><path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4"/><path d="M3 8a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -8"/></symbol>
+    <symbol id="i-radar" viewBox="0 0 24 24"><path d="M21 12h-8a1 1 0 1 0 -1 1v8a9 9 0 0 0 9 -9"/><path d="M16 9a5 5 0 1 0 -7 7"/><path d="M20.486 9a9 9 0 1 0 -11.482 11.495"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 7v5l3 3"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0"/><path d="M4 6v6a8 3 0 0 0 16 0v-6"/><path d="M4 12v6a8 3 0 0 0 16 0v-6"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13 -8l-13 -8"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-2"/><path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2"/><path d="M7 8l0 .01"/><path d="M7 16l0 .01"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l3 8l4 -16l3 8h4"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M21 12h-2c-.894 0 -1.662 -.857 -1.761 -2c-.296 -3.45 -.749 -6 -2.749 -6s-2.5 3.582 -2.5 8s-.5 8 -2.5 8s-2.452 -2.547 -2.749 -6c-.1 -1.147 -.867 -2 -1.763 -2h-2"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark"><svg><use href="#i-radar"/></svg></span><div><strong>SS-07 控制台</strong><span>视频与声呐 · RK3588</span></div></div>
+    <div class="kpis" aria-label="系统概览">
+      <div class="kpi"><svg><use href="#i-video"/></svg><div><span>视频在线</span><strong id="kpi-video">—</strong></div></div>
+      <div class="kpi"><svg><use href="#i-wave"/></svg><div><span>声呐有效</span><strong id="kpi-sonar">—</strong></div></div>
+      <div class="kpi"><svg><use href="#i-clock"/></svg><div><span>外部时码</span><strong id="kpi-timecode">—</strong></div></div>
+      <div class="kpi"><svg><use href="#i-database"/></svg><div><span>录像</span><strong id="kpi-storage">—</strong></div></div>
+    </div>
+    <div class="session-controls">
+      <span id="connection" class="status-pill" role="status">正在连接</span>
+      <span id="clock" class="clock">--:--:--</span>
+      <span id="session-label" class="session-label"></span>
+      <button id="logout" type="button" hidden>退出</button>
+    </div>
+  </header>
+
+  <section id="login-panel" class="panel login-panel" hidden>
+    <h2>登录 SS-07</h2>
+    <form id="login-form"><label>用户名<input name="username" autocomplete="username" pattern="[a-z][a-z0-9_-]{1,31}" required></label><label>密码<input name="password" type="password" autocomplete="current-password" minlength="12" maxlength="128" required></label><button type="submit" class="primary">登录</button></form>
+    <p id="login-message" role="status"></p>
+  </section>
+
+  <div id="workspace" class="shell" hidden>
+    <nav class="sidenav" aria-label="控制台导航">
+      <button type="button" data-view="overview" aria-current="page"><svg><use href="#i-dashboard"/></svg><span>实时监看</span></button>
+      <button type="button" data-view="recording-panel"><svg><use href="#i-play"/></svg><span>录像回放</span></button>
+      <button type="button" data-view="sonar-archive-panel"><svg><use href="#i-file"/></svg><span>声呐记录</span></button>
+      <button type="button" data-view="maintenance-panel"><svg><use href="#i-settings"/></svg><span>系统维护</span></button>
+    </nav>
+
+    <main class="content">
+      <section id="overview" class="view is-active" aria-label="实时监看">
+        <div class="overview-grid">
+          <section class="panel video-panel" aria-labelledby="video-title">
+            <div class="panel-head"><h2 id="video-title"><svg><use href="#i-video"/></svg>六路视频</h2><div class="panel-tools"><span class="hint">点击通道名称设为主画面</span><div class="segmented" role="group" aria-label="画面布局"><button type="button" data-layout="focus" aria-pressed="true">1＋5</button><button type="button" data-layout="equal" aria-pressed="false">均分</button></div></div></div>
+            <div id="streams" class="video-grid"></div>
+          </section>
+          <aside class="rail">
+            <section class="panel" aria-labelledby="sonar-title">
+              <div class="panel-head"><h2 id="sonar-title"><svg><use href="#i-wave"/></svg>五方向声呐</h2></div>
+              <div id="sonars" class="sonar-list"></div>
+            </section>
+            <section class="panel" aria-labelledby="system-title">
+              <div class="panel-head"><h2 id="system-title"><svg><use href="#i-server"/></svg>系统状态</h2></div>
+              <dl class="facts">
+                <div><dt><svg><use href="#i-clock"/></svg>外部时码</dt><dd id="timecode">暂无数据</dd></div>
+                <div><dt><svg><use href="#i-database"/></svg>录像存储</dt><dd id="storage">暂无数据</dd></div>
+                <div><dt><svg><use href="#i-server"/></svg>设备</dt><dd id="device">暂无数据</dd></div>
+              </dl>
+              <p id="updated" class="muted"></p>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section id="recording-panel" class="view panel recordings" aria-labelledby="recordings-title" hidden>
+        <div class="panel-head"><h2 id="recordings-title"><svg><use href="#i-play"/></svg>录像查询与回放</h2></div>
+        <form id="recording-search" class="recording-filters">
+          <label>通道<select name="channel"><option value="">全部通道</option><option value="front">前方</option><option value="back">后方</option><option value="left">左侧</option><option value="right">右侧</option><option value="down">下方</option><option value="sdi">主摄像机 · SDI</option></select></label>
+          <label>开始时间（本地）<input type="datetime-local" name="start"></label>
+          <label>结束时间（本地）<input type="datetime-local" name="end"></label>
+          <label>外部时码 epoch<input name="epoch" inputmode="numeric" pattern="[0-9]{1,20}" placeholder="可选"></label>
+          <label>时码起点（微秒）<input name="time_start_us" inputmode="numeric" pattern="[0-9]{1,20}" placeholder="需要 epoch"></label>
+          <label>时码终点（不含）<input name="time_end_us" inputmode="numeric" pattern="[0-9]{1,20}" placeholder="需要 epoch"></label>
+          <button type="submit" class="primary">查询</button>
+        </form>
+        <p id="recording-message" role="status">正在读取录像索引</p>
+        <div class="recording-table"><table><thead><tr><th>通道</th><th>开始时间</th><th>时长 / 大小</th><th>状态</th><th>操作</th></tr></thead><tbody id="recording-rows"></tbody></table></div>
+        <button id="recording-next" type="button" disabled>下一页</button>
+        <div id="recording-playback" hidden><p id="recording-selected"></p><video id="recording-video" controls playsinline preload="metadata"></video></div>
+      </section>
+
+      <section id="sonar-archive-panel" class="view panel recordings" aria-labelledby="sonar-archive-title" hidden>
+        <div class="panel-head"><h2 id="sonar-archive-title"><svg><use href="#i-file"/></svg>声呐采样记录</h2></div>
+        <form id="sonar-archive-search" class="recording-filters">
+          <label>方向<select name="direction"><option value="">全部方向</option><option value="front">前方</option><option value="back">后方</option><option value="left">左侧</option><option value="right">右侧</option><option value="down">下方</option></select></label>
+          <label>外部时码 epoch<input name="source_epoch" inputmode="numeric" pattern="[0-9]{1,20}" placeholder="可选"></label>
+          <label>时码起点（微秒）<input name="start_us" inputmode="numeric" pattern="[0-9]{1,20}" placeholder="需要 epoch"></label>
+          <label>时码终点（含）<input name="end_us" inputmode="numeric" pattern="[0-9]{1,20}" placeholder="需要 epoch"></label>
+          <button type="submit" class="primary">查询</button>
+        </form>
+        <p id="sonar-archive-message" role="status">正在读取采样记录</p>
+        <div class="recording-table"><table><thead><tr><th>方向</th><th>开始时间</th><th>记录数 / 大小</th><th>状态</th><th>操作</th></tr></thead><tbody id="sonar-archive-rows"></tbody></table></div>
+        <button id="sonar-archive-next" type="button" disabled>下一页</button>
+        <div id="sonar-sample-preview" hidden><h3>所选分段前 20 条记录</h3><p id="sonar-sample-message" role="status"></p><div class="recording-table"><table><thead><tr><th>方向 / 事件</th><th>距离</th><th>接收 UTC</th><th>时码关联</th></tr></thead><tbody id="sonar-sample-rows"></tbody></table></div></div>
+      </section>
+
+      <section id="maintenance-panel" class="view maintenance" hidden>
+        <div class="panel">
+          <div class="panel-head"><h2><svg><use href="#i-settings"/></svg>维护配置</h2></div>
+          <p class="muted">仅填写已确认的设备参数。未知设备保留空值；保存配置后需安排服务重启及设备验证。</p>
+          <form id="config-form"><label for="config-editor">设备配置（JSON）</label><textarea id="config-editor" rows="16" spellcheck="false" disabled></textarea><div class="actions"><button id="config-save" type="submit" class="primary" disabled>保存配置</button><button id="config-reload" type="button">重新读取</button></div></form>
+          <p id="config-message" role="status"></p>
+          <div class="actions"><button id="config-plan" type="button" disabled>检查应用影响</button><button id="config-apply" type="button" disabled>应用已保存配置</button><button id="config-recover" type="button" class="danger" disabled>重试恢复原配置</button></div>
+          <p id="config-plan-message" role="status"></p><pre id="config-application-status"></pre>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2><svg><use href="#i-activity"/></svg>运行与维护日志</h2></div>
+          <div class="actions"><label class="inline">日志来源<select id="log-source"><option value="access">登录与退出</option><option value="maintenance">配置与录像锁定</option><option value="rtsp">播放器登录与撤权</option><option value="application">配置应用与恢复</option><option value="recording">录像事件</option><option value="timecode">时码映射</option></select></label>
+          <button id="log-read" type="button">读取</button><button id="log-next" type="button" disabled>下一页</button><a id="log-export" download hidden>导出本页</a></div>
+          <p id="log-message" role="status"></p><pre id="log-rows"></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/session.js" defer></script><script src="/player.js" defer></script><script src="/app.js" defer></script><script src="/recordings.js" defer></script><script src="/sonar-archives.js" defer></script><script src="/maintenance.js" defer></script>
+</body>
+</html>

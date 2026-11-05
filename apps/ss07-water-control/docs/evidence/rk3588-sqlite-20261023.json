@@ -1,0 +1,11 @@
+{
+  "observed_at_utc": "2026-10-23T04:54:30.793452+00:00",
+  "evidence_kind": "local_observation",
+  "host": "192.168.3.233",
+  "scope": "read_only_python_sqlite_capability_check",
+  "python": "3.8.10",
+  "sqlite": "3.31.1",
+  "upsert_in_memory": true,
+  "application_deployed": false,
+  "hardware_verified": false
+}

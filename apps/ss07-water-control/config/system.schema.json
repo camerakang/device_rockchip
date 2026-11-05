@@ -1,0 +1,422 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ss07:system:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "device_id",
+    "api",
+    "cameras",
+    "sdi",
+    "sonar",
+    "timecode",
+    "storage"
+  ],
+  "properties": {
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rtsp_port": {"type": "integer", "minimum": 1024, "maximum": 65535},
+        "webrtc_port": {"type": "integer", "minimum": 1024, "maximum": 65535},
+        "ice_port": {"type": "integer", "minimum": 1024, "maximum": 65535},
+        "api_port": {"type": "integer", "minimum": 1024, "maximum": 65535},
+        "rtp_base_port": {"type": "integer", "minimum": 1024, "maximum": 65527}
+      }
+    },
+    "schema_version": {
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "device_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "host",
+        "port"
+      ],
+      "properties": {
+        "host": {
+          "type": "string",
+          "enum": [
+            "127.0.0.1"
+          ]
+        },
+        "port": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 65535
+        }
+      }
+    },
+    "cameras": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "down"
+      ],
+      "properties": {
+        "front": {
+          "$ref": "#/$defs/camera"
+        },
+        "back": {
+          "$ref": "#/$defs/camera"
+        },
+        "left": {
+          "$ref": "#/$defs/camera"
+        },
+        "right": {
+          "$ref": "#/$defs/camera"
+        },
+        "down": {
+          "$ref": "#/$defs/camera"
+        }
+      }
+    },
+    "sdi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rtsp_url"
+      ],
+      "properties": {
+        "rtsp_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^rtsp(s)?://[^\\s/@?#]+(?::[0-9]+)?/[^\\s@?#]*$"
+        }
+      }
+    },
+    "sonar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding",
+        "uart",
+        "vendor_protocol",
+        "nodes"
+      ],
+      "properties": {
+        "binding": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^/dev/serial/by-(id|path)/[^/\\s]+$"
+        },
+        "uart": {
+          "$ref": "#/$defs/uart"
+        },
+        "vendor_protocol": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "nodes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "front",
+            "back",
+            "left",
+            "right",
+            "down"
+          ],
+          "properties": {
+            "front": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "address"
+              ],
+              "properties": {
+                "address": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              }
+            },
+            "back": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "address"
+              ],
+              "properties": {
+                "address": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              }
+            },
+            "left": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "address"
+              ],
+              "properties": {
+                "address": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              }
+            },
+            "right": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "address"
+              ],
+              "properties": {
+                "address": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              }
+            },
+            "down": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "address"
+              ],
+              "properties": {
+                "address": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1,
+                  "maxLength": 256
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "timecode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding",
+        "uart",
+        "read_only",
+        "wire_version"
+      ],
+      "properties": {
+        "binding": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^/dev/serial/by-(id|path)/[^/\\s]+$"
+        },
+        "uart": {
+          "$ref": "#/$defs/uart"
+        },
+        "read_only": {
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        },
+        "wire_version": {
+          "type": "string",
+          "enum": [
+            "0x12"
+          ]
+        }
+      }
+    },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mountpoint",
+        "recordings_dir"
+      ],
+      "properties": {
+        "recording_enabled": {"type": "boolean"},
+        "sonar_recording_enabled": {"type": "boolean"},
+        "filesystem_uuid": {"type": ["string", "null"], "pattern": "^[A-Za-z0-9-]{1,64}$"},
+        "segment_seconds": {"type": "integer", "minimum": 2, "maximum": 3600},
+        "reserve_bytes": {"type": "string", "pattern": "^[1-9][0-9]{0,18}$"},
+        "retention_days": {"type": ["integer", "null"], "minimum": 1, "maximum": 3650},
+        "mountpoint": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^/data/ss07$"
+        },
+        "recordings_dir": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^/data/ss07/recordings$"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "camera": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "binding",
+        "mode"
+      ],
+      "properties": {
+        "binding": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^/dev/v4l/by-(id|path)/[^/\\s]+$"
+        },
+        "mode": {
+          "$ref": "#/$defs/mode"
+        }
+      }
+    },
+    "mode": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "fourcc",
+        "width",
+        "height",
+        "fps_num",
+        "fps_den"
+      ],
+      "properties": {
+        "fourcc": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^[A-Z0-9]{4}$"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16384
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16384
+        },
+        "fps_num": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "fps_den": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        }
+      }
+    },
+    "uart": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baud",
+        "data_bits",
+        "parity",
+        "stop_bits"
+      ],
+      "properties": {
+        "baud": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 4000000
+        },
+        "data_bits": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "enum": [
+            null,
+            7,
+            8
+          ]
+        },
+        "parity": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            null,
+            "none",
+            "even",
+            "odd"
+          ]
+        },
+        "stop_bits": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "enum": [
+            null,
+            1,
+            2
+          ]
+        }
+      }
+    }
+  }
+}

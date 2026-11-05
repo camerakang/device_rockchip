@@ -1,0 +1,64 @@
+{
+  "evidence_kind": "installation_software_validation",
+  "app_version": "0.8.0",
+  "whole_project_complete": false,
+  "hardware_verified": false,
+  "deployed": false,
+  "flashed": false,
+  "committed": false,
+  "pushed": false,
+  "application_package": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/installation-20261023/arm64-package/ss07-0.8.0-linux-arm64.tar.gz",
+    "sha256": "23249385e1ad9d666aaf91d59d96e66a78898885e6e7970a17eeb8aaf9ee8768"
+  },
+  "evidence": {
+    "arm64": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/installation-20261023/arm64-tests-final/result.json",
+      "sha256": "46c2bb2e656ad3f83712939fba77eb40c6087ff415983e416bdf8e35824d2b6b"
+    },
+    "systemd": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/installation-20261023/systemd-final/result.json",
+      "sha256": "cf9c90552f24a22361023284eb411cf48b3aef050f9c9b1c42b9d1cd20c48c11"
+    },
+    "package": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/installation-20261023/package-checked/result.json",
+      "sha256": "05a2be07b566a5f84c7e6247626ce12de5459c7a8b1fddf81d5c0331f90fae1d"
+    },
+    "integration": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/installation-20261023/integration-final/result.json",
+      "sha256": "d3c8b56ae6f9ab98e50c0731f42d0d27c20f9f377a60ecb77d7dce3c1c6254bd"
+    }
+  },
+  "tests": {
+    "arm64_python": "3.8.10",
+    "arm64_test_count": 152,
+    "service_templates": 10,
+    "target_templates": 1,
+    "package_files": 118,
+    "package_symlinks": 1,
+    "runtime_files_match_workspace": 73,
+    "final_complete_segments": 144,
+    "real_worker_processes": 12,
+    "recording_metadata_and_file_digests_preserved": true
+  },
+  "resolved_test_failures": [
+    {
+      "attempt": "integration-01",
+      "cause": "test Unix socket paths exceeded sockaddr limit",
+      "resolution": "short private runtime moved to evidence after stopping"
+    },
+    {
+      "attempt": "integration-02 and integration-03",
+      "cause": "loopback health check did not use the API required public Host",
+      "resolution": "use provisioned gateway authority and add regression test"
+    }
+  ],
+  "limits": [
+    "synthetic native video and test-only directory volume; no physical cameras/sonar/timecode/disk acceptance",
+    "process lifecycle adapter, not live systemd or distinct production UID permissions",
+    "interrupted journal injection, not physical power-cut testing",
+    "same data contract only; unknown schema changes require an offline migration/recovery plan",
+    "full IMG remains validated 0.6.1; new 0.8.0 image recipe not yet built",
+    "external RTSP authorization, sonar wire driver and real eight-hour acceptance remain outstanding"
+  ]
+}

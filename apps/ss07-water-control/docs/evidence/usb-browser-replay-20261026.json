@@ -1,0 +1,304 @@
+{
+  "evidence_kind": "hardware_capture_replay_browser_compatibility",
+  "live_cameras": false,
+  "board_application_deployed": false,
+  "replay_timestamps": true,
+  "cases": [
+    {
+      "name": "capture_front_1080p25",
+      "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/front/capture.h264",
+      "capture_result": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/front/capture-result.json",
+      "rtp_port": 45711
+    },
+    {
+      "name": "capture_down_1080p25",
+      "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/down/capture.h264",
+      "capture_result": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-08/down/capture-result.json",
+      "rtp_port": 56562
+    },
+    {
+      "name": "capture_slow_720p25",
+      "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/back/capture.h264",
+      "capture_result": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/back/capture-result.json",
+      "rtp_port": 51463
+    }
+  ],
+  "source_kind": "Exact recorded hardware bytes; paced replay at 25fps is a test clock, not original capture cadence.",
+  "passed": true,
+  "media_paths_ready": [
+    "capture_down_1080p25",
+    "capture_front_1080p25",
+    "capture_slow_720p25"
+  ],
+  "browser_returncode": 0,
+  "browser": {
+    "evidence_kind": "hardware_capture_replay_browser_compatibility",
+    "passed": true,
+    "live_devices": false,
+    "replay_timestamps": true,
+    "first": [
+      {
+        "name": "capture_front_1080p25",
+        "frames": 62,
+        "width": 1920,
+        "height": 1080,
+        "connection": "connected",
+        "error": null
+      },
+      {
+        "name": "capture_down_1080p25",
+        "frames": 63,
+        "width": 1920,
+        "height": 1080,
+        "connection": "connected",
+        "error": null
+      },
+      {
+        "name": "capture_slow_720p25",
+        "frames": 63,
+        "width": 1280,
+        "height": 720,
+        "connection": "connected",
+        "error": null
+      }
+    ],
+    "later": [
+      {
+        "name": "capture_front_1080p25",
+        "frames": 100,
+        "width": 1920,
+        "height": 1080,
+        "connection": "connected",
+        "error": null
+      },
+      {
+        "name": "capture_down_1080p25",
+        "frames": 101,
+        "width": 1920,
+        "height": 1080,
+        "connection": "connected",
+        "error": null
+      },
+      {
+        "name": "capture_slow_720p25",
+        "frames": 101,
+        "width": 1280,
+        "height": 720,
+        "connection": "connected",
+        "error": null
+      }
+    ],
+    "stats": [
+      {
+        "name": "capture_front_1080p25",
+        "stats": [
+          {
+            "framesDecoded": 100,
+            "framesDropped": 0,
+            "packetsReceived": 179,
+            "packetsLost": 0,
+            "frameWidth": 1920,
+            "frameHeight": 1080,
+            "framesPerSecond": 25
+          }
+        ]
+      },
+      {
+        "name": "capture_down_1080p25",
+        "stats": [
+          {
+            "framesDecoded": 101,
+            "framesDropped": 0,
+            "packetsReceived": 375,
+            "packetsLost": 0,
+            "frameWidth": 1920,
+            "frameHeight": 1080,
+            "framesPerSecond": 25
+          }
+        ]
+      },
+      {
+        "name": "capture_slow_720p25",
+        "stats": [
+          {
+            "framesDecoded": 101,
+            "framesDropped": 0,
+            "packetsReceived": 161,
+            "packetsLost": 0,
+            "frameWidth": 1280,
+            "frameHeight": 720,
+            "framesPerSecond": 25
+          }
+        ]
+      }
+    ],
+    "scope": "Development-host RTP replay of exact hardware capture bytes through pinned MediaMTX into Chromium. Checks that all three clips decode and progress; no full-clip frame-count, product API/UI, RK deployment, original cadence or latency acceptance."
+  },
+  "process_exits": {
+    "capture_slow_720p25": 0,
+    "capture_down_1080p25": 0,
+    "capture_front_1080p25": 0,
+    "mediamtx": 0
+  },
+  "runtime_files": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstapp.so",
+      "sha256": "8862b59baea6b95de7cb4b45afbe54ed5ec4b40d78b8eb89fcd94ee12b7563ed"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstcoreelements.so",
+      "sha256": "bad8c42bce30651eecb6397871af2a6ef15b1985fe98e6be2e015748c5ec7c79"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstrtp.so",
+      "sha256": "7de9741c7909edb8cfa7c9fc39e1e6b53458f8c725d5309cc122bd09681a81e2"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstudp.so",
+      "sha256": "9bf07e16de9e363de8ff6c6f152c5b1113e822af16aa77084a359515167d5f63"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstvideoparsersbad.so",
+      "sha256": "c72a0c17aafb136394144c00e518eb51f468c0e510cc764a9f6364c4ec52ccd5"
+    }
+  ],
+  "chromium_version": {
+    "returncode": 0,
+    "stdout": "Google Chrome for Testing 153.0.8010.12"
+  },
+  "whole_clip_frame_counts_verified": false,
+  "production_api_or_ui_used": false,
+  "offline_decoder_count_discrepancies_resolved": false,
+  "raw_files": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/browser-result.json",
+      "bytes": 2394,
+      "sha256": "4650781862fdda19ee601b08e7055ecce8e288f5e7a9b4048b11aba27898fa72"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/browser.cjs",
+      "bytes": 4131,
+      "sha256": "2660e0e8cc2034c49cfc22b6926094d0612ffd1e4969002d01af569f526f5d53"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/browser.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/browser.png",
+      "bytes": 340661,
+      "sha256": "26c489340c5c02ae773772bf2313bc0b74b3c9a2c6007ddaf0596e3a5556d72a"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/capture_down_1080p25-sender-result.json",
+      "bytes": 574,
+      "sha256": "d5e0dbaf70aa7a46635fa089c3a6dd5a7e4e57d39fd5cee1d30a91962a80059f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/capture_down_1080p25.json",
+      "bytes": 299,
+      "sha256": "72bf2858772b476c688f4ed4214c7f417721f44376e32951a9451214764c5a4f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/capture_down_1080p25.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/capture_front_1080p25-sender-result.json",
+      "bytes": 575,
+      "sha256": "a661085b2b44446a7b9cb9d1d04a17828dc91268603a53c80dde54ae71b2a4a1"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/capture_front_1080p25.json",
+      "bytes": 302,
+      "sha256": "fc17d292308cba3606e3183c331cf647241c27531cbb109f7bb44fc81b7e1e3c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/capture_front_1080p25.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/capture_slow_720p25-sender-result.json",
+      "bytes": 573,
+      "sha256": "8debc5ba9b6284452a4ef7b111921a230f3c8694e1abd379bb2a25b591b8907b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/capture_slow_720p25.json",
+      "bytes": 298,
+      "sha256": "d7b59c727c1f1eb5fed2e72803f0bb9af044d2f42ddaced5f29d2c265f3ed403"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/capture_slow_720p25.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/chromium-version.json",
+      "bytes": 95,
+      "sha256": "4b180baf9d6b9887d33d7d6c185b14290dfb3867601b26ebec118d700ffe0a02"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/index.html",
+      "bytes": 2538,
+      "sha256": "641aaf740ea5dece78d9254d1b1352ac7a603d327aa90566087c7be6ffa08430"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/mediamtx.json",
+      "bytes": 2137,
+      "sha256": "0c71273d59f5ff28938b79acd57dbee6d9d8e730874b60f92f2e35928488e9ec"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/mediamtx.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstapp.so",
+      "bytes": 14552,
+      "sha256": "8862b59baea6b95de7cb4b45afbe54ed5ec4b40d78b8eb89fcd94ee12b7563ed"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstcoreelements.so",
+      "bytes": 447024,
+      "sha256": "bad8c42bce30651eecb6397871af2a6ef15b1985fe98e6be2e015748c5ec7c79"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstrtp.so",
+      "bytes": 653112,
+      "sha256": "7de9741c7909edb8cfa7c9fc39e1e6b53458f8c725d5309cc122bd09681a81e2"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstudp.so",
+      "bytes": 94328,
+      "sha256": "9bf07e16de9e363de8ff6c6f152c5b1113e822af16aa77084a359515167d5f63"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/plugins/libgstvideoparsersbad.so",
+      "bytes": 289424,
+      "sha256": "c72a0c17aafb136394144c00e518eb51f468c0e510cc764a9f6364c4ec52ccd5"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/replay-rtp.py",
+      "bytes": 2932,
+      "sha256": "58f1034ebe473ef07516c49766b4eb4ae0434e62d12ad2c38532411b2a3fa332"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/result.json",
+      "bytes": 5283,
+      "sha256": "a1a552f27293d4add423cc83b7b53011080e5a0d492420aa007a4c70ac0f8530"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-browser-replay-20261026/run.py",
+      "bytes": 8655,
+      "sha256": "4af0734021ee1ffaac6591590f73ecf4d31f9aed5856a7f31e3dda785a57ab05"
+    }
+  ],
+  "limits": [
+    "Replay is paced at 25fps using test timestamps; the slow original capture remains about 12fps and timed out.",
+    "Browser checks are short and begin mid-capture. They do not compare all AUs against all decoded frames.",
+    "No real-time camera, current online device, production API/dashboard, RK deployment, storage, latency or sustained-load acceptance."
+  ]
+}

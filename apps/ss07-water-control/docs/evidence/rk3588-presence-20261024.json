@@ -1,0 +1,22 @@
+{
+  "evidence_kind": "readonly_board_presence_check",
+  "recorded_at_host_utc": "2026-10-23T16:25:33.859426+00:00",
+  "board_ip": "192.168.3.233",
+  "ssh_exit_code": 0,
+  "board_reported_time": "2026-10-24T00:25:03+08:00",
+  "board_time_calibrated": false,
+  "kernel_release": "5.10.160",
+  "video_character_devices": 0,
+  "serial_usb_acm_character_devices": 0,
+  "stable_video_and_serial_links_present": false,
+  "usb_observation": "one external 480M four-port hub, no camera or USB serial interface enumerated",
+  "block_device_observation": "only 125069950976-byte eMMC and its partitions; no nominal 1 TB recording disk",
+  "application_deployed": false,
+  "capture_started": false,
+  "serial_opened": false,
+  "configuration_changed": false,
+  "raw_log": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/board-readonly-check.log",
+    "sha256": "46992dbe59907a8c10bf8fb87f1bf1d70b738f8f0ffd42fc8935b558f1924af1"
+  }
+}

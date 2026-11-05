@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "software_validation_service_recipe_no_sonar_hardware",
+  "recorded_at_utc": "2026-10-23T15:44:51.798339+00:00",
+  "source_status": "unreleased_working_tree_increment",
+  "source_version": "0.10.0",
+  "release_baseline": "0.9.0",
+  "source_manifest": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/source-manifest.json",
+    "sha256": "ffff5c6da5c3d29c98e24d22066001e3234c632f0ad394cb60b32abeda83313d",
+    "files": 152
+  },
+  "source_changes_compared_to": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/source-manifest.json",
+  "source_changes": [
+    {
+      "path": "packaging/image/install-rootfs.sh",
+      "status": "modified",
+      "sha256": "1c6140ff9eb9db99d2ff5075ba0514be2f972841ca57bcf1f968d5b6df28d6d9"
+    },
+    {
+      "path": "packaging/image/ss07.target",
+      "status": "modified",
+      "sha256": "13ad996302be70de67e405acb52f62a6813a9992978eac74e9fc11c9030fc4be"
+    },
+    {
+      "path": "src/ss07/application.py",
+      "status": "modified",
+      "sha256": "f0d9ee852fbcbc163c6d42d0d42ce7d2689e69ad3bf42cf2ec424ecd28d8d71f"
+    },
+    {
+      "path": "src/ss07/config_runtime.py",
+      "status": "modified",
+      "sha256": "97ea827831f51f862ac578a56a0d4f58c0d26fb974ad9957a7259e4c5f5ba14a"
+    },
+    {
+      "path": "src/ss07/release_install.py",
+      "status": "modified",
+      "sha256": "84ca05b98fd077595b24f5e67d67033e8b26bc69d841d2e5d96b8a124e1e893c"
+    },
+    {
+      "path": "src/ss07/release_restore.py",
+      "status": "modified",
+      "sha256": "b2cf7f8d7116b3b90e30cabf8a08b9a4a4d084a2d651dd64cfa0a8d97f4e7050"
+    },
+    {
+      "path": "systemd/ss07-api.service",
+      "status": "modified",
+      "sha256": "6bfd500e1929c7466015672af8c1c21c28f6720944a2f8ce951f9871897c01b5"
+    },
+    {
+      "path": "systemd/ss07-sonar.service",
+      "status": "new",
+      "sha256": "72ba4b5df870adaffd55308101dbbb6c004409d71b5ddabd6da3bc11d811ab98"
+    },
+    {
+      "path": "systemd/ss07-sysusers.conf",
+      "status": "modified",
+      "sha256": "be27a08ed902a79a1bdb9a67617e94d167647896561151ae7ebfcc48036744a2"
+    },
+    {
+      "path": "systemd/ss07-tmpfiles.conf",
+      "status": "modified",
+      "sha256": "02ca315e137fdf46d0c1bd89bf0b005bf73defc55e6099f30e5735ac0c8366bd"
+    },
+    {
+      "path": "tests/test_sonar_services.py",
+      "status": "new",
+      "sha256": "319de033a70c361030415928fcfdac5edba70a6ba616fc2bc6897c669e3ac9b9"
+    },
+    {
+      "path": "tools/test-configuration-application.py",
+      "status": "modified",
+      "sha256": "bc3229240d2a4990d5c3bebef6b91e3db9a45eee806bf2112aaacbc75b990f81"
+    },
+    {
+      "path": "tools/test-release-installation.py",
+      "status": "modified",
+      "sha256": "b11ea17d1c5405a60efc610a8da99c735edf59ee012547dbf9076f65fb7c01b8"
+    },
+    {
+      "path": "tools/verify-image.py",
+      "status": "modified",
+      "sha256": "c6ceee9f09f9b06c90896d7881befe663c6d433253633020497dcb17ddd964c3"
+    }
+  ],
+  "native": {
+    "python": "3.8.20",
+    "machine": "x86_64",
+    "tests": 223,
+    "elapsed_seconds": 35.499,
+    "passed": true
+  },
+  "arm64": {
+    "evidence_kind": "arm64_qemu_management_tests",
+    "runtime": {
+      "python": "3.8.10",
+      "machine": "aarch64",
+      "sqlite": "3.31.1",
+      "openssl": "OpenSSL 1.1.1f  31 Mar 2020"
+    },
+    "tests": 223,
+    "returncode": 0,
+    "elapsed_seconds": 75.337,
+    "isolation": "bwrap user/mount namespace, read-only sysroot/app, private tmp/dev",
+    "hardware_validated": false,
+    "deployed": false
+  },
+  "systemd_static": {
+    "evidence_kind": "arm64_systemd_static_validation",
+    "result": "passed",
+    "systemd_version": "systemd 245 (245.4-4ubuntu3.24)",
+    "returncode": 0,
+    "units": {
+      "ss07-api.service": "6bfd500e1929c7466015672af8c1c21c28f6720944a2f8ce951f9871897c01b5",
+      "ss07-application.service": "9792670a25b0f71339e5914f8a1d6584c8a53bda46338e73b4fc80a5add0bdbf",
+      "ss07-camera@.service": "2a354249f44a22472b307839ee24d01ef20dfcec4414ba770cb67baf4dada451",
+      "ss07-config-recover.service": "c1ba1bf8b4da5fc4861b6ce98b5428d336684780bf8db2a649b9a08e6834ab16",
+      "ss07-gateway.service": "038f1c087c2130057823437dd8cbccf49c66c40e76c582fed70ec62f9b192097",
+      "ss07-maintenance.service": "9c5ff5eb43a7a33ecf39cbfdaaa33a136adab9ae99964eb5ded21fddce4f778a",
+      "ss07-media.service": "a8f9997570f3f797f5543c4522dfbea88f27bd90f0e6cd094b111f04aadd1abc",
+      "ss07-release-recover.service": "029d370a00610749d81433651aee62b8f0b74e4ede38512fa556b8801971dc5c",
+      "ss07-sonar.service": "72ba4b5df870adaffd55308101dbbb6c004409d71b5ddabd6da3bc11d811ab98",
+      "ss07-storage.service": "97f2ec667ac467c46a044b6f3a95b9187c55027ddf25dd0ddf6206ba3cac0a9e",
+      "ss07-timecode.service": "943fade6b8cbc55f2b1a2632b903524f06e62fc6ea0488a75103486bbc0c0d9c",
+      "ss07.target": "13ad996302be70de67e405acb52f62a6813a9992978eac74e9fc11c9030fc4be"
+    },
+    "dropins": {
+      "etc/systemd/system/ss07-api.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-application.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-camera@back.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-camera@down.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-camera@front.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-camera@left.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-camera@right.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-config-recover.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-gateway.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-maintenance.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-media.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-sonar.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-storage.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb",
+      "etc/systemd/system/ss07-timecode.service.d/00-ss07-release.conf": "b4e529ba358e4861ac4bb428281ea59a3cfc32188d567deb312742dc6f6fe0eb"
+    },
+    "recovery_helper_sha256": "b2cf7f8d7116b3b90e30cabf8a08b9a4a4d084a2d651dd64cfa0a8d97f4e7050",
+    "executable_paths_rewritten": false,
+    "services_started": false,
+    "host_users_changed": false,
+    "live_service_permissions_verified": false,
+    "hardware_verified": false
+  },
+  "staging": {
+    "runtime_files_matched": 91,
+    "host_service_or_account_changes": false
+  },
+  "application_integration": {
+    "result": "passed",
+    "evidence_kind": "synthetic_test",
+    "lifecycle_backend": "local real subprocesses; systemd backend not exercised",
+    "browser": {
+      "result": "passed",
+      "evidence_kind": "synthetic_test",
+      "hardware_verified": false,
+      "ui_save_preview_apply": true,
+      "session_restart_requires_login": true,
+      "successful_apply": true,
+      "occupied_listener_automatic_rollback": true,
+      "desired_edit_retained": true,
+      "unconfigured_device_label": true,
+      "application_audit_export": true,
+      "decoded": {
+        "before": [
+          {
+            "channel": "front",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "back",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "left",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "right",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "down",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "sdi",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          }
+        ],
+        "afterApply": [
+          {
+            "channel": "front",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "back",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "left",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "right",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "down",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "sdi",
+            "frames": 45,
+            "width": 640,
+            "hidden": true
+          }
+        ],
+        "afterRollback": [
+          {
+            "channel": "front",
+            "frames": 47,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "back",
+            "frames": 47,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "left",
+            "frames": 47,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "right",
+            "frames": 47,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "down",
+            "frames": 47,
+            "width": 640,
+            "hidden": true
+          },
+          {
+            "channel": "sdi",
+            "frames": 47,
+            "width": 640,
+            "hidden": true
+          }
+        ]
+      },
+      "javascript_exceptions": []
+    },
+    "apply": {
+      "transaction": {
+        "schema_version": 1,
+        "operation_id": "f21b6e4c-7086-4f66-8c33-951d4151cc90",
+        "actor": "admin",
+        "phase": "APPLIED",
+        "previous_revision": "ce47f92f082d8cefa10d55bbea1b76a3e591bc9acf886482ab4410ea4b2a09ac",
+        "target_revision": "f7462ea7bca3d58ee5e16f7430ab8fd21eadd2149b0ee5e1886c219049b75658",
+        "services": [
+          "api"
+        ],
+        "results": {
+          "api": {
+            "state": "VERIFIED",
+            "reason": "running_required",
+            "instance_id": "17af2e3b-3cb4-47e4-8674-cb11de4d0fad",
+            "service_revision": "f7462ea7bca3d58ee5e16f7430ab8fd21eadd2149b0ee5e1886c219049b75658"
+          }
+        },
+        "error": null,
+        "configuration_restored": false
+      },
+      "native_media_and_recorder_identity_unchanged": true,
+      "six_recorders_continue": true,
+      "counts": {
+        "back": 5,
+        "down": 5,
+        "front": 5,
+        "left": 5,
+        "right": 5,
+        "sdi": 5
+      }
+    },
+    "configuration_rollback": {
+      "transaction": {
+        "schema_version": 1,
+        "operation_id": "fe94bed5-95c0-48e8-83d9-73b9851fce81",
+        "actor": "admin",
+        "phase": "ROLLED_BACK",
+        "previous_revision": "f7462ea7bca3d58ee5e16f7430ab8fd21eadd2149b0ee5e1886c219049b75658",
+        "target_revision": "baba5c9d6aef6b7a35e38bd5c2cb6fa0e0abb3c5b9cf408eaba0d542fbc1329a",
+        "services": [
+          "api",
+          "gateway"
+        ],
+        "results": {
+          "api": {
+            "state": "VERIFIED",
+            "reason": "running_required",
+            "instance_id": "42cdeb60-12a8-4785-9279-f377cc27030c",
+            "service_revision": "f7462ea7bca3d58ee5e16f7430ab8fd21eadd2149b0ee5e1886c219049b75658"
+          },
+          "gateway": {
+            "state": "VERIFIED",
+            "reason": "running_required",
+            "instance_id": "d09555bc-9574-4e69-822a-407cd09c50a1",
+            "service_revision": "d0d5f2f2119a4e9abca721be50541c00870fc96e91e87ee7d55d24f01c21e592"
+          }
+        },
+        "error": "configuration_health_timeout",
+        "configuration_restored": true
+      },
+      "native_media_and_recorder_identity_unchanged": true,
+      "six_recorders_continue": true,
+      "counts": {
+        "back": 21,
+        "down": 21,
+        "front": 21,
+        "left": 21,
+        "right": 21,
+        "sdi": 21
+      }
+    },
+    "sonar_observation": {
+      "state": "UNAVAILABLE",
+      "age_ms": 112,
+      "reason": null,
+      "instance_id": "cd8bd82d-0443-4b1d-b387-5c3f6eab7956",
+      "seq": "105",
+      "observed_monotonic_us": "295164322060",
+      "config_revision": "ce47f92f082d8cefa10d55bbea1b76a3e591bc9acf886482ab4410ea4b2a09ac",
+      "service_revision": "f8c53dbdc948a30f309ea72aa7843288a6f1938d8802d91fd8da445695b7c11e",
+      "payload": {
+        "reason": "sonar_not_configured",
+        "protocol_id": null,
+        "serial_connected": false,
+        "journal": {
+          "error": null,
+          "queued_events": 0,
+          "dropped_events": "0",
+          "last_committed_monotonic_us": null,
+          "data_disk_archive": false
+        },
+        "archive": {
+          "enabled": false,
+          "state": "DISABLED",
+          "reason": "sonar_not_configured",
+          "queued_events": 0,
+          "dropped_events": "0",
+          "written_events": "0",
+          "last_committed_monotonic_us": null,
+          "active_archive_id": null,
+          "data_disk_archive": true,
+          "volume_uuid": null,
+          "recovery_failures": 0
+        }
+      }
+    }
+  },
+  "earlier_failed_test_environment_attempts": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/application-integration/result.json",
+      "sha256": "ea86a1fe1d0e80dca2735b23cd5e3aea691d2b2c079f43658c98ebf9d22df40a",
+      "reason": "test_x264enc_plugin_not_loaded"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/application-integration-02/result.json",
+      "sha256": "52f44e80ef575f9ead7040223aa0cd6cfeabedf45e1e57e20aa837714504a27b",
+      "reason": "test_h264parse_plugin_and_codecparsers_not_loaded"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/python38-unittest.log",
+      "sha256": "620072b76019409bf72bf3502cb7bb677cb658cf6289d94814b8e1844784a849"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/arm64-tests/result.json",
+      "sha256": "c5c34520f64dd27593072b13b3b3614389ce7a4fd5f1d75049323b11d558bb63"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/arm64-tests/unittest.log",
+      "sha256": "6ea45e48b77a119c6074b374be3fb8be83109ea57e2d4930d2903a5fc9623353"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/systemd-static/result.json",
+      "sha256": "1011feba5ee884b2aeeda436008aa0238ca40bfea6cbc6ff2cc0bda6a7dfd1ad"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/systemd-static/verify.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/staging-checks.json",
+      "sha256": "ebacdbad783305a0ecaedf5193d45a9d2c1306fbfa0d2210eafbd4e43a8601ba"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/media-prerequisites.json",
+      "sha256": "cc69b670058638d981b55189d3e178f331fd450bba226940e5918e830a98f72c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/application-integration-03/result.json",
+      "sha256": "102a1213a4d55088a1b79ee5204645f176a274cab52c02881999096d6273aa6f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/application-integration-03/browser-configuration.json",
+      "sha256": "0aff65ca3861ba7f7bd84028deae96f9d9e0b0c930b1f6c916f4bb5ce4329ce3"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-services-20261023/application-integration-03/browser.log",
+      "sha256": "b3f001941390139fec447a8a78734fe1c67a737ad384f4d1c7465607422e5105"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control/docs/evidence/sonar-archive-validation.json",
+      "sha256": "5c449b8a18c2d1af74a617a2eb27891facd9cfc1be52288f6666ed9d06f1cf5b"
+    }
+  ],
+  "limitations": [
+    "manufacturer_protocol_unavailable",
+    "physical_serial_transport_not_implemented",
+    "no_sonar_hardware_measurement",
+    "sonar_configuration_changes_still_rejected_without_vendor_driver",
+    "no_0.9.0_to_0.10.0_migration_or_cross_contract_rollback",
+    "actual_systemd_uid_device_and_volume_permissions_not_verified",
+    "real_data_volume_sonar_subtree_requires_owner_preparation",
+    "no_real_data_disk_throughput_hotplug_or_powerloss_validation",
+    "no_new_release_package_or_image",
+    "no_new_kernel_boot_or_eight_hour_hardware_acceptance"
+  ],
+  "deployed": false,
+  "flashed": false,
+  "committed": false,
+  "pushed": false,
+  "goal_complete": false
+}

@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-23",
+  "version": "0.4.0",
+  "hardware_verified": false,
+  "unit_tests": {
+    "CPython_3.10.12": {
+      "tests": 57,
+      "result": "passed"
+    },
+    "CPython_3.8.20": {
+      "tests": 57,
+      "result": "passed"
+    }
+  },
+  "native_media": {
+    "input": "six synthetic 640x360 H264 at 25fps",
+    "result": "passed",
+    "mediamtx": "v1.21.2",
+    "completed_files": 55,
+    "incomplete_locked_files_after_kill": 6
+  },
+  "browser": {
+    "mp4_decode": "passed",
+    "range": "passed",
+    "seek": "passed",
+    "download_content_match": "passed",
+    "channel_filter": "passed"
+  },
+  "volume": {
+    "environment": "private user/mount namespace tmpfs",
+    "unmount_gate": "passed",
+    "native_fd_no_system_disk_fallback": "passed"
+  },
+  "systemd_templates": {
+    "static_verify_exit_code": 0,
+    "method": "private namespace with staged /opt; no service start",
+    "warnings": "unrelated host netplan permission and snapd RestartMode"
+  },
+  "sysusers": {
+    "result": "passed",
+    "scope": "temporary isolated root only",
+    "host_users_modified": false,
+    "hardware_verified": false
+  },
+  "target_sqlite_capability": {
+    "observed_at_utc": "2026-10-23T04:54:30.793452+00:00",
+    "evidence_kind": "local_observation",
+    "host": "192.168.3.233",
+    "scope": "read_only_python_sqlite_capability_check",
+    "python": "3.8.10",
+    "sqlite": "3.31.1",
+    "upsert_in_memory": true,
+    "application_deployed": false,
+    "hardware_verified": false
+  },
+  "outstanding": [
+    "ARM64 application runtime",
+    "real USB/SE2017 video",
+    "real data disk/space/hotplug/power loss",
+    "timecode receiver and association",
+    "sonar protocol and hardware",
+    "role authentication and network deployment",
+    "complete SDK image",
+    "8-hour hardware acceptance"
+  ]
+}

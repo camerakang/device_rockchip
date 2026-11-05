@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-23T16:18:53.240336+00:00",
+  "phase": "sonar_config_migration",
+  "app_version": "0.10.0",
+  "result": "passed",
+  "release_status": "local_verified_candidate",
+  "hardware_validated": false,
+  "deployed": false,
+  "flashed": false,
+  "committed": false,
+  "pushed": false,
+  "goal_complete": false,
+  "user_constraints": {
+    "hub_mapping": {
+      "1.2": "front",
+      "1.3.1": "back",
+      "1.3.2": "left",
+      "1.3.3": "right",
+      "1.3.4": "down"
+    },
+    "sonar_hardware_available": false,
+    "timecode_adapter": "USB-RS485",
+    "timecode_baud": 500000,
+    "other_uart_parameters": null,
+    "nominal_recording_capacity_bytes": "1000000000000",
+    "recording_disk_connected": false
+  },
+  "native_tests": {
+    "python": "3.8.20",
+    "machine": "x86_64",
+    "tests": 239,
+    "elapsed_seconds": 38.57,
+    "returncode": 0
+  },
+  "arm64_tests": {
+    "evidence_kind": "arm64_qemu_management_tests",
+    "runtime": {
+      "python": "3.8.10",
+      "machine": "aarch64",
+      "sqlite": "3.31.1",
+      "openssl": "OpenSSL 1.1.1f  31 Mar 2020"
+    },
+    "tests": 239,
+    "returncode": 0,
+    "elapsed_seconds": 82.58,
+    "isolation": "bwrap user/mount namespace, read-only sysroot/app, private tmp/dev",
+    "hardware_validated": false,
+    "deployed": false
+  },
+  "source_manifest": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/source-manifest.json",
+    "sha256": "df98b3203b7d0a479578c8be4d30f82e1673e5eaa35652acfc16778dcd478f94",
+    "files": 154
+  },
+  "application_package": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/arm64-candidate-03/ss07-0.10.0-linux-arm64.tar.gz",
+    "sha256": "1b1a359f5fd3ad9a5493fb2c97e5db6491c567574ff0e3629785eb844ebc1075",
+    "size_bytes": 46755164,
+    "files_verified": 144,
+    "symlinks_verified": 1,
+    "runtime_files_match_workspace": 92,
+    "native_binary_sha256": "12bb93740e5af4f7868974b727e4245e06b030ebf6ae7e2fe60d47cd8bae7a00",
+    "factory": {
+      "version": "0.10.0",
+      "factory_registered": true,
+      "activated": false,
+      "hardware_verified": false
+    },
+    "api_health": {
+      "api": "RUNNING",
+      "app_version": "0.10.0",
+      "hardware_ready": false
+    },
+    "sigterm_exit": 0
+  },
+  "systemd_static": {
+    "result": "passed",
+    "systemd_version": "systemd 245 (245.4-4ubuntu3.24)",
+    "unit_files": 12,
+    "recovery_dropins": 14,
+    "services_started": false,
+    "live_service_permissions_verified": false
+  },
+  "installation_integration": {
+    "evidence_kind": "synthetic_test",
+    "result": "passed",
+    "lifecycle_backend": "real local subprocesses; systemd/UID permissions and physical power loss are not exercised",
+    "packages": {
+      "old": "de0e8b75ab3584750e8262092e60a6122b991d50ea9da85020ed09bded8adfdc",
+      "new": "1b1a359f5fd3ad9a5493fb2c97e5db6491c567574ff0e3629785eb844ebc1075"
+    },
+    "phases": {
+      "initial_install": {
+        "version": "0.9.0",
+        "operation_id": "4167f58d-6e63-49c0-8412-0becafb1f667",
+        "activated": false,
+        "software_health_verified": false,
+        "hardware_verified": false,
+        "migration": "none"
+      },
+      "old_running": {
+        "version": "0.9.0",
+        "six_recorders_continue": true,
+        "completed_segments": {
+          "back": 2,
+          "down": 2,
+          "front": 2,
+          "left": 2,
+          "right": 2,
+          "sdi": 4
+        },
+        "https_relogin": true,
+        "configuration_and_credentials_preserved": true,
+        "existing_recordings_preserved": 0,
+        "native_rtsp_enabled": true,
+        "retained_sonar_events": 0,
+        "recording_metadata_and_content_checked": true,
+        "live_worker_count": 12
+      },
+      "upgrade_transaction": {
+        "version": "0.10.0",
+        "operation_id": "c0a9efea-601e-4d8b-ba40-2a687cfe88ff",
+        "activated": true,
+        "software_health_verified": true,
+        "hardware_verified": false,
+        "migration": "sonar_config_v1_to_v2"
+      },
+      "upgraded": {
+        "version": "0.10.0",
+        "six_recorders_continue": true,
+        "completed_segments": {
+          "back": 6,
+          "down": 6,
+          "front": 6,
+          "left": 6,
+          "right": 6,
+          "sdi": 8
+        },
+        "https_relogin": true,
+        "configuration_and_credentials_preserved": true,
+        "existing_recordings_preserved": 14,
+        "native_rtsp_enabled": true,
+        "retained_sonar_events": 1,
+        "recording_metadata_and_content_checked": true,
+        "live_worker_count": 13
+      },
+      "manual_rollback_transaction": {
+        "version": "0.9.0",
+        "operation_id": "d424a4be-6553-4361-9b48-e4e97806ec23",
+        "activated": true,
+        "software_health_verified": true,
+        "hardware_verified": false,
+        "migration": "sonar_config_v2_to_v1"
+      },
+      "manual_rollback": {
+        "version": "0.9.0",
+        "six_recorders_continue": true,
+        "completed_segments": {
+          "back": 8,
+          "down": 8,
+          "front": 8,
+          "left": 8,
+          "right": 8,
+          "sdi": 10
+        },
+        "https_relogin": true,
+        "configuration_and_credentials_preserved": true,
+        "existing_recordings_preserved": 38,
+        "native_rtsp_enabled": true,
+        "retained_sonar_events": 2,
+        "recording_metadata_and_content_checked": true,
+        "live_worker_count": 12
+      },
+      "failed_upgrade_automatic_recovery": {
+        "version": "0.9.0",
+        "six_recorders_continue": true,
+        "completed_segments": {
+          "back": 20,
+          "down": 20,
+          "front": 20,
+          "left": 20,
+          "right": 20,
+          "sdi": 22
+        },
+        "https_relogin": true,
+        "configuration_and_credentials_preserved": true,
+        "existing_recordings_preserved": 50,
+        "native_rtsp_enabled": true,
+        "retained_sonar_events": 4,
+        "recording_metadata_and_content_checked": true,
+        "live_worker_count": 12
+      },
+      "interrupted_journal_boot_recovery": {
+        "version": "0.9.0",
+        "six_recorders_continue": true,
+        "completed_segments": {
+          "back": 24,
+          "down": 24,
+          "front": 24,
+          "left": 24,
+          "right": 24,
+          "sdi": 26
+        },
+        "https_relogin": true,
+        "configuration_and_credentials_preserved": true,
+        "existing_recordings_preserved": 122,
+        "native_rtsp_enabled": true,
+        "retained_sonar_events": 6,
+        "recording_metadata_and_content_checked": true,
+        "live_worker_count": 12
+      }
+    },
+    "sonar_fixture": {
+      "evidence_kind": "synthetic_test",
+      "archive_id": "d3c0ec665ab4a84fe58431bca7bdbc21e604c3167855bbce81fa7060c41e2cc8",
+      "archive_sha256": "57c6689cf27f757908949a8aab4137c7f7e580817a5b0f30a878776221d793d7",
+      "locked": true,
+      "measurement_events": 0,
+      "pending_false_field_prepared": true
+    },
+    "final_completed_segments": 146,
+    "physical_devices": false
+  },
+  "migration_coverage": [
+    "exact_legacy_and_sonar_contracts_only",
+    "target_cli_validates_projected_configs",
+    "upgrade_preserves_original_config_bytes",
+    "partial_activation_preserved",
+    "downgrade_requires_archive_disabled_in_both_configs",
+    "only_explicit_false_flag_removed",
+    "config_owners_modes_preserved",
+    "completed_history_snapshots_schema_and_revision_checked",
+    "missing_corrupt_mismatched_orphan_history_refused",
+    "exact_history_bytes_backed_up",
+    "unknown_db_schema_refused",
+    "compatible_sonar_data_preserved",
+    "failed_downgrade_restores_originals",
+    "boot_interruption_recovers",
+    "preflight_and_post_stop_drift_preserved_and_gated",
+    "archive_disable_does_not_restart_video"
+  ],
+  "previous_failed_attempt": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/integration-01/result.json",
+    "sha256": "f21a8417fba987a50287deee5338bafce2577b266c7ab97d5b4343325e071051",
+    "result": "failed",
+    "diagnosis": "test harness used public archive metadata for an internal relative_path lookup; fixed in candidate-03 and integration-02"
+  },
+  "evidence_files": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/source-manifest.json",
+      "sha256": "df98b3203b7d0a479578c8be4d30f82e1673e5eaa35652acfc16778dcd478f94"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/migration-directed-final.log",
+      "sha256": "6b04d656451cd2d7e1d61b852748343b723a29381d7c9fdfe0dbb96515803cfa"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/python38-validated.log",
+      "sha256": "ed574c6d0494347c4b0d4a5a2d9883bfbe90104cb74e17f1cec1c64dbe892479"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/arm64-validated/result.json",
+      "sha256": "0d8ec785a9447284673bfbd0627eab483b216cae1af51cdab013c86129ebdea0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/arm64-validated/unittest.log",
+      "sha256": "f55c13bb51f6cf9d5a3143a28aae8c6e82c5c2dedd41be3a41d7d3eb91950f67"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/arm64-candidate-03/SHA256SUMS",
+      "sha256": "fcd8a598db6c35b765264aa12646c300169304a6a1ab2581394fb8f7535974f7"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/package-checked-03/result.json",
+      "sha256": "0e4171069941da538162e830925fcba19ff8c671fbbe4ff1dabf233492c79d2e"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/package-checked-03/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/systemd-static/result.json",
+      "sha256": "48880531022dfa01134a2179763a7fb19d2407ce9e2e1f1470542454303f6d5e"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/systemd-static/verify.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/integration-02/result.json",
+      "sha256": "807e6de8a812590f0383f458916dba5c790b7d0c4439aa47da37819e3485ea7b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-migration-20261023/integration-02-command.log",
+      "sha256": "8d42efcb24c583d6ebf690e30a0897e7bd8f45f4e452da65f1921dd60be68ea3"
+    }
+  ],
+  "prior_stage_evidence": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control/docs/evidence/sonar-archive-validation.json",
+      "sha256": "5c449b8a18c2d1af74a617a2eb27891facd9cfc1be52288f6666ed9d06f1cf5b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control/docs/evidence/sonar-services-validation.json",
+      "sha256": "31b71126424b2a2e8b174f280749a094e84898fcae80b400994a3f9bd2becf62"
+    }
+  ],
+  "limitations": [
+    "manufacturer_protocol_unavailable",
+    "physical_sonar_serial_transport_not_implemented",
+    "no_real_sonar_measurements",
+    "remaining_timecode_uart_parameters_and_binding_unknown",
+    "timecode_electrical_zero_tx_not_measured",
+    "recording_volume_absent_no_real_disk_throughput_or_powerloss_test",
+    "actual_systemd_uid_device_and_volume_permissions_not_verified",
+    "no_0.10.0_complete_image",
+    "no_new_kernel_boot_or_eight_hour_hardware_acceptance",
+    "synthesized_media_and_lifecycle_events_are_not_device_evidence"
+  ]
+}

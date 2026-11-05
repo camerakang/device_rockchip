@@ -1,0 +1,1259 @@
+{
+  "evidence_kind": "real_usb_camera_inventory_and_bounded_capture",
+  "observed_at_host_utc": "2026-10-26T02:03:47.722834+00:00",
+  "target": "192.168.3.233",
+  "kernel": "5.10.160",
+  "human_report": "User is onsite; camera Hub had been disconnected and was reconnected before this successful inventory.",
+  "camera_count": 5,
+  "camera_nodes": [
+    "/dev/video0",
+    "/dev/video2",
+    "/dev/video4",
+    "/dev/video6",
+    "/dev/video8"
+  ],
+  "stable_paths": [
+    "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.2:1.0-video-index0",
+    "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.3.1:1.0-video-index0",
+    "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.3.2:1.0-video-index0",
+    "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.3.3:1.0-video-index0",
+    "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.3.4:1.0-video-index0"
+  ],
+  "directions": {
+    "front": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.2:1.0-video-index0",
+    "back": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.3.1:1.0-video-index0",
+    "left": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.3.2:1.0-video-index0",
+    "right": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.3.3:1.0-video-index0",
+    "down": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.3.4:1.0-video-index0"
+  },
+  "capabilities": "All five enumerate H264 1920x1080 at 25fps; capability queries alone do not verify capture.",
+  "usb_camera_trunk_speed_mbps": 480,
+  "serial_interface_interpretation": "Five ttyACM paths belong to the cameras, not sonar or a dedicated timecode adapter. None was opened.",
+  "single_camera_capture": {
+    "returncode": 0,
+    "host_elapsed_seconds": 6.985284906986635,
+    "observed_at_host_utc": "2026-10-26T01:55:34.700037+00:00",
+    "bytes": 417476,
+    "sha256": "2d2d31176b17bcc6ac08b65d34099a536c303de5a8313dea1831f5a1291f73f6",
+    "board": {
+      "evidence_kind": "real_usb_h264_bounded_capture",
+      "board_reported_time": "2026-10-26T09:55:34.610076+08:00",
+      "runtime": "GStreamer 1.18.5",
+      "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1.2:1.0-video-index0",
+      "node": "/dev/video0",
+      "requested": {
+        "codec": "H264",
+        "width": 1920,
+        "height": 1080,
+        "fps": "25/1",
+        "buffers": 125
+      },
+      "negotiated_caps": "video/x-h264, width=(int)1920, height=(int)1080, framerate=(fraction)25/1, stream-format=(string)byte-stream, alignment=(string)au, pixel-aspect-ratio=(fraction)1/1, interlace-mode=(string)progressive, chroma-format=(string)4:2:0, bit-depth-luma=(uint)8, bit-depth-chroma=(uint)8, parsed=(boolean)true, profile=(string)main, level=(string)4.1",
+      "access_units": 125,
+      "bytes": 417476,
+      "source_buffer_count": 125,
+      "source_buffer_details": [
+        {
+          "bytes": 21854,
+          "pts": 18224413,
+          "flags": 8256,
+          "annex_b_nal_types": [
+            7,
+            8,
+            5
+          ]
+        },
+        {
+          "bytes": 179227,
+          "pts": 142275413,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            7,
+            8,
+            5
+          ]
+        },
+        {
+          "bytes": 111799,
+          "pts": 190331121,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 14134,
+          "pts": 226350371,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 7650,
+          "pts": 262360413,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            7,
+            8,
+            5
+          ]
+        },
+        {
+          "bytes": 178,
+          "pts": 298464288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 492,
+          "pts": 338453288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 969,
+          "pts": 378461996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1307,
+          "pts": 418443996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1068,
+          "pts": 458446996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1257,
+          "pts": 498445288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1078,
+          "pts": 538444996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 991,
+          "pts": 578460288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1207,
+          "pts": 618445287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1125,
+          "pts": 658441287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1092,
+          "pts": 698441705,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1086,
+          "pts": 738439246,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1187,
+          "pts": 778306538,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1129,
+          "pts": 818344996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1227,
+          "pts": 858383413,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1119,
+          "pts": 898435288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1236,
+          "pts": 938434288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1197,
+          "pts": 978432705,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1093,
+          "pts": 1018329704,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1077,
+          "pts": 1058425996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1004,
+          "pts": 1098423287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 972,
+          "pts": 1138422287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 960,
+          "pts": 1178426287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 1002,
+          "pts": 1218425996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 994,
+          "pts": 1258421413,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 861,
+          "pts": 1298323996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 891,
+          "pts": 1338315288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 843,
+          "pts": 1378396288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 911,
+          "pts": 1418417288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 835,
+          "pts": 1458418413,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 844,
+          "pts": 1498411538,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 815,
+          "pts": 1538372163,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 831,
+          "pts": 1578315288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 798,
+          "pts": 1618419287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 783,
+          "pts": 1658411997,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 709,
+          "pts": 1698408288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 689,
+          "pts": 1738383954,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 699,
+          "pts": 1778351954,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 631,
+          "pts": 1818404287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 594,
+          "pts": 1858402288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 602,
+          "pts": 1898399996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 667,
+          "pts": 1938406288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 624,
+          "pts": 1978404996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 648,
+          "pts": 2018419996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 699,
+          "pts": 2058399288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 641,
+          "pts": 2098401996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 579,
+          "pts": 2138396996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 529,
+          "pts": 2178398288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 550,
+          "pts": 2218406705,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 10355,
+          "pts": 2258397996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            7,
+            8,
+            5
+          ]
+        },
+        {
+          "bytes": 147,
+          "pts": 2302282996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 491,
+          "pts": 2338417996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 301,
+          "pts": 2378401288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 226,
+          "pts": 2418392579,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 214,
+          "pts": 2458392705,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 200,
+          "pts": 2498387287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 228,
+          "pts": 2538384287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 254,
+          "pts": 2578386288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 201,
+          "pts": 2618382288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 221,
+          "pts": 2658378288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 203,
+          "pts": 2698378287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 205,
+          "pts": 2738382371,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 180,
+          "pts": 2778360663,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 187,
+          "pts": 2818373996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 254,
+          "pts": 2858372579,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 211,
+          "pts": 2898373288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 217,
+          "pts": 2938372288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 193,
+          "pts": 2978371704,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 199,
+          "pts": 3018368996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 233,
+          "pts": 3058266996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 197,
+          "pts": 3098372288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 207,
+          "pts": 3138368288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 211,
+          "pts": 3178365287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 225,
+          "pts": 3218365996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 242,
+          "pts": 3258263287,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 188,
+          "pts": 3298360413,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 261,
+          "pts": 3338358288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 315,
+          "pts": 3378379996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 292,
+          "pts": 3418355579,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 280,
+          "pts": 3458355996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 290,
+          "pts": 3498354580,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 297,
+          "pts": 3538360288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 303,
+          "pts": 3578359288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 368,
+          "pts": 3618356580,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 348,
+          "pts": 3658357288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 351,
+          "pts": 3698355288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 360,
+          "pts": 3738352371,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 308,
+          "pts": 3778344954,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 322,
+          "pts": 3818354288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 317,
+          "pts": 3858340996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 298,
+          "pts": 3898280288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 329,
+          "pts": 3938344288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 304,
+          "pts": 3978340704,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 290,
+          "pts": 4018268996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 318,
+          "pts": 4058313996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 314,
+          "pts": 4098334288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 286,
+          "pts": 4138337996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 352,
+          "pts": 4178340579,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 313,
+          "pts": 4218335704,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 11173,
+          "pts": 4258339288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            7,
+            8,
+            5
+          ]
+        },
+        {
+          "bytes": 331,
+          "pts": 4302223996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 282,
+          "pts": 4338247288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 348,
+          "pts": 4378346288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 353,
+          "pts": 4418333580,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 337,
+          "pts": 4458331288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 313,
+          "pts": 4498227288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 331,
+          "pts": 4538325997,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 334,
+          "pts": 4578325288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 305,
+          "pts": 4618323705,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 341,
+          "pts": 4658326288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 212,
+          "pts": 4698318288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 241,
+          "pts": 4738316788,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 256,
+          "pts": 4778314662,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 207,
+          "pts": 4818252830,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 210,
+          "pts": 4858218413,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 272,
+          "pts": 4898311996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 243,
+          "pts": 4938314580,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 230,
+          "pts": 4978316413,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 204,
+          "pts": 5018307996,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        },
+        {
+          "bytes": 243,
+          "pts": 5058210288,
+          "flags": 8192,
+          "annex_b_nal_types": [
+            1
+          ]
+        }
+      ],
+      "unique_encoded_au_hashes": 125,
+      "keyframe_indices": [
+        0,
+        1,
+        4,
+        54,
+        104
+      ],
+      "elapsed_seconds": 5.209221180004533,
+      "arrival_span_seconds": 4.959505876002368,
+      "arrival_fps": 25.00249079248007,
+      "average_stream_bitrate_bps": 638189.3840100148,
+      "pts_span_ns": 4955988489,
+      "eos": true,
+      "errors": [],
+      "warnings": [],
+      "before": {
+        "width": 2560,
+        "height": 1440,
+        "fourcc": "MJPG",
+        "fps": "30.000"
+      },
+      "after": {
+        "width": 2560,
+        "height": 1440,
+        "fourcc": "MJPG",
+        "fps": "30.000"
+      },
+      "original_mode_restored": true,
+      "restore_result": {
+        "returncode": 0,
+        "stdout": "Frame rate set to 30.000 fps\n",
+        "stderr": ""
+      },
+      "before_query": {
+        "returncode": 0,
+        "stdout": "Format Video Capture:\n\tWidth/Height      : 2560/1440\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 7372800\n\tColorspace        : Default\n\tTransfer Function : Default (maps to Rec. 709)\n\tYCbCr/HSV Encoding: Default (maps to ITU-R 601)\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n",
+        "stderr": ""
+      },
+      "after_query": {
+        "returncode": 0,
+        "stdout": "Format Video Capture:\n\tWidth/Height      : 2560/1440\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 7372800\n\tColorspace        : Default\n\tTransfer Function : Default (maps to Rec. 709)\n\tYCbCr/HSV Encoding: Default (maps to ITU-R 601)\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n",
+        "stderr": ""
+      },
+      "media_destination": "SSH stdout to an isolated development-host file; no board media file",
+      "application_installed": false,
+      "serial_opened": false,
+      "scope": "Existing board GStreamer captures one real camera temporarily. Source buffers and parsed AUs are counted separately; this is not a no-loss, product-worker, browser, concurrent-load or latency acceptance.",
+      "passed": true
+    }
+  },
+  "development_host_decode": {
+    "evidence_kind": "real_usb_capture_development_host_decode",
+    "runtime": "GStreamer 1.20.3",
+    "source_sha256": "2d2d31176b17bcc6ac08b65d34099a536c303de5a8313dea1831f5a1291f73f6",
+    "decoded_frames": 125,
+    "unique_decoded_frame_hashes": 125,
+    "decoded_caps": "video/x-raw, width=(int)1920, height=(int)1080, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+    "eos": true,
+    "errors": [],
+    "warnings": [],
+    "parsed_au_count": 125,
+    "elapsed_seconds": 1.22167375596473,
+    "passed": true,
+    "scope": "Real camera compressed output captured on RK, decoded on development host. No RK decoder or browser acceptance."
+  },
+  "first_attempt": {
+    "result_path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/front-capture.json",
+    "returncode": 1,
+    "parsed_au_count": 124,
+    "decoded_frames": 124,
+    "explanation": "Initial harness required exactly 125 parsed AUs from a 125-source-buffer limit but had no source-pad counter. It received and decoded 124 AUs without pipeline errors, and restored the original mode. The source/AU difference for that attempt is unresolved; it is retained as a failed criterion, not counted as a pass. Follow-up instruments source buffers separately and confirms 125 source buffers, 125 parsed AUs, and 125 decoded frames. Neither short sample establishes sustained loss-free operation."
+  },
+  "original_modes_restored": true,
+  "product_runtime_files_changed": false,
+  "frozen_runtime_build_files_verified": 154,
+  "app_deployed": false,
+  "services_installed": false,
+  "serial_opened": false,
+  "board_media_files_written": false,
+  "actual_recording_disk_connected": false,
+  "valid_sdi_input_rechecked": false,
+  "quality_limit": "First decoded frame is dark and out of focus. Image quality, focus, exposure, and installed physical direction have not been accepted.",
+  "scope": "RK existing GStreamer captures a real USB camera temporarily; development host decodes it. No product camera worker, browser path, concurrent-load, hotplug, new kernel, eight-hour, no-loss, or end-to-end latency acceptance.",
+  "next_conditions": [
+    "Explicit instruction before installing or deploying the application on RK.",
+    "Single-channel product worker, browser decode, stable binding and physical unplug/replug recovery.",
+    "Five-camera concurrency, USB power/bandwidth/heat and sixth SDI input acceptance.",
+    "Manufacturer sonar protocol/hardware, dedicated timecode adapter parameters and physical zero-TX, actual recording disk."
+  ],
+  "raw_files": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/board-inventory.py",
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/inventory.stdout.json",
+      "bytes": 74853,
+      "sha256": "81821c459ef6c788e73c762d4db142b848a0274db6912ab9a6b40cd6dfc2832d"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/inventory.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/inventory-command.json",
+      "bytes": 84,
+      "sha256": "407f6fb0fd3e342077441b568c791128ab859081e9b01ec52bbaa47603e2a806"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/board-capture.py",
+      "bytes": 5352,
+      "sha256": "7c3350ec2a38e433cb9e2ddcc10cca8cc7433210f8cec6ac2f2743324adcafdf"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/run-probes.py",
+      "bytes": 2238,
+      "sha256": "bb438f4b02caf50e06567d414874a808c03a5e07b6601fe7be2693ce7c0c4ae7"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/front-capture.json",
+      "bytes": 3374,
+      "sha256": "8fc74a4798a3176f5cecb4390d11f30f3a3daecadc45606006f63a699d3f0613"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/front-capture.stderr.log",
+      "bytes": 2830,
+      "sha256": "e362da3fb5d76bc1b98b46144c063f3e9a69b52726a0736d58580323b51921af"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/front.h264",
+      "bytes": 245536,
+      "sha256": "c7b014406d2392081f75fa458c6bf7559fd4f23f281187f61d0334bb5326b176"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/decode-file.py",
+      "bytes": 4349,
+      "sha256": "3ff675c074e7414d731bf949679a8407ae6e4fd8451aed908183db7a0ca44a36"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/decode-result.json",
+      "bytes": 901,
+      "sha256": "4ea8caa89f43895790213cfb1bd6ede459b2caa1a879992eba8cf69870478976"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-01/front-first-frame.png",
+      "bytes": 122525,
+      "sha256": "91c74a707bbb97663fda8db9cf95fa2a5afe28b0dab7e9b5969bae55ad62a7ee"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-02/board-capture.py",
+      "bytes": 6092,
+      "sha256": "2e098b370962c5221ef6ca7493b9e7b05ca1ca18c8e29257d57007ec61697b31"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-02/run-probes.py",
+      "bytes": 2238,
+      "sha256": "bb438f4b02caf50e06567d414874a808c03a5e07b6601fe7be2693ce7c0c4ae7"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-02/front-capture.json",
+      "bytes": 21414,
+      "sha256": "f64019f152aff358f0e90b79651c143bff8bf21a7d58a78797b9ad76af209bfb"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-02/front-capture.stderr.log",
+      "bytes": 12500,
+      "sha256": "ff4317d1190670905dec860e170faeed8a32e9c5489a85451f35bf1ef16d6e98"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-02/front.h264",
+      "bytes": 417476,
+      "sha256": "2d2d31176b17bcc6ac08b65d34099a536c303de5a8313dea1831f5a1291f73f6"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-02/decode-file.py",
+      "bytes": 4349,
+      "sha256": "3ff675c074e7414d731bf949679a8407ae6e4fd8451aed908183db7a0ca44a36"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-02/decode-result.json",
+      "bytes": 899,
+      "sha256": "f5dae30308bb47483f92d49d0e1b47cbba2553c19c22abce215cdfdcea772aae"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-20261026-02/front-first-frame.png",
+      "bytes": 1041145,
+      "sha256": "7bea7f05a0f6abe1fb70ef310178c391f5993932d3c631c67599a19b842ce192"
+    }
+  ]
+}

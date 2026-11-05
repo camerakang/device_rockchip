@@ -1,0 +1,35 @@
+[Unit]
+Requires=ss07-config-recover.service
+After=ss07-config-recover.service
+Description=SS-07 recording and catalog supervisor
+After=local-fs.target ss07-media.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=ss07-storage
+Group=ss07-recordings
+SupplementaryGroups=ss07-state
+WorkingDirectory=/opt/ss07/current
+ExecStart=/opt/ss07/current/tools/ss07 recording-worker --config /etc/ss07-active/system.json --state-dir /run/ss07 --binary /opt/ss07/current/bin/mediamtx --catalog /var/lib/ss07/catalog.sqlite
+Environment=PYTHONDONTWRITEBYTECODE=1
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=8
+KillMode=control-group
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ReadWritePaths=/run/ss07 /var/lib/ss07 -/data/ss07
+DevicePolicy=closed
+RestrictAddressFamilies=AF_UNIX AF_INET
+CapabilityBoundingSet=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

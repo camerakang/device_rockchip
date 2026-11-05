@@ -1,0 +1,35 @@
+[Unit]
+Description=SS-07 configuration application and recovery coordinator
+Requires=ss07-config-recover.service
+After=ss07-config-recover.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=root
+Group=ss07-config
+SupplementaryGroups=ss07-state
+WorkingDirectory=/opt/ss07/current
+ExecStart=/opt/ss07/current/tools/ss07 application-worker --desired-config /etc/ss07/system.json --active-config /etc/ss07-active/system.json --journal-dir /var/lib/ss07-apply --state-dir /run/ss07 --socket-dir /run/ss07-apply --gateway-config /etc/ss07-gateway/network.json --maintenance-user ss07-storage --rtsp-config /etc/ss07-gateway/rtsp.json
+Environment=PYTHONDONTWRITEBYTECODE=1
+RuntimeDirectory=ss07-apply
+RuntimeDirectoryMode=0750
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=8
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ReadWritePaths=/etc/ss07-active /var/lib/ss07-apply /run/ss07 /etc/ss07/system.json.lock
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=CAP_DAC_OVERRIDE
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

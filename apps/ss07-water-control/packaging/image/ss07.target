@@ -1,0 +1,10 @@
+[Unit]
+Description=SS-07 video, sonar, recording, timecode and management services
+After=network.target systemd-tmpfiles-setup.service
+Wants=ss07-api.service ss07-media.service ss07-gateway.service ss07-maintenance.service
+Wants=ss07-storage.service ss07-timecode.service ss07-sonar.service
+Wants=ss07-application.service
+Wants=ss07-camera@front.service ss07-camera@back.service ss07-camera@left.service ss07-camera@right.service ss07-camera@down.service
+
+[Install]
+WantedBy=multi-user.target

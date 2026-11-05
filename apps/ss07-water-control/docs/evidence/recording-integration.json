@@ -1,0 +1,72 @@
+{
+  "evidence_kind": "synthetic_test",
+  "hardware_verified": false,
+  "started_at_utc": "2026-10-23T04:45:30Z",
+  "result": "passed",
+  "six_channel_segments": {
+    "back": 2,
+    "down": 2,
+    "sdi": 2,
+    "right": 2,
+    "left": 2,
+    "front": 2
+  },
+  "isolated_source_loss": "passed",
+  "source_recovery": "passed",
+  "recorder_stop_preserves_monitoring": "passed",
+  "recovery": {
+    "restored": 55,
+    "incomplete": 0,
+    "rejected": 0,
+    "missing": 0
+  },
+  "completed_counts": {
+    "right": 10,
+    "front": 10,
+    "left": 5,
+    "down": 10,
+    "back": 10,
+    "sdi": 10
+  },
+  "forced_recorder_exit": {
+    "result": "passed",
+    "recovery": {
+      "restored": 55,
+      "incomplete": 6,
+      "rejected": 0,
+      "missing": 0
+    },
+    "monitoring": "uninterrupted",
+    "incomplete_files": "retained_and_locked"
+  },
+  "export_sha256": "75a149f19eb72ab30ca58d444c9465ef90903ae8f804435b62c3f37beba5f349",
+  "http_range_export": "passed",
+  "browser": {
+    "evidence_kind": "synthetic_test",
+    "hardware_verified": false,
+    "result": "passed",
+    "channel_filter": "passed",
+    "decoded": {
+      "width": 640,
+      "height": 360,
+      "frames": 10,
+      "current": 0.303489,
+      "duration": 1.76,
+      "error": null
+    },
+    "seek": {
+      "width": 640,
+      "height": 360,
+      "frames": 36,
+      "current": 0.88,
+      "duration": 1.76,
+      "error": null
+    },
+    "range_responses": [
+      {
+        "status": 206,
+        "mimeType": "video/mp4"
+      }
+    ]
+  }
+}

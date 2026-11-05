@@ -1,0 +1,15 @@
+{
+  "evidence_kind": "software_staging_test",
+  "version": "0.6.0",
+  "python": "3.8.20",
+  "hardware_verified": false,
+  "missing_accounts_fail_closed": true,
+  "login_cookie_secure": true,
+  "role_protected_status": true,
+  "separate_process_maintenance_rpc": true,
+  "config_saved_pending_restart": true,
+  "api_sigterm_exit": 0,
+  "maintenance_sigterm_exit": 0,
+  "service_enabled": false,
+  "application_deployed": false
+}

@@ -1,0 +1,51 @@
+{
+  "artifact": "ss07-full-image-validation",
+  "recorded_at_utc": "2026-10-23T09:56:28.421253+00:00",
+  "application_version": "0.6.1",
+  "image": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-candidate/firmware/SS07-0.6.1-LubanCat4-V1-6.1.99-rk3588.img",
+  "bytes": 3364815434,
+  "sha256": "ea64ce13c5d93dc02ff0d3ff51d5f062c4ae69ec2bad4b075fb6c62842bdc660",
+  "offline_image_checks_passed": true,
+  "arm64_userland_checks_passed": true,
+  "whole_project_complete": false,
+  "hardware_validated": false,
+  "boot_tested": false,
+  "deployed": false,
+  "services_provisioned": false,
+  "ssh_key_provided": false,
+  "rootfs_entries_verified": 13554,
+  "kernel_release": "6.1.99-rk3588",
+  "module_count": 300,
+  "installed_package_count": 372,
+  "api_health": {
+    "api": "RUNNING",
+    "app_version": "0.6.1",
+    "hardware_ready": false
+  },
+  "api_sigterm_exit": 0,
+  "evidence_files": {
+    "full-image-rootfs.json": {
+      "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/manifest.json",
+      "sha256": "7ecf1c730c829ec3cb10c969ca57491a548392dba44d34e73bd31628fe6bbeef"
+    },
+    "full-image-build.json": {
+      "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-candidate/manifest.json",
+      "sha256": "c43d21a016f715c8c0d6d61c7273dfb24975d1bffa386b2f1af01ddc8331e705"
+    },
+    "full-image-readback.json": {
+      "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-verified/result.json",
+      "sha256": "391f47e8c2b83160c7b66ef3eae1bc05761e748451e1d1a69bced373a71ed322"
+    },
+    "full-image-userland.json": {
+      "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/image-userland/result.json",
+      "sha256": "0bb8a1e80136fccaebf029c8b7ad437bdd3e8374007d410d2a24d2b1c538c346"
+    }
+  },
+  "limits": [
+    "QEMU user-mode checks do not boot the new kernel or run systemd services.",
+    "No physical cameras, sonar, timecode adapter or recording disk used.",
+    "Default image has no admin key/accounts/TLS/disk identity; provisioning is required.",
+    "Per-service configuration apply/recovery, install/upgrade rollback and sonar vendor driver remain.",
+    "Physical boot, real six-channel video/recording, zero-TX timecode and 8-hour acceptance remain."
+  ]
+}

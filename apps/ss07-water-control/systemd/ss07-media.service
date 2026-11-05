@@ -1,0 +1,32 @@
+[Unit]
+Requires=ss07-config-recover.service
+After=ss07-config-recover.service
+Description=SS-07 MediaMTX supervisor
+After=network.target
+
+[Service]
+Type=simple
+User=ss07-media
+Group=ss07-web
+SupplementaryGroups=ss07-state ss07-gateway
+StateDirectory=ss07-media
+StateDirectoryMode=0750
+WorkingDirectory=/opt/ss07/current
+ExecStart=/opt/ss07/current/tools/ss07 media-worker --config /etc/ss07-active/system.json --state-dir /run/ss07 --binary /opt/ss07/current/bin/mediamtx --gateway-config /etc/ss07-gateway/network.json --rtsp-config /etc/ss07-gateway/rtsp.json --accounts /etc/ss07-credentials/accounts.json --api-clients /etc/ss07-credentials/api-clients.json --rtsp-audit /var/lib/ss07-media/access.sqlite
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=8
+KillMode=control-group
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/run/ss07
+# Go/Pion enumerates local interfaces through rtnetlink during WebRTC setup.
+RestrictAddressFamilies=AF_UNIX AF_INET AF_NETLINK
+CapabilityBoundingSet=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

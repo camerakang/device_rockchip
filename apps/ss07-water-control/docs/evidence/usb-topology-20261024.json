@@ -1,0 +1,140 @@
+{
+  "evidence_kind": "readonly_usb_sysfs_and_log",
+  "board_reported_time": "2026-10-24T17:10:11.155426+08:00",
+  "devices": [
+    {
+      "sysfs_name": "2-1",
+      "physical_path": "/sys/devices/platform/fc880000.usb/usb2/2-1",
+      "idVendor": "1a86",
+      "idProduct": "8091",
+      "product": "USB HUB",
+      "bDeviceClass": "09",
+      "speed": "480",
+      "authorized": "1",
+      "busnum": "2",
+      "devnum": "2",
+      "devpath": "1",
+      "power/control": "auto",
+      "power/runtime_status": "active"
+    },
+    {
+      "sysfs_name": "usb1",
+      "physical_path": "/sys/devices/platform/fc800000.usb/usb1",
+      "idVendor": "1d6b",
+      "idProduct": "0002",
+      "manufacturer": "Linux 5.10.160 ehci_hcd",
+      "product": "EHCI Host Controller",
+      "bDeviceClass": "09",
+      "speed": "480",
+      "authorized": "1",
+      "busnum": "1",
+      "devnum": "1",
+      "devpath": "0",
+      "power/control": "auto",
+      "power/runtime_status": "active"
+    },
+    {
+      "sysfs_name": "usb2",
+      "physical_path": "/sys/devices/platform/fc880000.usb/usb2",
+      "idVendor": "1d6b",
+      "idProduct": "0002",
+      "manufacturer": "Linux 5.10.160 ehci_hcd",
+      "product": "EHCI Host Controller",
+      "bDeviceClass": "09",
+      "speed": "480",
+      "authorized": "1",
+      "busnum": "2",
+      "devnum": "1",
+      "devpath": "0",
+      "power/control": "auto",
+      "power/runtime_status": "active"
+    },
+    {
+      "sysfs_name": "usb3",
+      "physical_path": "/sys/devices/platform/fc840000.usb/usb3",
+      "idVendor": "1d6b",
+      "idProduct": "0001",
+      "manufacturer": "Linux 5.10.160 ohci_hcd",
+      "product": "Generic Platform OHCI controller",
+      "bDeviceClass": "09",
+      "speed": "12",
+      "authorized": "1",
+      "busnum": "3",
+      "devnum": "1",
+      "devpath": "0",
+      "power/control": "auto",
+      "power/runtime_status": "active"
+    },
+    {
+      "sysfs_name": "usb4",
+      "physical_path": "/sys/devices/platform/fc8c0000.usb/usb4",
+      "idVendor": "1d6b",
+      "idProduct": "0001",
+      "manufacturer": "Linux 5.10.160 ohci_hcd",
+      "product": "Generic Platform OHCI controller",
+      "bDeviceClass": "09",
+      "speed": "12",
+      "authorized": "1",
+      "busnum": "4",
+      "devnum": "1",
+      "devpath": "0",
+      "power/control": "auto",
+      "power/runtime_status": "active"
+    },
+    {
+      "sysfs_name": "usb5",
+      "physical_path": "/sys/devices/platform/usbhost3_0/fcd00000.usb/xhci-hcd.6.auto/usb5",
+      "idVendor": "1d6b",
+      "idProduct": "0002",
+      "manufacturer": "Linux 5.10.160 xhci-hcd",
+      "product": "xHCI Host Controller",
+      "bDeviceClass": "09",
+      "speed": "480",
+      "authorized": "1",
+      "busnum": "5",
+      "devnum": "1",
+      "devpath": "0",
+      "power/control": "auto",
+      "power/runtime_status": "active"
+    },
+    {
+      "sysfs_name": "usb6",
+      "physical_path": "/sys/devices/platform/usbhost3_0/fcd00000.usb/xhci-hcd.6.auto/usb6",
+      "idVendor": "1d6b",
+      "idProduct": "0003",
+      "manufacturer": "Linux 5.10.160 xhci-hcd",
+      "product": "xHCI Host Controller",
+      "bDeviceClass": "09",
+      "speed": "5000",
+      "authorized": "1",
+      "busnum": "6",
+      "devnum": "1",
+      "devpath": "0",
+      "power/control": "auto",
+      "power/runtime_status": "active"
+    }
+  ],
+  "kernel_log_readable": true,
+  "usb_kernel_log_tail": [],
+  "kernel_log_error": null,
+  "usb_settings_changed": false,
+  "driver_binding_changed": false,
+  "camera_or_serial_opened": false,
+  "raw_evidence": {
+    "board-usb-readonly.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-readonly-20261024/board-usb-readonly.py",
+      "sha256": "fc184a47f35336412fc48eb6bdc9c3a47d552ed879a7cefb70f3fc68c6cf92c1"
+    },
+    "result.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/usb-readonly-20261024/result.json",
+      "sha256": "80112624c2fdb132a9e5661c753d3b914cd30e03fe05d8511c0a8e8550ff7391"
+    }
+  },
+  "interpretation": {
+    "current_external_hub_controller": "fc880000.usb",
+    "historical_camera_binding_controller": "fc800000.usb",
+    "camera_binding_revalidation_required": true,
+    "no_camera_nodes_found_at_previous_presence_check": true,
+    "empty_filtered_kernel_log_does_not_prove_no_prior_usb_errors": true
+  }
+}

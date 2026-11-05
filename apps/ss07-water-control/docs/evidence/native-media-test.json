@@ -1,0 +1,107 @@
+{
+  "evidence_kind": "synthetic_test",
+  "hardware_verified": false,
+  "scope": "six native H264 -> five RTP inputs + one RTSP pull -> MediaMTX",
+  "started_at_utc": "2026-10-23T03:50:33Z",
+  "six_streams": {
+    "version": "v1.21.2",
+    "streams": {
+      "front": {
+        "ready": true,
+        "codec": "H264",
+        "last_data_monotonic_us": "252452354519",
+        "bytes_received": "100087",
+        "reason": null
+      },
+      "back": {
+        "ready": true,
+        "codec": "H264",
+        "last_data_monotonic_us": "252452354519",
+        "bytes_received": "100087",
+        "reason": null
+      },
+      "left": {
+        "ready": true,
+        "codec": "H264",
+        "last_data_monotonic_us": "252452354519",
+        "bytes_received": "100087",
+        "reason": null
+      },
+      "right": {
+        "ready": true,
+        "codec": "H264",
+        "last_data_monotonic_us": "252452354519",
+        "bytes_received": "100087",
+        "reason": null
+      },
+      "down": {
+        "ready": true,
+        "codec": "H264",
+        "last_data_monotonic_us": "252452354519",
+        "bytes_received": "100087",
+        "reason": null
+      },
+      "sdi": {
+        "ready": true,
+        "codec": "H264",
+        "last_data_monotonic_us": "252452354519",
+        "bytes_received": "2481",
+        "reason": null
+      }
+    },
+    "recording_enabled": false
+  },
+  "single_source_loss_and_recovery": "passed",
+  "browser": {
+    "evidence_kind": "synthetic_test",
+    "hardware_verified": false,
+    "result": "passed",
+    "decoded": [
+      {
+        "channel": "front",
+        "frames": 60,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "back",
+        "frames": 60,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "left",
+        "frames": 56,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "right",
+        "frames": 60,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "down",
+        "frames": 60,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      },
+      {
+        "channel": "sdi",
+        "frames": 60,
+        "width": 640,
+        "message": "\u6b63\u5728\u8fde\u63a5\u89c6\u9891",
+        "hidden": true
+      }
+    ],
+    "main_switch": "passed",
+    "offline_cleanup": "passed"
+  },
+  "result": "passed"
+}

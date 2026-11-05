@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="camerakang" fetch="https://github.com/camerakang/" pushurl="ssh://git@github.com/camerakang/"/>
+  <remote name="origin" fetch="https://github.com/LubanCat/"/>
+  
+  <default remote="origin" sync-j="4"/>
+  
+  <project name="debian11" revision="ef491103dd415f16364285a1ea9958949355fb7c" dest-branch="debian11" clone-depth="1"/>
+  <project name="debian12" revision="58085b6c8a03e21ad1afae00c8a9a80ccca87b80" dest-branch="debian12" clone-depth="1"/>
+  <project name="device_rockchip" path="device/rockchip" remote="camerakang" revision="f6307ce935a643c1fa846bd38bcd7c3ae016a3dd" upstream="double_imx287m" dest-branch="double_imx287m" clone-depth="1">
+    <linkfile src="common/scripts/build.sh" dest="build.sh"/>
+    <linkfile src="common/Makefile" dest="Makefile"/>
+    <linkfile src="common/scripts/rkflash.sh" dest="rkflash.sh"/>
+  </project>
+  <project name="gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu" path="prebuilts/gcc/linux-x86/aarch64/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu" revision="adbb295a970c4b39dc487c95226fe84d2c460072" clone-depth="1"/>
+  <project name="gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf" path="prebuilts/gcc/linux-x86/arm/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf" revision="2e89382ca3f8c34086272509ae4d7a5c340ffafc" clone-depth="1"/>
+  <project name="kernel" path="kernel-5.10" remote="camerakang" revision="c9b55815cf77f85c4d7e7eb1eecf4fcd52b2d3dd" upstream="double_imx287m-5.10" dest-branch="double_imx287m-5.10" clone-depth="1"/>
+  <project name="kernel" path="kernel-6.1" remote="camerakang" revision="6d69dd475bce666e8889f4b3bcc79f38bf1b3646" upstream="double_imx287m" dest-branch="double_imx287m" clone-depth="1"/>
+  <project name="lubancat-bin" revision="62e2a1db86d9ce76b35d38314634ca8b201c2ce4" dest-branch="main" clone-depth="1"/>
+  <project name="rkbin" revision="58a39b47f77a26a1e110fa1a1ce80bcfcb0b3505" dest-branch="main" clone-depth="1"/>
+  <project name="tools" revision="c27464a38afb984e5928e90371b57cd89291f288" dest-branch="main" clone-depth="1"/>
+  <project name="u-boot" remote="camerakang" revision="ce67cf027de25347c5c790c3087f6e663f4f3d56" upstream="double_imx287m" dest-branch="double_imx287m" clone-depth="1"/>
+  <project name="ubuntu20.04" revision="8bfa2d3e2d19162791b404b8c919460c78caa482" dest-branch="ubuntu20.04" clone-depth="1"/>
+  <project name="ubuntu22.04" revision="b2109962e8ff50dd671f3ff570af5dfa4ba1bd0a" dest-branch="ubuntu22.04" clone-depth="1"/>
+</manifest>

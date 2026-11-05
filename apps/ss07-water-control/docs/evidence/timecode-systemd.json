@@ -1,0 +1,17 @@
+{
+  "evidence_kind": "software_static_test",
+  "hardware_verified": false,
+  "service_enabled": false,
+  "unit_files": [
+    "ss07-api.service",
+    "ss07-camera@.service",
+    "ss07-media.service",
+    "ss07-storage.service",
+    "ss07-timecode.service"
+  ],
+  "systemd_verify_exit": 0,
+  "sysusers_exit": 0,
+  "host_users_changed": false,
+  "exec_paths_replaced_with_staging_for_validation": true,
+  "timecode_user_created_in_temporary_root": true
+}

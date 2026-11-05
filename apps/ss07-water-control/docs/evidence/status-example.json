@@ -1,0 +1,195 @@
+{
+  "request_id": "e99cfbd8-7744-47aa-a1c9-3e8d2f039749",
+  "data": {
+    "schema_version": 1,
+    "device_id": "ss07-unassigned",
+    "boot_id": "00758ceb-2a21-41c1-a248-664eeba1ab7a",
+    "service_instance_id": "796c1654-826a-4b50-9af8-b98591f3d4e2",
+    "seq": "1",
+    "observed_at_utc": "2026-10-21T07:45:03.039392+00:00",
+    "local_monotonic_us": "93716406941",
+    "uptime_ms": 5,
+    "evidence_kind": "service_observation",
+    "phase": 1,
+    "streams": [
+      {
+        "channel_id": "front",
+        "capture_state": "NOT_IMPLEMENTED",
+        "publish_state": "NOT_IMPLEMENTED",
+        "availability": "unavailable",
+        "format": null,
+        "width": null,
+        "height": null,
+        "fps_observed": null,
+        "bitrate_observed": null,
+        "last_frame_age_ms": null,
+        "restart_count": null,
+        "live_url": null,
+        "error": "worker_not_implemented"
+      },
+      {
+        "channel_id": "back",
+        "capture_state": "NOT_IMPLEMENTED",
+        "publish_state": "NOT_IMPLEMENTED",
+        "availability": "unavailable",
+        "format": null,
+        "width": null,
+        "height": null,
+        "fps_observed": null,
+        "bitrate_observed": null,
+        "last_frame_age_ms": null,
+        "restart_count": null,
+        "live_url": null,
+        "error": "worker_not_implemented"
+      },
+      {
+        "channel_id": "left",
+        "capture_state": "NOT_IMPLEMENTED",
+        "publish_state": "NOT_IMPLEMENTED",
+        "availability": "unavailable",
+        "format": null,
+        "width": null,
+        "height": null,
+        "fps_observed": null,
+        "bitrate_observed": null,
+        "last_frame_age_ms": null,
+        "restart_count": null,
+        "live_url": null,
+        "error": "worker_not_implemented"
+      },
+      {
+        "channel_id": "right",
+        "capture_state": "NOT_IMPLEMENTED",
+        "publish_state": "NOT_IMPLEMENTED",
+        "availability": "unavailable",
+        "format": null,
+        "width": null,
+        "height": null,
+        "fps_observed": null,
+        "bitrate_observed": null,
+        "last_frame_age_ms": null,
+        "restart_count": null,
+        "live_url": null,
+        "error": "worker_not_implemented"
+      },
+      {
+        "channel_id": "down",
+        "capture_state": "NOT_IMPLEMENTED",
+        "publish_state": "NOT_IMPLEMENTED",
+        "availability": "unavailable",
+        "format": null,
+        "width": null,
+        "height": null,
+        "fps_observed": null,
+        "bitrate_observed": null,
+        "last_frame_age_ms": null,
+        "restart_count": null,
+        "live_url": null,
+        "error": "worker_not_implemented"
+      },
+      {
+        "channel_id": "sdi",
+        "capture_state": "NOT_IMPLEMENTED",
+        "publish_state": "NOT_IMPLEMENTED",
+        "availability": "unavailable",
+        "format": null,
+        "width": null,
+        "height": null,
+        "fps_observed": null,
+        "bitrate_observed": null,
+        "last_frame_age_ms": null,
+        "restart_count": null,
+        "live_url": null,
+        "error": "worker_not_implemented"
+      }
+    ],
+    "sonars": [
+      {
+        "sensor_id": "front",
+        "direction": "front",
+        "address": null,
+        "seq": null,
+        "distance_mm": null,
+        "valid": false,
+        "reason": "driver_not_implemented",
+        "quality": null,
+        "age_ms": null
+      },
+      {
+        "sensor_id": "back",
+        "direction": "back",
+        "address": null,
+        "seq": null,
+        "distance_mm": null,
+        "valid": false,
+        "reason": "driver_not_implemented",
+        "quality": null,
+        "age_ms": null
+      },
+      {
+        "sensor_id": "left",
+        "direction": "left",
+        "address": null,
+        "seq": null,
+        "distance_mm": null,
+        "valid": false,
+        "reason": "driver_not_implemented",
+        "quality": null,
+        "age_ms": null
+      },
+      {
+        "sensor_id": "right",
+        "direction": "right",
+        "address": null,
+        "seq": null,
+        "distance_mm": null,
+        "valid": false,
+        "reason": "driver_not_implemented",
+        "quality": null,
+        "age_ms": null
+      },
+      {
+        "sensor_id": "down",
+        "direction": "down",
+        "address": null,
+        "seq": null,
+        "distance_mm": null,
+        "valid": false,
+        "reason": "driver_not_implemented",
+        "quality": null,
+        "age_ms": null
+      }
+    ],
+    "timecode": {
+      "quality": "UNAVAILABLE",
+      "reason": "receiver_not_implemented",
+      "source_epoch": null,
+      "source_sequence": null,
+      "source_time_us": null,
+      "local_monotonic_us": null,
+      "mapping_id": null,
+      "age_ms": null,
+      "uncertainty_us": null,
+      "estimated_time_us": null,
+      "timestamp_basis": null,
+      "read_only": true
+    },
+    "storage": {
+      "mount_present": false,
+      "recording_enabled": false,
+      "state": "NOT_IMPLEMENTED"
+    },
+    "service_states": {
+      "api": "RUNNING",
+      "camera": "NOT_IMPLEMENTED",
+      "media": "NOT_IMPLEMENTED",
+      "sonar": "NOT_IMPLEMENTED",
+      "timecode": "NOT_IMPLEMENTED",
+      "storage": "NOT_IMPLEMENTED"
+    },
+    "alerts": [
+      "HARDWARE_WORKERS_NOT_IMPLEMENTED",
+      "RECORDING_MOUNT_MISSING"
+    ]
+  }
+}

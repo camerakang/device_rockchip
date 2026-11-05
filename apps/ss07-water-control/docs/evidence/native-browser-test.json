@@ -1,0 +1,51 @@
+{
+  "evidence_kind": "synthetic_test",
+  "hardware_verified": false,
+  "result": "passed",
+  "decoded": [
+    {
+      "channel": "front",
+      "frames": 60,
+      "width": 640,
+      "message": "正在连接视频",
+      "hidden": true
+    },
+    {
+      "channel": "back",
+      "frames": 60,
+      "width": 640,
+      "message": "正在连接视频",
+      "hidden": true
+    },
+    {
+      "channel": "left",
+      "frames": 56,
+      "width": 640,
+      "message": "正在连接视频",
+      "hidden": true
+    },
+    {
+      "channel": "right",
+      "frames": 60,
+      "width": 640,
+      "message": "正在连接视频",
+      "hidden": true
+    },
+    {
+      "channel": "down",
+      "frames": 60,
+      "width": 640,
+      "message": "正在连接视频",
+      "hidden": true
+    },
+    {
+      "channel": "sdi",
+      "frames": 60,
+      "width": 640,
+      "message": "正在连接视频",
+      "hidden": true
+    }
+  ],
+  "main_switch": "passed",
+  "offline_cleanup": "passed"
+}

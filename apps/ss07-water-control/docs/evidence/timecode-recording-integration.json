@@ -1,0 +1,93 @@
+{
+  "evidence_kind": "synthetic_test",
+  "hardware_verified": false,
+  "started_at_utc": "2026-10-23T05:56:18Z",
+  "result": "passed",
+  "six_channel_segments": {
+    "sdi": 2,
+    "down": 2,
+    "left": 2,
+    "front": 2,
+    "right": 2,
+    "back": 2
+  },
+  "timecode": {
+    "evidence_kind": "synthetic_test",
+    "transport": "PTY",
+    "hardware_verified": false,
+    "epochs": [
+      "9223372036854775845",
+      "9223372036854775846"
+    ],
+    "six_channel_association": "passed",
+    "source_loss_preserves_six_recorders": "passed",
+    "epoch_isolation": "passed",
+    "persisted_tags_immutable": "passed",
+    "precision": "USB receive estimate; no SOF or exposure calibration",
+    "http_epoch_query": "passed",
+    "pty_software_zero_tx": "passed"
+  },
+  "isolated_source_loss": "passed",
+  "source_recovery": "passed",
+  "recorder_stop_preserves_monitoring": "passed",
+  "recovery": {
+    "restored": 67,
+    "incomplete": 0,
+    "rejected": 0,
+    "missing": 0
+  },
+  "completed_counts": {
+    "back": 12,
+    "front": 12,
+    "right": 12,
+    "down": 12,
+    "sdi": 12,
+    "left": 7
+  },
+  "forced_recorder_exit": {
+    "result": "passed",
+    "recovery": {
+      "restored": 67,
+      "incomplete": 6,
+      "rejected": 0,
+      "missing": 0
+    },
+    "monitoring": "uninterrupted",
+    "incomplete_files": "retained_and_locked"
+  },
+  "export_sha256": "b50fc2e15fdae34034eb11271d481e6c317705313430a526fd655f80cda8cefd",
+  "http_range_export": "passed",
+  "browser": {
+    "evidence_kind": "synthetic_test",
+    "hardware_verified": false,
+    "result": "passed",
+    "channel_filter": "passed",
+    "timecode_filter": {
+      "epoch": "9223372036854775846",
+      "time_start_us": "9223372036872033424",
+      "time_end_us": "9223372036874033424"
+    },
+    "decoded": {
+      "width": 640,
+      "height": 360,
+      "frames": 10,
+      "current": 0.294596,
+      "duration": 1.68,
+      "error": null
+    },
+    "seek": {
+      "width": 640,
+      "height": 360,
+      "frames": 35,
+      "current": 0.84,
+      "duration": 1.68,
+      "error": null
+    },
+    "range_responses": [
+      {
+        "status": 206,
+        "mimeType": "video/mp4"
+      }
+    ]
+  }
+}

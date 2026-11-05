@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.16)
+project(ss07_camera VERSION 0.3.1 LANGUAGES CXX)
+set(CMAKE_SKIP_RPATH TRUE)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GST REQUIRED IMPORTED_TARGET gstreamer-1.0>=1.18)
+add_executable(ss07-camera src/camera/main.cpp)
+target_compile_features(ss07-camera PRIVATE cxx_std_17)
+target_compile_options(ss07-camera PRIVATE -Wall -Wextra -Wpedantic -Werror)
+target_link_libraries(ss07-camera PRIVATE PkgConfig::GST)
+install(TARGETS ss07-camera RUNTIME DESTINATION bin)
+
+# The production executable has no synthetic source. This separate binary is
+# built only for explicitly requested software integration tests; never install it.
+option(SS07_BUILD_TEST_SOURCE "Build a separate synthetic media test executable" OFF)
+if(SS07_BUILD_TEST_SOURCE)
+  add_executable(ss07-camera-test src/camera/main.cpp)
+  target_compile_definitions(ss07-camera-test PRIVATE SS07_TEST_SOURCE=1)
+  target_compile_features(ss07-camera-test PRIVATE cxx_std_17)
+  target_compile_options(ss07-camera-test PRIVATE -Wall -Wextra -Wpedantic -Werror)
+  target_link_libraries(ss07-camera-test PRIVATE PkgConfig::GST)
+endif()

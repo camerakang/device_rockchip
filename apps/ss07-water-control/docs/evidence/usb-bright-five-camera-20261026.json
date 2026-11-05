@@ -1,0 +1,2019 @@
+{
+  "evidence_kind": "real_usb_bright_scene_and_five_camera_mode_retest",
+  "recorded_at_china_time": "2026-10-26T11:42:15.223266+08:00",
+  "user_confirmed_bright_unobstructed": true,
+  "wiring_changed": false,
+  "board_exposure_controls_changed": false,
+  "usb_power_or_quirks_changed": false,
+  "application_deployed": false,
+  "serial_opened": false,
+  "board_media_files_written": false,
+  "previous_blue_camera_fps": 13.57494765317186,
+  "current_blue_camera_single_1080p25_fps": 24.977331605124046,
+  "scene_inference": "Arrival FPS improved after the user changed the scene, with wiring and explicit exposure controls unchanged. No light-meter measurement or proof of the camera firmware exposure mechanism; this does not establish a general low-light specification.",
+  "single_1080p25": {
+    "short": {
+      "source": "output/ss07/cameras-concurrent-20261026-14/back/capture.h264",
+      "sha256": "fe4e540c09453127b05c713a6be7d0952525c54fdbdb0616d3da933266aa08f2",
+      "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+      "returncode": 0,
+      "requested": {
+        "codec": "H264",
+        "width": 1920,
+        "height": 1080,
+        "fps": "25/1",
+        "buffers": 125
+      },
+      "source_buffers": 125,
+      "parsed_access_units": 125,
+      "arrival_fps": 24.21994163993861,
+      "arrival_span_seconds": 5.119748092023656,
+      "max_au_arrival_gap_seconds": 0.07682838302571326,
+      "average_stream_bitrate_bps": 1183284.781030201,
+      "eos": true,
+      "bus_errors": [],
+      "bus_warnings": [],
+      "original_mode_restored": true,
+      "registry_unchanged": true,
+      "v4l2_lost_frame_warning_events": 0,
+      "v4l2_reported_lost_count": 0,
+      "v4l2_copy_threshold_warning": true,
+      "streamon_enospc": false
+    },
+    "extended": {
+      "source": "output/ss07/cameras-concurrent-20261026-14/back-long/capture.h264",
+      "sha256": "e290edbd7fb5c71b1653abcfdd02d7404fbf719c86538114d6f27dc8535eda77",
+      "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+      "returncode": 0,
+      "requested": {
+        "codec": "H264",
+        "width": 1920,
+        "height": 1080,
+        "fps": "25/1",
+        "buffers": 750
+      },
+      "source_buffers": 750,
+      "parsed_access_units": 750,
+      "arrival_fps": 24.977331605124046,
+      "arrival_span_seconds": 29.987190458981786,
+      "max_au_arrival_gap_seconds": 0.07549288304289803,
+      "average_stream_bitrate_bps": 452898.71415520227,
+      "eos": true,
+      "bus_errors": [],
+      "bus_warnings": [],
+      "original_mode_restored": true,
+      "registry_unchanged": true,
+      "v4l2_lost_frame_warning_events": 2,
+      "v4l2_reported_lost_count": 2,
+      "v4l2_copy_threshold_warning": true,
+      "streamon_enospc": false
+    },
+    "libavcodec_short": {
+      "evidence_kind": "real_bright_scene_single_capture_offline_decode",
+      "results": [
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-14/back/capture.h264",
+          "sha256": "fe4e540c09453127b05c713a6be7d0952525c54fdbdb0616d3da933266aa08f2",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 125,
+          "expected_parsed_aus": 125,
+          "decoded_frames": 125,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.26557042700005695,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        }
+      ],
+      "all_frame_counts_match": true,
+      "board_decode": false,
+      "no_packages_installed": true
+    },
+    "libavcodec_extended": {
+      "evidence_kind": "real_bright_scene_single_750_source_offline_decode",
+      "results": [
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-14/back-long/capture.h264",
+          "sha256": "e290edbd7fb5c71b1653abcfdd02d7404fbf719c86538114d6f27dc8535eda77",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 750,
+          "expected_parsed_aus": 750,
+          "decoded_frames": 750,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.8500120300450362,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        }
+      ],
+      "all_frame_counts_match": true,
+      "board_decode": false,
+      "no_packages_installed": true
+    },
+    "openh264_short": {
+      "channel": "back",
+      "runtime": "GStreamer 1.20.3",
+      "source_sha256": "fe4e540c09453127b05c713a6be7d0952525c54fdbdb0616d3da933266aa08f2",
+      "decoded_frames": 125,
+      "unique_decoded_frame_hashes": 125,
+      "decoded_caps": "video/x-raw, width=(int)1920, height=(int)1080, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+      "parsed_au_count": 125,
+      "eos": true,
+      "errors": [],
+      "warnings": [],
+      "elapsed_seconds": 1.3735068130190484,
+      "passed": true,
+      "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+    },
+    "openh264_extended": {
+      "channel": "back-long",
+      "runtime": "GStreamer 1.20.3",
+      "source_sha256": "e290edbd7fb5c71b1653abcfdd02d7404fbf719c86538114d6f27dc8535eda77",
+      "decoded_frames": 709,
+      "unique_decoded_frame_hashes": 709,
+      "decoded_caps": "video/x-raw, width=(int)1920, height=(int)1080, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+      "parsed_au_count": 750,
+      "eos": true,
+      "errors": [],
+      "warnings": [],
+      "elapsed_seconds": 6.237922347034328,
+      "passed": false,
+      "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+    }
+  },
+  "five_720p25_750_buffer_round": {
+    "capture_check_passed": false,
+    "common_capture_interval_seconds": 22.89150485699065,
+    "active_common_capture_interval_seconds": 22.89150485699065,
+    "active_channels": 5,
+    "channels": {
+      "front": {
+        "source": "output/ss07/cameras-concurrent-20261026-15/front/capture.h264",
+        "sha256": "9d0e04877a707eaada77ecce3c710a240f015ec65c02f0be30a8576b199b5857",
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 750,
+        "parsed_access_units": 750,
+        "arrival_fps": 25.00966705190862,
+        "arrival_span_seconds": 29.948419482971076,
+        "max_au_arrival_gap_seconds": 0.07458112097810954,
+        "average_stream_bitrate_bps": 332017.52118017117,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 1,
+        "v4l2_reported_lost_count": 1,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "back": {
+        "source": "output/ss07/cameras-concurrent-20261026-15/back/capture.h264",
+        "sha256": "1c373d429ce49a3146892e8e05f4bb89b4cfbefd9387aaf4b46712e1c37130fd",
+        "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 750,
+        "parsed_access_units": 750,
+        "arrival_fps": 24.97574307898334,
+        "arrival_span_seconds": 29.989097726996988,
+        "max_au_arrival_gap_seconds": 0.10902831301791593,
+        "average_stream_bitrate_bps": 206329.11521141682,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 2,
+        "v4l2_reported_lost_count": 2,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "left": {
+        "source": "output/ss07/cameras-concurrent-20261026-15/left/capture.h264",
+        "sha256": "b6cbf4cda4084b35fc63519fe91c2cf607832c6749ad6be0d51c5be148428e88",
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 750,
+        "parsed_access_units": 750,
+        "arrival_fps": 25.000061825909533,
+        "arrival_span_seconds": 29.959925908013247,
+        "max_au_arrival_gap_seconds": 0.10664634802378714,
+        "average_stream_bitrate_bps": 270770.22903552145,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 0,
+        "v4l2_reported_lost_count": 0,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "right": {
+        "source": "output/ss07/cameras-concurrent-20261026-15/right/capture.h264",
+        "sha256": "b8f39f224fe78e73169355ed3e3ceb261a31db65bd35572f52aaca6124ca3448",
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 750,
+        "parsed_access_units": 750,
+        "arrival_fps": 25.002156683003708,
+        "arrival_span_seconds": 29.957415654032957,
+        "max_au_arrival_gap_seconds": 0.09692965802969411,
+        "average_stream_bitrate_bps": 340662.2292743107,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 1,
+        "v4l2_reported_lost_count": 1,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "down": {
+        "source": "output/ss07/cameras-concurrent-20261026-15/down/capture.h264",
+        "sha256": "5aa13528e40c5b05dfed07f9f56083405b15fb8aa149a99b45d61dc454047648",
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.1:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 750,
+        "parsed_access_units": 750,
+        "arrival_fps": 25.002413903796526,
+        "arrival_span_seconds": 29.957107456983067,
+        "max_au_arrival_gap_seconds": 0.11320922203594819,
+        "average_stream_bitrate_bps": 252932.29698095424,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 1,
+        "v4l2_reported_lost_count": 1,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      }
+    },
+    "usb_monitor_returncode": 124,
+    "usb_event_count": 0,
+    "libavcodec": {
+      "evidence_kind": "real_five_camera_bright_retest_offline_decode",
+      "results": [
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/front/capture.h264",
+          "sha256": "9d0e04877a707eaada77ecce3c710a240f015ec65c02f0be30a8576b199b5857",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 750,
+          "expected_parsed_aus": 750,
+          "decoded_frames": 750,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.42190326005220413,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/back/capture.h264",
+          "sha256": "1c373d429ce49a3146892e8e05f4bb89b4cfbefd9387aaf4b46712e1c37130fd",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 750,
+          "expected_parsed_aus": 750,
+          "decoded_frames": 750,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.3548762649879791,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/left/capture.h264",
+          "sha256": "b6cbf4cda4084b35fc63519fe91c2cf607832c6749ad6be0d51c5be148428e88",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 750,
+          "expected_parsed_aus": 750,
+          "decoded_frames": 750,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.41844059102004394,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/right/capture.h264",
+          "sha256": "b8f39f224fe78e73169355ed3e3ceb261a31db65bd35572f52aaca6124ca3448",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 750,
+          "expected_parsed_aus": 750,
+          "decoded_frames": 750,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.4343955820077099,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/down/capture.h264",
+          "sha256": "5aa13528e40c5b05dfed07f9f56083405b15fb8aa149a99b45d61dc454047648",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 750,
+          "expected_parsed_aus": 750,
+          "decoded_frames": 750,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.4040348220150918,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        }
+      ],
+      "all_frame_counts_match": true,
+      "board_decode": false,
+      "no_packages_installed": true
+    },
+    "openh264": {
+      "front": {
+        "channel": "front",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "9d0e04877a707eaada77ecce3c710a240f015ec65c02f0be30a8576b199b5857",
+        "decoded_frames": 750,
+        "unique_decoded_frame_hashes": 750,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 2.9185821719584055,
+        "passed": true,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      },
+      "back": {
+        "channel": "back",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "1c373d429ce49a3146892e8e05f4bb89b4cfbefd9387aaf4b46712e1c37130fd",
+        "decoded_frames": 730,
+        "unique_decoded_frame_hashes": 730,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 2.7867466890020296,
+        "passed": false,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      },
+      "left": {
+        "channel": "left",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "b6cbf4cda4084b35fc63519fe91c2cf607832c6749ad6be0d51c5be148428e88",
+        "decoded_frames": 750,
+        "unique_decoded_frame_hashes": 750,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 2.9064840840292163,
+        "passed": true,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      },
+      "right": {
+        "channel": "right",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "b8f39f224fe78e73169355ed3e3ceb261a31db65bd35572f52aaca6124ca3448",
+        "decoded_frames": 750,
+        "unique_decoded_frame_hashes": 750,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 2.974870940030087,
+        "passed": true,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      },
+      "down": {
+        "channel": "down",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "5aa13528e40c5b05dfed07f9f56083405b15fb8aa149a99b45d61dc454047648",
+        "decoded_frames": 750,
+        "unique_decoded_frame_hashes": 750,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 750,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 2.909917772980407,
+        "passed": true,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      }
+    }
+  },
+  "five_720p25_1000_buffer_round": {
+    "capture_check_passed": true,
+    "common_capture_interval_seconds": 33.32517156400718,
+    "active_common_capture_interval_seconds": 33.32517156400718,
+    "active_channels": 5,
+    "channels": {
+      "front": {
+        "source": "output/ss07/cameras-concurrent-20261026-16/front/capture.h264",
+        "sha256": "59e32c1961c933f5d3e870b6ea3451f67e2e2102c0a32adda1a024577cf8b2f6",
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 1000
+        },
+        "source_buffers": 1000,
+        "parsed_access_units": 1000,
+        "arrival_fps": 24.95420839251387,
+        "arrival_span_seconds": 40.033327616984025,
+        "max_au_arrival_gap_seconds": 0.10899458697531372,
+        "average_stream_bitrate_bps": 236700.18367346207,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 2,
+        "v4l2_reported_lost_count": 2,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "back": {
+        "source": "output/ss07/cameras-concurrent-20261026-16/back/capture.h264",
+        "sha256": "c629e3c4c60c76e9c3574ccd44d246a04dd7f319546bdfadc2dcd26a6cd58cc7",
+        "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 1000
+        },
+        "source_buffers": 1000,
+        "parsed_access_units": 1000,
+        "arrival_fps": 24.911200158173404,
+        "arrival_span_seconds": 40.10244362603407,
+        "max_au_arrival_gap_seconds": 0.10819690400967374,
+        "average_stream_bitrate_bps": 192948.04257206852,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 4,
+        "v4l2_reported_lost_count": 4,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "left": {
+        "source": "output/ss07/cameras-concurrent-20261026-16/left/capture.h264",
+        "sha256": "6922451a14942bf0d366cadc5eb7c7266bdc9c2d43ad55669d27ab177dcd4682",
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 1000
+        },
+        "source_buffers": 1000,
+        "parsed_access_units": 1000,
+        "arrival_fps": 25.009727144707487,
+        "arrival_span_seconds": 39.94445817900123,
+        "max_au_arrival_gap_seconds": 0.10814169701188803,
+        "average_stream_bitrate_bps": 163161.75752826198,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 0,
+        "v4l2_reported_lost_count": 0,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "right": {
+        "source": "output/ss07/cameras-concurrent-20261026-16/right/capture.h264",
+        "sha256": "d12ab5ebaa1ea2660727972ddc879aaf200a5c64ff3e2aabf0256f328ea5816e",
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 1000
+        },
+        "source_buffers": 1000,
+        "parsed_access_units": 1000,
+        "arrival_fps": 25.00246702647073,
+        "arrival_span_seconds": 39.956057093979325,
+        "max_au_arrival_gap_seconds": 0.10995755699696019,
+        "average_stream_bitrate_bps": 229486.10716100066,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 0,
+        "v4l2_reported_lost_count": 0,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "down": {
+        "source": "output/ss07/cameras-concurrent-20261026-16/down/capture.h264",
+        "sha256": "5235b7050ff2442381bf04f19f6a11ad4b717001f270ca6f4e0e8199a102430c",
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.1:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1280,
+          "height": 720,
+          "fps": "25/1",
+          "buffers": 1000
+        },
+        "source_buffers": 1000,
+        "parsed_access_units": 1000,
+        "arrival_fps": 24.97576943978874,
+        "arrival_span_seconds": 39.998767701967154,
+        "max_au_arrival_gap_seconds": 0.10367437999229878,
+        "average_stream_bitrate_bps": 182785.03114085773,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 2,
+        "v4l2_reported_lost_count": 2,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      }
+    },
+    "usb_monitor_returncode": 124,
+    "usb_event_count": 0,
+    "libavcodec": {
+      "evidence_kind": "real_five_camera_bright_retest_offline_decode",
+      "results": [
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/front/capture.h264",
+          "sha256": "59e32c1961c933f5d3e870b6ea3451f67e2e2102c0a32adda1a024577cf8b2f6",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 1000,
+          "expected_parsed_aus": 1000,
+          "decoded_frames": 1000,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.4913727029925212,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/back/capture.h264",
+          "sha256": "c629e3c4c60c76e9c3574ccd44d246a04dd7f319546bdfadc2dcd26a6cd58cc7",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 1000,
+          "expected_parsed_aus": 1000,
+          "decoded_frames": 1000,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.45535340800415725,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/left/capture.h264",
+          "sha256": "6922451a14942bf0d366cadc5eb7c7266bdc9c2d43ad55669d27ab177dcd4682",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 1000,
+          "expected_parsed_aus": 1000,
+          "decoded_frames": 1000,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.443697554001119,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/right/capture.h264",
+          "sha256": "d12ab5ebaa1ea2660727972ddc879aaf200a5c64ff3e2aabf0256f328ea5816e",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 1000,
+          "expected_parsed_aus": 1000,
+          "decoded_frames": 1000,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.46624274196801707,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/down/capture.h264",
+          "sha256": "5235b7050ff2442381bf04f19f6a11ad4b717001f270ca6f4e0e8199a102430c",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 1000,
+          "expected_parsed_aus": 1000,
+          "decoded_frames": 1000,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.46084773598704487,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        }
+      ],
+      "all_frame_counts_match": true,
+      "board_decode": false,
+      "no_packages_installed": true
+    },
+    "openh264": {
+      "front": {
+        "channel": "front",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "59e32c1961c933f5d3e870b6ea3451f67e2e2102c0a32adda1a024577cf8b2f6",
+        "decoded_frames": 962,
+        "unique_decoded_frame_hashes": 962,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 1000,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 3.733736679016147,
+        "passed": false,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      },
+      "back": {
+        "channel": "back",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "c629e3c4c60c76e9c3574ccd44d246a04dd7f319546bdfadc2dcd26a6cd58cc7",
+        "decoded_frames": 880,
+        "unique_decoded_frame_hashes": 880,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 1000,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 3.4431457699975,
+        "passed": false,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      },
+      "left": {
+        "channel": "left",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "6922451a14942bf0d366cadc5eb7c7266bdc9c2d43ad55669d27ab177dcd4682",
+        "decoded_frames": 1000,
+        "unique_decoded_frame_hashes": 1000,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 1000,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 3.769894510973245,
+        "passed": true,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      },
+      "right": {
+        "channel": "right",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "d12ab5ebaa1ea2660727972ddc879aaf200a5c64ff3e2aabf0256f328ea5816e",
+        "decoded_frames": 1000,
+        "unique_decoded_frame_hashes": 1000,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 1000,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 3.8029119790298864,
+        "passed": true,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      },
+      "down": {
+        "channel": "down",
+        "runtime": "GStreamer 1.20.3",
+        "source_sha256": "5235b7050ff2442381bf04f19f6a11ad4b717001f270ca6f4e0e8199a102430c",
+        "decoded_frames": 980,
+        "unique_decoded_frame_hashes": 980,
+        "decoded_caps": "video/x-raw, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, framerate=(fraction)25/1, format=(string)RGB, colorimetry=(string)1:1:5:1",
+        "parsed_au_count": 1000,
+        "eos": true,
+        "errors": [],
+        "warnings": [],
+        "elapsed_seconds": 3.7161318699945696,
+        "passed": false,
+        "scope": "Offline development-host OpenH264 decode and frame sample from one actual bounded bright-scene capture. Exact parsed AU count checked; no RK, real-time, browser or image-quality acceptance."
+      }
+    }
+  },
+  "five_1080p25_current_221_round": {
+    "capture_check_passed": false,
+    "common_capture_interval_seconds": 0,
+    "active_common_capture_interval_seconds": 26.07405557000311,
+    "active_channels": 3,
+    "channels": {
+      "front": {
+        "source": "output/ss07/cameras-concurrent-20261026-17/front/capture.h264",
+        "sha256": "bb1fc09e0a1acaa59859787439926133cc964c5ce953faae77b7f00244b17d85",
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 750,
+        "parsed_access_units": 750,
+        "arrival_fps": 24.977201320021006,
+        "arrival_span_seconds": 29.987346876994707,
+        "max_au_arrival_gap_seconds": 0.08402983500855044,
+        "average_stream_bitrate_bps": 400880.54636211833,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 1,
+        "v4l2_reported_lost_count": 1,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "back": {
+        "source": "output/ss07/cameras-concurrent-20261026-17/back/capture.h264",
+        "sha256": "69c9feaa5dfa3a99bb4ca88fbf8cfb3b0ec76e93361c639c340662cf8c1182f3",
+        "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 750,
+        "parsed_access_units": 750,
+        "arrival_fps": 24.97136854725661,
+        "arrival_span_seconds": 29.994351274042856,
+        "max_au_arrival_gap_seconds": 0.10054739500628784,
+        "average_stream_bitrate_bps": 345956.3404186721,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 1,
+        "v4l2_reported_lost_count": 1,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "left": {
+        "source": "output/ss07/cameras-concurrent-20261026-17/left/capture.h264",
+        "sha256": "e2e7b89f098a5f7499ec50f6e655b69120547b8ac767846f42f3d86d0e1045cb",
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0",
+        "returncode": 0,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 750,
+        "parsed_access_units": 750,
+        "arrival_fps": 25.021955534923876,
+        "arrival_span_seconds": 29.93371157400543,
+        "max_au_arrival_gap_seconds": 0.07277402596082538,
+        "average_stream_bitrate_bps": 328949.7854502917,
+        "eos": true,
+        "bus_errors": [],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 0,
+        "v4l2_reported_lost_count": 0,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": false
+      },
+      "right": {
+        "source": "output/ss07/cameras-concurrent-20261026-17/right/capture.h264",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0",
+        "returncode": 1,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 0,
+        "parsed_access_units": 0,
+        "arrival_fps": null,
+        "arrival_span_seconds": null,
+        "max_au_arrival_gap_seconds": null,
+        "average_stream_bitrate_bps": null,
+        "eos": false,
+        "bus_errors": [
+          {
+            "message": "gst-resource-error-quark: Failed to allocate required memory. (13)",
+            "debug": "gstv4l2src.c(660): gst_v4l2src_decide_allocation (): /GstPipeline:pipeline0/GstV4l2Src:camera:\nBuffer pool activation failed"
+          }
+        ],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 0,
+        "v4l2_reported_lost_count": 0,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": true
+      },
+      "down": {
+        "source": "output/ss07/cameras-concurrent-20261026-17/down/capture.h264",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.1:1.0-video-index0",
+        "returncode": 1,
+        "requested": {
+          "codec": "H264",
+          "width": 1920,
+          "height": 1080,
+          "fps": "25/1",
+          "buffers": 750
+        },
+        "source_buffers": 0,
+        "parsed_access_units": 0,
+        "arrival_fps": null,
+        "arrival_span_seconds": null,
+        "max_au_arrival_gap_seconds": null,
+        "average_stream_bitrate_bps": null,
+        "eos": false,
+        "bus_errors": [
+          {
+            "message": "gst-resource-error-quark: Failed to allocate required memory. (13)",
+            "debug": "gstv4l2src.c(660): gst_v4l2src_decide_allocation (): /GstPipeline:pipeline0/GstV4l2Src:camera:\nBuffer pool activation failed"
+          }
+        ],
+        "bus_warnings": [],
+        "original_mode_restored": true,
+        "registry_unchanged": true,
+        "v4l2_lost_frame_warning_events": 0,
+        "v4l2_reported_lost_count": 0,
+        "v4l2_copy_threshold_warning": true,
+        "streamon_enospc": true
+      }
+    },
+    "usb_monitor_returncode": 124,
+    "usb_event_count": 0,
+    "libavcodec": {
+      "evidence_kind": "partial_1080p25_five_camera_probe_offline_decode",
+      "results": [
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-17/front/capture.h264",
+          "sha256": "bb1fc09e0a1acaa59859787439926133cc964c5ce953faae77b7f00244b17d85",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 750,
+          "expected_parsed_aus": 750,
+          "decoded_frames": 750,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.7913772020256147,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-17/left/capture.h264",
+          "sha256": "e2e7b89f098a5f7499ec50f6e655b69120547b8ac767846f42f3d86d0e1045cb",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 750,
+          "expected_parsed_aus": 750,
+          "decoded_frames": 750,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.7658138350234367,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        },
+        {
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-17/back/capture.h264",
+          "sha256": "69c9feaa5dfa3a99bb4ca88fbf8cfb3b0ec76e93361c639c340662cf8c1182f3",
+          "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+          "decoder": "native libavcodec h264",
+          "aud_delimited_packets": 750,
+          "expected_parsed_aus": 750,
+          "decoded_frames": 750,
+          "eof": true,
+          "errors": [],
+          "elapsed_seconds": 0.7699096869910136,
+          "passed": true,
+          "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+        }
+      ],
+      "not_captured": [
+        {
+          "channel": "down",
+          "reason": "No parsed access units; no decode acceptance."
+        },
+        {
+          "channel": "right",
+          "reason": "No parsed access units; no decode acceptance."
+        }
+      ],
+      "all_five_decoded": false,
+      "scope": "Only actual captured bytes decoded; channels with no capture remain failed, never treated as successful empty streams."
+    }
+  },
+  "offline_chromium_fullclip": [
+    {
+      "browser_version": {
+        "protocolVersion": "1.3",
+        "product": "HeadlessChrome/153.0.8010.12",
+        "revision": "@971a7443b0c9b0a9b2860529b33331b76077ec62",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+        "jsVersion": "15.3.76.4"
+      },
+      "passed": true,
+      "sequential_offline_decode": true,
+      "synthetic_timestamps": true,
+      "web_rtc_tested": false,
+      "production_api_or_ui_used": false,
+      "cases": [
+        {
+          "name": "capture_14_back-long",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-14/back-long/capture.h264",
+          "expectedFrames": 750,
+          "decodedFrames": 750,
+          "inputSHA256": "e290edbd7fb5c71b1653abcfdd02d7404fbf719c86538114d6f27dc8535eda77",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1920x1080"
+          ],
+          "passed": true
+        },
+        {
+          "name": "capture_15_front",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/front/capture.h264",
+          "expectedFrames": 750,
+          "decodedFrames": 750,
+          "inputSHA256": "9d0e04877a707eaada77ecce3c710a240f015ec65c02f0be30a8576b199b5857",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        },
+        {
+          "name": "capture_15_back",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/back/capture.h264",
+          "expectedFrames": 750,
+          "decodedFrames": 750,
+          "inputSHA256": "1c373d429ce49a3146892e8e05f4bb89b4cfbefd9387aaf4b46712e1c37130fd",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        },
+        {
+          "name": "capture_15_left",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/left/capture.h264",
+          "expectedFrames": 750,
+          "decodedFrames": 750,
+          "inputSHA256": "b6cbf4cda4084b35fc63519fe91c2cf607832c6749ad6be0d51c5be148428e88",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        },
+        {
+          "name": "capture_15_right",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/right/capture.h264",
+          "expectedFrames": 750,
+          "decodedFrames": 750,
+          "inputSHA256": "b8f39f224fe78e73169355ed3e3ceb261a31db65bd35572f52aaca6124ca3448",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        },
+        {
+          "name": "capture_15_down",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-15/down/capture.h264",
+          "expectedFrames": 750,
+          "decodedFrames": 750,
+          "inputSHA256": "5aa13528e40c5b05dfed07f9f56083405b15fb8aa149a99b45d61dc454047648",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        }
+      ]
+    },
+    {
+      "browser_version": {
+        "protocolVersion": "1.3",
+        "product": "HeadlessChrome/153.0.8010.12",
+        "revision": "@971a7443b0c9b0a9b2860529b33331b76077ec62",
+        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+        "jsVersion": "15.3.76.4"
+      },
+      "passed": true,
+      "sequential_offline_decode": true,
+      "synthetic_timestamps": true,
+      "web_rtc_tested": false,
+      "production_api_or_ui_used": false,
+      "cases": [
+        {
+          "name": "capture_16_front",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/front/capture.h264",
+          "expectedFrames": 1000,
+          "decodedFrames": 1000,
+          "inputSHA256": "59e32c1961c933f5d3e870b6ea3451f67e2e2102c0a32adda1a024577cf8b2f6",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        },
+        {
+          "name": "capture_16_back",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/back/capture.h264",
+          "expectedFrames": 1000,
+          "decodedFrames": 1000,
+          "inputSHA256": "c629e3c4c60c76e9c3574ccd44d246a04dd7f319546bdfadc2dcd26a6cd58cc7",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        },
+        {
+          "name": "capture_16_left",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/left/capture.h264",
+          "expectedFrames": 1000,
+          "decodedFrames": 1000,
+          "inputSHA256": "6922451a14942bf0d366cadc5eb7c7266bdc9c2d43ad55669d27ab177dcd4682",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        },
+        {
+          "name": "capture_16_right",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/right/capture.h264",
+          "expectedFrames": 1000,
+          "decodedFrames": 1000,
+          "inputSHA256": "d12ab5ebaa1ea2660727972ddc879aaf200a5c64ff3e2aabf0256f328ea5816e",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        },
+        {
+          "name": "capture_16_down",
+          "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-16/down/capture.h264",
+          "expectedFrames": 1000,
+          "decodedFrames": 1000,
+          "inputSHA256": "5235b7050ff2442381bf04f19f6a11ad4b717001f270ca6f4e0e8199a102430c",
+          "missingAUIndices": [],
+          "dimensions": [
+            "1280x720"
+          ],
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "final_presence": {
+    "kernel": "5.10.160",
+    "cameras": [
+      {
+        "stable_path": "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+        "node": "/dev/video2",
+        "query": {
+          "command": [
+            "v4l2-ctl",
+            "-d",
+            "/dev/v4l/by-path/platform-fc800000.usb-usb-0:1:1.0-video-index0",
+            "--all",
+            "--list-formats-ext"
+          ],
+          "returncode": 0,
+          "stdout": "Driver Info:\n\tDriver name      : uvcvideo\n\tCard type        : webcamproduct: usb-webcam\n\tBus info         : usb-fc800000.usb-1\n\tDriver version   : 5.10.160\n\tCapabilities     : 0x84a00001\n\t\tVideo Capture\n\t\tMetadata Capture\n\t\tStreaming\n\t\tExtended Pix Format\n\t\tDevice Capabilities\n\tDevice Caps      : 0x04200001\n\t\tVideo Capture\n\t\tStreaming\n\t\tExtended Pix Format\nMedia Driver Info:\n\tDriver name      : uvcvideo\n\tModel            : webcamproduct: usb-webcam\n\tSerial           : 00000000\n\tBus info         : usb-fc800000.usb-1\n\tMedia version    : 5.10.160\n\tHardware revision: 0x00000200 (512)\n\tDriver version   : 5.10.160\nInterface Info:\n\tID               : 0x03000002\n\tType             : V4L Video\nEntity Info:\n\tID               : 0x00000001 (1)\n\tName             : webcamproduct: usb-webcam\n\tFunction         : V4L2 I/O\n\tFlags         : default\n\tPad 0x01000007   : 0: Sink\n\t  Link 0x02000010: from remote pad 0x100000a of entity 'Extension 3': Data, Enabled, Immutable\nPriority: 2\nVideo input : 0 (Camera 1: ok)\nFormat Video Capture:\n\tWidth/Height      : 2560/1440\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 7372800\n\tColorspace        : Default\n\tTransfer Function : Default (maps to Rec. 709)\n\tYCbCr/HSV Encoding: Default (maps to ITU-R 601)\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nCrop Capability Video Capture:\n\tBounds      : Left 0, Top 0, Width 2560, Height 1440\n\tDefault     : Left 0, Top 0, Width 2560, Height 1440\n\tPixel Aspect: 1/1\nSelection Video Capture: crop_default, Left 0, Top 0, Width 2560, Height 1440, Flags: \nSelection Video Capture: crop_bounds, Left 0, Top 0, Width 2560, Height 1440, Flags: \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n                     brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=128\n                       contrast 0x00980901 (int)    : min=0 max=255 step=1 default=128 value=128\n                     saturation 0x00980902 (int)    : min=0 max=255 step=1 default=128 value=128\n white_balance_temperature_auto 0x0098090c (bool)   : default=1 value=1\n                           gain 0x00980913 (int)    : min=0 max=100 step=1 default=5 value=5\n           power_line_frequency 0x00980918 (menu)   : min=0 max=2 default=1 value=1\n\t\t\t\t0: Disabled\n\t\t\t\t1: 50 Hz\n\t\t\t\t2: 60 Hz\n      white_balance_temperature 0x0098091a (int)    : min=0 max=255 step=1 default=128 value=128 flags=inactive\n                      sharpness 0x0098091b (int)    : min=0 max=255 step=1 default=128 value=128\n                  exposure_auto 0x009a0901 (menu)   : min=0 max=3 default=0 value=0\n\t\t\t\t0: Auto Mode\n\t\t\t\t1: Manual Mode\n\t\t\t\t2: Shutter Priority Mode\n\t\t\t\t3: Aperture Priority Mode\n              exposure_absolute 0x009a0902 (int)    : min=0 max=6500 step=1 default=100 value=100 flags=inactive\nioctl: VIDIOC_ENUM_FMT\n\tType: Video Capture\n\n\t[0]: 'MJPG' (Motion-JPEG, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[1]: 'YUYV' (YUYV 4:2:2)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 480x272\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[2]: 'NV12' (Y/CbCr 4:2:0)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[3]: 'H264' (H.264, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[4]: 'HEVC' (HEVC, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n",
+          "stderr": ""
+        }
+      },
+      {
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.1:1.0-video-index0",
+        "node": "/dev/video8",
+        "query": {
+          "command": [
+            "v4l2-ctl",
+            "-d",
+            "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.1:1.0-video-index0",
+            "--all",
+            "--list-formats-ext"
+          ],
+          "returncode": 0,
+          "stdout": "Driver Info:\n\tDriver name      : uvcvideo\n\tCard type        : webcamproduct: usb-webcam\n\tBus info         : usb-fc880000.usb-1.1\n\tDriver version   : 5.10.160\n\tCapabilities     : 0x84a00001\n\t\tVideo Capture\n\t\tMetadata Capture\n\t\tStreaming\n\t\tExtended Pix Format\n\t\tDevice Capabilities\n\tDevice Caps      : 0x04200001\n\t\tVideo Capture\n\t\tStreaming\n\t\tExtended Pix Format\nMedia Driver Info:\n\tDriver name      : uvcvideo\n\tModel            : webcamproduct: usb-webcam\n\tSerial           : 00000000\n\tBus info         : usb-fc880000.usb-1.1\n\tMedia version    : 5.10.160\n\tHardware revision: 0x00000200 (512)\n\tDriver version   : 5.10.160\nInterface Info:\n\tID               : 0x03000002\n\tType             : V4L Video\nEntity Info:\n\tID               : 0x00000001 (1)\n\tName             : webcamproduct: usb-webcam\n\tFunction         : V4L2 I/O\n\tFlags         : default\n\tPad 0x01000007   : 0: Sink\n\t  Link 0x02000010: from remote pad 0x100000a of entity 'Extension 3': Data, Enabled, Immutable\nPriority: 2\nVideo input : 0 (Camera 1: ok)\nFormat Video Capture:\n\tWidth/Height      : 2560/1440\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 7372800\n\tColorspace        : Default\n\tTransfer Function : Default (maps to Rec. 709)\n\tYCbCr/HSV Encoding: Default (maps to ITU-R 601)\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nCrop Capability Video Capture:\n\tBounds      : Left 0, Top 0, Width 2560, Height 1440\n\tDefault     : Left 0, Top 0, Width 2560, Height 1440\n\tPixel Aspect: 1/1\nSelection Video Capture: crop_default, Left 0, Top 0, Width 2560, Height 1440, Flags: \nSelection Video Capture: crop_bounds, Left 0, Top 0, Width 2560, Height 1440, Flags: \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n                     brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=128\n                       contrast 0x00980901 (int)    : min=0 max=255 step=1 default=128 value=128\n                     saturation 0x00980902 (int)    : min=0 max=255 step=1 default=128 value=128\n white_balance_temperature_auto 0x0098090c (bool)   : default=1 value=1\n                           gain 0x00980913 (int)    : min=0 max=100 step=1 default=5 value=5\n           power_line_frequency 0x00980918 (menu)   : min=0 max=2 default=1 value=1\n\t\t\t\t0: Disabled\n\t\t\t\t1: 50 Hz\n\t\t\t\t2: 60 Hz\n      white_balance_temperature 0x0098091a (int)    : min=0 max=255 step=1 default=128 value=128 flags=inactive\n                      sharpness 0x0098091b (int)    : min=0 max=255 step=1 default=128 value=128\n                  exposure_auto 0x009a0901 (menu)   : min=0 max=3 default=0 value=0\n\t\t\t\t0: Auto Mode\n\t\t\t\t1: Manual Mode\n\t\t\t\t2: Shutter Priority Mode\n\t\t\t\t3: Aperture Priority Mode\n              exposure_absolute 0x009a0902 (int)    : min=0 max=6500 step=1 default=100 value=100 flags=inactive\nioctl: VIDIOC_ENUM_FMT\n\tType: Video Capture\n\n\t[0]: 'MJPG' (Motion-JPEG, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[1]: 'YUYV' (YUYV 4:2:2)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 480x272\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[2]: 'NV12' (Y/CbCr 4:2:0)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[3]: 'H264' (H.264, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[4]: 'HEVC' (HEVC, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n",
+          "stderr": ""
+        }
+      },
+      {
+        "stable_path": "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+        "node": "/dev/video0",
+        "query": {
+          "command": [
+            "v4l2-ctl",
+            "-d",
+            "/dev/v4l/by-path/platform-fc880000.usb-usb-0:1.3:1.0-video-index0",
+            "--all",
+            "--list-formats-ext"
+          ],
+          "returncode": 0,
+          "stdout": "Driver Info:\n\tDriver name      : uvcvideo\n\tCard type        : webcamproduct: usb-webcam\n\tBus info         : usb-fc880000.usb-1.3\n\tDriver version   : 5.10.160\n\tCapabilities     : 0x84a00001\n\t\tVideo Capture\n\t\tMetadata Capture\n\t\tStreaming\n\t\tExtended Pix Format\n\t\tDevice Capabilities\n\tDevice Caps      : 0x04200001\n\t\tVideo Capture\n\t\tStreaming\n\t\tExtended Pix Format\nMedia Driver Info:\n\tDriver name      : uvcvideo\n\tModel            : webcamproduct: usb-webcam\n\tSerial           : 00000000\n\tBus info         : usb-fc880000.usb-1.3\n\tMedia version    : 5.10.160\n\tHardware revision: 0x00000200 (512)\n\tDriver version   : 5.10.160\nInterface Info:\n\tID               : 0x03000002\n\tType             : V4L Video\nEntity Info:\n\tID               : 0x00000001 (1)\n\tName             : webcamproduct: usb-webcam\n\tFunction         : V4L2 I/O\n\tFlags         : default\n\tPad 0x01000007   : 0: Sink\n\t  Link 0x02000010: from remote pad 0x100000a of entity 'Extension 3': Data, Enabled, Immutable\nPriority: 2\nVideo input : 0 (Camera 1: ok)\nFormat Video Capture:\n\tWidth/Height      : 2560/1440\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 7372800\n\tColorspace        : Default\n\tTransfer Function : Default (maps to Rec. 709)\n\tYCbCr/HSV Encoding: Default (maps to ITU-R 601)\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nCrop Capability Video Capture:\n\tBounds      : Left 0, Top 0, Width 2560, Height 1440\n\tDefault     : Left 0, Top 0, Width 2560, Height 1440\n\tPixel Aspect: 1/1\nSelection Video Capture: crop_default, Left 0, Top 0, Width 2560, Height 1440, Flags: \nSelection Video Capture: crop_bounds, Left 0, Top 0, Width 2560, Height 1440, Flags: \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n                     brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=128\n                       contrast 0x00980901 (int)    : min=0 max=255 step=1 default=128 value=128\n                     saturation 0x00980902 (int)    : min=0 max=255 step=1 default=128 value=128\n white_balance_temperature_auto 0x0098090c (bool)   : default=1 value=1\n                           gain 0x00980913 (int)    : min=0 max=100 step=1 default=5 value=5\n           power_line_frequency 0x00980918 (menu)   : min=0 max=2 default=1 value=1\n\t\t\t\t0: Disabled\n\t\t\t\t1: 50 Hz\n\t\t\t\t2: 60 Hz\n      white_balance_temperature 0x0098091a (int)    : min=0 max=255 step=1 default=128 value=128 flags=inactive\n                      sharpness 0x0098091b (int)    : min=0 max=255 step=1 default=128 value=128\n                  exposure_auto 0x009a0901 (menu)   : min=0 max=3 default=0 value=0\n\t\t\t\t0: Auto Mode\n\t\t\t\t1: Manual Mode\n\t\t\t\t2: Shutter Priority Mode\n\t\t\t\t3: Aperture Priority Mode\n              exposure_absolute 0x009a0902 (int)    : min=0 max=6500 step=1 default=100 value=100 flags=inactive\nioctl: VIDIOC_ENUM_FMT\n\tType: Video Capture\n\n\t[0]: 'MJPG' (Motion-JPEG, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[1]: 'YUYV' (YUYV 4:2:2)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 480x272\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[2]: 'NV12' (Y/CbCr 4:2:0)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[3]: 'H264' (H.264, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[4]: 'HEVC' (HEVC, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n",
+          "stderr": ""
+        }
+      },
+      {
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0",
+        "node": "/dev/video4",
+        "query": {
+          "command": [
+            "v4l2-ctl",
+            "-d",
+            "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.2:1.0-video-index0",
+            "--all",
+            "--list-formats-ext"
+          ],
+          "returncode": 0,
+          "stdout": "Driver Info:\n\tDriver name      : uvcvideo\n\tCard type        : webcamproduct: usb-webcam\n\tBus info         : usb-xhci-hcd.9.auto-1.3.2\n\tDriver version   : 5.10.160\n\tCapabilities     : 0x84a00001\n\t\tVideo Capture\n\t\tMetadata Capture\n\t\tStreaming\n\t\tExtended Pix Format\n\t\tDevice Capabilities\n\tDevice Caps      : 0x04200001\n\t\tVideo Capture\n\t\tStreaming\n\t\tExtended Pix Format\nMedia Driver Info:\n\tDriver name      : uvcvideo\n\tModel            : webcamproduct: usb-webcam\n\tSerial           : 00000000\n\tBus info         : usb-xhci-hcd.9.auto-1.3.2\n\tMedia version    : 5.10.160\n\tHardware revision: 0x00000200 (512)\n\tDriver version   : 5.10.160\nInterface Info:\n\tID               : 0x03000002\n\tType             : V4L Video\nEntity Info:\n\tID               : 0x00000001 (1)\n\tName             : webcamproduct: usb-webcam\n\tFunction         : V4L2 I/O\n\tFlags         : default\n\tPad 0x01000007   : 0: Sink\n\t  Link 0x02000010: from remote pad 0x100000a of entity 'Extension 3': Data, Enabled, Immutable\nPriority: 2\nVideo input : 0 (Camera 1: ok)\nFormat Video Capture:\n\tWidth/Height      : 2560/1440\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 7372800\n\tColorspace        : Default\n\tTransfer Function : Default (maps to Rec. 709)\n\tYCbCr/HSV Encoding: Default (maps to ITU-R 601)\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nCrop Capability Video Capture:\n\tBounds      : Left 0, Top 0, Width 2560, Height 1440\n\tDefault     : Left 0, Top 0, Width 2560, Height 1440\n\tPixel Aspect: 1/1\nSelection Video Capture: crop_default, Left 0, Top 0, Width 2560, Height 1440, Flags: \nSelection Video Capture: crop_bounds, Left 0, Top 0, Width 2560, Height 1440, Flags: \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n                     brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=128\n                       contrast 0x00980901 (int)    : min=0 max=255 step=1 default=128 value=128\n                     saturation 0x00980902 (int)    : min=0 max=255 step=1 default=128 value=128\n white_balance_temperature_auto 0x0098090c (bool)   : default=1 value=1\n                           gain 0x00980913 (int)    : min=0 max=100 step=1 default=5 value=5\n           power_line_frequency 0x00980918 (menu)   : min=0 max=2 default=1 value=1\n\t\t\t\t0: Disabled\n\t\t\t\t1: 50 Hz\n\t\t\t\t2: 60 Hz\n      white_balance_temperature 0x0098091a (int)    : min=0 max=255 step=1 default=128 value=128 flags=inactive\n                      sharpness 0x0098091b (int)    : min=0 max=255 step=1 default=128 value=128\n                  exposure_auto 0x009a0901 (menu)   : min=0 max=3 default=0 value=0\n\t\t\t\t0: Auto Mode\n\t\t\t\t1: Manual Mode\n\t\t\t\t2: Shutter Priority Mode\n\t\t\t\t3: Aperture Priority Mode\n              exposure_absolute 0x009a0902 (int)    : min=0 max=6500 step=1 default=100 value=100 flags=inactive\nioctl: VIDIOC_ENUM_FMT\n\tType: Video Capture\n\n\t[0]: 'MJPG' (Motion-JPEG, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[1]: 'YUYV' (YUYV 4:2:2)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 480x272\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[2]: 'NV12' (Y/CbCr 4:2:0)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[3]: 'H264' (H.264, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[4]: 'HEVC' (HEVC, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n",
+          "stderr": ""
+        }
+      },
+      {
+        "stable_path": "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0",
+        "node": "/dev/video6",
+        "query": {
+          "command": [
+            "v4l2-ctl",
+            "-d",
+            "/dev/v4l/by-path/platform-xhci-hcd.9.auto-usb-0:1.3.3:1.0-video-index0",
+            "--all",
+            "--list-formats-ext"
+          ],
+          "returncode": 0,
+          "stdout": "Driver Info:\n\tDriver name      : uvcvideo\n\tCard type        : webcamproduct: usb-webcam\n\tBus info         : usb-xhci-hcd.9.auto-1.3.3\n\tDriver version   : 5.10.160\n\tCapabilities     : 0x84a00001\n\t\tVideo Capture\n\t\tMetadata Capture\n\t\tStreaming\n\t\tExtended Pix Format\n\t\tDevice Capabilities\n\tDevice Caps      : 0x04200001\n\t\tVideo Capture\n\t\tStreaming\n\t\tExtended Pix Format\nMedia Driver Info:\n\tDriver name      : uvcvideo\n\tModel            : webcamproduct: usb-webcam\n\tSerial           : 00000000\n\tBus info         : usb-xhci-hcd.9.auto-1.3.3\n\tMedia version    : 5.10.160\n\tHardware revision: 0x00000200 (512)\n\tDriver version   : 5.10.160\nInterface Info:\n\tID               : 0x03000002\n\tType             : V4L Video\nEntity Info:\n\tID               : 0x00000001 (1)\n\tName             : webcamproduct: usb-webcam\n\tFunction         : V4L2 I/O\n\tFlags         : default\n\tPad 0x01000007   : 0: Sink\n\t  Link 0x02000010: from remote pad 0x100000a of entity 'Extension 3': Data, Enabled, Immutable\nPriority: 2\nVideo input : 0 (Camera 1: ok)\nFormat Video Capture:\n\tWidth/Height      : 2560/1440\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 7372800\n\tColorspace        : Default\n\tTransfer Function : Default (maps to Rec. 709)\n\tYCbCr/HSV Encoding: Default (maps to ITU-R 601)\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nCrop Capability Video Capture:\n\tBounds      : Left 0, Top 0, Width 2560, Height 1440\n\tDefault     : Left 0, Top 0, Width 2560, Height 1440\n\tPixel Aspect: 1/1\nSelection Video Capture: crop_default, Left 0, Top 0, Width 2560, Height 1440, Flags: \nSelection Video Capture: crop_bounds, Left 0, Top 0, Width 2560, Height 1440, Flags: \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n                     brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=128\n                       contrast 0x00980901 (int)    : min=0 max=255 step=1 default=128 value=128\n                     saturation 0x00980902 (int)    : min=0 max=255 step=1 default=128 value=128\n white_balance_temperature_auto 0x0098090c (bool)   : default=1 value=1\n                           gain 0x00980913 (int)    : min=0 max=100 step=1 default=5 value=5\n           power_line_frequency 0x00980918 (menu)   : min=0 max=2 default=1 value=1\n\t\t\t\t0: Disabled\n\t\t\t\t1: 50 Hz\n\t\t\t\t2: 60 Hz\n      white_balance_temperature 0x0098091a (int)    : min=0 max=255 step=1 default=128 value=128 flags=inactive\n                      sharpness 0x0098091b (int)    : min=0 max=255 step=1 default=128 value=128\n                  exposure_auto 0x009a0901 (menu)   : min=0 max=3 default=0 value=0\n\t\t\t\t0: Auto Mode\n\t\t\t\t1: Manual Mode\n\t\t\t\t2: Shutter Priority Mode\n\t\t\t\t3: Aperture Priority Mode\n              exposure_absolute 0x009a0902 (int)    : min=0 max=6500 step=1 default=100 value=100 flags=inactive\nioctl: VIDIOC_ENUM_FMT\n\tType: Video Capture\n\n\t[0]: 'MJPG' (Motion-JPEG, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[1]: 'YUYV' (YUYV 4:2:2)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 480x272\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[2]: 'NV12' (Y/CbCr 4:2:0)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x368\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[3]: 'H264' (H.264, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t[4]: 'HEVC' (HEVC, compressed)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x360\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1024x576\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1280x720\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 1920x1080\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\tSize: Discrete 2560x1440\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n",
+          "stderr": ""
+        }
+      }
+    ],
+    "active_camera_users": {
+      "command": [
+        "fuser",
+        "/dev/video2",
+        "/dev/video8",
+        "/dev/video0",
+        "/dev/video4",
+        "/dev/video6"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "block_devices": {
+      "command": [
+        "lsblk",
+        "-J",
+        "-b",
+        "-o",
+        "NAME,SIZE,TYPE,FSTYPE,MOUNTPOINT"
+      ],
+      "returncode": 0,
+      "stdout": "{\n   \"blockdevices\": [\n      {\"name\":\"mmcblk0\", \"size\":125069950976, \"type\":\"disk\", \"fstype\":null, \"mountpoint\":null,\n         \"children\": [\n            {\"name\":\"mmcblk0p1\", \"size\":8388608, \"type\":\"part\", \"fstype\":null, \"mountpoint\":null},\n            {\"name\":\"mmcblk0p2\", \"size\":134217728, \"type\":\"part\", \"fstype\":\"ext2\", \"mountpoint\":\"/boot\"},\n            {\"name\":\"mmcblk0p3\", \"size\":124918939136, \"type\":\"part\", \"fstype\":\"ext4\", \"mountpoint\":\"/\"}\n         ]\n      },\n      {\"name\":\"mmcblk0boot0\", \"size\":4194304, \"type\":\"disk\", \"fstype\":null, \"mountpoint\":null},\n      {\"name\":\"mmcblk0boot1\", \"size\":4194304, \"type\":\"disk\", \"fstype\":null, \"mountpoint\":null}\n   ]\n}\n",
+      "stderr": ""
+    },
+    "application_directory_present": false
+  },
+  "diagnostic_config": "output/ss07/cameras-concurrent-20261026-16/diagnostic-five-usb-720p25.json",
+  "single_blue_1080p25_candidate": "output/ss07/cameras-concurrent-20261026-16/single-blue-1080p25.json",
+  "diagnostic_config_deployed": false,
+  "frozen_production_config_changed": false,
+  "bounded_five_720p25_capture_and_libavcodec_chromium_counts_passed": true,
+  "five_1080p25_capture_passed": false,
+  "all_openh264_counts_match": false,
+  "no_loss_acceptance_passed": false,
+  "full_system_acceptance_passed": false,
+  "prerequisites_not_resolved": [
+    "Production C++ worker/API/browser and actual service UID/LAN deployment",
+    "Five 1080p25 USB bandwidth",
+    "V4L2 lost-frame warnings and OpenH264 count discrepancies",
+    "Valid SDI camera input, manufacturer sonar protocol/devices, independent timecode adapter and UART parameters",
+    "Actual recording data disk and full-load eight-hour/fault acceptance"
+  ],
+  "scope": "Existing board GStreamer via bounded SSH-stdin probes; compressed bytes saved only on the development host. The 720p25 mode is a diagnostic alternative and does not replace the five-1080p25 candidate goal. Browser checks are sequential offline WebCodecs decode with test timestamps, not live WebRTC or product UI. Exact counts refer only to the saved AUs; V4L2 warnings preclude a no-loss claim. No new full acceptance or deployment.",
+  "raw_files": {
+    "output/ss07/bright-camera-browser-fullclip-20261026/browser-result.json": {
+      "bytes": 85663,
+      "sha256": "d6bd31e0e3cf548dc0d22d7e848d71e64aafa6513ab1ecdc91bd72bfddf61bd6"
+    },
+    "output/ss07/bright-camera-browser-fullclip-20261026/browser.cjs": {
+      "bytes": 6883,
+      "sha256": "abdfeb5349cb749072821550b0b6a304c4d1e47f3b45ad4a0802f63470ea2066"
+    },
+    "output/ss07/bright-camera-browser-fullclip-20261026/browser.log": {
+      "bytes": 629,
+      "sha256": "32d624019dfbd7a54032f56e37e78003335fe74cfdc69fa7147587144138dc46"
+    },
+    "output/ss07/bright-camera-browser-fullclip-20261026/cases.json": {
+      "bytes": 396133,
+      "sha256": "19070abb94dce51383f57ab9e194d15a68699db17c62c233e778f236d033663f"
+    },
+    "output/ss07/bright-camera-browser-fullclip-20261026/chromium.stderr.log": {
+      "bytes": 242,
+      "sha256": "a0190f72705ecf82a579bf5251542fce317b1ff37add16ea858d247e02348e5d"
+    },
+    "output/ss07/bright-camera-browser-fullclip-20261026/result.json": {
+      "bytes": 95316,
+      "sha256": "fb5fadd1a60f95df141ce30eed428b91c0f7b2805000d69503c67af359aa800a"
+    },
+    "output/ss07/bright-camera-browser-fullclip-20261026/run.py": {
+      "bytes": 4135,
+      "sha256": "9773faae835aae181d9e4e5de5f5198ef0ce97a8f891b58a3fd33281bd919e4d"
+    },
+    "output/ss07/cameras-concurrent-20261026-13/back/capture-result.json": {
+      "bytes": 21828,
+      "sha256": "0bdf2a521bbf73f15dc7150f20f4c5df7e43c2ab37c0dbe3adc34974f0890fcb"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back/capture-result.json": {
+      "bytes": 21948,
+      "sha256": "bf78813ccac68381aaaafd8e28f5d8e064c624ac6455b3ba2e63a167ce1ccef2"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back/capture.h264": {
+      "bytes": 766611,
+      "sha256": "fe4e540c09453127b05c713a6be7d0952525c54fdbdb0616d3da933266aa08f2"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back/capture.stderr.log": {
+      "bytes": 13261,
+      "sha256": "dba6a68243a6d9d181c0dcc4c723f1349917df197ece6f6db8df589419d0c3c5"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back/decode-result.json": {
+      "bytes": 937,
+      "sha256": "1cdab8a3ccaeabf7a597bd7bfd9ecad359415270c67271531d5f606dc1766308"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back/frame-100.png": {
+      "bytes": 1438955,
+      "sha256": "308c6d0df33e6fd4e4bf28395b740dde8e30c2081a495b8639b8ddb1cf1c92d2"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back-long/capture-result.json": {
+      "bytes": 111786,
+      "sha256": "ef291f228dc72c189a7debdd130cb0f71b2ca8367ea2888360431b88f01af408"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back-long/capture.h264": {
+      "bytes": 1741625,
+      "sha256": "e290edbd7fb5c71b1653abcfdd02d7404fbf719c86538114d6f27dc8535eda77"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back-long/capture.stderr.log": {
+      "bytes": 61914,
+      "sha256": "837768b79f9d9163c2d20f5dfd1b05149ee7af8b758a1b1cc5b8e2760c1ae5e8"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back-long/decode-result.json": {
+      "bytes": 942,
+      "sha256": "9d642db499f8e0bb2be401e72ad4655252f999b0fe4ac30f132b3589afd4b78c"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/back-long/frame-100.png": {
+      "bytes": 1251133,
+      "sha256": "0d7f89ee0f773f7e9e9a3dba79c23af69fa938a0517b31629f224371bf45960f"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/board-capture.py": {
+      "bytes": 7499,
+      "sha256": "fed08b5e7b88eabbe2e3e99be341ee3faeca1d7f5d960498e6b6be03e8fbd765"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/board-inventory.py": {
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/capture-summary.json": {
+      "bytes": 26931,
+      "sha256": "41563bee5148e1126dc36a875c2a3181cd4843af6c62abe022368a2556d44358"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-frame-samples-long.py": {
+      "bytes": 4649,
+      "sha256": "f033f954562f7a04f345e61e3fbbb6c04ddd8777e96e8089748c31e1e6116b2d"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-frame-samples.py": {
+      "bytes": 4689,
+      "sha256": "7f279e43bd8f662547f7f25542f72d76e7870de41415c690e21cc3fc6b57265a"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-libavcodec-long.py": {
+      "bytes": 4499,
+      "sha256": "f5c4944e169b76c54900b948726e192937b4385074700b9490057e7d2c5ecb95"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-libavcodec.py": {
+      "bytes": 4486,
+      "sha256": "7e0b336fc508671ce04785b3e1ef0097276ce2c0995e5ad80f4ad61286e44473"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-runtime/plugins/libgstapp.so": {
+      "bytes": 14552,
+      "sha256": "8862b59baea6b95de7cb4b45afbe54ed5ec4b40d78b8eb89fcd94ee12b7563ed"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-runtime/plugins/libgstcoreelements.so": {
+      "bytes": 447024,
+      "sha256": "bad8c42bce30651eecb6397871af2a6ef15b1985fe98e6be2e015748c5ec7c79"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-runtime/plugins/libgstopenh264.so": {
+      "bytes": 48496,
+      "sha256": "26cbe064d6a286638c6f5fad089c4b6371658d22afcc85f163fd7fc3259a635c"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-runtime/plugins/libgstvideoconvert.so": {
+      "bytes": 31896,
+      "sha256": "a37fb9ee87a1ae2e2e0c4f36eba3d193c8a88fec36ccd18f7e0bc3fb5019486a"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-runtime/plugins/libgstvideoparsersbad.so": {
+      "bytes": 289424,
+      "sha256": "c72a0c17aafb136394144c00e518eb51f468c0e510cc764a9f6364c4ec52ccd5"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-runtime/registry-long.bin": {
+      "bytes": 20984,
+      "sha256": "0cb53397c564370eca9a2157e679c131b0e3da0808e81f6458df5a55e3b01dfa"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/decode-runtime/registry-retry.bin": {
+      "bytes": 20984,
+      "sha256": "fdc673ddf497e41e406e228bc2ce6fc6f07840cdac9d9cec016e2e7640ed5a59"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/inventory.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/inventory.stdout.json": {
+      "bytes": 78785,
+      "sha256": "52dac847f4ce855a2955842e5465adfc97bcb918bedd83e8adfc3d0da76271b0"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/libavcodec-long-result.json": {
+      "bytes": 903,
+      "sha256": "0498349d18cef525dc387086d62cfec00f459931c0a10d0acdc3c7458723fc65"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/libavcodec-long.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/libavcodec-long.stdout.log": {
+      "bytes": 177,
+      "sha256": "a9ec7b726248aec20ba07d345618ac47536018287d6f88bf014203b37503bd68"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/libavcodec-result.json": {
+      "bytes": 896,
+      "sha256": "3d19343e4f404b7bf08910d6d261c3d46e60e80324c05db5cebd6e86c55a2af0"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/libavcodec.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/libavcodec.stdout.log": {
+      "bytes": 172,
+      "sha256": "a34e486cc622e3add2a30131b3d80324411eefa7eda86451d8acb0321b6ee67d"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/long-capture-summary.json": {
+      "bytes": 124352,
+      "sha256": "51e43ebb4424bd5c2a3b3e1dde8efe48402ca802db7a9bcb167a21db52c2cc7f"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/openh264-long.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/openh264-long.stdout.log": {
+      "bytes": 65,
+      "sha256": "efae726fc3c692526ba939730f0642bc2b847cbf9c2afb20b4730d7690db5b88"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/openh264.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/openh264.stdout.log": {
+      "bytes": 59,
+      "sha256": "1f785775c0c512457db20d090feb9488dd65bb5549dcf4ed55b722cb41b8332a"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/run-bright.py": {
+      "bytes": 3391,
+      "sha256": "a89aa4fa26fe83b8681874a6de37163b151b760591023c14120a7e7b4ec60853"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/run-long.py": {
+      "bytes": 2814,
+      "sha256": "3ddde0b449b380cd9c092ddfa54b9e69e3fa8ddf2e696c0addd4327bee1e2ae9"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/usb-monitor.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-14/usb-monitor.stdout.log": {
+      "bytes": 72,
+      "sha256": "b43a577b0cb59fa978db0d466bea851e64a4a9c317ecd8cadf6ce93022618bad"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/back/capture-result.json": {
+      "bytes": 111576,
+      "sha256": "edd3d97d5ebc2736c2d060ab060579b5a2fb57610710fb0f6cfd6d3b92b2c9b4"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/back/capture.h264": {
+      "bytes": 796889,
+      "sha256": "1c373d429ce49a3146892e8e05f4bb89b4cfbefd9387aaf4b46712e1c37130fd"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/back/capture.stderr.log": {
+      "bytes": 61705,
+      "sha256": "25297db7eaec1fad370f25cc15cfa1eaeb4fcecbd6aa99f054f57685c399f2a9"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/back/decode-result.json": {
+      "bytes": 937,
+      "sha256": "cd98fba28f5eb8ba2c388f14657f34c4e778aa6bdd52a70f6955110b9ef13f27"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/back/frame-100.png": {
+      "bytes": 644610,
+      "sha256": "3eda1a6c132bfb5165bac16f375f2e33f6b8835fde78f61f5cb9bef0747dbb05"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/board-capture.py": {
+      "bytes": 7483,
+      "sha256": "46552ca65a25d40c119021d99ecfac32c7f42f124b54ca157b7ac4cad1f93173"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/board-inventory.py": {
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/capture-summary.json": {
+      "bytes": 681977,
+      "sha256": "cd6ccbb0d2db27a0a130d4dbad10631d5d7c4011f5a7b9a46d3430a1431e7dfe"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/decode-frame-samples.py": {
+      "bytes": 4689,
+      "sha256": "7f279e43bd8f662547f7f25542f72d76e7870de41415c690e21cc3fc6b57265a"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/decode-libavcodec.py": {
+      "bytes": 4762,
+      "sha256": "b6d80aeb6d8ea85c3a6e5b53fd3657efad409c2e959e8f35b025e517722f0e30"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/decode-runtime/plugins/libgstapp.so": {
+      "bytes": 14552,
+      "sha256": "8862b59baea6b95de7cb4b45afbe54ed5ec4b40d78b8eb89fcd94ee12b7563ed"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/decode-runtime/plugins/libgstcoreelements.so": {
+      "bytes": 447024,
+      "sha256": "bad8c42bce30651eecb6397871af2a6ef15b1985fe98e6be2e015748c5ec7c79"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/decode-runtime/plugins/libgstopenh264.so": {
+      "bytes": 48496,
+      "sha256": "26cbe064d6a286638c6f5fad089c4b6371658d22afcc85f163fd7fc3259a635c"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/decode-runtime/plugins/libgstvideoconvert.so": {
+      "bytes": 31896,
+      "sha256": "a37fb9ee87a1ae2e2e0c4f36eba3d193c8a88fec36ccd18f7e0bc3fb5019486a"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/decode-runtime/plugins/libgstvideoparsersbad.so": {
+      "bytes": 289424,
+      "sha256": "c72a0c17aafb136394144c00e518eb51f468c0e510cc764a9f6364c4ec52ccd5"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/decode-runtime/registry-retry.bin": {
+      "bytes": 20984,
+      "sha256": "08f9e1b8b8df179beecf653873702f846395016a3faebd0f596cc8669c86459a"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/down/capture-result.json": {
+      "bytes": 111620,
+      "sha256": "d7bfec4387864acda0b4d3fe231b6119bf6c92d5f57d6528499712d32532ba58"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/down/capture.h264": {
+      "bytes": 954912,
+      "sha256": "5aa13528e40c5b05dfed07f9f56083405b15fb8aa149a99b45d61dc454047648"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/down/capture.stderr.log": {
+      "bytes": 61545,
+      "sha256": "d2d55ab6cacd6d5f7b76a64133e24f6ad797a832303a5e80d5fadece3be6a100"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/down/decode-result.json": {
+      "bytes": 935,
+      "sha256": "de145e0af31c5448d7e528032cc062e2af34a8acc8c919b0fa4af2b6893459eb"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/down/frame-100.png": {
+      "bytes": 628547,
+      "sha256": "15e1220beaf74158a08158ef7704e8954bd96ab69a3bef0ffc5eebd268eacd0b"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/front/capture-result.json": {
+      "bytes": 111633,
+      "sha256": "34439ed2dfb4a7985a01f6f7b20cee8c1edebd7793cad707559189e38532d395"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/front/capture.h264": {
+      "bytes": 1258070,
+      "sha256": "9d0e04877a707eaada77ecce3c710a240f015ec65c02f0be30a8576b199b5857"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/front/capture.stderr.log": {
+      "bytes": 61556,
+      "sha256": "b8c8191662db0273b6663250b33f2e979d1b9071ccd7cf9091fcb9201ba7c18a"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/front/decode-result.json": {
+      "bytes": 937,
+      "sha256": "b1a4e0c97257105238a2cbc6a33a07e67b0a1ef4921a941149a662868de1b7ae"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/front/frame-100.png": {
+      "bytes": 907103,
+      "sha256": "539feda4b7474d6ec7400465d7371a143c645505f707469f40cdc9a8debdbd1e"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/inventory-stream-start.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/inventory-stream-start.stdout.json": {
+      "bytes": 78785,
+      "sha256": "5dc364d96674c841e502fcac5c6c6d1f7afe151a98c9a95ef56068842c2fb5f1"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/left/capture-result.json": {
+      "bytes": 111643,
+      "sha256": "fccc1e5fdd6de1867ac7ff5b7b3de250393088674ddd1fbda69eb1cdc23be74d"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/left/capture.h264": {
+      "bytes": 1026736,
+      "sha256": "b6cbf4cda4084b35fc63519fe91c2cf607832c6749ad6be0d51c5be148428e88"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/left/capture.stderr.log": {
+      "bytes": 61360,
+      "sha256": "575b9a8500f2e5bd2dd42a530f6b123c3bd5b30540d5ea2ba88a68289d93647d"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/left/decode-result.json": {
+      "bytes": 936,
+      "sha256": "056e71fc991f05704e676ce52e2c9233caaf40d480f7b416bd5581761559ab47"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/left/frame-100.png": {
+      "bytes": 551426,
+      "sha256": "62f4ef3eef20eadfb06102b76bcb1040a0acd3be771c424e96664632710b21ff"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/libavcodec-result.json": {
+      "bytes": 3741,
+      "sha256": "d4410a7f4d48b2f785a19a88aff5b420dd4d1a5d0fdfeff5a7d7e1505422f9bb"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/libavcodec.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/libavcodec.stdout.log": {
+      "bytes": 862,
+      "sha256": "9fc19432f9a65afdb22cf674c148e3c51879fd70cacb4a77bccfd3a1fe6a8b50"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/openh264.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/openh264.stdout.log": {
+      "bytes": 298,
+      "sha256": "5565f2cd984efba10e5c85dae19c14f25cd18ecf2bc63f934d9ddae7fe474d19"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/right/capture-result.json": {
+      "bytes": 111646,
+      "sha256": "0f6a868d7ea4b5d0bd762d71a55817b96b2dddc4b09a98ec7f97cca45dd2d2f1"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/right/capture.h264": {
+      "bytes": 1287826,
+      "sha256": "b8f39f224fe78e73169355ed3e3ceb261a31db65bd35572f52aaca6124ca3448"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/right/capture.stderr.log": {
+      "bytes": 61564,
+      "sha256": "9e278f7bc72183fbe2d520c4ab30381ff53f24abbca11e6bed482819b6de3699"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/right/decode-result.json": {
+      "bytes": 936,
+      "sha256": "30895a5c0b7a59f5136b1e7f3b46fc4640275e28edd7759c109864eb72b36df0"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/right/frame-100.png": {
+      "bytes": 814558,
+      "sha256": "5a3048678e5e6325a889021c4a056d088a9f75312af027daa0b6f5f93d38a834"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/run-five.py": {
+      "bytes": 5602,
+      "sha256": "7219d08c3c6395620ea90ae7eabf0021120497e08458c0bdc6ea03eef97dcec7"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/usb-events.log": {
+      "bytes": 72,
+      "sha256": "b43a577b0cb59fa978db0d466bea851e64a4a9c317ecd8cadf6ce93022618bad"
+    },
+    "output/ss07/cameras-concurrent-20261026-15/usb-events.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/back/capture-result.json": {
+      "bytes": 147527,
+      "sha256": "6cd62253360f021ab6d5142aff00526130873ea9c3282f2b25e82b93d337f62a"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/back/capture.h264": {
+      "bytes": 1007330,
+      "sha256": "c629e3c4c60c76e9c3574ccd44d246a04dd7f319546bdfadc2dcd26a6cd58cc7"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/back/capture.stderr.log": {
+      "bytes": 81429,
+      "sha256": "49d5bcc2a1c9ab8371bbe4a8789925f5bedb14218ede2c8971c7c0698db8a975"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/back/decode-result.json": {
+      "bytes": 935,
+      "sha256": "9eecb656e4faa933eca99534fe133cd0d2b296054c2cdd25ff6b1a53e580c5e5"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/back/frame-100.png": {
+      "bytes": 637140,
+      "sha256": "c091784e37cf6f3291c920a5370bd44caf51853c9c52c62f9f15c0cf5ed7d97f"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/board-capture.py": {
+      "bytes": 7484,
+      "sha256": "1eba616c9a9c63153a0f6b0d449b856b506c1a57c4b4b05e5a2f5b6e2320d5f2"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/board-inventory.py": {
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/capture-summary.json": {
+      "bytes": 902007,
+      "sha256": "4315dba0f062e14af4dd13c67c8e9a6f2164a5c195bfe8e74102b7d6669baf30"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/config-validation.json": {
+      "bytes": 132,
+      "sha256": "694ea517858f708d842c220dd82121115ba95b8beebc16570d801cc079c8d2f1"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/decode-frame-samples.py": {
+      "bytes": 4689,
+      "sha256": "7f279e43bd8f662547f7f25542f72d76e7870de41415c690e21cc3fc6b57265a"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/decode-libavcodec.py": {
+      "bytes": 4762,
+      "sha256": "b6d80aeb6d8ea85c3a6e5b53fd3657efad409c2e959e8f35b025e517722f0e30"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/decode-runtime/plugins/libgstapp.so": {
+      "bytes": 14552,
+      "sha256": "8862b59baea6b95de7cb4b45afbe54ed5ec4b40d78b8eb89fcd94ee12b7563ed"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/decode-runtime/plugins/libgstcoreelements.so": {
+      "bytes": 447024,
+      "sha256": "bad8c42bce30651eecb6397871af2a6ef15b1985fe98e6be2e015748c5ec7c79"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/decode-runtime/plugins/libgstopenh264.so": {
+      "bytes": 48496,
+      "sha256": "26cbe064d6a286638c6f5fad089c4b6371658d22afcc85f163fd7fc3259a635c"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/decode-runtime/plugins/libgstvideoconvert.so": {
+      "bytes": 31896,
+      "sha256": "a37fb9ee87a1ae2e2e0c4f36eba3d193c8a88fec36ccd18f7e0bc3fb5019486a"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/decode-runtime/plugins/libgstvideoparsersbad.so": {
+      "bytes": 289424,
+      "sha256": "c72a0c17aafb136394144c00e518eb51f468c0e510cc764a9f6364c4ec52ccd5"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/decode-runtime/registry-retry.bin": {
+      "bytes": 20984,
+      "sha256": "613a0eefe0002463baa99279c1f36a36c41c5c6c4913de6eeaa5386b24a70b88"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/diagnostic-five-usb-720p25.json": {
+      "bytes": 2319,
+      "sha256": "b8939153a0b198a40bd29c34517117e3d5fcb29877ded1ef41f3377ec3c04c09"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/down/capture-result.json": {
+      "bytes": 147533,
+      "sha256": "1fe67fc25b742da1473d22620381d0c84768d726d62e8c7dd6753bf1dbe62485"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/down/capture.h264": {
+      "bytes": 936754,
+      "sha256": "5235b7050ff2442381bf04f19f6a11ad4b717001f270ca6f4e0e8199a102430c"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/down/capture.stderr.log": {
+      "bytes": 81030,
+      "sha256": "8e814a56cdbf5ca5983e2d1baea269c79c458dac320139e1da028663a890b1e0"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/down/decode-result.json": {
+      "bytes": 938,
+      "sha256": "8c979810c351b4f5aa34ed527426ecbebfeb1b6d9803655abda109466a0216f3"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/down/frame-100.png": {
+      "bytes": 584484,
+      "sha256": "466ebd4b716322faeb552583c66532857884153ac298dcd57cede14100c54ce9"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/front/capture-result.json": {
+      "bytes": 147501,
+      "sha256": "bb51135292d2ce2d3364b2ab270d6fa01b8bf56d20bbcbff96a67910a88e4655"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/front/capture.h264": {
+      "bytes": 1215461,
+      "sha256": "59e32c1961c933f5d3e870b6ea3451f67e2e2102c0a32adda1a024577cf8b2f6"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/front/capture.stderr.log": {
+      "bytes": 81022,
+      "sha256": "58e9d0a90fb9a2faad85d6df4d2d7e46d037c93805d3bb29b8627c08d0e5543c"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/front/decode-result.json": {
+      "bytes": 938,
+      "sha256": "bfe63d8361b7e67afed6eb3815b1c779e22afe9f5658a64387c00336f7df4b62"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/front/frame-100.png": {
+      "bytes": 854312,
+      "sha256": "21c2db4f56d94569d72b244d39fa4eb0d4745b0b60af2bfcb96de50b68557bc1"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/inventory-stream-start.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/inventory-stream-start.stdout.json": {
+      "bytes": 73744,
+      "sha256": "ca3a86700a47764ad6a78c745e54332a47d43b8f42ff6392b582e7585afa3ed3"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/left/capture-result.json": {
+      "bytes": 147535,
+      "sha256": "f022f0e5fda2257f575ce66383efebbbff3c87db04906a7c016a034a6292e49f"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/left/capture.h264": {
+      "bytes": 833365,
+      "sha256": "6922451a14942bf0d366cadc5eb7c7266bdc9c2d43ad55669d27ab177dcd4682"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/left/capture.stderr.log": {
+      "bytes": 80623,
+      "sha256": "a093ecf6e9b8c0655698b3bcfdd3663e4520db6c0d3aea12bbaf07df7b0cae6c"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/left/decode-result.json": {
+      "bytes": 938,
+      "sha256": "c22340596d0042cecfccc9fc682163cfa50a2849c81bf4df6f25fdf25005ddee"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/left/frame-100.png": {
+      "bytes": 539588,
+      "sha256": "58b458aab5a326fff3134e1c804dbfc673f7577fcdfd0905aba0f2ccfc9ee705"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/libavcodec-result.json": {
+      "bytes": 3756,
+      "sha256": "debe5b18faf5333feb33fe2df7170aa343cb44b6d623da99f53afe5e7e9f0ec1"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/libavcodec.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/libavcodec.stdout.log": {
+      "bytes": 872,
+      "sha256": "bd0816f56c5af53ddc8beda56eab249ebd41954992d886ec9effabe55f040dc9"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/openh264.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/openh264.stdout.log": {
+      "bytes": 302,
+      "sha256": "2aa0dd2385a89cf263f230fd5c22a04b4c8f01923a120674aff7d16d9b1f4cbc"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/right/capture-result.json": {
+      "bytes": 147541,
+      "sha256": "6c9c19a2cd9bc076874a4fe966ca85fdf2202f050b4b5198f1093dc3591d6471"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/right/capture.h264": {
+      "bytes": 1176066,
+      "sha256": "d12ab5ebaa1ea2660727972ddc879aaf200a5c64ff3e2aabf0256f328ea5816e"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/right/capture.stderr.log": {
+      "bytes": 80627,
+      "sha256": "9f131c705f64cc25c1bd63b035c91d44f1bc7f5cc25c29aa81707b837226f0ed"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/right/decode-result.json": {
+      "bytes": 940,
+      "sha256": "048b0f986167d11f9010f64d2e53deb28ec49d705fa84c3cf1086d4bcdcd20d3"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/right/frame-100.png": {
+      "bytes": 742539,
+      "sha256": "fae13463b9c1ad8ead9d4f7616412d809f501cea19cf09111623d4a58fa928ba"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/run-five.py": {
+      "bytes": 5817,
+      "sha256": "4b0f7c4231b52458281c20b7aa9ec6d37c9f31bb591d165f738c8325ce4c60fe"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/single-blue-1080p25.json": {
+      "bytes": 2062,
+      "sha256": "aa28583414c4df8ff7f9ac7e408d0575e306b7b49cb8cb6fd63b4cd26b29eccb"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/single-config-validation.json": {
+      "bytes": 132,
+      "sha256": "3c4a8cbbfa1c934f1d052c62267f19d25070291f2bc03acc69fb23be284789e4"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/summarize-bright-evidence.py": {
+      "bytes": 10139,
+      "sha256": "e0b10bcddbd3a4a7b68c899a9886c32cf3fb88eaad12fb2b0364323bbbd25587"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/usb-events.log": {
+      "bytes": 72,
+      "sha256": "b43a577b0cb59fa978db0d466bea851e64a4a9c317ecd8cadf6ce93022618bad"
+    },
+    "output/ss07/cameras-concurrent-20261026-16/usb-events.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/back/capture-result.json": {
+      "bytes": 111715,
+      "sha256": "ccff800fd04a43b35a7472cc7f7206393ce7be738174833536fff7814f52e290"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/back/capture.h264": {
+      "bytes": 1343846,
+      "sha256": "69c9feaa5dfa3a99bb4ca88fbf8cfb3b0ec76e93361c639c340662cf8c1182f3"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/back/capture.stderr.log": {
+      "bytes": 61641,
+      "sha256": "267fb589e09d06a8d1e12b0b708210aa7ce27481c4055d3b5de9372197120668"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/board-capture.py": {
+      "bytes": 7577,
+      "sha256": "189daa76538ead97418737fc2325eb08f1ea9a67bc278a6b1e3018d82d27cc55"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/board-inventory.py": {
+      "bytes": 2394,
+      "sha256": "7fbf9c5587c4f0590765a5fc3266ef3d6e7b58f81f19293acbad825979770fd0"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/capture-summary.json": {
+      "bytes": 418488,
+      "sha256": "1c7bc2f15d0a90be99b685d88e52bd41362980713dbf4a613f708d185a504d8e"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/decode-libavcodec.py": {
+      "bytes": 5076,
+      "sha256": "5ef472d376043fb93323a24b8db700cb9d37302391bda343f95ce2dbd1876556"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/down/capture-result.json": {
+      "bytes": 3836,
+      "sha256": "c6d00bca8737a57c6ebc51f13c37027a7be4983abd084f6fece4f3d1f4eb0c70"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/down/capture.h264": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/down/capture.stderr.log": {
+      "bytes": 4098,
+      "sha256": "286a1d3d00369ca29dd92aeaf5031fe4b6140164a711f241ff0357ca9d12ad22"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/front/capture-result.json": {
+      "bytes": 111712,
+      "sha256": "7bc843f96a8503ab92ad2a497e37b9e65c007e2920df48ec315e741b64dd6f30"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/front/capture.h264": {
+      "bytes": 1536289,
+      "sha256": "bb1fc09e0a1acaa59859787439926133cc964c5ce953faae77b7f00244b17d85"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/front/capture.stderr.log": {
+      "bytes": 61661,
+      "sha256": "aa21f98cbb2161ed303966b8e2fdf885a20022666a7276a54adbc7f7101eca88"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/inventory-after.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/inventory-after.stdout.json": {
+      "bytes": 71181,
+      "sha256": "cf47bce74c9d61a55c9800efffc4d6b9c8feb2463d56bf6f471b4ee1948f42a1"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/inventory-stream-start.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/inventory-stream-start.stdout.json": {
+      "bytes": 72348,
+      "sha256": "7aba7bfc5cf2821db2c2e87a7f89bb44a68fe5380bb1984f7e8504c3047ccb7b"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/left/capture-result.json": {
+      "bytes": 111876,
+      "sha256": "0470169ec170e8e54e246a87ea0a19e897bb61a21b039412726414f85910a518"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/left/capture.h264": {
+      "bytes": 1260474,
+      "sha256": "e2e7b89f098a5f7499ec50f6e655b69120547b8ac767846f42f3d86d0e1045cb"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/left/capture.stderr.log": {
+      "bytes": 61593,
+      "sha256": "baa5d7f7c3b7744a12be4f7871283b31a9d0afe855476838ae5910b737cd6155"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/libavcodec-result.json": {
+      "bytes": 2618,
+      "sha256": "a0791ee0b4bd3f8bb3e88c30c0e1c93610bbbd03bb1522dad216da8f46928c6c"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/libavcodec.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/libavcodec.stdout.log": {
+      "bytes": 517,
+      "sha256": "77bdc19ae3cb64324ea478e862eee5914deba5e8b559bc7e24f88aeea7dbc322"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/right/capture-result.json": {
+      "bytes": 3848,
+      "sha256": "6a48b193f15c873d9f36329fcedc755f3ed66d0c183030433eadd0a0f368ec53"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/right/capture.h264": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/right/capture.stderr.log": {
+      "bytes": 4104,
+      "sha256": "6a7bb35ed9db968e52ca1de1ba7340c73fc32f8b31ace4a24b04a134db1f61d0"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/run-five.py": {
+      "bytes": 5654,
+      "sha256": "8a8c646b26914d716d8aeb97cfc6b0a8689e2e3a04ce6c7de012f270ab341594"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/usb-events.log": {
+      "bytes": 72,
+      "sha256": "b43a577b0cb59fa978db0d466bea851e64a4a9c317ecd8cadf6ce93022618bad"
+    },
+    "output/ss07/cameras-concurrent-20261026-17/usb-events.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/five-camera-browser-fullclip-20261026/browser-result.json": {
+      "bytes": 94036,
+      "sha256": "1eca6d2d6a16b1369156bbb394b689b732d0c03d7b8dee9efec3174f0623cfe5"
+    },
+    "output/ss07/five-camera-browser-fullclip-20261026/browser.cjs": {
+      "bytes": 6883,
+      "sha256": "abdfeb5349cb749072821550b0b6a304c4d1e47f3b45ad4a0802f63470ea2066"
+    },
+    "output/ss07/five-camera-browser-fullclip-20261026/browser.log": {
+      "bytes": 535,
+      "sha256": "0560330b22c82d9215aa4fc803355c7d182a218a4f35f881a0f0554ca3a52943"
+    },
+    "output/ss07/five-camera-browser-fullclip-20261026/cases.json": {
+      "bytes": 438253,
+      "sha256": "3c030ab881d39bde15afbea2c165cba5526b2052a62f65f5aeb96ae05e90cf6e"
+    },
+    "output/ss07/five-camera-browser-fullclip-20261026/chromium.stderr.log": {
+      "bytes": 242,
+      "sha256": "0fb002bb21cba622ed132dffb37441bb7f66e3414d43593e8b3c272c715ba646"
+    },
+    "output/ss07/five-camera-browser-fullclip-20261026/result.json": {
+      "bytes": 104627,
+      "sha256": "78fa39bf7f07d46dda40595bb7a547e35a0cc2405e096b7ed7371d4f97f49bc3"
+    },
+    "output/ss07/five-camera-browser-fullclip-20261026/run.py": {
+      "bytes": 4114,
+      "sha256": "12d73fbfcd49b225c259b9881e7a6384bec35600084ad861f5ca36c39dd34b80"
+    },
+    "output/ss07/se2017-auth-20261024-01/decode-runtime/lib/libgstcodecparsers-1.0.so.0": {
+      "bytes": 479016,
+      "sha256": "f2a54cbc901c11b84d4dddf62ccd56b955b621dfce8e32d921bfbb0f490a368b"
+    },
+    "output/ss07/se2017-auth-20261024-01/decode-runtime/lib/libopenh264.so.6": {
+      "bytes": 1058840,
+      "sha256": "d22e504e98d9a32df0573ad7be16949a0c3a54d0a658a77a8ca384e58be31ebf"
+    },
+    "output/ss07/se2017-auth-20261024-01/decode-runtime/manifest.json": {
+      "bytes": 1001,
+      "sha256": "e5a61e98231e0c5f185dc53953a34f4770ae5507a08d6ac2dad14bdec4729d00"
+    },
+    "output/ss07/se2017-auth-20261024-01/decode-runtime/plugins/libgstopenh264.so": {
+      "bytes": 48496,
+      "sha256": "26cbe064d6a286638c6f5fad089c4b6371658d22afcc85f163fd7fc3259a635c"
+    },
+    "output/ss07/se2017-auth-20261024-01/decode-runtime/plugins/libgstvideoparsersbad.so": {
+      "bytes": 289424,
+      "sha256": "c72a0c17aafb136394144c00e518eb51f468c0e510cc764a9f6364c4ec52ccd5"
+    }
+  }
+}

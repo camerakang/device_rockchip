@@ -1,0 +1,288 @@
+{
+  "evidence_kind": "hardware_capture_h264_order_diagnostic",
+  "recorded_at_utc": "2026-10-26T03:24:00.560795+00:00",
+  "board_contacted": false,
+  "live_camera": false,
+  "packages_installed": false,
+  "rk_application_deployed": false,
+  "original_capture_modified": false,
+  "inspection": {
+    "evidence_kind": "captured_h264_header_and_decoder_diagnostic",
+    "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/back/capture.h264",
+    "source_sha256": "60b4e51e5ea0a63c408b91cec2002c7f15abd9e4e371873a831dc8c45380f874",
+    "scope": "Main-profile, progressive, POC-type-0 header prefix only, one VCL per AU. Full slice payload and H.264 conformance are not validated. Original file remains unchanged.",
+    "sps": {
+      "0": {
+        "profile_idc": 77,
+        "level_idc": 31,
+        "frame_num_bits": 16,
+        "poc_lsb_bits": 16,
+        "ref_frames": 1,
+        "gaps_allowed": 0,
+        "width_mbs": 80,
+        "height_map_units": 45,
+        "frame_mbs_only": 1
+      }
+    },
+    "parsed_access_units": 539,
+    "all_header_frame_nums_match_libavcodec_debug": true,
+    "all_header_poc_lsbs_match_libavcodec_debug_modulo_65536": true,
+    "first_12_access_units": [
+      {
+        "au_index": 0,
+        "nal_type": 5,
+        "frame_num": 0,
+        "poc_lsb": 0,
+        "idr_pic_id": 1,
+        "slice_type": 7,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 1,
+        "nal_type": 1,
+        "frame_num": 1,
+        "poc_lsb": 2,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 2,
+        "nal_type": 1,
+        "frame_num": 2,
+        "poc_lsb": 4,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 3,
+        "nal_type": 1,
+        "frame_num": 3,
+        "poc_lsb": 6,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 4,
+        "nal_type": 1,
+        "frame_num": 1,
+        "poc_lsb": 2,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 5,
+        "nal_type": 1,
+        "frame_num": 2,
+        "poc_lsb": 4,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 6,
+        "nal_type": 1,
+        "frame_num": 3,
+        "poc_lsb": 6,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 7,
+        "nal_type": 1,
+        "frame_num": 4,
+        "poc_lsb": 8,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 8,
+        "nal_type": 1,
+        "frame_num": 5,
+        "poc_lsb": 10,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 9,
+        "nal_type": 1,
+        "frame_num": 6,
+        "poc_lsb": 12,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 10,
+        "nal_type": 1,
+        "frame_num": 7,
+        "poc_lsb": 14,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 11,
+        "nal_type": 1,
+        "frame_num": 8,
+        "poc_lsb": 16,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      }
+    ],
+    "frame_num_gap_at_408": [
+      {
+        "au_index": 406,
+        "nal_type": 1,
+        "frame_num": 3,
+        "poc_lsb": 6,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 407,
+        "nal_type": 1,
+        "frame_num": 4,
+        "poc_lsb": 8,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 408,
+        "nal_type": 1,
+        "frame_num": 6,
+        "poc_lsb": 12,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      },
+      {
+        "au_index": 409,
+        "nal_type": 1,
+        "frame_num": 7,
+        "poc_lsb": 14,
+        "idr_pic_id": null,
+        "slice_type": 5,
+        "delta_pic_order_bottom": 0
+      }
+    ],
+    "out_of_order_debug_at_input_au_indices": [
+      4,
+      5
+    ],
+    "decoder_frame_gap_at_input_au_indices": [
+      4,
+      408
+    ],
+    "physical_origin_determined": false,
+    "persistent_low_fps_explained": false,
+    "references": [
+      "https://raw.githubusercontent.com/FFmpeg/FFmpeg/n4.4.2/libavcodec/h264_slice.c",
+      "https://raw.githubusercontent.com/FFmpeg/FFmpeg/n4.4.2/libavcodec/h264_ps.c",
+      "https://ffmpeg.org/ffmpeg-codecs.html#Codec-Options"
+    ]
+  },
+  "libavcodec_decode": {
+    "source": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/cameras-concurrent-20261026-11/back/capture.h264",
+    "sha256": "60b4e51e5ea0a63c408b91cec2002c7f15abd9e4e371873a831dc8c45380f874",
+    "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+    "decoder": "native libavcodec h264",
+    "aud_delimited_packets": 539,
+    "expected_parsed_aus": 539,
+    "decoded_frames": 537,
+    "eof": true,
+    "errors": [],
+    "elapsed_seconds": 0.24702636600704864,
+    "passed": false,
+    "scope": "Independent offline frame-count check through installed libavcodec, with opaque public API pointers and documented input padding. No board or browser performance/quality acceptance."
+  },
+  "observations": [
+    "At AU 4 the coded non-IDR frame_num moves from 3 to 1 and POC LSB from 6 to 2; AU 5 continues at frame_num 2 / POC LSB 4.",
+    "Decoder debug emits two no-picture/out-of-order messages while feeding AU 4 and 5. The prior browser check has no outputs for timestamps assigned to AU 4 and 5.",
+    "A second coded frame_num gap from 4 to 6 is present at AU 408.",
+    "All 539 raw header frame_num and POC LSB values agree with the installed decoder debug trace."
+  ],
+  "inference": "The output deficit is associated with coded picture order rollback and decoder out-of-order suppression. The physical source of this captured sequence remains unverified; no claim that it explains sustained low arrival FPS.",
+  "physical_origin_determined": false,
+  "persistent_low_fps_explained": false,
+  "full_clip_frame_count_acceptance_passed": false,
+  "five_camera_acceptance_passed": false,
+  "physical_bright_scene_result_pending": true,
+  "scope": "Offline diagnostics of an immutable actual capture. Header parser supports only this Main/progressive/POC-type-0 case and does not validate complete H.264 conformance. No stream rewriting, dropping startup data to claim acceptance, deployment, real-time test or hardware changes.",
+  "references": [
+    "https://raw.githubusercontent.com/FFmpeg/FFmpeg/n4.4.2/libavcodec/h264_slice.c",
+    "https://raw.githubusercontent.com/FFmpeg/FFmpeg/n4.4.2/libavcodec/h264_ps.c",
+    "https://ffmpeg.org/ffmpeg-codecs.html#Codec-Options"
+  ],
+  "raw_files": {
+    "output/ss07/cameras-concurrent-20261026-11/back/capture-result.json": {
+      "bytes": 81073,
+      "sha256": "e962beca2dec3e72abe59311bc764c542fc7b98918d629e38bca484ab593302e"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/back/capture.h264": {
+      "bytes": 144136,
+      "sha256": "60b4e51e5ea0a63c408b91cec2002c7f15abd9e4e371873a831dc8c45380f874"
+    },
+    "output/ss07/decoder-diagnostics-20261026/debug-result.json": {
+      "bytes": 656,
+      "sha256": "fdfb095d461de0f26bb3695d9b68e08eeace359855c16b2d9a4248a28351e68c"
+    },
+    "output/ss07/decoder-diagnostics-20261026/decode-debug.py": {
+      "bytes": 4869,
+      "sha256": "c777bf9f4c2fa28b9863016e390b428c2bf94a679e15a047bad4f8e6c28d3737"
+    },
+    "output/ss07/decoder-diagnostics-20261026/decode-debug.stderr.log": {
+      "bytes": 450288,
+      "sha256": "57293f673618b3e24dd48c7f0d811e75fe032030520afbb9513ffb220495dd1c"
+    },
+    "output/ss07/decoder-diagnostics-20261026/decode-debug.stdout.log": {
+      "bytes": 173,
+      "sha256": "4d8cdb68b5a20c54cc9f2793b70e6556b57563127578b5b9f860e2475abd0ba7"
+    },
+    "output/ss07/decoder-diagnostics-20261026/header-fields.json": {
+      "bytes": 180609,
+      "sha256": "f37a414a3d0568a3711328a91aedf5ed142c8d7f7484ce266271dbc21760633f"
+    },
+    "output/ss07/decoder-diagnostics-20261026/inspect-headers.py": {
+      "bytes": 6695,
+      "sha256": "8958b28f584b02183cd007acdef771bf95088f70672a625d6cc05c76136fd871"
+    },
+    "output/ss07/decoder-diagnostics-20261026/inspect-headers.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/decoder-diagnostics-20261026/inspect-headers.stdout.log": {
+      "bytes": 82,
+      "sha256": "c96ff20cd854f78577d1759bd3fc9db7ea7bb41b5d0c40e95c6c334eeca92326"
+    },
+    "output/ss07/decoder-diagnostics-20261026/inspection-result.json": {
+      "bytes": 4282,
+      "sha256": "b4c2f5a0b7172ff6d761a731cd058dd29ac3f6a72271e9d6736f6a93d3b4ce9f"
+    },
+    "output/ss07/decoder-diagnostics-20261026/summarize-evidence.py": {
+      "bytes": 3029,
+      "sha256": "4f9e16a79867d50e675812dc3d53845a9b096f85245900644d177eb8c4ddad9f"
+    },
+    "output/ss07/decoder-fullclip-20261026/browser-result.json": {
+      "bytes": 116140,
+      "sha256": "a813a3ff9d99249c41046c05cd0c4a8dc15b35067627bfa939546a773502b8a0"
+    },
+    "output/ss07/decoder-fullclip-20261026/libavcodec-result.json": {
+      "bytes": 7599,
+      "sha256": "7ea1d8b9eab703dc7517568a88f7d007fa830ee28ea0e71b03ae1ddbd47a9424"
+    },
+    "output/ss07/decoder-fullclip-20261026/summary.json": {
+      "bytes": 12940,
+      "sha256": "15679bbda71d9dc06e7383e96715bb435db5ed162ff3cc18699c64647470d5d6"
+    }
+  }
+}

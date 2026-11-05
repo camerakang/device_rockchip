@@ -1,0 +1,316 @@
+{
+  "evidence_kind": "hardware_capture_offline_full_clip_decode",
+  "recorded_at_utc": "2026-10-26T03:17:50.328834+00:00",
+  "live_camera": false,
+  "rk_application_deployed": false,
+  "rk_contacted_in_this_decode_test": false,
+  "packages_installed": false,
+  "input_hashes_verified": true,
+  "browser_version": {
+    "protocolVersion": "1.3",
+    "product": "HeadlessChrome/153.0.8010.12",
+    "revision": "@971a7443b0c9b0a9b2860529b33331b76077ec62",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+    "jsVersion": "15.3.76.4"
+  },
+  "ffmpeg_version": "4.4.2-0ubuntu0.22.04.1",
+  "browser_api": "WebCodecs VideoDecoder, Annex B AU chunks, final flush, prefer-software",
+  "timestamps_synthetic": true,
+  "timestamp_step_us": 40000,
+  "results": [
+    {
+      "name": "capture_08_front",
+      "source": "output/ss07/cameras-concurrent-20261026-08/front/capture.h264",
+      "input_sha256": "5f939aa93e1efa9e41007b9366b5889013cc1f797dda50681ce85614f2801296",
+      "parsed_access_units": 750,
+      "original_arrival_fps": 24.96797095185631,
+      "codec": "avc1.4D0029",
+      "browser_decoded_frames": 750,
+      "libavcodec_decoded_frames": 750,
+      "browser_missing_au_indices_zero_based": [],
+      "browser_dimensions": [
+        "1920x1080"
+      ],
+      "all_frames_match": true
+    },
+    {
+      "name": "capture_08_back",
+      "source": "output/ss07/cameras-concurrent-20261026-08/back/capture.h264",
+      "input_sha256": "d6502520f35aad76514e6580601345fb2636feafcf51ef50e3eb65760524cc28",
+      "parsed_access_units": 750,
+      "original_arrival_fps": 25.001571557373534,
+      "codec": "avc1.4D0029",
+      "browser_decoded_frames": 750,
+      "libavcodec_decoded_frames": 750,
+      "browser_missing_au_indices_zero_based": [],
+      "browser_dimensions": [
+        "1920x1080"
+      ],
+      "all_frames_match": true
+    },
+    {
+      "name": "capture_08_down",
+      "source": "output/ss07/cameras-concurrent-20261026-08/down/capture.h264",
+      "input_sha256": "d206c7d498bb133abba0f63ddf29f71facf4c582c827c411db7d555216f01328",
+      "parsed_access_units": 750,
+      "original_arrival_fps": 24.979926934466672,
+      "codec": "avc1.4D0029",
+      "browser_decoded_frames": 750,
+      "libavcodec_decoded_frames": 750,
+      "browser_missing_au_indices_zero_based": [],
+      "browser_dimensions": [
+        "1920x1080"
+      ],
+      "all_frames_match": true
+    },
+    {
+      "name": "capture_11_front",
+      "source": "output/ss07/cameras-concurrent-20261026-11/front/capture.h264",
+      "input_sha256": "38e014ddb251632827011895be4168755577c970bb52db4697013dc823568a87",
+      "parsed_access_units": 750,
+      "original_arrival_fps": 25.007971419445326,
+      "codec": "avc1.4D001F",
+      "browser_decoded_frames": 750,
+      "libavcodec_decoded_frames": 750,
+      "browser_missing_au_indices_zero_based": [],
+      "browser_dimensions": [
+        "1280x720"
+      ],
+      "all_frames_match": true
+    },
+    {
+      "name": "capture_11_back",
+      "source": "output/ss07/cameras-concurrent-20261026-11/back/capture.h264",
+      "input_sha256": "60b4e51e5ea0a63c408b91cec2002c7f15abd9e4e371873a831dc8c45380f874",
+      "parsed_access_units": 539,
+      "original_arrival_fps": 12.220781343179443,
+      "codec": "avc1.4D001F",
+      "browser_decoded_frames": 537,
+      "libavcodec_decoded_frames": 537,
+      "browser_missing_au_indices_zero_based": [
+        4,
+        5
+      ],
+      "browser_dimensions": [
+        "1280x720"
+      ],
+      "all_frames_match": false
+    },
+    {
+      "name": "capture_11_left",
+      "source": "output/ss07/cameras-concurrent-20261026-11/left/capture.h264",
+      "input_sha256": "aa75ce28dc189eec942564c9b083ae2249927e0be9bea278f647c8ad37ab2aa8",
+      "parsed_access_units": 750,
+      "original_arrival_fps": 25.00597451409528,
+      "codec": "avc1.4D001F",
+      "browser_decoded_frames": 750,
+      "libavcodec_decoded_frames": 750,
+      "browser_missing_au_indices_zero_based": [],
+      "browser_dimensions": [
+        "1280x720"
+      ],
+      "all_frames_match": true
+    },
+    {
+      "name": "capture_11_right",
+      "source": "output/ss07/cameras-concurrent-20261026-11/right/capture.h264",
+      "input_sha256": "6d57e957efe98804eb176dfe5eb91f3de2432d7433c2a12d337407cde6f401bc",
+      "parsed_access_units": 749,
+      "original_arrival_fps": 25.01165976449922,
+      "codec": "avc1.4D001F",
+      "browser_decoded_frames": 749,
+      "libavcodec_decoded_frames": 749,
+      "browser_missing_au_indices_zero_based": [],
+      "browser_dimensions": [
+        "1280x720"
+      ],
+      "all_frames_match": true
+    },
+    {
+      "name": "capture_11_down",
+      "source": "output/ss07/cameras-concurrent-20261026-11/down/capture.h264",
+      "input_sha256": "bfef03a82a713de6f966394a489704499d73e9a2c78a8e7373f1f2928f82c81b",
+      "parsed_access_units": 750,
+      "original_arrival_fps": 22.81301934316803,
+      "codec": "avc1.4D001F",
+      "browser_decoded_frames": 750,
+      "libavcodec_decoded_frames": 750,
+      "browser_missing_au_indices_zero_based": [],
+      "browser_dimensions": [
+        "1280x720"
+      ],
+      "all_frames_match": true
+    },
+    {
+      "name": "capture_13_back",
+      "source": "output/ss07/cameras-concurrent-20261026-13/back/capture.h264",
+      "input_sha256": "0abb2829c8a58f5be21183e3ae6aac7d65d92a8a4047670702ffe15997dd4a23",
+      "parsed_access_units": 122,
+      "original_arrival_fps": 13.57494765317186,
+      "codec": "avc1.4D0029",
+      "browser_decoded_frames": 122,
+      "libavcodec_decoded_frames": 122,
+      "browser_missing_au_indices_zero_based": [],
+      "browser_dimensions": [
+        "1920x1080"
+      ],
+      "all_frames_match": true
+    },
+    {
+      "name": "capture_13_down",
+      "source": "output/ss07/cameras-concurrent-20261026-13/down/capture.h264",
+      "input_sha256": "54cb7df25c98fad6881b64a6cdd3dd522a064c4685f0051ba3e44c9c217d6837",
+      "parsed_access_units": 124,
+      "original_arrival_fps": 24.982868226623445,
+      "codec": "avc1.4D0029",
+      "browser_decoded_frames": 124,
+      "libavcodec_decoded_frames": 124,
+      "browser_missing_au_indices_zero_based": [],
+      "browser_dimensions": [
+        "1920x1080"
+      ],
+      "all_frames_match": true
+    }
+  ],
+  "matching_clips": 9,
+  "total_clips": 10,
+  "all_clips_passed": false,
+  "decoder_count_discrepancy_resolved": false,
+  "physical_bright_scene_result_pending": true,
+  "scope": "Offline full-file count check of immutable hardware capture bytes. Browser and installed libavcodec paths agree on counts but may share FFmpeg implementation. Does not verify WebRTC transport, production API/UI, original cadence, real-time performance, RK application, five-camera throughput, image quality, latency or absence of acquisition loss.",
+  "references": [
+    "https://www.w3.org/TR/webcodecs-avc-codec-registration/",
+    "https://www.w3.org/TR/webcodecs/#videodecoder-interface",
+    "https://ffmpeg.org/doxygen/4.4/group__lavc__decoding.html"
+  ],
+  "raw_files": {
+    "output/ss07/cameras-concurrent-20261026-08/back/capture-result.json": {
+      "bytes": 111865,
+      "sha256": "636497a35c0053cfe7332907bf32c92aafd8dde26ca6d8e3042c8026583e1d7c"
+    },
+    "output/ss07/cameras-concurrent-20261026-08/back/capture.h264": {
+      "bytes": 1637546,
+      "sha256": "d6502520f35aad76514e6580601345fb2636feafcf51ef50e3eb65760524cc28"
+    },
+    "output/ss07/cameras-concurrent-20261026-08/down/capture-result.json": {
+      "bytes": 111656,
+      "sha256": "b2a90a9ce31e39cec49a5f59319c753fc1b8fe304410c41b30ee59ddb8fc74f4"
+    },
+    "output/ss07/cameras-concurrent-20261026-08/down/capture.h264": {
+      "bytes": 1405279,
+      "sha256": "d206c7d498bb133abba0f63ddf29f71facf4c582c827c411db7d555216f01328"
+    },
+    "output/ss07/cameras-concurrent-20261026-08/front/capture-result.json": {
+      "bytes": 111349,
+      "sha256": "737386fffcf8aa621aff7feb44e7c57a692367294ee226892a969eed97dc7874"
+    },
+    "output/ss07/cameras-concurrent-20261026-08/front/capture.h264": {
+      "bytes": 511494,
+      "sha256": "5f939aa93e1efa9e41007b9366b5889013cc1f797dda50681ce85614f2801296"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/back/capture-result.json": {
+      "bytes": 81073,
+      "sha256": "e962beca2dec3e72abe59311bc764c542fc7b98918d629e38bca484ab593302e"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/back/capture.h264": {
+      "bytes": 144136,
+      "sha256": "60b4e51e5ea0a63c408b91cec2002c7f15abd9e4e371873a831dc8c45380f874"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/down/capture-result.json": {
+      "bytes": 111631,
+      "sha256": "1fbf715610fe91126b2bc9e52ecd9e450537602a8233cd228df6484d61d8f1b5"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/down/capture.h264": {
+      "bytes": 691470,
+      "sha256": "bfef03a82a713de6f966394a489704499d73e9a2c78a8e7373f1f2928f82c81b"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/front/capture-result.json": {
+      "bytes": 110964,
+      "sha256": "d7d6d4eb568700589816ab0bfdb9bd871aed5be4b174a3e40d5d4e98d23ae31b"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/front/capture.h264": {
+      "bytes": 293567,
+      "sha256": "38e014ddb251632827011895be4168755577c970bb52db4697013dc823568a87"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/left/capture-result.json": {
+      "bytes": 111524,
+      "sha256": "ba224a862e80a0351a15fda7677826afd027d92ab079f2e04261cd849c9e790f"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/left/capture.h264": {
+      "bytes": 475874,
+      "sha256": "aa75ce28dc189eec942564c9b083ae2249927e0be9bea278f647c8ad37ab2aa8"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/right/capture-result.json": {
+      "bytes": 111543,
+      "sha256": "40b66a4eafbce0ad999293d2e29019f6080a72f8bea77102fb9a05090008b214"
+    },
+    "output/ss07/cameras-concurrent-20261026-11/right/capture.h264": {
+      "bytes": 433308,
+      "sha256": "6d57e957efe98804eb176dfe5eb91f3de2432d7433c2a12d337407cde6f401bc"
+    },
+    "output/ss07/cameras-concurrent-20261026-13/back/capture-result.json": {
+      "bytes": 21828,
+      "sha256": "0bdf2a521bbf73f15dc7150f20f4c5df7e43c2ab37c0dbe3adc34974f0890fcb"
+    },
+    "output/ss07/cameras-concurrent-20261026-13/back/capture.h264": {
+      "bytes": 130640,
+      "sha256": "0abb2829c8a58f5be21183e3ae6aac7d65d92a8a4047670702ffe15997dd4a23"
+    },
+    "output/ss07/cameras-concurrent-20261026-13/down/capture-result.json": {
+      "bytes": 21878,
+      "sha256": "9f9f9715e13eb7ca066952ff7c9743f83a3e6e20c5b20899d8215b12135e1bee"
+    },
+    "output/ss07/cameras-concurrent-20261026-13/down/capture.h264": {
+      "bytes": 320730,
+      "sha256": "54cb7df25c98fad6881b64a6cdd3dd522a064c4685f0051ba3e44c9c217d6837"
+    },
+    "output/ss07/decoder-fullclip-20261026/browser-result.json": {
+      "bytes": 116140,
+      "sha256": "a813a3ff9d99249c41046c05cd0c4a8dc15b35067627bfa939546a773502b8a0"
+    },
+    "output/ss07/decoder-fullclip-20261026/browser.cjs": {
+      "bytes": 6883,
+      "sha256": "abdfeb5349cb749072821550b0b6a304c4d1e47f3b45ad4a0802f63470ea2066"
+    },
+    "output/ss07/decoder-fullclip-20261026/browser.log": {
+      "bytes": 1023,
+      "sha256": "9b8b7ed051c4b04e7dff6f1559c56e66453ca8dc24ce2d4ba901aebe6dd5d1f3"
+    },
+    "output/ss07/decoder-fullclip-20261026/cases.json": {
+      "bytes": 530599,
+      "sha256": "003c09fdfeca3beb9f138271889032160cf95817bf63f9e5c375b4c1e3db4817"
+    },
+    "output/ss07/decoder-fullclip-20261026/chromium.stderr.log": {
+      "bytes": 242,
+      "sha256": "10914dc6cc57b7f6d7621227bef99c2ebb9a2985ca0d8dfb740ae3e15eaf7525"
+    },
+    "output/ss07/decoder-fullclip-20261026/libavcodec-result.json": {
+      "bytes": 7599,
+      "sha256": "7ea1d8b9eab703dc7517568a88f7d007fa830ee28ea0e71b03ae1ddbd47a9424"
+    },
+    "output/ss07/decoder-fullclip-20261026/libavcodec.py": {
+      "bytes": 4920,
+      "sha256": "4e7085d9c875075fedbb89b73415aaa36726b0e9e9cd487e21d6dbe982e82fa1"
+    },
+    "output/ss07/decoder-fullclip-20261026/libavcodec.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "output/ss07/decoder-fullclip-20261026/libavcodec.stdout.log": {
+      "bytes": 1724,
+      "sha256": "c756c650d597365b9b04b1216fb7b3f96f070482782b0d6eb9d949169832704e"
+    },
+    "output/ss07/decoder-fullclip-20261026/result.json": {
+      "bytes": 129112,
+      "sha256": "e20fb6ecee8dafa5a40a98733c4bd4d8d1fdf37d8e120de2767ff77088b3c3e8"
+    },
+    "output/ss07/decoder-fullclip-20261026/run.py": {
+      "bytes": 4223,
+      "sha256": "facd0c55198b0c83054a050070ac38e6e9596ff6fade5989949e13b05a24d101"
+    },
+    "output/ss07/decoder-fullclip-20261026/summarize-evidence.py": {
+      "bytes": 3594,
+      "sha256": "587486043cb893a7e14841499931997cb5d6160ca531363d9db7d850a3a08702"
+    }
+  }
+}

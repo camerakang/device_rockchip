@@ -1,0 +1,45 @@
+{
+  "source_commit": "c6f23e003cf1c3aeb27a488d152b73327b1827f0",
+  "latest_verified_commit": "03b33695c2e3e9e81d4faa6213fbe1c9fb3f7697",
+  "reference_sha256": "53bf59b40db120516808c8f6ed141f62a1c6ebd487fa10292ab47b764d5ad52c",
+  "generated_by": "unmodified timecode/reference.py encode(Packet)",
+  "evidence_kind": "protocol_test_vector",
+  "vectors": [
+    {
+      "epoch": "1",
+      "sequence": "0",
+      "time_us": "0",
+      "hex": "d57c12000100000000000000000000000000000000000000f1cc"
+    },
+    {
+      "epoch": "1",
+      "sequence": "1",
+      "time_us": "10000",
+      "hex": "d57c120001000000000000000100000010270000000000008285"
+    },
+    {
+      "epoch": "1",
+      "sequence": "4294967295",
+      "time_us": "100000",
+      "hex": "d57c12000100000000000000ffffffffa086010000000000a460"
+    },
+    {
+      "epoch": "2",
+      "sequence": "0",
+      "time_us": "110000",
+      "hex": "d57c1200020000000000000000000000b0ad010000000000dc43"
+    },
+    {
+      "epoch": "31957",
+      "sequence": "305419896",
+      "time_us": "1311768467463790320",
+      "hex": "d57c1200d57c00000000000078563412f0debc9a78563412837b"
+    },
+    {
+      "epoch": "18446744073709551615",
+      "sequence": "4294967295",
+      "time_us": "18446744073709551615",
+      "hex": "d57c1200ffffffffffffffffffffffffffffffffffffffff104a"
+    }
+  ]
+}

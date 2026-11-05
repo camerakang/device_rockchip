@@ -1,0 +1,23 @@
+{
+  "evidence_kind": "arm64_systemd_static_validation",
+  "result": "passed",
+  "systemd_version": "systemd 245 (245.4-4ubuntu3.24)",
+  "returncode": 0,
+  "units": {
+    "ss07-api.service": "b7a4402c6c9383aeced2ad35dfa98bcb0080838ab16e5f36ba950e9455040454",
+    "ss07-application.service": "1bab99584ef8527b3925c1f46a6e39900db9d2a0d81ab149e6ffd43e4e1b07cc",
+    "ss07-camera@.service": "2a354249f44a22472b307839ee24d01ef20dfcec4414ba770cb67baf4dada451",
+    "ss07-config-recover.service": "c1ba1bf8b4da5fc4861b6ce98b5428d336684780bf8db2a649b9a08e6834ab16",
+    "ss07-gateway.service": "038f1c087c2130057823437dd8cbccf49c66c40e76c582fed70ec62f9b192097",
+    "ss07-maintenance.service": "9c5ff5eb43a7a33ecf39cbfdaaa33a136adab9ae99964eb5ded21fddce4f778a",
+    "ss07-media.service": "ca04937bde17f522671433bb4792b3a2f741207985a598055ff4627bc6a16357",
+    "ss07-storage.service": "97f2ec667ac467c46a044b6f3a95b9187c55027ddf25dd0ddf6206ba3cac0a9e",
+    "ss07-timecode.service": "943fade6b8cbc55f2b1a2632b903524f06e62fc6ea0488a75103486bbc0c0d9c",
+    "ss07.target": "ba394360cfcfb37738542df4acb7ab43bfc40546f5e26d0ba0dba064e5f9afc6"
+  },
+  "executable_paths_rewritten": false,
+  "services_started": false,
+  "host_users_changed": false,
+  "live_service_permissions_verified": false,
+  "hardware_verified": false
+}

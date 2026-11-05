@@ -1,0 +1,47 @@
+{
+  "evidence_kind": "board_network_rtsp_rtp_probe",
+  "board_reported_time": "2026-10-24T17:02:10.869816+08:00",
+  "board_time_calibrated": false,
+  "source": "rtsp://192.168.3.47:5554/live/av",
+  "statuses": [
+    {
+      "method": "DESCRIBE",
+      "status": "RTSP/1.0 200 OK"
+    },
+    {
+      "method": "SETUP",
+      "status": "RTSP/1.0 200 OK"
+    },
+    {
+      "method": "PLAY",
+      "status": "RTSP/1.0 200 OK"
+    },
+    {
+      "method": "TEARDOWN",
+      "status": "RTSP/1.0 200 OK"
+    }
+  ],
+  "video_rtp_packets": 32,
+  "video_rtp_bytes": 2771,
+  "rtp_sequence_discontinuities": 0,
+  "received_tcp_bytes": 4325,
+  "elapsed_seconds": 0.5115169560303912,
+  "passed": true,
+  "video_decoded": false,
+  "physical_sdi_input_verified": false,
+  "input_status_at_previous_authenticated_read": "SDI NoSignal N/A",
+  "application_installed": false,
+  "serial_or_camera_device_opened": false,
+  "media_written_to_board_disk": false,
+  "scope": "RTSP subscription on the existing RK confirms network transport only; not RK application/service, decode, SDI camera or performance acceptance",
+  "raw_evidence": {
+    "board-rtsp-probe.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/board-rtsp-probe.py",
+      "sha256": "93a739c80477fab1ceddef579a63a6b55ba9a7456e69718c38edd41bf90699b8"
+    },
+    "board-rtsp-result.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/se2017-auth-20261024-01/board-rtsp-result.json",
+      "sha256": "98b799c5bbfa6a6f4a70191bec50217e9be7d6b00357b3ba8afc9e745fa62f44"
+    }
+  }
+}

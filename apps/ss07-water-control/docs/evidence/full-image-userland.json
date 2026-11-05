@@ -1,0 +1,499 @@
+{
+  "evidence_kind": "arm64_image_userland_qemu",
+  "complete": true,
+  "python_version": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+  "sqlite_version": "3.31.1",
+  "openssl_version": "OpenSSL 1.1.1f  31 Mar 2020",
+  "camera_version": "ss07-camera 0.3.1 (GStreamer 1.18.5)",
+  "api_sigterm_exit": 0,
+  "http_observations": {
+    "health": {
+      "request_id": "d2dcb4b9-a610-4e8d-a124-0dc0f03118fe",
+      "data": {
+        "api": "RUNNING",
+        "app_version": "0.6.1",
+        "hardware_ready": false
+      }
+    },
+    "status": {
+      "request_id": "7b53d000-bc4f-4617-8f9a-cb1fedd89e0b",
+      "data": {
+        "schema_version": 1,
+        "app_version": "0.6.1",
+        "device_id": "ss07-unassigned",
+        "boot_id": "00758ceb-2a21-41c1-a248-664eeba1ab7a",
+        "service_instance_id": "1d072ed5-8202-46e3-a758-42fbe567b4ba",
+        "seq": "1",
+        "observed_at_utc": "2026-10-23T09:53:17.237047+00:00",
+        "local_monotonic_us": "274210598353",
+        "uptime_ms": 86,
+        "evidence_kind": "service_observation",
+        "phase": 3,
+        "streams": [
+          {
+            "channel_id": "front",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "back",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "left",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "right",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "down",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "sdi",
+            "capture_state": "NOT_IMPLEMENTED",
+            "publish_state": "NOT_IMPLEMENTED",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "worker_not_implemented"
+          }
+        ],
+        "sonars": [
+          {
+            "sensor_id": "front",
+            "direction": "front",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          },
+          {
+            "sensor_id": "back",
+            "direction": "back",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          },
+          {
+            "sensor_id": "left",
+            "direction": "left",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          },
+          {
+            "sensor_id": "right",
+            "direction": "right",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          },
+          {
+            "sensor_id": "down",
+            "direction": "down",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          }
+        ],
+        "timecode": {
+          "quality": "UNAVAILABLE",
+          "reason": "timecode_service_unavailable",
+          "source_epoch": null,
+          "source_sequence": null,
+          "source_time_us": null,
+          "local_monotonic_us": null,
+          "mapping_id": null,
+          "age_ms": null,
+          "uncertainty_us": null,
+          "estimated_time_us": null,
+          "timestamp_basis": null,
+          "read_only": true,
+          "source_valid": false,
+          "serial_connected": false,
+          "software_tx_bytes": null,
+          "origin_basis": "usb_receive_uncalibrated",
+          "origin_monotonic_us": null,
+          "journal": null
+        },
+        "storage": {
+          "mount_present": false,
+          "writable": false,
+          "free_bytes": null,
+          "recording_enabled": false,
+          "state": "UNAVAILABLE",
+          "gate": "MOUNT_MISSING",
+          "recording_active": false,
+          "channels_recording": [],
+          "observer_writable": false,
+          "recording_volume_verified": false,
+          "reason": null,
+          "recorder_gate": "UNKNOWN"
+        },
+        "system": {
+          "memory_bytes": {
+            "MemTotal": "16721076224",
+            "MemAvailable": "15169118208"
+          },
+          "temperatures": []
+        },
+        "service_states": {
+          "api": "RUNNING",
+          "camera": "DEGRADED",
+          "media": "UNAVAILABLE",
+          "sonar": "NOT_IMPLEMENTED",
+          "timecode": "UNAVAILABLE",
+          "storage": "UNAVAILABLE"
+        },
+        "workers": {
+          "camera.front": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          },
+          "camera.back": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          },
+          "camera.left": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          },
+          "camera.right": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          },
+          "camera.down": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          },
+          "media": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          },
+          "sonar": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          },
+          "timecode": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          },
+          "storage": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          },
+          "maintenance": {
+            "state": "UNAVAILABLE",
+            "age_ms": null,
+            "reason": "snapshot_missing"
+          }
+        },
+        "alerts": [
+          "HARDWARE_INTEGRATION_INCOMPLETE",
+          "RECORDING_MOUNT_MISSING"
+        ]
+      }
+    },
+    "streams": {
+      "request_id": "8a4d87eb-b551-43c7-94c3-030599a5e514",
+      "data": {
+        "schema_version": 1,
+        "device_id": "ss07-unassigned",
+        "boot_id": "00758ceb-2a21-41c1-a248-664eeba1ab7a",
+        "service_instance_id": "1d072ed5-8202-46e3-a758-42fbe567b4ba",
+        "seq": "2",
+        "observed_at_utc": "2026-10-23T09:53:17.248072+00:00",
+        "streams": [
+          {
+            "channel_id": "front",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "back",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "left",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "right",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "down",
+            "capture_state": "UNAVAILABLE",
+            "publish_state": "UNAVAILABLE",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "snapshot_missing"
+          },
+          {
+            "channel_id": "sdi",
+            "capture_state": "NOT_IMPLEMENTED",
+            "publish_state": "NOT_IMPLEMENTED",
+            "availability": "unavailable",
+            "format": null,
+            "width": null,
+            "height": null,
+            "fps_observed": null,
+            "bitrate_observed": null,
+            "last_frame_age_ms": null,
+            "restart_count": null,
+            "live_url": null,
+            "error": "worker_not_implemented"
+          }
+        ]
+      }
+    },
+    "sonars": {
+      "request_id": "aecd8314-3810-482b-87fe-c98d73ed705c",
+      "data": {
+        "schema_version": 1,
+        "device_id": "ss07-unassigned",
+        "boot_id": "00758ceb-2a21-41c1-a248-664eeba1ab7a",
+        "service_instance_id": "1d072ed5-8202-46e3-a758-42fbe567b4ba",
+        "seq": "3",
+        "observed_at_utc": "2026-10-23T09:53:17.255710+00:00",
+        "sonars": [
+          {
+            "sensor_id": "front",
+            "direction": "front",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          },
+          {
+            "sensor_id": "back",
+            "direction": "back",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          },
+          {
+            "sensor_id": "left",
+            "direction": "left",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          },
+          {
+            "sensor_id": "right",
+            "direction": "right",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          },
+          {
+            "sensor_id": "down",
+            "direction": "down",
+            "address": null,
+            "seq": null,
+            "distance_mm": null,
+            "valid": false,
+            "reason": "driver_not_implemented",
+            "quality": null,
+            "age_ms": null
+          }
+        ]
+      }
+    },
+    "timecode": {
+      "request_id": "37461449-c510-4ead-9a86-e371254b02e6",
+      "data": {
+        "schema_version": 1,
+        "device_id": "ss07-unassigned",
+        "boot_id": "00758ceb-2a21-41c1-a248-664eeba1ab7a",
+        "service_instance_id": "1d072ed5-8202-46e3-a758-42fbe567b4ba",
+        "seq": "4",
+        "observed_at_utc": "2026-10-23T09:53:17.262194+00:00",
+        "timecode": {
+          "quality": "UNAVAILABLE",
+          "reason": "timecode_service_unavailable",
+          "source_epoch": null,
+          "source_sequence": null,
+          "source_time_us": null,
+          "local_monotonic_us": null,
+          "mapping_id": null,
+          "age_ms": null,
+          "uncertainty_us": null,
+          "estimated_time_us": null,
+          "timestamp_basis": null,
+          "read_only": true,
+          "source_valid": false,
+          "serial_connected": false,
+          "software_tx_bytes": null,
+          "origin_basis": "usb_receive_uncalibrated",
+          "origin_monotonic_us": null,
+          "journal": null
+        }
+      }
+    }
+  },
+  "web_ui_available": true,
+  "hardware_validated": false,
+  "boot_tested": false,
+  "systemd_services_started": false,
+  "deployed": false,
+  "image_sha256": "ea64ce13c5d93dc02ff0d3ff51d5f062c4ae69ec2bad4b075fb6c62842bdc660",
+  "verification_result_sha256": "391f47e8c2b83160c7b66ef3eae1bc05761e748451e1d1a69bced373a71ed322",
+  "qemu_version": "qemu-aarch64 version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.31)"
+}

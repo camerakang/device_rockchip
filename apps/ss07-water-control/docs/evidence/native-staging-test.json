@@ -1,0 +1,9 @@
+{
+  "staged_media_supervisor": "passed",
+  "unconfigured_streams_unavailable": true,
+  "recording_disabled": true,
+  "SIGTERM_stop_snapshot": "passed",
+  "production_rejects_synthetic_source": "passed",
+  "mixed_architecture_rejected_before_staging": "passed",
+  "hardware_verified": false
+}

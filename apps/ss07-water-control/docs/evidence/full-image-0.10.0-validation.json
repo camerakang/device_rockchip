@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "recorded_at_host_utc": "2026-10-23T16:34:25.572500+00:00",
+  "artifact": "ss07-full-image-0.10.0-validation",
+  "result": "passed",
+  "app_version": "0.10.0",
+  "release_status": "local_verified_candidate",
+  "image": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/image/firmware/SS07-0.10.0-LubanCat4-V1-6.1.99-rk3588.img",
+    "sha256": "e3301879b2ae43d0a918621c3e2a251c51eadc4be47d6d6d97fa5584bba0e612",
+    "size_bytes": 3364815434,
+    "format": "Rockchip RKFW update IMG (SDK afptool/rkImageMaker)",
+    "rootfs_mib": 3072
+  },
+  "application": {
+    "archive_sha256": "1b1a359f5fd3ad9a5493fb2c97e5db6491c567574ff0e3629785eb844ebc1075",
+    "runtime_files_match_workspace": 92,
+    "factory_release_files_verified": 113,
+    "source_changes_since_migration": [
+      "packaging/image.lock.json"
+    ],
+    "previous_migration_evidence": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control/docs/evidence/sonar-migration-validation.json",
+      "sha256": "0808795fc2e081c0cacfe95dfe024704d040e4d7087c97a9ffd086c5c257de03"
+    }
+  },
+  "sources": {
+    "manifest_path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/source-manifest.json",
+    "manifest_sha256": "58bc30e2e99c62d5d664b9b0e8dfa4738252f903c471f4fa1954c7fef5bb32c1",
+    "files": 154,
+    "sdk": {
+      "kernel-6.1": {
+        "commit": "6d69dd475bce666e8889f4b3bcc79f38bf1b3646",
+        "source": "/home/forlinx/workspace/LubanCat_SDK/kernel-6.1",
+        "snapshot": "git archive HEAD",
+        "archive_sha256": "32d1c16f7b9a6b92353cfea8bdfe007bb4699efa13922101252794e16a2295b3"
+      },
+      "u-boot": {
+        "commit": "ce67cf027de25347c5c790c3087f6e663f4f3d56",
+        "source": "/home/forlinx/workspace/LubanCat_SDK/u-boot",
+        "snapshot": "git archive HEAD",
+        "archive_sha256": "29a79e5223d8315ebe5931bdf4b6a69d81df60451e8794a8f901f901358013da"
+      },
+      "rkbin": {
+        "commit": "58a39b47f77a26a1e110fa1a1ce80bcfcb0b3505",
+        "source": "/home/forlinx/workspace/LubanCat_SDK/rkbin",
+        "snapshot": "git archive HEAD",
+        "archive_sha256": "84951ff10a7d7de1820cac27d0a21b0fd7d2336112cd234fe9c742fca170bd2c"
+      }
+    }
+  },
+  "inputs": {
+    "image_lock_sha256": "6f52fa8eb5e8954232d4ae92ed993d1552788d6d9eda8d442e6f774679403715",
+    "locked_system_packages": 325,
+    "application_import": {
+      "schema_version": 1,
+      "archive_sha256": "1b1a359f5fd3ad9a5493fb2c97e5db6491c567574ff0e3629785eb844ebc1075",
+      "manifest_sha256": "d865f0558ae78f2acae4edb327c291edc81bd1c94823e0aae3f479d2ede5f8ad",
+      "version": "0.10.0",
+      "deployment": {
+        "schema_version": 1,
+        "data": {
+          "config": 2,
+          "accounts": 1,
+          "catalog": 2,
+          "recording_metadata": 1,
+          "timecode_journal": 1,
+          "sonar_journal": 1,
+          "sonar_archive_catalog": 1,
+          "sonar_archive_metadata": 1,
+          "audit": 1,
+          "application_journal": 1,
+          "worker_snapshot": 1
+        },
+        "units": [
+          "ss07-api.service",
+          "ss07-application.service",
+          "ss07-camera@.service",
+          "ss07-config-recover.service",
+          "ss07-gateway.service",
+          "ss07-maintenance.service",
+          "ss07-media.service",
+          "ss07-storage.service",
+          "ss07-timecode.service",
+          "ss07.target",
+          "ss07-sonar.service"
+        ],
+        "upgrade_policy": "reviewed_sonar_config_transition_v1",
+        "config_defaults": "first_install_only"
+      }
+    },
+    "kernel_release": "6.1.99-rk3588",
+    "boot_build": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/arm64-20261023/sdk-boot-fixed",
+    "boot_manifest_sha256": "ad420d8f1609e81a0b776617140dc4f918f6c1299cbbf6ac74c2cdac4621ccfe",
+    "boot_artifacts_checked": 612,
+    "boot_reused_after_clean_current_sdk_source_verification": true,
+    "kernel_compiled_this_phase": false
+  },
+  "offline_readback": {
+    "evidence_kind": "offline_full_image_readback",
+    "complete": true,
+    "image": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/image/firmware/SS07-0.10.0-LubanCat4-V1-6.1.99-rk3588.img",
+    "image_sha256": "e3301879b2ae43d0a918621c3e2a251c51eadc4be47d6d6d97fa5584bba0e612",
+    "image_build_manifest_sha256": "f9e3f240155f80d867359b5a3ec628120cff1b2f6381d0865f2d7925c809ddf1",
+    "verifier_sha256": "c6ceee9f09f9b06c90896d7881befe663c6d433253633020497dcb17ddd964c3",
+    "hardware_validated": false,
+    "boot_tested": false,
+    "deployed": false,
+    "package_file": "embedded bytes and regenerated mapping verified",
+    "payload_files_verified": 6,
+    "rootfs_entries_verified": 13824,
+    "rootfs_inode_metadata_sha256": "d20e698df12c280934369644d71da7bb2c93db06263fa35fa87ddd84c06b81d7",
+    "rootfs_readback_sha256": "feda4f187a4fc42285f46b84d8dd731d442f7eaa5f100966fdb9e7057b68876c",
+    "kernel_release": "6.1.99-rk3588",
+    "module_count": 300,
+    "boot_components_match_current_build": true,
+    "services_provisioned": false,
+    "recording_storage_created": false,
+    "machine_identity_cleared": true,
+    "default_passwords_locked": true,
+    "service_ownership_verified": true
+  },
+  "image_userland": {
+    "evidence_kind": "arm64_image_userland_qemu",
+    "complete": true,
+    "python_version": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+    "sqlite_version": "3.31.1",
+    "openssl_version": "OpenSSL 1.1.1f  31 Mar 2020",
+    "camera_version": "ss07-camera 0.3.1 (GStreamer 1.18.5)",
+    "api_sigterm_exit": 0,
+    "web_ui_available": true,
+    "hardware_validated": false,
+    "boot_tested": false,
+    "systemd_services_started": false,
+    "deployed": false,
+    "image_sha256": "e3301879b2ae43d0a918621c3e2a251c51eadc4be47d6d6d97fa5584bba0e612",
+    "verification_result_sha256": "f947da4c77000d8ae4a7a4b859eba83a1ae2e9d0c9575eb2f80396b6f9abed4b",
+    "qemu_version": "qemu-aarch64 version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.31)"
+  },
+  "unconfigured_workers": {
+    "evidence_kind": "arm64_image_unconfigured_workers",
+    "result": "passed",
+    "version": "0.10.0",
+    "installed_archive_sha256": "1b1a359f5fd3ad9a5493fb2c97e5db6491c567574ff0e3629785eb844ebc1075",
+    "factory_release_files_verified": 113,
+    "retained_import_present": true,
+    "independent_recovery_helper": true,
+    "boot_recovery_noop": true,
+    "recovery_database_kinds": 5,
+    "recovery_file_slots": 19,
+    "device_profile_registry_empty": true,
+    "board_example_matches_user_constraints": true,
+    "hardware_validated": false,
+    "boot_tested": false,
+    "actual_systemd_uid_permissions_verified": false,
+    "deployed": false,
+    "sigterm_exit": {
+      "timecode": 0,
+      "sonar": 0,
+      "api": 0
+    },
+    "audited_worker_pids": [
+      7,
+      10,
+      13
+    ],
+    "tty_open_attempts": 0,
+    "sonar_measurement_events": 0,
+    "sonar_diagnostic_events": 2
+  },
+  "service_directory_ownership_basis": "all rootfs inode UID/GID/modes independently read from IMG; not a live systemd permission test",
+  "first_failed_auxiliary_check": {
+    "log": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/worker-acceptance/command.log",
+    "log_sha256": "33a0cda2a6e28d353db056272cec45576915604fd1f3b4be9ad20b05005a8bc4",
+    "script": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/guest-acceptance-01.py",
+    "script_sha256": "3fd0ce370979b4220e94542accc9d6c402df5d8e2f25572a68d9a72b17eff7c5",
+    "reason": "bwrap could not create /evidence below the read-only image root; changed output bind to namespace-private /tmp/evidence"
+  },
+  "board_presence": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control/docs/evidence/rk3588-presence-20261024.json",
+    "sha256": "c94a4edb093be44d2c6a61795b22a7e2d4ea6ac7e83f8bea45be8c5ef85510b6"
+  },
+  "evidence_files": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/source-manifest.json",
+      "sha256": "58bc30e2e99c62d5d664b9b0e8dfa4738252f903c471f4fa1954c7fef5bb32c1"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/installed-runtime-files.json",
+      "sha256": "63925d47b6ceda42885d40f69a54e0a7d0594eca1a3009fc0aa638182b949de9"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/rootfs/manifest.json",
+      "sha256": "ddb262d68161a0692e58d8dfd37afe8d67597d91b1aacf2e3dec2c91b67cdb8c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/rootfs/state/packages.tsv",
+      "sha256": "8031abebfa751f569333a40b02ff294d4099c70432554d734afb8eda25d7de44"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/rootfs/state/fakeroot.state",
+      "sha256": "a158da19fe272504ac71281aadded3fcb7f25a4b11b8bbcbdfab19adb28f5ef2"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/image/manifest.json",
+      "sha256": "f9e3f240155f80d867359b5a3ec628120cff1b2f6381d0865f2d7925c809ddf1"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/image/rootfs-tree.json",
+      "sha256": "5bbd3ad1bea76436209b47ba133a546b5f50e9778dbbf9e6eec94e3bd7a156c8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/image/firmware/SHA256SUMS",
+      "sha256": "4002438778205f1b21deec4232dc102b79910d5fa3deaedf9673a159e5694df7"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/readback/result.json",
+      "sha256": "f947da4c77000d8ae4a7a4b859eba83a1ae2e9d0c9575eb2f80396b6f9abed4b"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/readback/rootfs-inodes.log",
+      "sha256": "d20e698df12c280934369644d71da7bb2c93db06263fa35fa87ddd84c06b81d7"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/userland/result.json",
+      "sha256": "0bf499e9b893c245c946d3665a311823b9eed581efd8bee54523b7879e78eb14"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/userland/guest-result.json",
+      "sha256": "740dd7c39e53cae8f603f10c5ab7426997e197fac3ea84cc9d2ba90e09759543"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/userland/api.log",
+      "sha256": "c168e5d05593d7d604e5db0d7cad2909c2a24ad00cd65dd9c19f8480a2d8b255"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/guest-acceptance.py",
+      "sha256": "fc01ed2ebb701926b4cc4778331c1673bebf89e2a87785b46f7d232fd9927ecd"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/worker-acceptance-02/command.json",
+      "sha256": "8313ea59b3a03c7cfdc6c1dd692dd495532b2115951bb20d3c5afdd245fae0ac"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/worker-acceptance-02/command.log",
+      "sha256": "222bca99b68abe0f9494a0ed49ad50fca476f0decd73113ef52feaadcb90435c"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/worker-acceptance-02/result.json",
+      "sha256": "ae96cca3146a6f156d946d2af394e1f71dc39d5ba50c3c78943a733a5998b576"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/worker-acceptance-02/audit-installed.jsonl",
+      "sha256": "cea43af958e21019eb84fcce0d70b7b6a744363aeb2479aaaa4d1ff789488fdf"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/worker-acceptance-02/timecode.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/worker-acceptance-02/sonar.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/worker-acceptance-02/api.log",
+      "sha256": "e995576c58159590c53d50af8bde0188702462220b923b92067ab941a30518c2"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261024/board-readonly-check.log",
+      "sha256": "46992dbe59907a8c10bf8fb87f1bf1d70b738f8f0ffd42fc8935b558f1924af1"
+    }
+  ],
+  "limitations": [
+    "new_kernel_not_booted",
+    "actual_systemd_uid_device_and_recording_volume_permissions_not_exercised",
+    "target_board_currently_has_no_video_or_usb_serial_nodes",
+    "se2017_stream_configuration_not_authenticated_or_measured",
+    "sonar_vendor_protocol_and_physical_transport_unavailable",
+    "remaining_timecode_uart_parameters_and_adapter_binding_unknown",
+    "electrical_zero_tx_not_measured",
+    "one_tb_recording_disk_absent",
+    "real_six_channel_eight_hour_load_hotplug_powerloss_and_coexistence_acceptance_pending",
+    "no_admin_public_key_accounts_or_tls_credentials_provisioned"
+  ],
+  "hardware_validated": false,
+  "boot_tested": false,
+  "deployed": false,
+  "flashed": false,
+  "committed": false,
+  "pushed": false,
+  "goal_complete": false
+}

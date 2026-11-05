@@ -1,0 +1,98 @@
+{
+  "evidence_kind": "synthetic_test",
+  "hardware_verified": false,
+  "result": "passed",
+  "observed_at_utc": "2026-10-23T13:27:01Z",
+  "tls": "ephemeral self-signed test certificate; Chromium SPKI exception only; no system trust change",
+  "logout_revocation": {
+    "native_media_sessions": 0,
+    "six_recorders_continue": true
+  },
+  "orphan_revocation": {
+    "native_media_sessions": 0,
+    "six_recorders_continue": true
+  },
+  "browser": {
+    "result": "passed",
+    "evidence_kind": "synthetic_test",
+    "hardware_verified": false,
+    "roles": "monitor/reader/maintainer enforced",
+    "cookie": {
+      "secure": true,
+      "httpOnly": true,
+      "sameSite": "Strict"
+    },
+    "decoded": [
+      {
+        "channel": "front",
+        "frames": 46,
+        "width": 640,
+        "hidden": true
+      },
+      {
+        "channel": "back",
+        "frames": 46,
+        "width": 640,
+        "hidden": true
+      },
+      {
+        "channel": "left",
+        "frames": 46,
+        "width": 640,
+        "hidden": true
+      },
+      {
+        "channel": "right",
+        "frames": 46,
+        "width": 640,
+        "hidden": true
+      },
+      {
+        "channel": "down",
+        "frames": 46,
+        "width": 640,
+        "hidden": true
+      },
+      {
+        "channel": "sdi",
+        "frames": 46,
+        "width": 640,
+        "hidden": true
+      }
+    ],
+    "playback": {
+      "frames": 10,
+      "width": 640,
+      "duration": 2
+    },
+    "seek": "passed",
+    "export": {
+      "status": 200,
+      "disposition": "attachment; filename=\"ss07-right-42b590d6-643e-50fd-9403-aab0baae95c2.mp4\"",
+      "bytes": 39698
+    },
+    "range_responses": [
+      {
+        "status": 206,
+        "mimeType": "video/mp4"
+      },
+      {
+        "status": 200,
+        "mimeType": "video/mp4"
+      }
+    ],
+    "config_pending_restart": true,
+    "record_lock": true,
+    "logs_export": true,
+    "javascript_exceptions": []
+  },
+  "completed_counts": {
+    "right": 9,
+    "left": 9,
+    "sdi": 9,
+    "down": 9,
+    "back": 9,
+    "front": 9
+  },
+  "loaded_vs_persisted_config": "passed"
+}

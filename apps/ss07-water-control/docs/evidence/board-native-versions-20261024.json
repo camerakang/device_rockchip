@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "native_board_version_queries",
+  "archive_sha256": "1b1a359f5fd3ad9a5493fb2c97e5db6491c567574ff0e3629785eb844ebc1075",
+  "board_ip": "192.168.3.233",
+  "result": "passed",
+  "programs": [
+    {
+      "name": "ss07-camera",
+      "arguments": [
+        "--version"
+      ],
+      "sha256": "12bb93740e5af4f7868974b727e4245e06b030ebf6ae7e2fe60d47cd8bae7a00",
+      "size_bytes": 46184,
+      "kernel": "5.10.160",
+      "architecture": "aarch64",
+      "uid": 1000,
+      "board_reported_time": "2026-10-24T16:44:54.756835+08:00",
+      "exit_code": 0,
+      "stdout": "ss07-camera 0.3.1 (GStreamer 1.18.5)\n",
+      "stderr": "",
+      "elapsed_seconds": 0.023514750006143004,
+      "sealed_memfd": true,
+      "ld_bind_now": true,
+      "core_dump_limit_bytes": 0,
+      "regular_file_write_limit_bytes": 0,
+      "go_runtime_override": null,
+      "observed_at_host_utc": "2026-10-24T08:44:53.738793+00:00",
+      "passed": true
+    },
+    {
+      "name": "mediamtx",
+      "arguments": [
+        "--version"
+      ],
+      "sha256": "f8676d0ed8f210453a722fdad76fe6e52cf764fdcf9930e8c7d242d02da57c2b",
+      "size_bytes": 66063651,
+      "kernel": "5.10.160",
+      "architecture": "aarch64",
+      "uid": 1000,
+      "board_reported_time": "2026-10-24T16:45:01.983182+08:00",
+      "exit_code": 0,
+      "stdout": "v1.21.2\n",
+      "stderr": "",
+      "elapsed_seconds": 0.0982241989695467,
+      "sealed_memfd": true,
+      "ld_bind_now": true,
+      "core_dump_limit_bytes": 0,
+      "regular_file_write_limit_bytes": 0,
+      "go_runtime_override": null,
+      "observed_at_host_utc": "2026-10-24T08:44:55.334617+00:00",
+      "passed": true
+    },
+    {
+      "name": "caddy",
+      "arguments": [
+        "version"
+      ],
+      "sha256": "0019d864a2cdee41c3675cb2a26185833c5d9540a48f5a6729142c0413461b60",
+      "size_bytes": 48431266,
+      "kernel": "5.10.160",
+      "architecture": "aarch64",
+      "uid": 1000,
+      "board_reported_time": "2026-10-24T16:45:07.465598+08:00",
+      "exit_code": 0,
+      "stdout": "v2.11.7 h1:yj0Y4fYZGPkSvibBJ1sTWE33xC0fxztVyXEW5iIdUT4=\n",
+      "stderr": "",
+      "elapsed_seconds": 0.13931851199595258,
+      "sealed_memfd": true,
+      "ld_bind_now": true,
+      "core_dump_limit_bytes": 0,
+      "regular_file_write_limit_bytes": 0,
+      "go_runtime_override": null,
+      "observed_at_host_utc": "2026-10-24T08:45:02.303553+00:00",
+      "passed": true
+    }
+  ],
+  "execution_method": "sealed anonymous memfd; version-only invocations as existing cat user",
+  "regular_file_writes_limited_to_zero_during_candidate_execution": true,
+  "ld_bind_now": true,
+  "installed": false,
+  "services_started": false,
+  "capture_started": false,
+  "serial_opened": false,
+  "hardware_accepted": false,
+  "kernel_boot_tested": false,
+  "limitations": [
+    "Version queries prove executable startup and initial loader compatibility only.",
+    "Camera version embeds compile-time GStreamer version; it does not initialize plugins or capture.",
+    "No systemd service, library feature, media throughput, hardware or electrical acceptance is implied."
+  ],
+  "raw_evidence": {
+    "caddy-stderr.log": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/board-native-versions-20261024-02/caddy-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "caddy-stdout.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/board-native-versions-20261024-02/caddy-stdout.json",
+      "sha256": "4739741293e03423b5973b94750e7593d2550f2e4acf39f882de27c93172e5ff"
+    },
+    "mediamtx-stderr.log": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/board-native-versions-20261024-02/mediamtx-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "mediamtx-stdout.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/board-native-versions-20261024-02/mediamtx-stdout.json",
+      "sha256": "8a7e4c8ab55ec0361259233d6d27cc9d1fa6c9c030243210f5d25fbbe8b1fc18"
+    },
+    "probe-native-versions.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/board-native-versions-20261024-02/probe-native-versions.py",
+      "sha256": "cb618d8b1571f9ead7056b28ae155b7649f5bbd693a3f1055b005d1172b0a552"
+    },
+    "remote-version-probe.py": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/board-native-versions-20261024-02/remote-version-probe.py",
+      "sha256": "2f126227a774fd0cd80a9b35143a22ad94cab3d08261de5cc8bb682c2aa95583"
+    },
+    "ss07-camera-stderr.log": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/board-native-versions-20261024-02/ss07-camera-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ss07-camera-stdout.json": {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/board-native-versions-20261024-02/ss07-camera-stdout.json",
+      "sha256": "e62cba57bfd93d1be7a247295c22348b0d58ecd78cdb0d68d9c8b408a2882c43"
+    }
+  }
+}

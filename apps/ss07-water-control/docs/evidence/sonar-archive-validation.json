@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "software_validation_synthetic_archive_no_sonar_hardware",
+  "recorded_at_utc": "2026-10-23T15:29:55.896953+00:00",
+  "source_status": "unreleased_working_tree_increment",
+  "source_version": "0.10.0",
+  "release_baseline": "0.9.0",
+  "source_manifest": {
+    "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/source-manifest.json",
+    "sha256": "38d90c2f63c4661e4c2e8c80514542199cb5fc7bdab5cedf82be915fe33eff38",
+    "files": 150
+  },
+  "source_changes_compared_to": "verified_0.9.0_source_package",
+  "source_changes": [
+    {
+      "path": ".gitignore",
+      "status": "new",
+      "sha256": "83300a098afcd60c3154a8a8f2f5be74041926de853e0d2589cb63066db5ba5a"
+    },
+    {
+      "path": "config/system.schema.json",
+      "status": "modified",
+      "sha256": "2d5bfa900cc918a11aa28b7cd98e85968f743fd18a13e5ea5a4c5abd4f6cdf4f"
+    },
+    {
+      "path": "src/ss07/__init__.py",
+      "status": "modified",
+      "sha256": "31e77bb3ffc7e25d82c0897bee951f10604533783749e86cc47e0f574a96cb2c"
+    },
+    {
+      "path": "src/ss07/__main__.py",
+      "status": "modified",
+      "sha256": "21f9f81fcb91d4e4889bdb95dd31781f9116412cf705258d603089e82264a28b"
+    },
+    {
+      "path": "src/ss07/api.py",
+      "status": "modified",
+      "sha256": "cf53581bdcdb7ce88ed01edde925541d95ab5c264afeb7d6cdaeae67588edb57"
+    },
+    {
+      "path": "src/ss07/config.py",
+      "status": "modified",
+      "sha256": "1cfbc6e9e453474002ce8911390c292dd0d29959b9f782bcd77c396e4141a612"
+    },
+    {
+      "path": "src/ss07/config_runtime.py",
+      "status": "modified",
+      "sha256": "49efb2392a3f671f8a78dc0c36a2d0da3bd4769687ac64ed82c2b75c85228da9"
+    },
+    {
+      "path": "src/ss07/release_contract.py",
+      "status": "modified",
+      "sha256": "6550240fa6f12dfe0d7d0d56a4885716cdd517b3588b2ff3ba73138c6e103c62"
+    },
+    {
+      "path": "src/ss07/release_restore.py",
+      "status": "modified",
+      "sha256": "5bec7209415d2804b8af09c6bafce3918626a3640c75700ce648a15b2715193c"
+    },
+    {
+      "path": "src/ss07/sonar_archive.py",
+      "status": "new",
+      "sha256": "db34d76dab0bcc245600acb05eccd8dd1dfe5f60504cf31d787ed968b2c9f782"
+    },
+    {
+      "path": "src/ss07/sonar_archive_http.py",
+      "status": "new",
+      "sha256": "0841de951305ef4bfd53d518c8447a78abc726ea8a7dd68adccafafe177001b1"
+    },
+    {
+      "path": "src/ss07/sonar_archive_worker.py",
+      "status": "new",
+      "sha256": "029b7e01b337b1fb5b0bd3c75354484719ba892e37130d3e587abf246106c622"
+    },
+    {
+      "path": "src/ss07/sonar_core.py",
+      "status": "new",
+      "sha256": "5f8fada8385deea4d93ce97e0c88ed4df5d4271a24d7e053c25ce58bd9cafed3"
+    },
+    {
+      "path": "src/ss07/sonar_driver.py",
+      "status": "new",
+      "sha256": "112079f8bb594b54a8d5ef52c47acc35dc4c0109b4c53b31e79c19af3efa1ee6"
+    },
+    {
+      "path": "src/ss07/sonar_http.py",
+      "status": "new",
+      "sha256": "439957a76a99b394cf061a72d93e9fe12acef653b829d53d6d49752b3f65cb68"
+    },
+    {
+      "path": "src/ss07/sonar_journal.py",
+      "status": "new",
+      "sha256": "193f86958e2c39e790bc9ca8bd62637a57259c146026331520f40b9c9ae40136"
+    },
+    {
+      "path": "src/ss07/sonar_status.py",
+      "status": "new",
+      "sha256": "659dccdaf6d250267335d9f10f26d4fdd7bf9f43e606bbfcdc6a3729b639a4ac"
+    },
+    {
+      "path": "src/ss07/sonar_worker.py",
+      "status": "new",
+      "sha256": "40fc7b87fb09b12a1571d42687b4192c66e6bcc427877d73d261b16c33b09664"
+    },
+    {
+      "path": "src/ss07/state.py",
+      "status": "modified",
+      "sha256": "ccf1470cee8d7a4a9a32af69f350f5dd5b9f01fc94b5a3cad7a9c7ba0da3694c"
+    },
+    {
+      "path": "tests/test_auth.py",
+      "status": "modified",
+      "sha256": "46f84db6684bdcf528568fcbe0f968c5f406f53a82dac0fd40a5790c0ff0f3ad"
+    },
+    {
+      "path": "tests/test_release_package.py",
+      "status": "modified",
+      "sha256": "daca5cf424cc0bcb268d9c380256dd90ba8dfc9a9ecf0fa96c29cc2d4b98ca1d"
+    },
+    {
+      "path": "tests/test_sonar.py",
+      "status": "new",
+      "sha256": "289c07967e12cb3581c9892c58854ba06ff2d77f3420d65eab3abf59fb6811cc"
+    },
+    {
+      "path": "tests/test_sonar_archive.py",
+      "status": "new",
+      "sha256": "3683bfe3f914d52567a02bb3933d0ff05b15123f01a6e7878ec2af978e32b7f3"
+    },
+    {
+      "path": "tests/test_sonar_archive_runtime.py",
+      "status": "new",
+      "sha256": "92a2ef390237e6fc5449be5c6c1768b96dac8e4c046337315597cbc08401e3db"
+    },
+    {
+      "path": "tests/test_sonar_runtime.py",
+      "status": "new",
+      "sha256": "6affc7cfa4f99c14509ef154623eab615c76af4a60141449d2d1389687be9465"
+    },
+    {
+      "path": "tools/test-browser-sonar.cjs",
+      "status": "new",
+      "sha256": "4d1b4c1f94614d07dddc99974189dd933f2a8f0b9b9c5229123310cd0255a1e8"
+    },
+    {
+      "path": "tools/test-sonar-archive.py",
+      "status": "new",
+      "sha256": "996dffbfacf1fccdeaf833bc21758095f8f24d696fbc4d5e7524f9d2977080cd"
+    },
+    {
+      "path": "tools/test-sonar-foundation.py",
+      "status": "new",
+      "sha256": "e5f258a7f4cfceab9ea3c361ffea9e88e97c9d1c032c4ecd188a0bfa797033a0"
+    },
+    {
+      "path": "web/index.html",
+      "status": "modified",
+      "sha256": "c0c95a7a4fd908faf68713e4537acff4cf4de71f8f433b13f61706999b1e68ca"
+    },
+    {
+      "path": "web/sonar-archives.js",
+      "status": "new",
+      "sha256": "74c48548c25f6d2715139c1c372ebc2d8a2d1453458d2e46522165ed6778edb8"
+    }
+  ],
+  "native": {
+    "python": "3.8.20",
+    "machine": "x86_64",
+    "tests": 216,
+    "elapsed_seconds": 34.809,
+    "passed": true
+  },
+  "arm64": {
+    "evidence_kind": "arm64_qemu_management_tests",
+    "runtime": {
+      "python": "3.8.10",
+      "machine": "aarch64",
+      "sqlite": "3.31.1",
+      "openssl": "OpenSSL 1.1.1f  31 Mar 2020"
+    },
+    "tests": 216,
+    "returncode": 0,
+    "elapsed_seconds": 75.126,
+    "isolation": "bwrap user/mount namespace, read-only sysroot/app, private tmp/dev",
+    "hardware_validated": false,
+    "deployed": false
+  },
+  "browser_integration": {
+    "evidence_kind": "synthetic_test",
+    "hardware_verified": false,
+    "result": "passed",
+    "archive_parts": 2,
+    "archived_measurements": 20,
+    "source_epochs": [
+      "9223372036854775909",
+      "9223372036854775910"
+    ],
+    "pipeline": {
+      "enabled": true,
+      "state": "STOPPED",
+      "reason": null,
+      "queued_events": 0,
+      "dropped_events": "0",
+      "written_events": "20",
+      "last_committed_monotonic_us": "293671588982",
+      "active_archive_id": null,
+      "data_disk_archive": true,
+      "volume_uuid": "synthetic-archive-volume",
+      "recovery_failures": 0
+    },
+    "browser": {
+      "evidence_kind": "synthetic_test",
+      "result": "passed",
+      "hardware_verified": false,
+      "live_sonar_distances": "all_null",
+      "query": {
+        "direction": "front",
+        "source_epoch": "9223372036854775909",
+        "start_us": "9223372036854899264",
+        "end_us": "9223372036854919264"
+      },
+      "preview_rows": 2,
+      "download_events": 10,
+      "download_sha256": "0afcb8028a65dfb996eb288ce9c832b2f0155baceb940816df6ca2619d40fe2d",
+      "browser_exceptions": []
+    },
+    "deployed": false,
+    "flashed": false
+  },
+  "process_smoke": {
+    "evidence_kind": "local_service_observation_no_peripherals",
+    "unconfigured": {
+      "reason": "sonar_not_configured",
+      "invalid_directions": 5,
+      "worker_returncode": 0,
+      "api_returncode": 0,
+      "python_device_open_attempts": 0,
+      "completed_lifecycle": true,
+      "measurement_events": 0
+    },
+    "unknown_protocol": {
+      "reason": "sonar_protocol_unavailable",
+      "invalid_directions": 5,
+      "worker_returncode": 0,
+      "api_returncode": 0,
+      "python_device_open_attempts": 0,
+      "completed_lifecycle": true,
+      "measurement_events": 0
+    },
+    "hardware_validated": false,
+    "electrical_zero_tx_validated": false,
+    "data_disk_archive": false,
+    "deployed": false,
+    "release_package_built": false
+  },
+  "evidence_files": [
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/python38-final.log",
+      "sha256": "122fdd286ce69bddf8ff905d91b17f8039ccf5fd1f0f39ee25b71358040d23d1"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/arm64-final/result.json",
+      "sha256": "9cd8e1b9f76ea3c8994062f1c0c46d9decf168dbc6956fe15ed4d89505f96d74"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/arm64-final/unittest.log",
+      "sha256": "bb4d53f89c22c881a1847753c00a350506a997636a0a9505982907d30b6c14df"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/integration-01/result.json",
+      "sha256": "03f96cb1c5f855d9dda64927bbe977cfcea423daae0b50028030440f4ae5afdd"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/integration-01/browser.json",
+      "sha256": "3901b5ef79b6def9915cd7670b07d38e225710c6c0425a11b1b4ceaa552a57c8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/integration-01/browser.log",
+      "sha256": "68bb975b97177c48eacebb28ac59890b57ca2561f6deff838792d596f962bf9f"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/integration-01/sonar-archives.png",
+      "sha256": "5377ee8ae86097f810ca5c737e402ae16a2a8660b2f56e99acbcab34ee3bba22"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/cli-final/result.json",
+      "sha256": "cef0cb8bf7b4cf2c545b082455dd466d3544b20c7bc3618ceee1fad6bdcfddd8"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/cli-final/unconfigured/device-open-audit.json",
+      "sha256": "d13a38a1d60a479ea3ce4d68372d4eb6948a65d5d8700c23f4b3a0d532c5ffc5"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/cli-final/unknown-protocol/device-open-audit.json",
+      "sha256": "d13a38a1d60a479ea3ce4d68372d4eb6948a65d5d8700c23f4b3a0d532c5ffc5"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/final-checks.json",
+      "sha256": "a90883489587c1ddffc8f015995d514cc796086a364c11d3b91bdc620e37a866"
+    },
+    {
+      "path": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/sonar-archive-20261023/integration-01/downloads/ss07-sonar-38fba32406cce79282d5d4fd9f9db8a26f445ec445fffb7802690464e86f2f24.jsonl",
+      "sha256": "0afcb8028a65dfb996eb288ce9c832b2f0155baceb940816df6ca2619d40fe2d"
+    }
+  ],
+  "limitations": [
+    "manufacturer_protocol_unavailable",
+    "physical_serial_transport_not_implemented",
+    "no_sonar_hardware_measurement",
+    "no_sonar_systemd_or_live_configuration_application",
+    "no_0.9.0_to_0.10.0_migration_or_rollback",
+    "no_real_data_disk_throughput_hotplug_or_powerloss_validation",
+    "no_electrical_zero_tx_validation",
+    "no_sonar_rate_or_acoustic_interference_validation",
+    "no_new_release_package_or_image"
+  ],
+  "deployed": false,
+  "flashed": false,
+  "committed": false,
+  "pushed": false,
+  "goal_complete": false
+}

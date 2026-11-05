@@ -1,0 +1,285 @@
+{
+  "artifact": "ss07-image-rootfs",
+  "complete": true,
+  "firmware_image": false,
+  "hardware_validated": false,
+  "deployed": false,
+  "image_lock_sha256": "b203fe273d71753ccfd4fa6792baf45c5f2d59ada9e9e029d2fdec3b0cfa11a1",
+  "application_sha256": "c9aceaf5f5c6a11b51680cba7f128429c281b2e53a1dec6cb6dc14e2ec9834c4",
+  "boot_build": "/home/forlinx/workspace/LubanCat_SDK/output/ss07/arm64-20261023/sdk-boot-fixed",
+  "boot_manifest_sha256": "ad420d8f1609e81a0b776617140dc4f918f6c1299cbbf6ac74c2cdac4621ccfe",
+  "kernel_release": "6.1.99-rk3588",
+  "sources": {
+    "kernel-6.1": {
+      "commit": "6d69dd475bce666e8889f4b3bcc79f38bf1b3646",
+      "source": "/home/forlinx/workspace/LubanCat_SDK/kernel-6.1",
+      "snapshot": "git archive HEAD",
+      "archive_sha256": "32d1c16f7b9a6b92353cfea8bdfe007bb4699efa13922101252794e16a2295b3"
+    },
+    "u-boot": {
+      "commit": "ce67cf027de25347c5c790c3087f6e663f4f3d56",
+      "source": "/home/forlinx/workspace/LubanCat_SDK/u-boot",
+      "snapshot": "git archive HEAD",
+      "archive_sha256": "29a79e5223d8315ebe5931bdf4b6a69d81df60451e8794a8f901f901358013da"
+    },
+    "rkbin": {
+      "commit": "58a39b47f77a26a1e110fa1a1ce80bcfcb0b3505",
+      "source": "/home/forlinx/workspace/LubanCat_SDK/rkbin",
+      "snapshot": "git archive HEAD",
+      "archive_sha256": "84951ff10a7d7de1820cac27d0a21b0fd7d2336112cd234fe9c742fca170bd2c"
+    }
+  },
+  "ssh_key_provided": false,
+  "services_provisioned": false,
+  "recipe_files": {
+    "packaging/image/20-ss07-wired.network": "75a944c87e492fb928b1bc7862ca39c7b33afa559aadf77fbb3492db3fc4b565",
+    "packaging/image/gstreamer.pref": "4b4a320a4ee9211db93f8527986cf064bc701bdf3362bffb5b06d6cfb93e6dcb",
+    "packaging/image/install-rootfs.sh": "8aa9ba0b13aabf12f1a1086abfe08b959d004ad9522e3e9078815e1e433ea536",
+    "packaging/image/journald.conf": "048b76a4df4b5602a913ecb091e6a5c009b5cbcede18491bc40ef0a6383286ea",
+    "packaging/image/provisioning.conf": "d089dd5e55249406ac8c435b4bf0ca66067819830bd66b39bacb04b79af1df99",
+    "packaging/image/sources.list": "725aed552ca2824955d0ea030e59b3bf55e95de46f78671c214b5b7576d365d5",
+    "packaging/image/ss07.target": "2771fbe78e45c677ac7eeb4fd93c5e7300ceb9f3b710ac43660fc011e7863ea6",
+    "packaging/image/ssh-service.conf": "b1f6a11bc4893e37708e91256ea16b8e208e268876591447ec5705757c59f7df",
+    "packaging/image/ssh.conf": "d10ee8372996705e86edfcec5d843d0d8fcbaabc426da483d1582bab1bd8e736",
+    "packaging/image/uEnv.txt": "9ad898b038f679af1be8011bd25e9c0518dea4b1066add56b753a67fdb6f2585",
+    "packaging/build-image-rootfs.py": "73ba4fda4d6f907252f7449d3e124b7e71e21fb4efd06f4ce8a52c29195c8ddc"
+  },
+  "commands": [
+    {
+      "argv": [
+        "fakeroot",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "tar",
+        "-xzf",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/cache/ubuntu-base-20.04.5-base-arm64.tar.gz",
+        "-C",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs"
+      ],
+      "log": "extract-base.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.764
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "dpkg-deb",
+        "-x",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/cache/fakeroot_1.24-1_arm64.deb",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs"
+      ],
+      "log": "bootstrap-fakeroot.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.139
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "dpkg-deb",
+        "-x",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/cache/libfakeroot_1.24-1_arm64.deb",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs"
+      ],
+      "log": "bootstrap-libfakeroot.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.129
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "tar",
+        "-xzf",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/arm64-20261023/arm64-package/ss07-0.6.1-linux-arm64.tar.gz",
+        "--strip-components=1",
+        "-C",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/app-stage"
+      ],
+      "log": "extract-application.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.757
+    },
+    {
+      "argv": [
+        "bwrap",
+        "--unshare-user",
+        "--uid",
+        "0",
+        "--gid",
+        "0",
+        "--unshare-pid",
+        "--unshare-ipc",
+        "--unshare-net",
+        "--die-with-parent",
+        "--bind",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs",
+        "/",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/run",
+        "--tmpfs",
+        "/tmp",
+        "--tmpfs",
+        "/sys",
+        "--ro-bind",
+        "/sys/fs/cgroup",
+        "/sys/fs/cgroup",
+        "--ro-bind",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/inputs",
+        "/build-inputs",
+        "--ro-bind",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/app-stage",
+        "/build-app",
+        "--ro-bind",
+        "/home/forlinx/workspace/LubanCat_SDK/device/rockchip/apps/ss07-water-control/packaging/image",
+        "/build-scripts",
+        "--ro-bind",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/arm64-20261023/sdk-boot-fixed/modules",
+        "/build-modules",
+        "--bind",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state",
+        "/build-state",
+        "--clearenv",
+        "--setenv",
+        "PATH",
+        "/usr/sbin:/usr/bin:/sbin:/bin",
+        "--setenv",
+        "LC_ALL",
+        "C.UTF-8",
+        "--setenv",
+        "FAKEROOTDONTTRYCHOWN",
+        "1",
+        "/usr/bin/fakeroot-sysv",
+        "-i",
+        "/build-state/fakeroot.state",
+        "-s",
+        "/build-state/fakeroot.state",
+        "--",
+        "/bin/sh",
+        "/build-scripts/install-rootfs.sh",
+        "6.1.99-rk3588"
+      ],
+      "log": "install-rootfs.log",
+      "returncode": 0,
+      "elapsed_seconds": 238.721
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "systemd-tmpfiles",
+        "--root=/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs",
+        "--create",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs/usr/lib/tmpfiles.d/ss07.conf"
+      ],
+      "log": "initialize-service-directories.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.127
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "rmdir",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs/build-inputs"
+      ],
+      "log": "remove-build-inputs.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.124
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "rmdir",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs/build-app"
+      ],
+      "log": "remove-build-app.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.124
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "rmdir",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs/build-scripts"
+      ],
+      "log": "remove-build-scripts.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.123
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "rmdir",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs/build-modules"
+      ],
+      "log": "remove-build-modules.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.122
+    },
+    {
+      "argv": [
+        "fakeroot",
+        "-i",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "-s",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/state/fakeroot.state",
+        "--",
+        "rmdir",
+        "/home/forlinx/workspace/LubanCat_SDK/output/ss07/image-20261023/rootfs-final/rootfs/build-state"
+      ],
+      "log": "remove-build-state.log",
+      "returncode": 0,
+      "elapsed_seconds": 0.122
+    }
+  ],
+  "host_tools": {
+    "fakeroot": "fakeroot version 1.28",
+    "systemd-tmpfiles": "systemd 249 (249.11-0ubuntu3.23)",
+    "qemu-aarch64-static": "qemu-aarch64 version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.31)"
+  },
+  "initrd_sha256": "6c84ce84b643c74cc5b260c834a637d64d760a1773bd83827a0195dd58cedd0c",
+  "packages_sha256": "8031abebfa751f569333a40b02ff294d4099c70432554d734afb8eda25d7de44",
+  "fakeroot_state_sha256": "16aed2005220d91f546ea7f432e8a6dd82a18fe3617c1b5957ff83045652c36f"
+}
