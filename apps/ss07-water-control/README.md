@@ -18,7 +18,7 @@
 
 2026-10-24 补充[现有板端原生版本查询](docs/evidence/board-native-versions-20261024.json)：精确包内相机、MediaMTX、Caddy 通过匿名内存文件执行，全部退出 0，未安装文件或启动服务。此项证明初始程序加载及版本分支，未验证采集、插件管线或实际服务权限。
 
-[交付进度与缺口](docs/delivery-progress.md) · [mobocon 拉流与配置接口](docs/mobocon-video-api.md) · [原生播放器访问](docs/native-rtsp.md) · [安装与版本恢复](docs/installation-recovery.md) · [配置应用与恢复](docs/configuration-application.md) · [完整镜像](docs/full-image.md) · [ARM64 构建](docs/arm64-build.md) · [权限与维护](docs/auth-maintenance.md) · [原生视频](docs/native-video.md) · [录像与回放](docs/recording.md) · [只读时码](docs/timecode-runtime.md) · [项目需求](docs/requirements.md) · [基础接口](docs/foundation.md) · [实物探测记录](docs/target-probe-192.168.3.233.md)
+[交付进度与缺口](docs/delivery-progress.md) · [MOBOCON 开发文档](docs/mobocon-development.md) · [mobocon 拉流与配置接口](docs/mobocon-video-api.md) · [原生播放器访问](docs/native-rtsp.md) · [安装与版本恢复](docs/installation-recovery.md) · [配置应用与恢复](docs/configuration-application.md) · [完整镜像](docs/full-image.md) · [ARM64 构建](docs/arm64-build.md) · [权限与维护](docs/auth-maintenance.md) · [原生视频](docs/native-video.md) · [录像与回放](docs/recording.md) · [只读时码](docs/timecode-runtime.md) · [项目需求](docs/requirements.md) · [基础接口](docs/foundation.md) · [实物探测记录](docs/target-probe-192.168.3.233.md)
 
 在本目录运行：
 
