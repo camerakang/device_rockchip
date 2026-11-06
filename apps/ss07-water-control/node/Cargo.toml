@@ -1,7 +1,7 @@
 [package]
 name = "ss07-mobocom-node"
 # Must equal src/ss07/__init__.py __version__; it becomes the Mobocom firmware u32.
-version = "0.10.9"
+version = "0.10.10"
 edition = "2021"
 publish = false
 description = "SS-07 Mobocom V2.2 Control node (VIDEO_SONAR 0x9009): identity, discovery and safe standby only"

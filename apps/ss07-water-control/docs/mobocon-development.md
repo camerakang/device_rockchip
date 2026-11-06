@@ -1,6 +1,6 @@
 # MOBOCON 开发文档（RK3588 端接口总览）
 
-本文是 mobocon 开发者对接 SS-07 RK3588 视频与声呐系统的维护入口。接口细节见 [mobocon-video-api.md](mobocon-video-api.md)；Control 与时码协议的设计核验记录见 [mobocom-integration.md](mobocom-integration.md) 和 [timecode-integration.md](timecode-integration.md)。接口有变更时，先改对应专题文档，再更新本文第 7 节的变更记录。
+本文是 mobocon 开发者对接 SS-07 RK3588 视频与声呐系统的维护入口。Mobocon 侧的开发要求和测试用例见 [mobocon-test-plan.md](mobocon-test-plan.md)。接口细节见 [mobocon-video-api.md](mobocon-video-api.md)；Control 与时码协议的设计核验记录见 [mobocom-integration.md](mobocom-integration.md) 和 [timecode-integration.md](timecode-integration.md)。接口有变更时，先改对应专题文档，再更新本文第 7 节的变更记录。
 
 ## 1 职责边界
 
@@ -46,6 +46,7 @@ WebRTC 会话每个客户端最多 12 个，与网页监看合计最多 48 个�
 | 视频流状态与拉流地址 | `GET /api/v1/streams`（含 `rtsp_url`、`native_url`） | monitor |
 | 声呐、时码状态 | `GET /api/v1/sonars`、`/api/v1/timecode` | monitor |
 | 状态推送 | `GET /api/v1/events`（SSE） | monitor |
+| 本机 WHEP 会话数 | `GET /api/v1/media/sessions` | monitor |
 | WebRTC 拉流 | `POST /media/<通道>/whep`，`DELETE <Location>` | monitor |
 | 录像、时码历史、声呐历史 | `/api/v1/recordings...`、`/api/v1/timecode/history`、`/api/v1/sonars/history` | reader |
 | 读取、保存配置 | `GET` / `PUT /api/v1/config` | maintainer |
@@ -86,6 +87,7 @@ WebRTC 会话每个客户端最多 12 个，与网页监看合计最多 48 个�
 
 | 版本 | 日期 | 内容 |
 | --- | --- | --- |
+| 0.10.10 | 2026-11-06 | `sdi` 补上宽高、实测帧率和码率；读取 SE2017 输入状态，无信号时 `availability=no_signal` 并告警 `SDI_NO_SIGNAL`；新增免密钥可用的 `GET /api/v1/media/sessions`；测试计划改正 wire_version 为 0x22（十进制 34） |
 | 0.10.9 | 2026-11-06 | 新增独立 Rust 服务 `ss07-mobocom-node`（VIDEO_SONAR 0x9009，UDP 47821/239.255.33.21，仅身份、发现与安全待机）和可选免密钥局域网监看 lan-monitor；`ss07 node-info`、`ss07 node-service install/uninstall/status` |
 | 0.10.6 | 2026-11-05 | 新增 API 客户端 Bearer 密钥、WebRTC/WHEP 与 RTSP 对 mobocon 开放、可选明文 RTSP 端口 8555；已部署到 192.168.3.233 并验证六路拉流 |
 

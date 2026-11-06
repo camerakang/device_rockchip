@@ -115,7 +115,14 @@ class LanAPITests(test_auth.APIAuthTests):
                 path = headers['Location']
                 self.assertEqual(self.lan('/media/front/whep', 'POST', ip=OUTSIDE, headers=sdp, raw=b'offer')[0], 401)
                 self.assertEqual(self.lan(path, 'DELETE', ip='192.168.3.21')[0], 404)
+                mine = json.loads(self.lan('/api/v1/media/sessions')[2])['data']
+                self.assertEqual((mine['count'], mine['total'], mine['limit_per_client']), (1, 1, 12))
+                self.assertEqual(mine['sessions'], [{'channel_id': 'front', 'location': path}])
+                other = json.loads(self.lan('/api/v1/media/sessions', ip='192.168.3.21')[2])['data']
+                self.assertEqual((other['count'], other['sessions'], other['total']), (0, [], 1))
+                self.assertEqual(self.lan('/api/v1/media/sessions', ip=OUTSIDE)[0], 401)
                 self.assertEqual(self.lan(path, 'DELETE')[0], 200)
+                self.assertEqual(json.loads(self.lan('/api/v1/media/sessions')[2])['data']['count'], 0)
                 self.assertFalse(self.server.grants.owns(path, 'lan-monitor:' + INSIDE))
             finally:
                 backend.shutdown(); thread.join(3)

@@ -83,9 +83,15 @@ def get_paths(config):
         size, tracks = item.get('bytesReceived'), item.get('tracks') or []
         if type(size) is not int or size < 0 or not isinstance(tracks, list):
             raise ValueError('invalid media counters')
+        width = height = None
+        for track in item.get('tracks2') or []:
+            props = track.get('codecProps') if isinstance(track, dict) and track.get('codec') == 'H264' else None
+            if isinstance(props, dict) and all(type(props.get(k)) is int and 0 < props[k] <= 16384 for k in ('width', 'height')):
+                width, height = props['width'], props['height']
+                break
         items[name] = {'ready': item['ready'], 'bytes_received': str(size),
                        'codec': 'H264' if 'H264' in tracks else None,
-                       'ready_time': item.get('readyTime')}
+                       'ready_time': item.get('readyTime'), 'width': width, 'height': height}
     return items
 
 
@@ -99,7 +105,7 @@ class MediaObserver:
         for channel in CHANNELS:
             item = items.get(channel)
             previous = self.previous.get(channel)
-            last = None
+            last = bitrate = None
             if item and item['ready']:
                 counter = int(item['bytes_received'])
                 identity = item['ready_time']
@@ -107,8 +113,10 @@ class MediaObserver:
                     last = now
                 elif previous and previous[0] == identity and counter == previous[1]:
                     last = previous[2]
+                if previous and previous[0] == identity and counter >= previous[1] and now > previous[3]:
+                    bitrate = round((counter - previous[1]) * 8 * 1000000 / (now - previous[3]), 1)
                 # The first ready response does not prove bytes are still arriving.
-                self.previous[channel] = (identity, counter, last)
+                self.previous[channel] = (identity, counter, last, now)
             else:
                 self.previous.pop(channel, None)
             live = bool(item and item['ready'] and item['codec'] == 'H264'
@@ -116,16 +124,21 @@ class MediaObserver:
             streams[channel] = dict(ready=live, codec=item['codec'] if item else None,
                                     last_data_monotonic_us=str(last) if last is not None else None,
                                     bytes_received=item['bytes_received'] if item else '0',
+                                    width=item.get('width') if item else None,
+                                    height=item.get('height') if item else None,
+                                    bitrate_observed=bitrate,
                                     reason=None if live else 'media_not_receiving_h264')
         return {'version': VERSION, 'streams': streams, 'recording_enabled': False}
 
 
-def run(config, state_dir, binary, stop, gateway=None, rtsp_profile=None, accounts=None, rtsp_audit=None, api_clients=None, lan_monitor=None):
+def run(config, state_dir, binary, stop, gateway=None, rtsp_profile=None, accounts=None, rtsp_audit=None, api_clients=None, lan_monitor=None, sdi_encoder=None):
     check = subprocess.run([str(binary), '--version'], stdout=subprocess.PIPE,
                            stderr=subprocess.DEVNULL, timeout=5, check=True)
     if check.stdout.decode().strip() != VERSION:
         raise ConfigError('MediaMTX version must be ' + VERSION)
     with Worker(state_dir, 'media', stop, config=config) as worker:
+        from .sdi import SdiObserver
+        sdi = SdiObserver(config, settings(config)['rtsp_port'], sdi_encoder, stop)
         delay = 1
         while not stop.is_set():
             with tempfile.TemporaryDirectory(prefix='ss07-media-') as tmp:
@@ -150,6 +163,7 @@ def run(config, state_dir, binary, stop, gateway=None, rtsp_profile=None, accoun
                             if time.monotonic() >= next_poll:
                                 try:
                                     payload = observer.observe(get_paths(config))
+                                    payload['streams']['sdi'].update(sdi.snapshot())
                                     payload['native_rtsp'] = relay.snapshot()
                                     worker.emit('RUNNING', payload)
                                 except (OSError, ValueError, URLError):

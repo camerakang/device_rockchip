@@ -15,7 +15,8 @@ from .config import decode_json
 
 PRINCIPAL = 'lan-monitor'
 PEER_HEADER = 'X-SS07-Peer'  # Set by the HTTPS gateway from the TCP peer, replacing any client value.
-GET_ROUTES = frozenset(('/api/v1/status', '/api/v1/streams', '/api/v1/sonars', '/api/v1/timecode', '/api/v1/events'))
+GET_ROUTES = frozenset(('/api/v1/status', '/api/v1/streams', '/api/v1/sonars', '/api/v1/timecode', '/api/v1/events',
+                        '/api/v1/media/sessions'))
 CREATE = re.compile(r'/media/(front|back|left|right|down|sdi)/whep')
 SESSION = re.compile(r'/media/(front|back|left|right|down|sdi)/whep/[a-fA-F0-9-]{36}')
 MAX_CIDRS = 16

@@ -112,6 +112,16 @@ class Grants:
         if SESSION.fullmatch(path) is None: raise ValueError('invalid WHEP grant')
         with self.lock: self.paths[path] = dict(owner=key, marker=marker)
 
+    def summary(self, key):
+        """Caller's own WHEP sessions and global totals; never other owners' identities."""
+        try: self.prune_ended()  # Best effort; the background thread prunes every 0.5 s anyway.
+        except (OSError, ValueError, http.client.HTTPException): pass
+        with self.lock:
+            own = sorted(path for path, value in self.paths.items() if value['owner'] == key)
+            total, pending = len(self.paths), sum(self.pending.values())
+        return dict(sessions=[dict(channel_id=SESSION.fullmatch(p)[1], location=p) for p in own],
+                    count=len(own), limit_per_client=12, total=total + pending, limit_total=48)
+
     def owns(self, path, key):
         with self.lock: return self.paths.get(path, {}).get('owner') == key
 

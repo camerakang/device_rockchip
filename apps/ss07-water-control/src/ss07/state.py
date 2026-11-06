@@ -145,6 +145,22 @@ def host_health():
     return {'memory_bytes': memory, 'temperatures': temperatures}
 
 
+def sdi_input(stream, item):
+    """Encoder-reported input state plus the relayed stream's real size, frame and bit rate."""
+    item = item if isinstance(item, dict) else {}
+    signal = item.get('input_signal')
+    info, error = item.get('input_info'), item.get('encoder_error')
+    stream.update(input_signal=signal if signal in ('present', 'no_signal', 'unknown') else 'unknown',
+                  input_info=info if isinstance(info, str) and len(info) <= 64 else None,
+                  input_error=error if isinstance(error, str) and len(error) <= 64 else None)
+    for key in ('width', 'height'):
+        value = item.get(key)
+        stream[key] = value if type(value) is int and 0 < value <= 16384 else None
+    for key in ('fps_observed', 'bitrate_observed'):
+        value = item.get(key)
+        stream[key] = value if type(value) in (int, float) and math.isfinite(value) and 0 <= value < 1e12 else None
+
+
 def attach_media(streams, worker, now_us):
     """Require both a fresh worker and advancing media counters for live URLs."""
     for stream in streams:
@@ -164,6 +180,8 @@ def attach_media(streams, worker, now_us):
             ready = item.get('ready') is True and item.get('codec') == 'H264' and 0 <= now_us - last < 3000000
         except (ConfigError, TypeError, AttributeError):
             ready = False
+        if channel == 'sdi':
+            sdi_input(stream, item)
         if not ready:
             stream.update(availability='unavailable', publish_state='UNAVAILABLE', live_url=None)
             continue
@@ -172,6 +190,11 @@ def attach_media(streams, worker, now_us):
             stream.update(capture_state='STREAMING', format='H264',
                           last_frame_age_ms=None, media_activity_age_ms=(now_us - last) // 1000,
                           timestamp_basis='media_ingress_activity', error=None)
+            if stream['input_signal'] == 'no_signal':
+                # The encoder keeps sending a black H.264 picture without an SDI input.
+                stream.update(capture_state='NO_SIGNAL', availability='no_signal', publish_state='PUBLISHING',
+                              live_url=None, error='sdi_no_signal')
+                continue
         if stream['capture_state'] == 'STREAMING':
             stream.update(availability='available', publish_state='PUBLISHING',
                           live_url='/media/' + channel + '/whep')
@@ -253,6 +276,8 @@ class State:
         alerts = ['HARDWARE_INTEGRATION_INCOMPLETE']
         if workers['media'].get('payload', {}).get('native_rtsp', {}).get('enabled') is True and native['state'] != 'READY':
             alerts.append('NATIVE_RTSP_UNAVAILABLE')
+        if streams[-1].get('input_signal') == 'no_signal':
+            alerts.append('SDI_NO_SIGNAL')
         if storage['gate'] != 'ELIGIBLE':
             alerts.append('RECORDING_' + storage['gate'])
         journal = tc.get('journal')

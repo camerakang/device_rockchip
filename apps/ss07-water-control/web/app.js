@@ -1,6 +1,6 @@
 "use strict";
 const names = {front:"前方",back:"后方",left:"左侧",right:"右侧",down:"下方",sdi:"主摄像机 · SDI"};
-const labels = {NOT_IMPLEMENTED:"尚未接入",UNAVAILABLE:"不可用",ABSENT:"设备未连接",OPENING:"正在打开",STREAMING:"采集中",RECOVERING:"正在恢复",CONFIG_ERROR:"配置错误",STALE:"数据已过期",ERROR:"异常",STARTING:"正在启动",RUNNING:"服务运行中",STOPPED:"服务已停止"};
+const labels = {NOT_IMPLEMENTED:"尚未接入",UNAVAILABLE:"不可用",ABSENT:"设备未连接",OPENING:"正在打开",STREAMING:"采集中",RECOVERING:"正在恢复",CONFIG_ERROR:"配置错误",STALE:"数据已过期",ERROR:"异常",STARTING:"正在启动",RUNNING:"服务运行中",STOPPED:"服务已停止",NO_SIGNAL:"SDI 无信号"};
 let receivedAt = 0;
 const cards = new Map();
 let mainChannel = "front";

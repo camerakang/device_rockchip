@@ -90,6 +90,47 @@ class MediaTests(unittest.TestCase):
         with self.assertRaises(ConfigError):
             telemetry(json.dumps(data), previous=data, now=110)
 
+    def test_sdi_reports_size_rates_and_no_signal(self):
+        item = dict(ready=True, codec='H264', last_data_monotonic_us='100', width=1920, height=1080,
+                    fps_observed=60.0, bitrate_observed=8.0e6, input_signal='no_signal', input_info='SDI NoSignal N/A')
+        worker = dict(state='RUNNING', payload={'streams': {'sdi': item}})
+        streams = [empty_camera('sdi')]
+        attach_media(streams, worker, 1000)
+        s = streams[0]
+        self.assertEqual((s['width'], s['height'], s['fps_observed'], s['bitrate_observed']), (1920, 1080, 60.0, 8.0e6))
+        self.assertEqual((s['availability'], s['capture_state'], s['error'], s['live_url']),
+                         ('no_signal', 'NO_SIGNAL', 'sdi_no_signal', None))
+        for signal in ('present', 'unknown'):
+            streams = [empty_camera('sdi')]
+            attach_media(streams, dict(state='RUNNING', payload={'streams': {'sdi': dict(item, input_signal=signal)}}), 1000)
+            self.assertEqual((streams[0]['availability'], streams[0]['input_signal']), ('available', signal))
+        streams = [empty_camera('sdi')]
+        attach_media(streams, dict(state='RUNNING', payload={'streams': {'sdi': dict(item, width=True, fps_observed=float('nan'))}}), 1000)
+        self.assertEqual((streams[0]['width'], streams[0]['fps_observed']), (None, None))
+
+    def test_sdi_encoder_text_and_credentials(self):
+        from ss07.sdi import classify, load_encoder, video_control
+        self.assertEqual(classify('SDI NoSignal N/A')[0], 'no_signal')
+        self.assertEqual(classify('SDI 1920x1080p60')[0], 'present')
+        self.assertEqual(classify('')[0], 'unknown')
+        sdp = 'v=0\r\nm=video 0 RTP/AVP 96\r\na=rtpmap:96 H264/90000\r\na=control:trackID=0\r\nm=audio 0 RTP/AVP 97\r\na=control:trackID=1\r\n'
+        self.assertEqual(video_control(sdp), 'trackID=0')
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'sdi-encoder.json'
+            self.assertIsNone(load_encoder(path))
+            path.write_text(json.dumps(dict(schema_version=1, model='avmatrix-se2017', username='admin', password='x')))
+            path.chmod(0o640); self.assertEqual(load_encoder(path)['username'], 'admin')
+            path.chmod(0o644)
+            with self.assertRaises(ValueError): load_encoder(path)
+
+    def test_media_observer_measures_bitrate(self):
+        observer = MediaObserver()
+        item = {'ready': True, 'codec': 'H264', 'bytes_received': '0', 'ready_time': 't', 'width': 1920, 'height': 1080}
+        observer.observe({'sdi': item}, now=0)
+        item['bytes_received'] = '1000000'
+        result = observer.observe({'sdi': item}, now=1000000)['streams']['sdi']
+        self.assertEqual((result['bitrate_observed'], result['width']), (8000000.0, 1920))
+
     def test_media_status_age_gates_live_url(self):
         streams = [empty_camera('sdi')]
         worker = dict(state='RUNNING', payload={'streams': {'sdi': dict(ready=True, codec='H264',

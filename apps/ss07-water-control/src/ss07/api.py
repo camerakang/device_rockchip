@@ -294,6 +294,11 @@ class Handler(BaseHTTPRequestHandler):
         if path == '/api/v1/events':
             self.events()
             return
+        if path == '/api/v1/media/sessions':
+            if self.server.grants is None:
+                data = dict(sessions=[], count=0, limit_per_client=12, total=0, limit_total=48)
+            else: data = self.server.grants.summary(self.principal['key'])
+            self.reply(200, {'data': data}); return
         data = self.server.state.data(path)
         if data is None:
             self.reply(404, {'error': {'code': 'NOT_FOUND', 'message': 'Endpoint not implemented', 'details': []}})

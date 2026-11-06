@@ -1,5 +1,7 @@
 # SS-07 RK3588 独立工程
 
+2026-11-06（0.10.10）：`/api/v1/streams` 的 `sdi` 路补上宽高、实测帧率和码率；媒体服务读取 SE2017 的 SDI 输入状态（需 `/etc/ss07-credentials/sdi-encoder.json`），无信号时报 `availability=no_signal`；新增 `GET /api/v1/media/sessions` 查询本机 WHEP 会话数，免密钥来源也可用。详见 [mobocon 拉流与配置接口](docs/mobocon-video-api.md)。
+
 2026-11-06（0.10.9）：新增 Mobocom V2.2 网络节点 `ss07-mobocom-node`（Rust，独立服务，VIDEO_SONAR 0x9009，Mobocon 可组播发现，只做身份与安全待机，不收运动命令），以及可选免密钥局域网监看 lan-monitor：`/etc/ss07-gateway/lan-monitor.json` 列出的网段可不带密钥读取状态、拉取六路 WebRTC/RTSP，配置、日志、录像和维护写操作仍拒绝；默认关闭。详见 [Mobocon 网络节点](docs/mobocon-network-node.md) 与 [mobocon 拉流与配置接口](docs/mobocon-video-api.md)。
 
 2026-11-05（0.10.6）：新增 mobocon 等 PC 程序使用的 API 客户端密钥（`ss07 api-client`，Bearer 访问状态、配置接口和 WebRTC/WHEP 拉流）和可选的局域网明文 RTSP/TCP 拉流端口 `plain_port`，六路视频继续由 MediaMTX 直通转发，详见 [mobocon 拉流与配置接口](docs/mobocon-video-api.md)。尚未部署。

@@ -78,6 +78,7 @@ def main():
             cmd.add_argument('--rtsp-audit', help='native RTSP access audit SQLite')
             cmd.add_argument('--api-clients', help='optional root-managed machine API client keys (e.g. mobocon)')
             cmd.add_argument('--lan-monitor', help='optional key-less LAN monitor allow-list (lan-monitor.json)')
+            cmd.add_argument('--sdi-encoder', help='optional root-managed SDI encoder status credentials (sdi-encoder.json)')
         if name == 'camera-worker':
             cmd.add_argument('--channel', required=True, choices=('front', 'back', 'left', 'right', 'down'))
         if name == 'check-cameras':
@@ -351,7 +352,7 @@ def main():
                     from .media import run
                     from .rtsp_access import load as load_rtsp
                     run(config, args.state_dir, binary, stop_event(), gateway, load_rtsp(args.rtsp_config),
-                        args.accounts, args.rtsp_audit, args.api_clients, args.lan_monitor)
+                        args.accounts, args.rtsp_audit, args.api_clients, args.lan_monitor, args.sdi_encoder)
                 elif args.command == 'camera-worker':
                     from .camera import run
                     run(config, args.channel, args.state_dir, binary, stop_event())

@@ -1,4 +1,4 @@
-# mobocon 视频拉流与配置接口（0.10.9）
+# mobocon 视频拉流与配置接口（0.10.10）
 
 mobocon 是外部 PC 控制程序。RK 向它提供两类接口：用 HTTPS JSON API 读取状态、修改配置；从流媒体服务器拉取六路视频，可选 WebRTC（WHEP）或 RTSP/TCP。这里不承载云台、跟焦或任何运动命令，RK 也不转发这类命令。
 
@@ -116,7 +116,7 @@ RTSPS 地址为 `rtsps://192.168.3.233:8322/<路径>`，客户端需要信任网
 
 | 请求（白名单来源，无 Authorization、无 Cookie） | 结果 |
 | --- | --- |
-| `GET /api/v1/status`、`/streams`、`/sonars`、`/timecode`、`/events` | 200 |
+| `GET /api/v1/status`、`/streams`、`/sonars`、`/timecode`、`/events`、`/media/sessions` | 200；`/media/sessions` 只列出同一来源 IP 的会话 |
 | `POST /media/<通道>/whep` | 201；会话属主为来源 IP |
 | `DELETE /media/<通道>/whep/<id>` | 只能关闭同一来源 IP 创建的会话，否则 404 |
 | 录像、时码/声呐历史、`/api/v1/config`、`/logs`、所有 PUT/POST 维护接口 | 403 `LAN_MONITOR_FORBIDDEN` |
@@ -130,6 +130,20 @@ RTSPS 地址为 `rtsps://192.168.3.233:8322/<路径>`，客户端需要信任网
 
 注意：网页控制台仍是 0.10.3 起的免登录直接访问模式，能打开网页的浏览器会得到维护会话。lan-monitor 只约束不带 Cookie 和密钥的程序请求，不收紧网页本身；如需限制网页访问，应在网络层隔离或恢复账号模式。
 
+## SDI 输入状态（0.10.10）
+
+`sdi` 路另有三个字段：`input_signal` 为编码器报告的 SDI 输入状态（`present` 有信号、`no_signal` 无信号、`unknown` 读不到编码器状态），`input_info` 为编码器原文（如 `SDI NoSignal N/A`），`input_error` 为读取失败原因。SDI 无信号时，SE2017 仍会输出一路全黑的 1920×1080 码流，因此这时 `availability=no_signal`、`capture_state=NO_SIGNAL`、`error=sdi_no_signal`，并且不提供 `live_url`、`rtsp_url`、`native_url`；`/api/v1/status` 的告警里会有 `SDI_NO_SIGNAL`。`input_signal=unknown` 时仍按码流是否到达判断 `available`。`sdi` 的 `width`、`height` 取自转发码流，`fps_observed` 为 RK 实测的转发帧率，`bitrate_observed` 为接收码率（bit/s）。
+
+`availability` 的取值：`available` 可播放；`no_signal` 码流在但没有输入信号（目前只有 `sdi`）；`unavailable` 无码流或设备异常。
+
+板上需要一份 SE2017 网页账号文件，媒体服务才能读取输入状态（只调用编码器网页自己使用的状态查询，不改编码器设置）。由 root 创建 `/etc/ss07-credentials/sdi-encoder.json`，属主 root、组 `ss07-web`、权限 0640（样例 `config/sdi-encoder.json.example`）：
+
+```json
+{"schema_version":1,"model":"avmatrix-se2017","username":"admin","password":"<编码器网页密码>"}
+```
+
+文件不存在时 `input_signal=unknown`、`input_error=encoder_status_not_configured`；权限过宽或格式错误时为 `encoder_credentials_invalid`；密码错误为 `encoder_auth_failed`；编码器不可达为 `encoder_unreachable`。修改后重启 `ss07-media` 生效。
+
 ## HTTP API
 
 基地址 `https://192.168.3.233:8443`，每个请求带 `Authorization: Bearer <密钥>`。使用 Bearer 时不要同时发送 Cookie，也不需要 CSRF 或 Origin。
@@ -141,6 +155,7 @@ RTSPS 地址为 `rtsps://192.168.3.233:8322/<路径>`，客户端需要信任网
 | `GET /api/v1/sonars` | monitor | 声呐状态；厂家协议接入前没有测量值 |
 | `GET /api/v1/timecode` | monitor | 只读 RS485 时码状态 |
 | `GET /api/v1/events` | monitor | SSE 状态推送 |
+| `GET /api/v1/media/sessions` | monitor | 调用者自己的 WHEP 会话列表、数量与全局总数（0.10.10） |
 | `POST /media/<路径>/whep`、`DELETE <Location>` | monitor | WebRTC 拉流会话 |
 | `GET /api/v1/config` | maintainer | 候选配置 `persisted`、`revision`、`active_revision`、逐服务应用结果 |
 | `PUT /api/v1/config` | maintainer | 保存候选：`{"candidate":{...},"expected_revision":"<64位hex>"}` |
