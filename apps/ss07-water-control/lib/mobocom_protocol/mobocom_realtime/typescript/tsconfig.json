@@ -1,0 +1,4 @@
+{
+  "compilerOptions": {"target":"ES2022","module":"CommonJS","strict":true,"declaration":true,"outDir":"build","rootDir":"../..","lib":["ES2022","DOM"],"esModuleInterop":true},
+  "include":["*.ts"]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SS-07 key-less LAN monitor access",
+  "description": "Copy to /etc/ss07-gateway/lan-monitor.json (root, 0644). allow_cidrs lists only the Mobocon subnet, e.g. 192.168.3.0/24. A missing, invalid or disabled file, an empty list or 0.0.0.0/0 keeps the mode off.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "enabled", "allow_cidrs"],
+  "properties": {
+    "schema_version": {"const": 1, "type": "integer"},
+    "enabled": {"type": "boolean"},
+    "allow_cidrs": {"type": "array", "maxItems": 16, "items": {"type": "string", "description": "IPv4 network, strict form, prefix length 1-32"}}
+  }
+}

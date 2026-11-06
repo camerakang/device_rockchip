@@ -44,6 +44,7 @@ def main():
     parser.add_argument('--native-dir', type=Path, help='optional target-architecture ss07-camera binary directory')
     parser.add_argument('--media-dir', type=Path, help='optional verified fetch-media.py output')
     parser.add_argument('--gateway-dir', type=Path, help='optional verified fetch-media.py --component caddy output')
+    parser.add_argument('--node-binary', type=Path, help='optional ss07-mobocom-node (cargo --target aarch64-unknown-linux-musl)')
     args = parser.parse_args()
     dest = args.destdir.absolute()
     if dest.exists() or dest.is_symlink():
@@ -52,6 +53,7 @@ def main():
         parser.error('native-dir must contain ss07-camera')
     native_arch = architecture(args.native_dir / 'ss07-camera') if args.native_dir else None
     arches = {native_arch} if native_arch else set()
+    if args.node_binary: arches.add(architecture(args.node_binary))
     try:
         for directory, component in ((args.media_dir, 'mediamtx'), (args.gateway_dir, 'caddy')):
             if directory: arches.add(verified_asset(directory, component))
@@ -64,8 +66,14 @@ def main():
     for name in ('src', 'tools', 'config', 'web'):
         shutil.copytree(ROOT / name, release / name, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
     (dest / 'opt/ss07/current').symlink_to('releases/' + __version__)
-    if args.native_dir or args.media_dir or args.gateway_dir:
+    if args.native_dir or args.media_dir or args.gateway_dir or args.node_binary:
         (release / 'bin').mkdir()
+    if args.node_binary:
+        # Independent Control node: the unit is installed only by `ss07 node-service install`.
+        shutil.copy2(args.node_binary, release / 'bin/ss07-mobocom-node')
+        (release / 'share').mkdir()
+        shutil.copyfile(ROOT / 'node/ss07-mobocom-node.service', release / 'share/ss07-mobocom-node.service')
+        shutil.copyfile(ROOT / 'mobocom-sdk.lock.json', release / 'mobocom-sdk.lock.json')
     if args.native_dir:
         shutil.copy2(args.native_dir / 'ss07-camera', release / 'bin/ss07-camera')
     if args.media_dir:

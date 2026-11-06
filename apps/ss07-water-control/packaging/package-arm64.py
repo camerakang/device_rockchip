@@ -31,6 +31,8 @@ def main():
     parser.add_argument('--media-dir', type=Path, required=True)
     parser.add_argument('--gateway-dir', type=Path, required=True)
     parser.add_argument('--validation', type=Path, required=True, help='successful test-arm64.py result.json')
+    parser.add_argument('--node-binary', type=Path, required=True,
+                        help='ss07-mobocom-node from: cargo build --release --locked --target aarch64-unknown-linux-musl')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     dest = args.output.absolute()
@@ -61,11 +63,19 @@ def main():
     for directory, name in ((args.media_dir, 'mediamtx'), (args.gateway_dir, 'caddy')):
         if staging.verified_asset(directory, name) != 'arm64':
             parser.error('expected pinned ARM64 ' + name)
+    if staging.architecture(args.node_binary) != 'arm64':
+        parser.error('expected ARM64 ss07-mobocom-node')
+    if 'version = "%s"' % __version__ not in (ROOT / 'node/Cargo.toml').read_text():
+        parser.error('node/Cargo.toml version must equal the application version (Mobocom firmware)')
+    sdk = json.loads((ROOT / 'mobocom-sdk.lock.json').read_text())
+    sdk_manifest = json.loads((ROOT / sdk['path'] / 'sdk-manifest.json').read_text())
+    if any(sdk[k] != sdk_manifest[k] for k in ('version', 'protocol', 'content_sha256', 'source_commit')):
+        parser.error('vendored Mobocom SDK does not match mobocom-sdk.lock.json')
     dest.mkdir(parents=True)
     stage = dest / 'rootfs-stage'
     subprocess.run([sys.executable, str(ROOT / 'packaging/stage-rootfs.py'), '--destdir', str(stage),
                     '--native-dir', str(native.parent), '--media-dir', str(args.media_dir),
-                    '--gateway-dir', str(args.gateway_dir)], check=True)
+                    '--gateway-dir', str(args.gateway_dir), '--node-binary', str(args.node_binary)], check=True)
     release = stage / 'opt/ss07/releases' / __version__
     shutil.copyfile(args.native_build / 'manifest.json', release / 'native-manifest.json')
     shutil.copyfile(args.native_build / 'abi.json', release / 'native-abi.json')
@@ -75,7 +85,8 @@ def main():
     docs.mkdir()
     for name in ('arm64-build.md', 'auth-maintenance.md', 'timecode-runtime.md', 'configuration-application.md',
                  'installation-recovery.md', 'native-rtsp.md', 'sonar-foundation.md', 'sonar-archive.md',
-                 'sonar-services.md', 'sonar-migration.md', 'acceptance-720p25.md'):
+                 'sonar-services.md', 'sonar-migration.md', 'acceptance-720p25.md', 'mobocon-video-api.md',
+                 'mobocon-network-node.md'):
         shutil.copyfile(ROOT / 'docs' / name, docs / name)
     files, symlinks = {}, {}
     for path in sorted(stage.rglob('*')):
@@ -96,6 +107,11 @@ def main():
                              'local_installation': 'systemd/sysusers/tmpfiles, iproute2, OpenSSL CLI compatible with 1.1.1; root on ARM64',
                              'provisioning': 'explicit accounts, TLS, gateway address, hardware binding and recording volume'},
                 'contents': 'application overlay only; no OS libraries, credentials, data volume or synthetic binary',
+                'mobocom_node': {'binary_sha256': digest(args.node_binary), 'device_type': '0x9009',
+                                 'unit': 'share/ss07-mobocom-node.service', 'enabled_by_install': False,
+                                 'lan_monitor_default': 'disabled (no /etc/ss07-gateway/lan-monitor.json)',
+                                 'sdk': {k: sdk[k] for k in ('version', 'protocol', 'content_sha256', 'source_commit',
+                                                             'source_dirty', 'source')}},
                 'files': files, 'symlinks': symlinks}
     (stage / 'SS07-MANIFEST.json').write_text(json.dumps(manifest, indent=2) + '\n')
     name = 'ss07-' + __version__ + '-linux-arm64'

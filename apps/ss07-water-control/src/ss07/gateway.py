@@ -75,6 +75,7 @@ def render(config, gateway):
         max_size 65536
     }
     reverse_proxy 127.0.0.1:%d {
+        header_up X-SS07-Peer {remote_host}
         flush_interval -1
         transport http {
             dial_timeout 1s

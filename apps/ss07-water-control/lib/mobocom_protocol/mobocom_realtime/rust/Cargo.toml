@@ -1,0 +1,21 @@
+[package]
+name = "mobocom-protocol"
+version = "2.2.0-network.1"
+edition = "2021"
+description = "Mobocom V2.2 UDP control SDK; implementation candidate"
+publish = false
+
+[features]
+default = ["std"]
+std = []
+
+[lib]
+path = "src/lib.rs"
+
+[[example]]
+name = "conformance"
+required-features = ["std"]
+
+[[example]]
+name = "discover"
+required-features = ["std"]

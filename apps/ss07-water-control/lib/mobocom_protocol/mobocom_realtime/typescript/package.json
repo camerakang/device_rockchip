@@ -1,0 +1,11 @@
+{
+  "name": "@mobocom/protocol",
+  "version": "2.2.0-network.1",
+  "private": true,
+  "type": "commonjs",
+  "main": "build/mobocom_realtime/typescript/index.js",
+  "types": "build/mobocom_realtime/typescript/index.d.ts",
+  "scripts": {"build": "tsc -p tsconfig.json", "test": "npm run build && node build/mobocom_realtime/typescript/tests.js"},
+  "devDependencies": {"typescript": "~6.0.2"},
+  "engines": {"node": ">=22"}
+}

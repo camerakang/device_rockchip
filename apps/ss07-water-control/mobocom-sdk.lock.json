@@ -1,0 +1,11 @@
+{
+  "schema": 2,
+  "version": "2.2.0-network.1",
+  "protocol": "0x22",
+  "timecode_protocol": "0x12",
+  "content_sha256": "56575ddc4b49e9aeb440ef43d5ec2d0ff8a3d6c99e9182359285cf70ea445c2e",
+  "source_commit": "ac6e6dde56001c8f6b9f27530d0cd47065191eac",
+  "source_dirty": false,
+  "path": "lib/mobocom_protocol",
+  "source": "git@codeup.aliyun.com:629f6370487c500c27f60603/device_protocol.git"
+}

@@ -24,7 +24,7 @@ RK 的时码适配器是独立的只读通道，不经过 mobocon，也不向 mo
 | 通道名 | `front`、`back`、`left`、`right`、`down`、`sdi` |
 | 编码 | 五路 USB 为 H.264 720p25；sdi 取自 SE2017（192.168.3.47） |
 
-网页界面免登录。mobocon 使用 API 客户端密钥，密钥只在创建时显示一次，由现场维护者保管，不要写入仓库。
+网页界面免登录。mobocon 使用 API 客户端密钥；启用 lan-monitor 后，白名单网段也可以不带密钥取视频和状态，见 [mobocon-video-api.md](mobocon-video-api.md) 的“免密钥局域网监看”。mobocon 使用 API 客户端密钥，密钥只在创建时显示一次，由现场维护者保管，不要写入仓库。
 
 ## 3 选择拉流方式
 
@@ -80,11 +80,13 @@ WebRTC 会话每个客户端最多 12 个，与网页监看合计最多 48 个�
 | 时码适配器（USB 转 RS485，500000 波特） | 服务已部署，现场时码有效性待接入验证 |
 | 播放延迟 | 未实测，WebRTC 预期 100–200 ms，RTSP 150–300 ms，需用 mobocon 现场测量 |
 | mobocon 侧的 WHEP 与 RTSP 接入代码 | 未编写，本仓库只提供示例 |
+| Mobocom V2.2 网络节点 `ss07-mobocom-node`（VIDEO_SONAR 0x9009） | 0.10.9 已实现并通过 5/5 黄金向量；实网验证记录见 [mobocon-network-node.md](mobocon-network-node.md)。协议库快照的来源提交尚未推送到 codeup |
 
 ## 7 变更记录
 
 | 版本 | 日期 | 内容 |
 | --- | --- | --- |
+| 0.10.9 | 2026-11-06 | 新增独立 Rust 服务 `ss07-mobocom-node`（VIDEO_SONAR 0x9009，UDP 47821/239.255.33.21，仅身份、发现与安全待机）和可选免密钥局域网监看 lan-monitor；`ss07 node-info`、`ss07 node-service install/uninstall/status` |
 | 0.10.6 | 2026-11-05 | 新增 API 客户端 Bearer 密钥、WebRTC/WHEP 与 RTSP 对 mobocon 开放、可选明文 RTSP 端口 8555；已部署到 192.168.3.233 并验证六路拉流 |
 
 ## 8 维护规则

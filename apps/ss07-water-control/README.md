@@ -1,5 +1,7 @@
 # SS-07 RK3588 独立工程
 
+2026-11-06（0.10.9）：新增 Mobocom V2.2 网络节点 `ss07-mobocom-node`（Rust，独立服务，VIDEO_SONAR 0x9009，Mobocon 可组播发现，只做身份与安全待机，不收运动命令），以及可选免密钥局域网监看 lan-monitor：`/etc/ss07-gateway/lan-monitor.json` 列出的网段可不带密钥读取状态、拉取六路 WebRTC/RTSP，配置、日志、录像和维护写操作仍拒绝；默认关闭。详见 [Mobocon 网络节点](docs/mobocon-network-node.md) 与 [mobocon 拉流与配置接口](docs/mobocon-video-api.md)。
+
 2026-11-05（0.10.6）：新增 mobocon 等 PC 程序使用的 API 客户端密钥（`ss07 api-client`，Bearer 访问状态、配置接口和 WebRTC/WHEP 拉流）和可选的局域网明文 RTSP/TCP 拉流端口 `plain_port`，六路视频继续由 MediaMTX 直通转发，详见 [mobocon 拉流与配置接口](docs/mobocon-video-api.md)。尚未部署。
 
 2026-11-05（0.10.5）：监看页布局调整（配色不变）。概览四项移入顶栏；左侧导航收窄为 76px 图标栏；视频区和右栏按窗口高度铺满，1600×1000 与 1366×768 下无需滚动；视频面板新增“1＋5 / 均分”布局切换（浏览器本地记住）；帧时间叠加在画面左下角；时码、存储、设备合并为“系统状态”一张卡片。尚未部署到目标板。
@@ -18,7 +20,7 @@
 
 2026-10-24 补充[现有板端原生版本查询](docs/evidence/board-native-versions-20261024.json)：精确包内相机、MediaMTX、Caddy 通过匿名内存文件执行，全部退出 0，未安装文件或启动服务。此项证明初始程序加载及版本分支，未验证采集、插件管线或实际服务权限。
 
-[交付进度与缺口](docs/delivery-progress.md) · [MOBOCON 开发文档](docs/mobocon-development.md) · [mobocon 拉流与配置接口](docs/mobocon-video-api.md) · [原生播放器访问](docs/native-rtsp.md) · [安装与版本恢复](docs/installation-recovery.md) · [配置应用与恢复](docs/configuration-application.md) · [完整镜像](docs/full-image.md) · [ARM64 构建](docs/arm64-build.md) · [权限与维护](docs/auth-maintenance.md) · [原生视频](docs/native-video.md) · [录像与回放](docs/recording.md) · [只读时码](docs/timecode-runtime.md) · [项目需求](docs/requirements.md) · [基础接口](docs/foundation.md) · [实物探测记录](docs/target-probe-192.168.3.233.md)
+[交付进度与缺口](docs/delivery-progress.md) · [MOBOCON 开发文档](docs/mobocon-development.md) · [Mobocon 网络节点](docs/mobocon-network-node.md) · [mobocon 拉流与配置接口](docs/mobocon-video-api.md) · [原生播放器访问](docs/native-rtsp.md) · [安装与版本恢复](docs/installation-recovery.md) · [配置应用与恢复](docs/configuration-application.md) · [完整镜像](docs/full-image.md) · [ARM64 构建](docs/arm64-build.md) · [权限与维护](docs/auth-maintenance.md) · [原生视频](docs/native-video.md) · [录像与回放](docs/recording.md) · [只读时码](docs/timecode-runtime.md) · [项目需求](docs/requirements.md) · [基础接口](docs/foundation.md) · [实物探测记录](docs/target-probe-192.168.3.233.md)
 
 在本目录运行：
 

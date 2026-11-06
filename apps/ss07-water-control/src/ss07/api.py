@@ -12,6 +12,7 @@ from urllib.parse import parse_qs, urlsplit
 from . import __version__
 from .config import ROOT, decode_json
 from .auth import AuthError, COOKIE, PERMISSIONS, TOKEN
+from .lan_monitor import LanMonitor, PEER_HEADER, PRINCIPAL as LAN_PRINCIPAL
 from .state import State  # Public compatibility import for 0.1 consumers.
 
 ASSETS = {'/': ('index.html', 'text/html; charset=utf-8'),
@@ -33,7 +34,7 @@ class Server(ThreadingHTTPServer):
     daemon_threads = True
     request_queue_size = 16
 
-    def __init__(self, address, state, auth=None, maintenance=None, maintenance_audit=None, cleanup_path=None, application_audit=None, rtsp_audit=None, api_clients=None):
+    def __init__(self, address, state, auth=None, maintenance=None, maintenance_audit=None, cleanup_path=None, application_audit=None, rtsp_audit=None, api_clients=None, lan_monitor=None):
         if address[0] != '127.0.0.1':
             raise ValueError('foundation API binds to loopback only')
         self.state = state
@@ -41,6 +42,7 @@ class Server(ThreadingHTTPServer):
         self.application_audit = application_audit
         self.rtsp_audit = rtsp_audit
         self.api_clients = api_clients
+        self.lan_monitor = lan_monitor or LanMonitor()
         self.grants = None
         self.slots = threading.BoundedSemaphore(16)
         self.event_slots = threading.BoundedSemaphore(4)
@@ -58,8 +60,13 @@ class Server(ThreadingHTTPServer):
 
     def client_keys(self):
         """Grant owners for enabled API clients; a rotated, disabled or removed key loses its WebRTC sessions."""
-        if self.api_clients is None: return set()
-        return {client_key(name, client) for name, client in self.api_clients.read()['clients'].items() if client['enabled']}
+        keys = set()
+        if self.grants is not None and self.lan_monitor.enabled:
+            # Key-less sessions stay owned while their source remains inside allow_cidrs.
+            with self.grants.lock: owners = {v['owner'] for v in self.grants.paths.values()}
+            keys |= {o for o in owners if o.startswith(LAN_PRINCIPAL + ':') and self.lan_monitor.allows(o.split(':', 1)[1])}
+        if self.api_clients is None: return keys
+        return keys | {client_key(name, client) for name, client in self.api_clients.read()['clients'].items() if client['enabled']}
 
     def process_request(self, request, client_address):
         if not self.slots.acquire(blocking=False):
@@ -143,14 +150,41 @@ class Handler(BaseHTTPRequestHandler):
         if permission and permission not in PERMISSIONS[client['role']]: raise AuthError('FORBIDDEN', 403)
         return dict(username=name, role=client['role'], key=client_key(name, client))
 
+    def peer(self):
+        values = self.headers.get_all(PEER_HEADER, [])
+        return values[0].strip() if len(values) == 1 else None
+
+    def lan(self):
+        """Key-less LAN monitor principal, or None when it does not apply to this request."""
+        monitor = self.server.lan_monitor
+        monitor.refresh()
+        if (not monitor.enabled or self.headers.get_all('Authorization', [])
+                or self.headers.get_all('Cookie', [])): return None
+        ip = self.peer()
+        if not monitor.allows(ip):
+            if ip is not None: monitor.denied(ip, 'source')
+            return None
+        path = urlsplit(self.path).path
+        if not monitor.route_allowed(self.command, path):
+            monitor.denied(ip, 'route')
+            raise AuthError('LAN_MONITOR_FORBIDDEN', 403)
+        return dict(username=LAN_PRINCIPAL, role='monitor', key=monitor.owner(ip), lan_ip=ip)
+
     def authorize(self, permission='monitor', mutate=False):
         if not self.server.auth:
             if mutate: raise AuthError('READ_ONLY_DEVELOPMENT', 405)
             self.principal = None
             return None
+        self.lan_ip = None
         self.api_key = key = self.bearer()
         if key is not None:
             self.principal = self.client(key, permission)
+            return self.principal
+        lan = self.lan()
+        if lan is not None:
+            if permission != 'monitor': raise AuthError('LAN_MONITOR_FORBIDDEN', 403)
+            self.lan_ip = lan.pop('lan_ip')
+            self.principal = lan
             return self.principal
         self.auth_token = self.cookie()
         self.principal = self.server.auth.session(self.auth_token, permission)
@@ -169,6 +203,8 @@ class Handler(BaseHTTPRequestHandler):
         try:
             if getattr(self, 'api_key', None) is not None:
                 self.client(self.api_key, permission); return True
+            if getattr(self, 'lan_ip', None) is not None:
+                return permission == 'monitor' and self.server.lan_monitor.allows(self.lan_ip)
             self.server.auth.session(self.auth_token, permission, touch=touch)
             return True
         except AuthError: return False
@@ -372,6 +408,7 @@ class Handler(BaseHTTPRequestHandler):
                 if method == 'POST' and response.status == 201:
                     if location is None: raise ValueError('missing WHEP session')
                     self.server.grants.add(location, self.principal['key'], marker)
+                    if getattr(self, 'lan_ip', None): print('lan-monitor: WHEP session opened %s by %s' % (match[1], self.lan_ip), flush=True)
                     if self.server.stopping.is_set():
                         self.server.grants.remove(location)
                         raise AuthError('SERVICE_STOPPING', 503)
@@ -380,6 +417,7 @@ class Handler(BaseHTTPRequestHandler):
                         raise AuthError('LOGIN_REQUIRED')
                 elif method == 'DELETE' and response.status in (200, 204, 404, 410):
                     with self.server.grants.lock: self.server.grants.paths.pop(self.path, None)
+                    if getattr(self, 'lan_ip', None): print('lan-monitor: WHEP session closed %s by %s' % (match[1], self.lan_ip), flush=True)
             self.send_response(response.status)
             self.send_header('Content-Type', 'application/sdp' if response.status == 201 else 'text/plain')
             self.send_header('Content-Length', str(len(answer)))

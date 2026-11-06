@@ -1,0 +1,12 @@
+{
+  "name": "MobocomDeviceProtocol",
+  "version": "2.2.0-network.1",
+  "description": "Shared Mobocom V2.2 network-only UDP device control core; no device timecode requirement",
+  "repository": {"type":"git","url":"git@codeup.aliyun.com:629f6370487c500c27f60603/device_protocol.git"},
+  "build": {
+    "srcDir":"mobocom_realtime/cpp",
+    "includeDir":"mobocom_realtime/cpp",
+    "srcFilter":["+<mobocom_protocol.cpp>"],
+    "flags":["-std=gnu++20"]
+  }
+}

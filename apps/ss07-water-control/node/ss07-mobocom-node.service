@@ -1,0 +1,39 @@
+# Independent Mobocom V2.2 Control node; installed by `ss07 node-service install`
+# into /etc/systemd/system. No Requires=/BindsTo= with ss07-media, ss07-api or ss07.target.
+[Unit]
+Description=SS-07 Mobocom V2.2 Control node (VIDEO_SONAR 0x9009; identity and safe standby only)
+After=network-online.target
+Wants=network-online.target
+# A release without the binary (e.g. after rollback) skips the unit instead of restart-looping.
+ConditionPathExists=/opt/ss07/current/bin/ss07-mobocom-node
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+# Dedicated unprivileged user without video, USB or serial device access.
+DynamicUser=yes
+User=ss07-mobocom-node
+RuntimeDirectory=ss07-mobocom-node
+RuntimeDirectoryMode=0755
+# "+": only this root step writes /var/lib/ss07/mobocom-node.json (0644, atomic replace).
+ExecStartPre=+/opt/ss07/current/bin/ss07-mobocom-node identity --state /var/lib/ss07/mobocom-node.json --export /run/ss07-mobocom-node/identity.json
+ExecStart=/opt/ss07/current/bin/ss07-mobocom-node run --identity /run/ss07-mobocom-node/identity.json --config /etc/ss07/mobocom-node.json --status /run/ss07-mobocom-node/status.json
+Restart=always
+RestartSec=1
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/var/lib/ss07
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+DevicePolicy=closed
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_UNIX
+CapabilityBoundingSet=
+MemoryMax=32M
+UMask=0022
+
+[Install]
+WantedBy=multi-user.target

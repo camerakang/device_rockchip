@@ -120,7 +120,7 @@ class MediaObserver:
         return {'version': VERSION, 'streams': streams, 'recording_enabled': False}
 
 
-def run(config, state_dir, binary, stop, gateway=None, rtsp_profile=None, accounts=None, rtsp_audit=None, api_clients=None):
+def run(config, state_dir, binary, stop, gateway=None, rtsp_profile=None, accounts=None, rtsp_audit=None, api_clients=None, lan_monitor=None):
     check = subprocess.run([str(binary), '--version'], stdout=subprocess.PIPE,
                            stderr=subprocess.DEVNULL, timeout=5, check=True)
     if check.stdout.decode().strip() != VERSION:
@@ -130,7 +130,7 @@ def run(config, state_dir, binary, stop, gateway=None, rtsp_profile=None, accoun
         while not stop.is_set():
             with tempfile.TemporaryDirectory(prefix='ss07-media-') as tmp:
                 from .rtsp_access import DEFAULT, Relay
-                relay = Relay(config, gateway, rtsp_profile or dict(DEFAULT), accounts, rtsp_audit, binary, tmp, api_clients)
+                relay = Relay(config, gateway, rtsp_profile or dict(DEFAULT), accounts, rtsp_audit, binary, tmp, api_clients, lan_monitor)
                 path = os.path.join(tmp, 'mediamtx.json')
                 with open(path, 'w') as out:
                     json.dump(render(config, gateway), out)

@@ -1,4 +1,4 @@
-# mobocon 视频拉流与配置接口（0.10.6）
+# mobocon 视频拉流与配置接口（0.10.9）
 
 mobocon 是外部 PC 控制程序。RK 向它提供两类接口：用 HTTPS JSON API 读取状态、修改配置；从流媒体服务器拉取六路视频，可选 WebRTC（WHEP）或 RTSP/TCP。这里不承载云台、跟焦或任何运动命令，RK 也不转发这类命令。
 
@@ -97,6 +97,38 @@ ffplay -rtsp_transport tcp -fflags nobuffer -flags low_delay "rtsp://mobocon:<�
 RTSPS 地址为 `rtsps://192.168.3.233:8322/<路径>`，客户端需要信任网关证书。
 
 直通转发本身只增加几毫秒。USB 相机硬件 H.264、局域网和低缓冲播放器组合一般在 150–300 ms，以现场实测为准；播放器默认缓冲常常是延迟的主要来源。
+
+## 免密钥局域网监看（lan-monitor，0.10.9）
+
+设备发现见 [Mobocon 网络节点](mobocon-network-node.md)：Mobocon 用组播 DISCOVER 得到 UID 和当前 IP，再用该 IP 访问下面的接口。
+
+用于 Mobocon 在受控设备网内不带密钥取六路视频和状态。默认关闭；只有根管理员创建配置文件后才生效。
+
+`/etc/ss07-gateway/lan-monitor.json`（root 所有，0644；样例 `config/lan-monitor.json.example`）：
+
+```json
+{"schema_version":1,"enabled":true,"allow_cidrs":["192.168.3.0/24"]}
+```
+
+`allow_cidrs` 只写 Mobocon 所在网段（最多 16 项，严格网段写法）。文件不存在、无法解析、权限可被他人改写、`enabled=false`、列表为空或含 `0.0.0.0/0` 时，模式均为关闭，服务照常启动并在日志记录原因。API 和 RTSP relay 每秒检查一次文件，修改或删除后无需重启即生效；RTSP relay 检测到变化时会断开全部外部播放器并重新启动。
+
+来源地址由 HTTPS 网关按 TCP 对端写入，覆盖客户端自带的同名请求头；API 本身只监听 127.0.0.1。
+
+| 请求（白名单来源，无 Authorization、无 Cookie） | 结果 |
+| --- | --- |
+| `GET /api/v1/status`、`/streams`、`/sonars`、`/timecode`、`/events` | 200 |
+| `POST /media/<通道>/whep` | 201；会话属主为来源 IP |
+| `DELETE /media/<通道>/whep/<id>` | 只能关闭同一来源 IP 创建的会话，否则 404 |
+| 录像、时码/声呐历史、`/api/v1/config`、`/logs`、所有 PUT/POST 维护接口 | 403 `LAN_MONITOR_FORBIDDEN` |
+| `rtsp://192.168.3.233:8555/<通道>`、`rtsps://…:8322/<通道>`，不带用户名 | 只读放行；publish/写入一律拒绝 |
+
+非白名单来源不带密钥访问受保护接口返回 401。带 Bearer 的请求完全按原规则处理；Bearer 与 Cookie 同时出现仍返回 401。WebRTC 会话上限沿用原计数：每个来源 IP 最多 12 个，总数 48 个。`/api/v1/streams` 的 `rtsp_url` 不含用户名和密钥。
+
+日志（`journalctl -u ss07-api -u ss07-media`，前缀 `lan-monitor:`）记录模式状态、无密钥 WHEP 会话建立/关闭，被拒来源每 10 秒最多记一行；不记录任何凭据。
+
+关闭方法：删除或改名该文件，或改 `"enabled": false`。关闭后无密钥请求立即回到 401，已建立的无密钥 WHEP 会话在下一次属主检查时撤销，RTSP relay 重启并断开无密钥播放器；Bearer 流程和 `ss07 api-client` 命令不变。
+
+注意：网页控制台仍是 0.10.3 起的免登录直接访问模式，能打开网页的浏览器会得到维护会话。lan-monitor 只约束不带 Cookie 和密钥的程序请求，不收紧网页本身；如需限制网页访问，应在网络层隔离或恢复账号模式。
 
 ## HTTP API
 

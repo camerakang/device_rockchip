@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "revision": 3,
+  "types": [
+    {"id": "0x8001", "symbol": "VIRTUAL_LENS", "name": "虚拟跟焦", "scope": "virtual"},
+    {"id": "0x8002", "symbol": "VIRTUAL_GIMBAL", "name": "虚拟云台", "scope": "virtual"},
+    {"id": "0x8003", "symbol": "VIRTUAL_FANS", "name": "虚拟风机", "scope": "virtual"},
+    {"id": "0x9001", "symbol": "FAN", "name": "风机", "scope": "production"},
+    {"id": "0x9002", "symbol": "FOCUS_MOTOR", "name": "跟焦器电机", "scope": "production"},
+    {"id": "0x9003", "symbol": "TREADMILL", "name": "跑步机", "scope": "production"},
+    {"id": "0x9004", "symbol": "STAIR_CLIMBER", "name": "楼梯机", "scope": "production"},
+    {"id": "0x9005", "symbol": "MECHANICAL_HORSE", "name": "机械马", "scope": "production"},
+    {"id": "0x9006", "symbol": "RAIL_CAR", "name": "轨道车", "scope": "production"},
+    {"id": "0x9007", "symbol": "GIMBAL", "name": "云台", "scope": "production"},
+    {"id": "0x9008", "symbol": "CUT_POINT", "name": "闪光剪辑点", "scope": "production"},
+    {"id": "0x9009", "symbol": "VIDEO_SONAR", "name": "视频声呐系统", "scope": "production"}
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "status": "implementation-candidate",
+  "version": "2.2.0-network.1",
+  "frames": 81,
+  "trace_steps": 97,
+  "virtual_parameters": {
+    "target_ttl_us": 100000,
+    "lease_ttl_us": 300000,
+    "safe_delay_us": 0,
+    "action_delay_us": 20000
+  },
+  "budgets": [
+    {
+      "nodes": 2,
+      "hz_per_node": 100,
+      "resources_per_node": 3,
+      "target_request_bytes": 84,
+      "target_ack_bytes": 79,
+      "link_bytes_per_target_cycle": 295,
+      "status_pages_per_second_per_node": 1,
+      "link_bps": 100000000,
+      "utilization": 0.004786,
+      "accepted": true,
+      "assumption": "100BASE-TX Ethernet/IPv4/UDP framing only; switch queueing, Wi-Fi and host scheduling are not modeled"
+    },
+    {
+      "nodes": 16,
+      "hz_per_node": 100,
+      "resources_per_node": 3,
+      "target_request_bytes": 84,
+      "target_ack_bytes": 79,
+      "link_bytes_per_target_cycle": 295,
+      "status_pages_per_second_per_node": 1,
+      "link_bps": 100000000,
+      "utilization": 0.038287,
+      "accepted": true,
+      "assumption": "100BASE-TX Ethernet/IPv4/UDP framing only; switch queueing, Wi-Fi and host scheduling are not modeled"
+    },
+    {
+      "nodes": 64,
+      "hz_per_node": 100,
+      "resources_per_node": 9,
+      "target_request_bytes": 132,
+      "target_ack_bytes": 79,
+      "link_bytes_per_target_cycle": 343,
+      "status_pages_per_second_per_node": 2,
+      "link_bps": 100000000,
+      "utilization": 0.179835,
+      "accepted": true,
+      "assumption": "100BASE-TX Ethernet/IPv4/UDP framing only; switch queueing, Wi-Fi and host scheduling are not modeled"
+    },
+    {
+      "nodes": 1,
+      "hz_per_node": 100,
+      "resources_per_node": 16,
+      "target_request_bytes": 188,
+      "target_ack_bytes": 79,
+      "link_bytes_per_target_cycle": 399,
+      "status_pages_per_second_per_node": 2,
+      "link_bps": 100000000,
+      "utilization": 0.003258,
+      "accepted": true,
+      "assumption": "100BASE-TX Ethernet/IPv4/UDP framing only; switch queueing, Wi-Fi and host scheduling are not modeled"
+    }
+  ],
+  "fixed_capacity": {
+    "resources": 16,
+    "sessions": 1,
+    "action_results": 8,
+    "max_frame_bytes": 279,
+    "pending_replies": 1
+  },
+  "hardware": "not measured; no switch, Wi-Fi or cross-device synchronization claim"
+}

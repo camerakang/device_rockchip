@@ -1,0 +1,3 @@
+# Release target: static musl, so the binary does not depend on the board glibc (2.31).
+[target.aarch64-unknown-linux-musl]
+linker = "rust-lld"

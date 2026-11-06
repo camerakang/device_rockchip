@@ -28,6 +28,7 @@ from .api_clients import ApiClients
 from .audit import Audit
 from .config import ConfigError, decode_json, revision
 from .gateway import owns_listener, validate as validate_gateway
+from .lan_monitor import LanMonitor
 from .media import CHANNELS, settings
 from .worker import terminate
 
@@ -96,8 +97,9 @@ def render(config, gateway, profile, callback):
 
 
 class Authorization:
-    def __init__(self, accounts, audit, api_clients=None):
+    def __init__(self, accounts, audit, api_clients=None, lan_monitor=None):
         self.accounts, self.audit = Accounts(accounts), Audit(audit)
+        self.lan = LanMonitor(lan_monitor)
         self.clients = ApiClients(api_clients) if api_clients else None
         self.lock = threading.RLock()
         self.kdf = threading.BoundedSemaphore(1)
@@ -120,6 +122,9 @@ class Authorization:
         data = self.accounts.read()
         clients = self.clients.read() if self.clients else None
         current = revision(data) if clients is None else revision(dict(accounts=revision(data), clients=revision(clients)))
+        lan = self.lan.state()
+        if lan['enabled']:  # Any lan-monitor change also disarms and restarts the relay.
+            current = revision(dict(credentials=current, lan_monitor=lan))
         return data, clients, current
 
     def arm(self):
@@ -162,13 +167,21 @@ class Authorization:
         if any(not isinstance(value[k], str) for k in CALLBACK_FIELDS): return False
         if (value['protocol'] != 'rtsp' or value['action'] != 'read' or value['path'] not in CHANNELS
                 or value['query'] or len(value['userAgent']) > 512 or len(value['ip']) > 64
-                or USERNAME.fullmatch(value['user']) is None): return False
+                or (value['user'] != '' and USERNAME.fullmatch(value['user']) is None)): return False
         try:
             if str(uuid.UUID(value['id'])) != value['id']: return False
-            password_bytes(value['password'])
+            if value['user'] != '' or value['password'] != '': password_bytes(value['password'])
         except (ValueError, AttributeError): return False
         # MediaMTX copies the supplied password into token in HTTP auth mode.
         if value['token'] != value['password']: return False
+        if value['user'] == '':
+            if value['password'] != '': return False
+            # Key-less read for allow-listed LAN sources only; write/publish never reach here.
+            with self.lock:
+                if self.refresh() is None: return False
+            good = self.lan.allows(value['ip'])
+            if not good: self.lan.denied(value['ip'], 'rtsp')
+            return good
         key = hmac.new(self.secret, json.dumps([value['ip'], value['user'], value['password']],
                        separators=(',', ':')).encode(), hashlib.sha256).digest()
         with self.lock:
@@ -285,7 +298,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 class Relay:
-    def __init__(self, config, gateway, profile, accounts, audit, binary, directory, api_clients=None):
+    def __init__(self, config, gateway, profile, accounts, audit, binary, directory, api_clients=None, lan_monitor=None):
         self.config, self.gateway, self.profile = config, gateway, profile
         self.binary, self.directory = binary, Path(directory)
         self.proc = self.callback = self.policy = None
@@ -293,7 +306,9 @@ class Relay:
         check_ports(config, gateway, profile)
         if profile['enabled']:
             if not accounts or not audit: raise ConfigError('native RTSP requires accounts and audit paths')
-            self.policy = Authorization(accounts, audit, api_clients)
+            self.policy = Authorization(accounts, audit, api_clients, lan_monitor)
+            from .lan_monitor import log as lan_log
+            lan_log('rtsp relay ' + self.policy.lan.describe())
             self.callback = Callback(self.policy)
 
     def close_child(self):

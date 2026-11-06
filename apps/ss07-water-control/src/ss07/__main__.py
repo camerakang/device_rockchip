@@ -77,6 +77,7 @@ def main():
             cmd.add_argument('--accounts', help='shared root-managed accounts; required for external RTSPS')
             cmd.add_argument('--rtsp-audit', help='native RTSP access audit SQLite')
             cmd.add_argument('--api-clients', help='optional root-managed machine API client keys (e.g. mobocon)')
+            cmd.add_argument('--lan-monitor', help='optional key-less LAN monitor allow-list (lan-monitor.json)')
         if name == 'camera-worker':
             cmd.add_argument('--channel', required=True, choices=('front', 'back', 'left', 'right', 'down'))
         if name == 'check-cameras':
@@ -85,6 +86,7 @@ def main():
             cmd.add_argument('--catalog', help='trusted local recording catalog path')
         if name == 'serve':
             cmd.add_argument('--api-clients', help='optional root-managed machine API client keys; enables Bearer API access')
+            cmd.add_argument('--lan-monitor', help='optional key-less LAN monitor allow-list (lan-monitor.json)')
             cmd.add_argument('--direct-access', action='store_true', help='open the full web workspace without login; retain browser sessions and CSRF')
             cmd.add_argument('--desired-config', help='separate persisted candidate configuration; --config is the active snapshot')
             cmd.add_argument('--accounts', help='root-managed accounts JSON; no default credentials')
@@ -113,6 +115,10 @@ def main():
     cmd.add_argument('--name', help='client name, e.g. mobocon')
     cmd.add_argument('--role', choices=('monitor', 'reader', 'maintainer'), default='maintainer')
     cmd.add_argument('--group', help='file group for a new key file, e.g. ss07-web')
+    cmd = commands.add_parser('node-info', help='print the Mobocom node UID, firmware and control interface')
+    cmd.add_argument('--json', action='store_true')
+    cmd = commands.add_parser('node-service', help='install/remove the independent ss07-mobocom-node unit (root)')
+    cmd.add_argument('action', choices=('install', 'uninstall', 'status'))
     for name in ('init-accounts', 'list-accounts', 'set-account'):
         cmd = commands.add_parser(name)
         cmd.add_argument('--accounts', required=True)
@@ -204,6 +210,12 @@ def main():
             elif args.action == 'remove': clients.remove(args.name)
             result = clients.public()
             if key: result = dict(result, name=args.name, key=key, note='shown once; store it in the client configuration')
+        elif args.command == 'node-info':
+            from .node_service import info
+            return info(args.json)
+        elif args.command == 'node-service':
+            from . import node_service
+            result = getattr(node_service, args.action)()
         elif args.command in ('init-accounts', 'list-accounts', 'set-account'):
             from .accounts import Accounts, password_bytes
             accounts = Accounts(args.accounts)
@@ -339,7 +351,7 @@ def main():
                     from .media import run
                     from .rtsp_access import load as load_rtsp
                     run(config, args.state_dir, binary, stop_event(), gateway, load_rtsp(args.rtsp_config),
-                        args.accounts, args.rtsp_audit, args.api_clients)
+                        args.accounts, args.rtsp_audit, args.api_clients, args.lan_monitor)
                 elif args.command == 'camera-worker':
                     from .camera import run
                     run(config, args.channel, args.state_dir, binary, stop_event())
@@ -380,7 +392,12 @@ def main():
                     if not auth: raise ConfigError('--api-clients requires HTTPS web access settings')
                     from .api_clients import ApiClients
                     api_clients = ApiClients(args.api_clients); api_clients.read()  # Fail closed on a bad file.
-                with Server((config['api']['host'], config['api']['port']), state, auth, maintenance, maintenance_audit, args.media_cleanup_state, application_audit, rtsp_audit, api_clients) as server:
+                lan_monitor = None
+                if args.lan_monitor:
+                    if not auth: raise ConfigError('--lan-monitor requires HTTPS web access settings')
+                    from .lan_monitor import LanMonitor, log as lan_log
+                    lan_monitor = LanMonitor(args.lan_monitor); lan_log(lan_monitor.describe())
+                with Server((config['api']['host'], config['api']['port']), state, auth, maintenance, maintenance_audit, args.media_cleanup_state, application_audit, rtsp_audit, api_clients, lan_monitor) as server:
                     def stop(signum, frame):
                         if not server.stopping.is_set():
                             server.stopping.set()

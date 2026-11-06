@@ -1,0 +1,42 @@
+[
+  {
+    "operation": "positions",
+    "mask": 1,
+    "positions": [
+      0,
+      0,
+      0
+    ],
+    "hex": "1001000000000000"
+  },
+  {
+    "operation": "positions",
+    "mask": 7,
+    "positions": [
+      0,
+      32768,
+      65535
+    ],
+    "hex": "100700000080ffff"
+  },
+  {
+    "operation": "positions",
+    "mask": 4,
+    "positions": [
+      0,
+      0,
+      65535
+    ],
+    "hex": "100400000000ffff"
+  },
+  {
+    "operation": "button",
+    "action": 0,
+    "hex": "1100"
+  },
+  {
+    "operation": "button",
+    "action": 1,
+    "hex": "1101"
+  }
+]

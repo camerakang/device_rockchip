@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "enabled": false,
+  "allow_cidrs": ["192.168.3.0/24"]
+}
