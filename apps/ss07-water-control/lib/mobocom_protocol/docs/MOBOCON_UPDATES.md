@@ -1,5 +1,9 @@
 # Mobocon 客户端更新与接入记录
 
+## 2026-11-06：SS-07 已部署并接入 Mobocon（实测）
+
+RK3588 固件 0.10.10 已部署，Mobocon `ee628ba` 已接入：组播发现与核对、免密钥 streams、五路 WHEP 出画、sdi 无信号判断（`availability=no_signal`）、`/api/v1/media/sessions` 会话计数、单播 ESTOP 与 RESET_FAULT、窗口关闭回收会话均已实测。Control 0x22、SDK 与报文布局不变。客户端拉流以 `availability` 为唯一判据。未验证：SDI 接入后的恢复、DHCP 换址、多台同网、满载时延。完整链路见 [SS-07 与 MoBoCon 全链路连接与运行](ss07/mobocon-runtime.md)；包括 SE2017、声呐、时码和云台在内的全系统连接见 [SS-07 系统连接与运行](ss07/system-runtime.md)。`sdi` 的 `input_signal` 取值为 `present`、`no_signal`、`unknown`。
+
 ## 2026-11-05：SS-07 RK3588 登记为 VIDEO_SONAR(0x9009) 网络节点（仅文档与类型登记）
 
 `device_types.json` revision 2→3，新增正式类型 `VIDEO_SONAR=0x9009`（视频声呐系统），已重新生成四语言常量、向量与说明；Control 0x22、SDK 2.2.0-network.1、报文布局均不变。SS-07 的 RK3588 作为只读网络节点加入同一组播 239.255.33.21:47821：用占位 Profile（source_mask=4、单个占位资源、无动作）响应 DISCOVER/INFO/CAPS/STATUS，常态 SAFE/NONE，不含运动能力。契约见 [SS-07 视频声呐节点](ss07/video-sonar-node.md)，RK 实施任务见[任务书](ss07/rk3588-network-node-task.md)，黄金向量见 [ss07_node_vectors.json](ss07/ss07_node_vectors.json)。

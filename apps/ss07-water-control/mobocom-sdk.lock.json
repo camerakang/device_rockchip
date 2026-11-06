@@ -3,8 +3,8 @@
   "version": "2.2.0-network.1",
   "protocol": "0x22",
   "timecode_protocol": "0x12",
-  "content_sha256": "56575ddc4b49e9aeb440ef43d5ec2d0ff8a3d6c99e9182359285cf70ea445c2e",
-  "source_commit": "ac6e6dde56001c8f6b9f27530d0cd47065191eac",
+  "content_sha256": "8e23ade86a4ac62ac2aed31c6cdb2fe6a488e9b5e69802f832b96215e6f106fb",
+  "source_commit": "46d18b08ef1871411d3677698ad6527868c6aab8",
   "source_dirty": false,
   "path": "lib/mobocom_protocol",
   "source": "git@codeup.aliyun.com:629f6370487c500c27f60603/device_protocol.git"

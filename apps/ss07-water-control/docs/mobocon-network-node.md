@@ -1,6 +1,6 @@
 # Mobocon 网络节点 ss07-mobocom-node（0.10.9）
 
-RK3588 以 Mobocom V2.2（Control 0x22）网络节点 `VIDEO_SONAR 0x9009` 出现在 Mobocon 设备列表。Mobocon 用组播 DISCOVER 找到板子的 UID 和当前 IP，再用这个 IP 按 [mobocon 拉流与配置接口](mobocon-video-api.md) 取六路视频和状态。协议契约以协议库文档为准：[video-sonar-node.md](../lib/mobocom_protocol/docs/ss07/video-sonar-node.md)。
+RK3588 以 Mobocom V2.2（Control 0x22）网络节点 `VIDEO_SONAR 0x9009` 出现在 Mobocon 设备列表。Mobocon 用组播 DISCOVER 找到板子的 UID 和当前 IP，再用这个 IP 按 [mobocon 拉流与配置接口](mobocon-video-api.md) 取六路视频和状态。协议契约以协议库文档为准：[video-sonar-node.md](../lib/mobocom_protocol/docs/ss07/video-sonar-node.md)；整套系统的连接、端口与运行顺序见 [system-runtime.md](../lib/mobocom_protocol/docs/ss07/system-runtime.md)，Mobocon 接入与排障见 [mobocon-runtime.md](../lib/mobocom_protocol/docs/ss07/mobocon-runtime.md)。
 
 节点只负责身份、在线发现、版本核对和安全待机。它不接收运动命令，不转发云台或跟焦命令，也不碰视频、录像、声呐和时码。STOP、ESTOP 或 FAULT 只改变协议层状态，画面照常可取。
 
@@ -95,7 +95,7 @@ cargo build --release --locked --target aarch64-unknown-linux-musl
 
 ## 9 已知限制
 
-- 协议库快照记录的来源提交 `ac6e6dde56001c8f6b9f27530d0cd47065191eac` 目前不在 codeup 远端，只能凭 vendor 目录和 `content_sha256` 追溯，需要协议库维护者推送。
+- 协议库快照已于 2026-11-06 更新为 codeup `feat/network-only-v22` 的 `46d18b08ef1871411d3677698ad6527868c6aab8`（`content_sha256` `8e23ade8…06fb`）。与此前的 `ac6e6dd` 相比，Rust SDK、Python 编解码和报文均未变，节点程序行为不变；变化为文档（wire_version 写作 `0x22`、新增系统与 Mobocon 运行说明）和本工程不使用的 C++ 跑步机类别头文件。下文 0.10.9 验收记录中的摘要是当时的快照。
 - 负载验收（六路满载下 DISCOVER 成功率与延迟）、Windows 主机发现和 DHCP 实际换址需要现场同网段电脑完成。
 
 ## 10 板上验收记录（2026-11-06，192.168.3.233）

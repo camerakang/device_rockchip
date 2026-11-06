@@ -104,7 +104,7 @@ flowchart TD
 | 从旧串口迁移到0x22网络 | [网络迁移清单](docs/NETWORK_V22_MIGRATION.md) |
 | 总体边界 | [实时架构](docs/REALTIME_CONTROL_ARCHITECTURE.md) |
 | robot_track 连接与客户端接入 | [轨道车接入说明](docs/ROBOT_TRACK_INTEGRATION.md) |
-| SS-07完整系统及两软件设计 | [SS-07设计入口](docs/ss07/README.md) |
+| SS-07完整系统及两软件设计 | [SS-07设计入口](docs/ss07/README.md)；全系统连接与运行见[系统连接与运行](docs/ss07/system-runtime.md)，Mobocon 接入见[全链路运行说明](docs/ss07/mobocon-runtime.md) |
 | 主机时码 | [timecode](timecode/README.md) |
 | 可复算结果 | [REPORT](mobocom_realtime/REPORT.md)、[report.json](mobocom_realtime/report.json) |
 | 三类完整流程 | [虚拟跟焦](mobocom_realtime/examples/1_walkthrough.json)、[虚拟云台](mobocom_realtime/examples/2_walkthrough.json)、[虚拟风扇](mobocom_realtime/examples/3_walkthrough.json) |

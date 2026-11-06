@@ -8,9 +8,11 @@
 
 | 文档 | 内容 |
 | --- | --- |
+| [系统连接与运行](system-runtime.md) | 全系统物理连接、各链路协议与端口、RK服务、对外接口权限、故障隔离与实现验收状态；先读这篇 |
 | [系统边界与拓扑](architecture.md) | 两软件职责、完整系统连接与故障边界 |
 | [RK3588独立设计](rk3588-design.md) | 六视频、五声呐、媒体/网页/API、存储、镜像与验收 |
 | [视频声呐节点契约](video-sonar-node.md) | RK3588作为VIDEO_SONAR(0x9009)网络节点：身份、Profile、发现、免密钥取流、验收 |
+| [SS-07与MoBoCon全链路运行](mobocon-runtime.md) | 已部署系统的组成、端口、启动时序、streams字段、WHEP会话、急停与排障 |
 | [RK3588网络节点任务书](rk3588-network-node-task.md) | 给RK端实施者：节点服务、lan-monitor、部署验证与回滚 |
 | [云台接收器独立设计](gimbal-receiver-design.md) | 摇轮、DeviceCore、实时目标、CAN驱动、标定/保护与交付 |
 | [公共V2.2网络接入](mobocom-integration.md) | UID寻址、UDP报文、会话、目标有效期、动作/状态与网络预算 |

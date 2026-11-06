@@ -2,7 +2,7 @@
 
 修订：2026年11月5日。本文定义 SS-07 的 RK3588 视频/声呐系统作为 Mobocom V2.2/0x22 UDP 网络节点的身份、报文行为和视频取流约定。它取代 `mobocom-integration.md` 与 `architecture.md` 旧文字中“RK 不属于 Control”的表述；其余云台接收器、时码设计不变。
 
-**状态：本文是设计契约。RK3588 端尚未实现，Mobocon 端尚未接入，未做任何实网或硬件验收。** 本库只提供类型登记、黄金向量和文档。
+**状态：2026-11-06 起，RK3588 端已实现并部署（固件 0.10.10），Mobocon 端已接入。** 已实测发现与核对、免密钥取流、五路出画、sdi 无信号判断、会话计数、单播急停与复位；尚未验证 SDI 接入后的恢复、DHCP 换址、多台同网和满载时延。完整连接、启动时序与排障见 [SS-07 与 MoBoCon 全链路连接与运行](mobocon-runtime.md)。
 
 ## 1 目标与边界
 
@@ -110,9 +110,9 @@ IP 推荐 DHCP 或固定地址，均不影响协议。可选发布 mDNS `_moboco
 ## 8 Mobocon 客户端职责
 
 1. 设备发现：向 239.255.33.21:47821 发 DISCOVER，收集 `type=0x9009` 的回复，以 UID 为键保存 IP:port；多网卡时由用户选择控制网卡。
-2. 核对：对每个候选发 INFO、CAPS、STATUS，核对 type、profile_version=1、`wire_version=22`；不一致则标记不兼容，不取流。
-3. 取流：用该 IP 调 `/api/v1/streams`（2 s 轮询或 SSE），按各路 `state` 显示；WebRTC 的 WHEP 信令经 Rust 侧代理发送（自签证书不进入网页）。
-4. 重连：发现 boot 或 IP 变化后，丢弃旧 WHEP 会话并重建。
+2. 核对：对每个候选发 INFO、CAPS、STATUS，核对 type、profile_version=1、wire 版本字节 `0x22`（十进制 34，不是 22）；不一致则标记不兼容，不取流。
+3. 取流：用该 IP 调 `/api/v1/streams`（2 s 轮询或 SSE），以各路 `availability` 为拉流判据（只有 `available` 才拉流，缺字段的旧固件按 `available` 处理），`state` 类字段只用于显示；WebRTC 的 WHEP 信令经 Rust 侧代理发送（自签证书不进入网页）。
+4. 重连：发现 boot 或 IP 变化后，丢弃旧 WHEP 会话并重建。窗口或进程被直接关闭时也必须回收会话，否则板端约 20 s 后才释放配额。
 5. 配置界面：不再有 API 密钥输入；显示 UID、IP、固件、lan-monitor 是否可用（401/403 时给出明确提示）。
 6. 不得对 VIDEO_SONAR 发运动类命令。
 

@@ -1,6 +1,6 @@
 # SS-07 RK3588只读时码与记录关联
 
-RK3588增加外部RS485时码输入，与mobocon、UE共享同一时码来源，用于查找录像/声呐记录对应的外部时刻。它是记录主机，不是DeviceCore控制接收器，不参与电机Control，不向云台或跟焦转发时码。Control当前独立采用0x22 UDP；本设计不修改0x12时码或HostTimeline行为，尚未实现应用。
+RK3588增加外部RS485时码输入，与mobocon、UE共享同一时码来源，用于查找录像/声呐记录对应的外部时刻。它是记录主机，不是DeviceCore控制接收器，不参与电机Control，不向云台或跟焦转发时码。Control当前独立采用0x22 UDP；本设计不修改0x12时码或HostTimeline行为。RK应用已实现只读时码服务，尚未接实物时码器，见[系统连接与运行](system-runtime.md)。
 
 ## 1 连接与用途
 

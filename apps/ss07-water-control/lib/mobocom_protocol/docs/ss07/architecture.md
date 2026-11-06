@@ -27,6 +27,8 @@ flowchart LR
   SW <-->|船岸网线| VIDEO[岸端视频浏览器]
   WHEEL[摇轮] <-->|NRF24| G[软件二 云台接收器]
   PC[外部mobocon] <-->|0x22 Control UDP| G
+  PC <-->|0x22 Control UDP 仅发现/急停| RK
+  SW <-->|HTTPS/WebRTC/RTSP| PC
   TC[外部RS485时码器] -->|RS485时码经PC侧接口| PC
   TC -->|RS485时码经PC侧接口| UE[UE电脑]
   TC -->|独立USB-RS485时码接口 只读| RK

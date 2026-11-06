@@ -2,7 +2,7 @@
 
 本文写给修改 Mobocon 的开发者（含 AI 助手）。目标是让 Mobocon 不填 IP、不持有密钥，就能在设备列表里发现 SS-07 的 RK3588（类型 `VIDEO_SONAR 0x9009`），并显示六路画面和状态。文中每条测试都给出操作、预期结果和判定方法，预期值来自 RK 端在 192.168.3.233 上的实测（0.10.9 起，0.10.10 补充了 SDI 状态和会话查询）。
 
-协议契约以协议库文档为准：`device_protocol` 仓库的 `docs/ss07/video-sonar-node.md` 和黄金向量 `docs/ss07/ss07_node_vectors.json`（本工程 vendor 副本在 `lib/mobocom_protocol/docs/ss07/`）。本文与契约冲突时以契约为准，并通知 RK 端修正本文。
+协议契约以协议库文档为准：`device_protocol` 仓库的 `docs/ss07/video-sonar-node.md` 和黄金向量 `docs/ss07/ss07_node_vectors.json`（本工程 vendor 副本在 `lib/mobocom_protocol/docs/ss07/`）。整套系统的连接与运行见同目录的 `system-runtime.md`，Mobocon 接入与排障见 `mobocon-runtime.md`。本文与契约冲突时以契约为准，并通知 RK 端修正本文。
 
 ## 1 范围
 

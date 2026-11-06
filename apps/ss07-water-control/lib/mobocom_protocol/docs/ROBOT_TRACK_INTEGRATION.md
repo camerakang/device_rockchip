@@ -37,11 +37,13 @@ flowchart LR
 | 类别版本 | 当前 `profile_version=4`；客户端须核对实际返回值，不凭类别号假定能力 |
 | 来源 | 仅 MOBOCOM，无 REMOTE 遥控入口 |
 | 位置资源 | endpoint/resource `1/1`，整数 µm；界面用 mm 时编码乘 1000、解码除 1000 |
-| 只读资源 | `1/2`：Limit Switch 诊断位域；`1/3`：当前最大速度；`1/4`：当前最大加速度 |
+| 只读资源 | `1/2`：Limit Switch 诊断位域；`1/3`：当前最大速度；`1/4`：当前最大加速度；`1/5`：GET_ZERO，逻辑零点距离（µm） |
 
 UID 是身份，IP 和用户别名都不是身份。MAC 必须跨重启稳定；更换控制板不能自动继承旧 UID 的控制凭据和运动。范围、限速、限加速度与动作超时读取最新 CAPS，不把摘要表当成完整类别定义。只读资源不得加入 WRITE_TARGETS。
 
 轨道车发布 ENABLE、DISABLE、SET_ZERO、CLEAR_ZERO、HOME、SET_RANGE、SET_VMAX、SET_AMAX 等 Action。参数、前置条件和持久化语义见设备契约；HOME 是回到逻辑零点，不是 CiA402 寻参。当前 SET_VMAX / SET_AMAX 要求驱动器失能，不因公共 SDK 具备 schema 3 就推定轨道车支持运行中调速。
+
+`GET_ZERO` 不是额外的 Action，而是 CAPS/STATUS 中的只读资源 `1/5`；其 `feedback` 返回电子齿轮和位置映射换算后的逻辑零点距离（µm），不返回编码器原始数据。
 
 ## Mobocon 接入顺序
 

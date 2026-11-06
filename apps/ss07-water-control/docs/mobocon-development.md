@@ -1,6 +1,6 @@
 # MOBOCON 开发文档（RK3588 端接口总览）
 
-本文是 mobocon 开发者对接 SS-07 RK3588 视频与声呐系统的维护入口。Mobocon 侧的开发要求和测试用例见 [mobocon-test-plan.md](mobocon-test-plan.md)。接口细节见 [mobocon-video-api.md](mobocon-video-api.md)；Control 与时码协议的设计核验记录见 [mobocom-integration.md](mobocom-integration.md) 和 [timecode-integration.md](timecode-integration.md)。接口有变更时，先改对应专题文档，再更新本文第 7 节的变更记录。
+本文是 mobocon 开发者对接 SS-07 RK3588 视频与声呐系统的维护入口。Mobocon 侧的开发要求和测试用例见 [mobocon-test-plan.md](mobocon-test-plan.md)。接口细节见 [mobocon-video-api.md](mobocon-video-api.md)；Control 与时码协议的设计核验记录见 [mobocom-integration.md](mobocom-integration.md) 和 [timecode-integration.md](timecode-integration.md)。整套系统（含 SE2017、声呐、时码、云台）怎样连接和运行，见协议库的 [system-runtime.md](../lib/mobocom_protocol/docs/ss07/system-runtime.md) 和 [mobocon-runtime.md](../lib/mobocom_protocol/docs/ss07/mobocon-runtime.md)。接口有变更时，先改对应专题文档，再更新本文第 7 节的变更记录。
 
 ## 1 职责边界
 
@@ -81,12 +81,13 @@ WebRTC 会话每个客户端最多 12 个，与网页监看合计最多 48 个�
 | 时码适配器（USB 转 RS485，500000 波特） | 服务已部署，现场时码有效性待接入验证 |
 | 播放延迟 | 未实测，WebRTC 预期 100–200 ms，RTSP 150–300 ms，需用 mobocon 现场测量 |
 | mobocon 侧的 WHEP 与 RTSP 接入代码 | 未编写，本仓库只提供示例 |
-| Mobocom V2.2 网络节点 `ss07-mobocom-node`（VIDEO_SONAR 0x9009） | 0.10.9 已实现并通过 5/5 黄金向量；实网验证记录见 [mobocon-network-node.md](mobocon-network-node.md)。协议库快照的来源提交尚未推送到 codeup |
+| Mobocom V2.2 网络节点 `ss07-mobocom-node`（VIDEO_SONAR 0x9009） | 0.10.9 已实现并通过 5/5 黄金向量；实网验证记录见 [mobocon-network-node.md](mobocon-network-node.md)。协议库快照已更新为 codeup 上的 `46d18b0` |
 
 ## 7 变更记录
 
 | 版本 | 日期 | 内容 |
 | --- | --- | --- |
+| 0.10.10（协议库快照） | 2026-11-06 | 协议库快照更新到 `46d18b0`：只涉及文档和本工程不用的 C++ 头文件，节点行为不变；新增协议库 `docs/ss07/system-runtime.md`（全系统连接与运行）和 `mobocon-runtime.md`（Mobocon 接入与排障） |
 | 0.10.10 | 2026-11-06 | `sdi` 补上宽高、实测帧率和码率；读取 SE2017 输入状态，无信号时 `availability=no_signal` 并告警 `SDI_NO_SIGNAL`；新增免密钥可用的 `GET /api/v1/media/sessions`；测试计划改正 wire_version 为 0x22（十进制 34） |
 | 0.10.9 | 2026-11-06 | 新增独立 Rust 服务 `ss07-mobocom-node`（VIDEO_SONAR 0x9009，UDP 47821/239.255.33.21，仅身份、发现与安全待机）和可选免密钥局域网监看 lan-monitor；`ss07 node-info`、`ss07 node-service install/uninstall/status` |
 | 0.10.6 | 2026-11-05 | 新增 API 客户端 Bearer 密钥、WebRTC/WHEP 与 RTSP 对 mobocon 开放、可选明文 RTSP 端口 8555；已部署到 192.168.3.233 并验证六路拉流 |
