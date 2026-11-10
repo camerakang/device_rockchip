@@ -17,6 +17,7 @@ APP_ID = 0x53534155
 FIELDS = {'username', 'operation_id', 'recording_id', 'revision', 'locked', 'outcome', 'role'}
 KINDS = {'LOGIN_OK', 'LOGIN_FAILED', 'LOGOUT', 'CONFIG_UPDATE', 'CONFIG_APPLY', 'CONFIG_ROLLBACK', 'RECORD_LOCK', 'OPERATION_STARTED', 'OPERATION_FAILED'}
 KINDS.update({'RTSP_ACCESS_START', 'RTSP_LOGIN_OK', 'RTSP_LOGIN_FAILED', 'RTSP_REVOKE', 'DIRECT_ACCESS'})
+KINDS.add('SDI_ENCODER_UPDATE')
 
 
 class AuditUnavailable(OSError):

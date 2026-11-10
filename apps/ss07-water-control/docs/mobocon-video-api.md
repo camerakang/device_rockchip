@@ -136,13 +136,71 @@ RTSPS 地址为 `rtsps://192.168.3.233:8322/<路径>`，客户端需要信任网
 
 `availability` 的取值：`available` 可播放；`no_signal` 码流在但没有输入信号（目前只有 `sdi`）；`unavailable` 无码流或设备异常。
 
-板上需要一份 SE2017 网页账号文件，媒体服务才能读取输入状态（只调用编码器网页自己使用的状态查询，不改编码器设置）。由 root 创建 `/etc/ss07-credentials/sdi-encoder.json`，属主 root、组 `ss07-web`、权限 0640（样例 `config/sdi-encoder.json.example`）：
+板上需要一份 SE2017 网页账号文件，媒体服务才能读取输入状态（媒体服务只做状态查询；修改编码参数走下一节的 API）。由 root 创建 `/etc/ss07-credentials/sdi-encoder.json`，属主 root、组 `ss07-web`、权限 0640（样例 `config/sdi-encoder.json.example`）：
 
 ```json
 {"schema_version":1,"model":"avmatrix-se2017","username":"admin","password":"<编码器网页密码>"}
 ```
 
 文件不存在时 `input_signal=unknown`、`input_error=encoder_status_not_configured`；权限过宽或格式错误时为 `encoder_credentials_invalid`；密码错误为 `encoder_auth_failed`；编码器不可达为 `encoder_unreachable`。修改后重启 `ss07-media` 生效。
+
+## SDI 编码器设置（0.10.11）
+
+mobocon 可以经 RK 读取和修改 SE2017 的编码参数，不需要直接登录编码器。RK 使用上面同一份账号文件登录编码器，只开放下表中的参数。网络、推流协议、固件升级和恢复出厂等功能仍只能在编码器自己的网页上操作，因为改错会切断 RK 的拉流路径。两个接口都要求 maintainer 角色；免密钥局域网监看和 monitor 角色无权访问。
+
+| 字段 | 含义 | 当前现场可选值 |
+| --- | --- | --- |
+| `video_source` | 视频输入口 | `SDI`、`HDMI` |
+| `resolution` | 编码分辨率 | `1920x1080`、`1280x720`、`720x480` |
+| `fps` | 编码帧率，不超过输入帧率 `input.fps_in` | 24、25、30、50、60 |
+| `codec` | 编码格式；RK 只转发 H.264，所以只允许 `H264` | `H264` |
+| `profile` | H.264 档次 | `high`、`main`、`baseline` |
+| `rate_control` | 码率控制 | `CBR`、`VBR` |
+| `max_bitrate_kbps` | 最大码率（kbit/s） | 256、512、1024、2048、4096、8192、12288、16384、24576、32768 |
+| `gop` | 关键帧间隔（帧） | 5–300 |
+| `audio_source` | 音频输入口 | `SDI`、`HDMI`、`LINEIN` |
+| `audio_bitrate` | AAC 码率（bit/s） | 64000、128000、256000、320000 |
+| `audio_volume` | 音量 | 0–100 |
+
+可选值以响应里的 `options` 为准：它由 RK 的固定白名单与编码器自报的取值表取交集。
+
+**读取。** `GET /api/v1/sdi/encoder` 返回：
+
+```json
+{"data": {
+  "model": "SE2017", "firmware": "V1.0.0.9", "host": "192.168.3.47",
+  "input": {"signal": "no_signal", "info": "SDI NoSignal N/A", "fps_in": 60},
+  "video_enabled": true,
+  "settings": {"video_source": "SDI", "resolution": "1920x1080", "fps": 60, "codec": "H264", "profile": "high",
+               "rate_control": "VBR", "max_bitrate_kbps": 8192, "gop": 30,
+               "audio_source": "SDI", "audio_bitrate": 256000, "audio_volume": 100},
+  "options": {"resolution": ["1920x1080", "1280x720", "720x480"], "gop": {"min": 5, "max": 300}, "...": "..."},
+  "revision": "<64 位十六进制>"
+}}
+```
+
+**修改。** `PUT /api/v1/sdi/encoder`，`Content-Type: application/json`，只需带要改的字段：
+
+```json
+{"expected_revision": "<上次读取的 revision>", "settings": {"fps": 25, "gop": 50}}
+```
+
+成功返回 200，内容与读取相同，另含 `changed`（实际改动的字段）。RK 写入后会从编码器回读，确认每个字段都已生效。
+
+| 状态码 / 错误码 | 含义与处理 |
+| --- | --- |
+| 422 `INVALID_SDI_SETTINGS` | 字段未知或取值不在 `options` 内；`details` 列出原因。请求不会发给编码器 |
+| 409 `REVISION_CONFLICT` | 编码器设置已被别人修改，重新 `GET` 后再改 |
+| 502 `SDI_ENCODER_REJECTED` / `SDI_ENCODER_APPLY_MISMATCH` | 编码器拒绝，或回读值与请求不一致；重新读取确认当前值 |
+| 503 `SDI_ENCODER_UNAVAILABLE` / `SDI_ENCODER_AUTH_FAILED` | 编码器离线或账号文件中的密码错误 |
+| 503 `SDI_ENCODER_NOT_CONFIGURED` / `SDI_ENCODER_CREDENTIALS_INVALID` | 板上没有账号文件或文件权限不对 |
+
+注意事项：
+
+- 改分辨率、帧率、码率或输入口后，编码器会重启编码。sdi 路会断开约 6 秒（期间 `availability=unavailable`），然后自动重连；`width`、`height` 跟着变化，实测帧率要再过约 10 秒才出现。mobocon 应在修改后重新建立 sdi 的 WHEP 会话。
+- SE2017 自身不检查取值，越界值也会照写，所以只能通过本接口修改，不要绕过 RK 直接写编码器。
+- 每次修改都记入访问审计，事件为 `SDI_ENCODER_UPDATE`，`outcome` 为 `ok:<字段>`、`unchanged` 或错误码；可用 `GET /api/v1/logs?source=access` 查看。
+- 网络超时不代表没有执行。超时后先 `GET` 确认当前值，不要直接重发。
 
 ## HTTP API
 

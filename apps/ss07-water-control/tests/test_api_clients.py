@@ -96,6 +96,31 @@ class BearerAPITests(test_auth.APIAuthTests):
         self.server.api_clients = None
         self.assertEqual(self.bearer('/api/v1/status', key=self.viewer)[0], 401)
 
+    def test_sdi_encoder_settings_require_maintainer_and_are_audited(self):
+        from test_sdi_settings import FakeEncoder, encoder_state
+        from ss07.sdi_settings import EncoderClient
+        fake = ThreadingHTTPServer(('127.0.0.1', 0), FakeEncoder)
+        fake.state, fake.token, fake.puts = encoder_state(), 't', []
+        threading.Thread(target=fake.serve_forever, daemon=True).start()
+        self.addCleanup(fake.server_close); self.addCleanup(fake.shutdown)
+        path = '/api/v1/sdi/encoder'
+        self.assertEqual(json.loads(self.bearer(path)[2])['error']['code'], 'SDI_ENCODER_NOT_CONFIGURED')
+        client = EncoderClient('127.0.0.1', {'username': 'admin', 'password': 'a'}, port=fake.server_port)
+        self.server.sdi_encoder = type('P', (), {'get': lambda s: client})()
+        self.assertEqual(self.bearer(path, key=self.viewer)[0], 403)
+        self.assertEqual(self.bearer(path, 'PUT', {'expected_revision': 'x', 'settings': {'gop': 60}}, key=self.viewer)[0], 403)
+        status, _, raw = self.bearer(path)
+        self.assertEqual(status, 200, raw)
+        rev = json.loads(raw)['data']['revision']
+        status, _, raw = self.bearer(path, 'PUT', {'expected_revision': rev, 'settings': {'gop': 9999}})
+        self.assertEqual((status, json.loads(raw)['error']['code']), (422, 'INVALID_SDI_SETTINGS'))
+        status, _, raw = self.bearer(path, 'PUT', {'expected_revision': rev, 'settings': {'gop': 60}})
+        self.assertEqual((status, json.loads(raw)['data']['settings']['gop']), (200, 60), raw)
+        self.assertEqual(self.bearer(path, 'PUT', {'expected_revision': rev, 'settings': {'gop': 50}})[0], 409)
+        kinds = [(e['kind'], e.get('outcome')) for e in self.audit.history()['items'] if e['kind'] == 'SDI_ENCODER_UPDATE']
+        self.assertEqual(kinds[:3], [('SDI_ENCODER_UPDATE', 'revision_conflict'), ('SDI_ENCODER_UPDATE', 'ok:gop'),
+                                     ('SDI_ENCODER_UPDATE', 'invalid_sdi_settings')])
+
 
     def test_bearer_webrtc_session_ownership_and_rotation_revokes(self):
         session = '11111111-2222-3333-4444-555555555555'

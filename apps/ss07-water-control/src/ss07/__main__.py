@@ -88,6 +88,7 @@ def main():
         if name == 'serve':
             cmd.add_argument('--api-clients', help='optional root-managed machine API client keys; enables Bearer API access')
             cmd.add_argument('--lan-monitor', help='optional key-less LAN monitor allow-list (lan-monitor.json)')
+            cmd.add_argument('--sdi-encoder', help='optional root-managed SDI encoder credentials; enables /api/v1/sdi/encoder')
             cmd.add_argument('--direct-access', action='store_true', help='open the full web workspace without login; retain browser sessions and CSRF')
             cmd.add_argument('--desired-config', help='separate persisted candidate configuration; --config is the active snapshot')
             cmd.add_argument('--accounts', help='root-managed accounts JSON; no default credentials')
@@ -398,7 +399,12 @@ def main():
                     if not auth: raise ConfigError('--lan-monitor requires HTTPS web access settings')
                     from .lan_monitor import LanMonitor, log as lan_log
                     lan_monitor = LanMonitor(args.lan_monitor); lan_log(lan_monitor.describe())
-                with Server((config['api']['host'], config['api']['port']), state, auth, maintenance, maintenance_audit, args.media_cleanup_state, application_audit, rtsp_audit, api_clients, lan_monitor) as server:
+                sdi_encoder = None
+                if args.sdi_encoder:
+                    if not auth: raise ConfigError('--sdi-encoder requires HTTPS web access settings')
+                    from .sdi_settings import Provider
+                    sdi_encoder = Provider(args.sdi_encoder, lambda: state.config)
+                with Server((config['api']['host'], config['api']['port']), state, auth, maintenance, maintenance_audit, args.media_cleanup_state, application_audit, rtsp_audit, api_clients, lan_monitor, sdi_encoder) as server:
                     def stop(signum, frame):
                         if not server.stopping.is_set():
                             server.stopping.set()

@@ -23,6 +23,7 @@ ASSETS = {'/': ('index.html', 'text/html; charset=utf-8'),
           '/session.js': ('session.js', 'text/javascript; charset=utf-8'),
           '/maintenance.js': ('maintenance.js', 'text/javascript; charset=utf-8'),
           '/style.css': ('style.css', 'text/css; charset=utf-8')}
+SDI_ENCODER = '/api/v1/sdi/encoder'
 
 
 
@@ -34,10 +35,11 @@ class Server(ThreadingHTTPServer):
     daemon_threads = True
     request_queue_size = 16
 
-    def __init__(self, address, state, auth=None, maintenance=None, maintenance_audit=None, cleanup_path=None, application_audit=None, rtsp_audit=None, api_clients=None, lan_monitor=None):
+    def __init__(self, address, state, auth=None, maintenance=None, maintenance_audit=None, cleanup_path=None, application_audit=None, rtsp_audit=None, api_clients=None, lan_monitor=None, sdi_encoder=None):
         if address[0] != '127.0.0.1':
             raise ValueError('foundation API binds to loopback only')
         self.state = state
+        self.sdi_encoder = sdi_encoder
         self.auth, self.maintenance, self.maintenance_audit = auth, maintenance, maintenance_audit
         self.application_audit = application_audit
         self.rtsp_audit = rtsp_audit
@@ -279,10 +281,11 @@ class Handler(BaseHTTPRequestHandler):
                         data = dict(authenticated=False, authentication_required=True, role=None, permissions=[], csrf_token=None)
             self.reply(200, {'data': data}, headers); return
         if path != '/healthz':
-            permission = 'maintain' if path in ('/api/v1/config', '/api/v1/logs') else (
+            permission = 'maintain' if path in ('/api/v1/config', '/api/v1/logs', SDI_ENCODER) else (
                 'recordings.read' if path.startswith(('/api/v1/recordings','/api/v1/sonars/archives')) or path in ('/api/v1/timecode/history', '/api/v1/sonars/history') else 'monitor')
             self.authorize(permission)
         if path == '/api/v1/logs': self.logs(); return
+        if path == SDI_ENCODER: self.sdi_encoder(None); return
         from .recording_http import handle as recording_request
         if recording_request(self): return
         from .timecode_http import history
@@ -497,8 +500,38 @@ class Handler(BaseHTTPRequestHandler):
         else:
             self.deny_write()
 
+    def sdi_encoder(self, body):
+        """Read (body None) or change the SE2017 settings; the encoder is the source of truth."""
+        from .sdi_settings import EncoderError
+        provider = self.server.sdi_encoder
+        try:
+            if provider is None: raise EncoderError('SDI_ENCODER_NOT_CONFIGURED')
+            client = provider.get()
+            if body is None:
+                self.reply(200, {'data': client.read()}); return
+            if type(body) is not dict or set(body) != {'expected_revision', 'settings'} or not isinstance(body['expected_revision'], str):
+                raise EncoderError('INVALID_SDI_SETTINGS', 422, ['body must be {"expected_revision": str, "settings": {...}}'])
+            outcome = 'failed'
+            try:
+                data = client.update(body['expected_revision'], body['settings'])
+                outcome = 'ok:' + '.'.join(data['changed'])[:90] if data['changed'] else 'unchanged'
+            except EncoderError as exc:
+                outcome = exc.code.lower()[:96]; raise
+            finally:
+                audit = self.server.auth.audit if self.server.auth else None
+                if audit is not None and self.principal:
+                    try: audit.append('SDI_ENCODER_UPDATE', username=self.principal['username'][:96],
+                                      role=self.principal['role'], outcome=outcome)
+                    except (OSError, ValueError, sqlite3.Error): pass
+            self.reply(200, {'data': data})
+        except EncoderError as exc:
+            self.reply(exc.status, {'error': {'code': exc.code, 'message': exc.code.lower(), 'details': exc.details}})
+
     def do_PUT(self):
         if self.path == '/api/v1/config': self.maintenance_write('config.update')
+        elif self.path == SDI_ENCODER:
+            self.authorize('maintain', mutate=True)
+            self.sdi_encoder(self.json_body(4096))
         else: self.deny_write()
 
     do_PATCH = deny_write
