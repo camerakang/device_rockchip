@@ -1,7 +1,8 @@
 """Optional key-less LAN monitor access (lan-monitor).
 
-Sources inside allow_cidrs may read status and pull video without a key. The
-allowed routes are fixed here on the server; configuration cannot widen them.
+Sources inside allow_cidrs may read status, pull video and read/change the SDI
+encoder settings without a key. The allowed routes are fixed here on the
+server; configuration cannot widen them.
 An unreadable, invalid or over-broad file disables the mode instead of failing.
 """
 import ipaddress
@@ -16,7 +17,9 @@ from .config import decode_json
 PRINCIPAL = 'lan-monitor'
 PEER_HEADER = 'X-SS07-Peer'  # Set by the HTTPS gateway from the TCP peer, replacing any client value.
 GET_ROUTES = frozenset(('/api/v1/status', '/api/v1/streams', '/api/v1/sonars', '/api/v1/timecode', '/api/v1/events',
-                        '/api/v1/media/sessions'))
+                        '/api/v1/media/sessions', '/api/v1/sdi/encoder'))
+# Key-less settings changes; every other configuration route still needs a key.
+SETTINGS_ROUTES = frozenset(('/api/v1/sdi/encoder',))
 CREATE = re.compile(r'/media/(front|back|left|right|down|sdi)/whep')
 SESSION = re.compile(r'/media/(front|back|left|right|down|sdi)/whep/[a-fA-F0-9-]{36}')
 MAX_CIDRS = 16
@@ -118,7 +121,12 @@ class LanMonitor:
         if method in ('GET', 'HEAD'): return path in GET_ROUTES
         if method == 'POST': return CREATE.fullmatch(path) is not None
         if method == 'DELETE': return SESSION.fullmatch(path) is not None
+        if method == 'PUT': return path in SETTINGS_ROUTES
         return False
+
+    @staticmethod
+    def settings_allowed(path):
+        return path in SETTINGS_ROUTES
 
     @staticmethod
     def owner(ip):

@@ -119,7 +119,8 @@ RTSPS 地址为 `rtsps://192.168.3.233:8322/<路径>`，客户端需要信任网
 | `GET /api/v1/status`、`/streams`、`/sonars`、`/timecode`、`/events`、`/media/sessions` | 200；`/media/sessions` 只列出同一来源 IP 的会话 |
 | `POST /media/<通道>/whep` | 201；会话属主为来源 IP |
 | `DELETE /media/<通道>/whep/<id>` | 只能关闭同一来源 IP 创建的会话，否则 404 |
-| 录像、时码/声呐历史、`/api/v1/config`、`/logs`、所有 PUT/POST 维护接口 | 403 `LAN_MONITOR_FORBIDDEN` |
+| `GET` / `PUT /api/v1/sdi/encoder`（0.10.12 起） | 免密钥读取和修改 SDI 编码器设置，审计用户名记为 `lan-monitor:<来源IP>` |
+| 录像、时码/声呐历史、`/api/v1/config`、`/logs`、其他 PUT/POST 维护接口 | 403 `LAN_MONITOR_FORBIDDEN` |
 | `rtsp://192.168.3.233:8555/<通道>`、`rtsps://…:8322/<通道>`，不带用户名 | 只读放行；publish/写入一律拒绝 |
 
 非白名单来源不带密钥访问受保护接口返回 401。带 Bearer 的请求完全按原规则处理；Bearer 与 Cookie 同时出现仍返回 401。WebRTC 会话上限沿用原计数：每个来源 IP 最多 12 个，总数 48 个。`/api/v1/streams` 的 `rtsp_url` 不含用户名和密钥。
@@ -144,9 +145,9 @@ RTSPS 地址为 `rtsps://192.168.3.233:8322/<路径>`，客户端需要信任网
 
 文件不存在时 `input_signal=unknown`、`input_error=encoder_status_not_configured`；权限过宽或格式错误时为 `encoder_credentials_invalid`；密码错误为 `encoder_auth_failed`；编码器不可达为 `encoder_unreachable`。修改后重启 `ss07-media` 生效。
 
-## SDI 编码器设置（0.10.11）
+## SDI 编码器设置（0.10.11，0.10.12 起免密钥）
 
-mobocon 可以经 RK 读取和修改 SE2017 的编码参数，不需要直接登录编码器。RK 使用上面同一份账号文件登录编码器，只开放下表中的参数。网络、推流协议、固件升级和恢复出厂等功能仍只能在编码器自己的网页上操作，因为改错会切断 RK 的拉流路径。两个接口都要求 maintainer 角色；免密钥局域网监看和 monitor 角色无权访问。
+mobocon 可以经 RK 读取和修改 SE2017 的编码参数，不需要直接登录编码器。RK 使用上面同一份账号文件登录编码器，只开放下表中的参数。网络、推流协议、固件升级和恢复出厂等功能仍只能在编码器自己的网页上操作，因为改错会切断 RK 的拉流路径。0.10.12 起，lan-monitor 白名单内（现场为 192.168.3.0/24）的来源不带密钥即可读取和修改，请求中不要带 `Authorization` 和 `Cookie`；白名单外的来源仍需 maintainer 密钥，monitor 和 reader 密钥无权访问。
 
 | 字段 | 含义 | 当前现场可选值 |
 | --- | --- | --- |
@@ -199,7 +200,7 @@ mobocon 可以经 RK 读取和修改 SE2017 的编码参数，不需要直接登
 
 - 改分辨率、帧率、码率或输入口后，编码器会重启编码。sdi 路会断开约 6 秒（期间 `availability=unavailable`），然后自动重连；`width`、`height` 跟着变化，实测帧率要再过约 10 秒才出现。mobocon 应在修改后重新建立 sdi 的 WHEP 会话。
 - SE2017 自身不检查取值，越界值也会照写，所以只能通过本接口修改，不要绕过 RK 直接写编码器。
-- 每次修改都记入访问审计，事件为 `SDI_ENCODER_UPDATE`，`outcome` 为 `ok:<字段>`、`unchanged` 或错误码；可用 `GET /api/v1/logs?source=access` 查看。
+- 每次修改都记入访问审计，事件为 `SDI_ENCODER_UPDATE`，免密钥请求的用户名为 `lan-monitor:<来源IP>`，`outcome` 为 `ok:<字段>`、`unchanged` 或错误码；可用 `GET /api/v1/logs?source=access` 查看。
 - 网络超时不代表没有执行。超时后先 `GET` 确认当前值，不要直接重发。
 
 ## HTTP API

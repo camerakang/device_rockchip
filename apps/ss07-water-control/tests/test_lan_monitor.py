@@ -127,6 +127,27 @@ class LanAPITests(test_auth.APIAuthTests):
             finally:
                 backend.shutdown(); thread.join(3)
 
+    def test_keyless_sdi_encoder_settings_from_allowed_sources(self):
+        from test_sdi_settings import FakeEncoder, encoder_state
+        from ss07.sdi_settings import EncoderClient
+        fake = ThreadingHTTPServer(('127.0.0.1', 0), FakeEncoder)
+        fake.state, fake.token, fake.puts = encoder_state(), 't', []
+        threading.Thread(target=fake.serve_forever, daemon=True).start()
+        self.addCleanup(fake.server_close); self.addCleanup(fake.shutdown)
+        client = EncoderClient('127.0.0.1', {'username': 'admin', 'password': 'a'}, port=fake.server_port)
+        self.server.sdi_encoder = type('P', (), {'get': lambda s: client})()
+        path = '/api/v1/sdi/encoder'
+        status, _, raw = self.lan(path)
+        self.assertEqual(status, 200, raw)
+        rev = json.loads(raw)['data']['revision']
+        self.assertEqual(self.lan(path, ip=OUTSIDE)[0], 401)
+        self.assertEqual(self.lan(path, 'PUT', ip=OUTSIDE, body={'expected_revision': rev, 'settings': {'gop': 60}})[0], 401)
+        status, _, raw = self.lan(path, 'PUT', body={'expected_revision': rev, 'settings': {'gop': 60}})
+        self.assertEqual((status, json.loads(raw)['data']['settings']['gop']), (200, 60), raw)
+        self.assertIn(self.lan('/api/v1/config', 'PUT', body={})[0], (401, 403))
+        events = [e for e in self.audit.history()['items'] if e['kind'] == 'SDI_ENCODER_UPDATE']
+        self.assertEqual((events[0]['username'], events[0]['outcome']), ('lan-monitor:' + INSIDE, 'ok:gop'))
+
 
 for _name in dir(test_auth.APIAuthTests):
     if _name.startswith('test_'):

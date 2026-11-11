@@ -51,7 +51,7 @@ WebRTC 会话每个客户端最多 12 个，与网页监看合计最多 48 个�
 | 录像、时码历史、声呐历史 | `/api/v1/recordings...`、`/api/v1/timecode/history`、`/api/v1/sonars/history` | reader |
 | 读取、保存配置 | `GET` / `PUT /api/v1/config` | maintainer |
 | 预览、应用、恢复配置 | `POST /api/v1/config/plan`、`/apply`、`/recover` | maintainer |
-| SDI 编码器（SE2017）设置 | `GET` / `PUT /api/v1/sdi/encoder`，见 [mobocon-video-api.md](mobocon-video-api.md#sdi-编码器设置01011) | maintainer |
+| SDI 编码器（SE2017）设置 | `GET` / `PUT /api/v1/sdi/encoder`，见 [mobocon-video-api.md](mobocon-video-api.md#sdi-编码器设置01011010012-起免密钥) | 局域网白名单免密钥；其他来源 maintainer |
 | 应用审计 | `GET /api/v1/logs?source=application` | maintainer |
 
 响应统一为 `{"data": ...}`，错误为 `{"error": {"code", "message", "details"}}`。状态码含义见 [mobocon-video-api.md](mobocon-video-api.md)。
@@ -88,6 +88,7 @@ WebRTC 会话每个客户端最多 12 个，与网页监看合计最多 48 个�
 
 | 版本 | 日期 | 内容 |
 | --- | --- | --- |
+| 0.10.12 | 2026-11-10 | `GET` / `PUT /api/v1/sdi/encoder` 对 lan-monitor 白名单来源免密钥开放，审计记录来源 IP；其他配置接口仍需密钥 |
 | 0.10.11 | 2026-11-10 | 新增 `GET` / `PUT /api/v1/sdi/encoder`：经 RK 读取和修改 SE2017 的视频输入口、分辨率、帧率、H.264 档次、码率控制、最大码率、GOP 和音频参数；RK 侧按白名单与编码器取值表校验、带 revision 防并发覆盖、写后回读并审计 |
 | 0.10.10（协议库快照） | 2026-11-06 | 协议库快照更新到 `46d18b0`：只涉及文档和本工程不用的 C++ 头文件，节点行为不变；新增协议库 `docs/ss07/system-runtime.md`（全系统连接与运行）和 `mobocon-runtime.md`（Mobocon 接入与排障） |
 | 0.10.10 | 2026-11-06 | `sdi` 补上宽高、实测帧率和码率；读取 SE2017 输入状态，无信号时 `availability=no_signal` 并告警 `SDI_NO_SIGNAL`；新增免密钥可用的 `GET /api/v1/media/sessions`；测试计划改正 wire_version 为 0x22（十进制 34） |

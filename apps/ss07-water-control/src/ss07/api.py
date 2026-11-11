@@ -184,7 +184,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.principal
         lan = self.lan()
         if lan is not None:
-            if permission != 'monitor': raise AuthError('LAN_MONITOR_FORBIDDEN', 403)
+            if permission != 'monitor' and not self.server.lan_monitor.settings_allowed(urlsplit(self.path).path):
+                raise AuthError('LAN_MONITOR_FORBIDDEN', 403)
             self.lan_ip = lan.pop('lan_ip')
             self.principal = lan
             return self.principal
@@ -520,7 +521,8 @@ class Handler(BaseHTTPRequestHandler):
             finally:
                 audit = self.server.auth.audit if self.server.auth else None
                 if audit is not None and self.principal:
-                    try: audit.append('SDI_ENCODER_UPDATE', username=self.principal['username'][:96],
+                    who = self.principal['username'] + (':' + self.lan_ip if getattr(self, 'lan_ip', None) else '')
+                    try: audit.append('SDI_ENCODER_UPDATE', username=who[:96],
                                       role=self.principal['role'], outcome=outcome)
                     except (OSError, ValueError, sqlite3.Error): pass
             self.reply(200, {'data': data})
