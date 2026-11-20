@@ -23,6 +23,8 @@ ASSETS = {'/': ('index.html', 'text/html; charset=utf-8'),
           '/session.js': ('session.js', 'text/javascript; charset=utf-8'),
           '/maintenance.js': ('maintenance.js', 'text/javascript; charset=utf-8'),
           '/style.css': ('style.css', 'text/css; charset=utf-8')}
+from .sonar_params import PATHS as SONAR_PARAMS, exchange as sonar_exchange, valid as valid_param
+
 SDI_ENCODER = '/api/v1/sdi/encoder'
 
 
@@ -282,10 +284,11 @@ class Handler(BaseHTTPRequestHandler):
                         data = dict(authenticated=False, authentication_required=True, role=None, permissions=[], csrf_token=None)
             self.reply(200, {'data': data}, headers); return
         if path != '/healthz':
-            permission = 'maintain' if path in ('/api/v1/config', '/api/v1/logs', SDI_ENCODER) else (
+            permission = 'maintain' if path in SONAR_PARAMS or path in ('/api/v1/config', '/api/v1/logs', SDI_ENCODER) else (
                 'recordings.read' if path.startswith(('/api/v1/recordings','/api/v1/sonars/archives')) or path in ('/api/v1/timecode/history', '/api/v1/sonars/history') else 'monitor')
             self.authorize(permission)
         if path == '/api/v1/logs': self.logs(); return
+        if path in SONAR_PARAMS: self.sonar_params(path, None); return
         if path == SDI_ENCODER: self.sdi_encoder(None); return
         from .recording_http import handle as recording_request
         if recording_request(self): return
@@ -529,8 +532,20 @@ class Handler(BaseHTTPRequestHandler):
         except EncoderError as exc:
             self.reply(exc.status, {'error': {'code': exc.code, 'message': exc.code.lower(), 'details': exc.details}})
 
+    def sonar_params(self, path, body):
+        if self.command == 'PUT' and (type(body) is not dict or set(body) != {'key','value'}
+                                       or not valid_param(body['key'], body['value'])):
+            raise AuthError('INVALID_SONAR_PARAMS',422)
+        try: status,result = sonar_exchange(self.server.state.state_dir, SONAR_PARAMS[path], body)
+        except (OSError,TypeError,ValueError): raise AuthError('SONAR_PARAMS_UNAVAILABLE',503)
+        if status != 200: raise AuthError(result,status)
+        self.reply(200,{'data':result})
+
     def do_PUT(self):
         if self.path == '/api/v1/config': self.maintenance_write('config.update')
+        elif self.path in SONAR_PARAMS:
+            self.authorize('maintain', mutate=True)
+            self.sonar_params(self.path,self.json_body(512))
         elif self.path == SDI_ENCODER:
             self.authorize('maintain', mutate=True)
             self.sdi_encoder(self.json_body(4096))

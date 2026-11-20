@@ -35,7 +35,9 @@ def fingerprint(config, service):
 
 def plan(previous, candidate):
     validate(previous); validate(candidate)
-    if (previous['sonar'] != candidate['sonar'] or
+    if ((previous['sonar'] != candidate['sonar'] and candidate['sonar']['vendor_protocol'] != 'sonar_drive_v1_1'
+         and not (previous['sonar']['vendor_protocol'] == 'sonar_drive_v1_1' and candidate['sonar']['binding'] is None
+                  and candidate['sonar']['vendor_protocol'] is None)) or
             (candidate['storage'].get('sonar_recording_enabled', False) and
              previous['storage'].get('sonar_recording_enabled', False) != candidate['storage'].get('sonar_recording_enabled', False))
             or (candidate['storage'].get('sonar_recording_enabled',False)

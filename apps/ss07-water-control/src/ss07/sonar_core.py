@@ -105,7 +105,10 @@ def validate_event(value, tagged=False):
         if value['sensor_id'] not in DIRECTIONS or value['direction'] != value['sensor_id'] or value['lost_events'] != '0':
             raise ValueError('invalid_sonar_sensor')
         valid_reply(Reply(value['address'], value['request_id'], value['valid'], value['distance_mm'], value['reason'], value['quality']))
-        if value['request_id'] is None or value['correlation_basis'] not in ('wire_id', 'bounded_response_window'):
+        if value['correlation_basis'] == 'device_stream':
+            if value['request_id'] is not None or value['kind'] != 'MEASUREMENT':
+                raise ValueError('invalid_sonar_stream_identity')
+        elif value['request_id'] is None or value['correlation_basis'] not in ('wire_id', 'bounded_response_window'):
             raise ValueError('missing_sonar_request_identity')
         if value['kind'] == 'MEASUREMENT':
             if value['timestamp_basis'] != 'sonar_receive' or value['received_monotonic_us'] != value['event_monotonic_us']:

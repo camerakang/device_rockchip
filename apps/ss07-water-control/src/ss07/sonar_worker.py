@@ -1,4 +1,4 @@
-"""Independent polling and bounded metadata publication; vendor registry is empty."""
+"""Independent sonar acquisition and bounded metadata publication."""
 from dataclasses import asdict
 import copy
 import fcntl
@@ -8,6 +8,7 @@ import select
 from .config import ConfigError
 from .sonar_core import Poller, valid_reply
 from .sonar_driver import resolve
+from .sonar_v11 import Stream, StreamTiming
 from .sonar_journal import AsyncHistory
 from .sonar_archive_worker import AsyncArchive, disabled_status
 from .timecode_ipc import Client
@@ -26,7 +27,8 @@ class Engine:
         def submit(sample):
             history.submit(sample)
             if archive is not None:archive.submit(sample)
-        self.poller = Poller(addresses, profile.timing, boot, instance, submit, evidence_kind)
+        self.streaming = isinstance(profile.timing, StreamTiming)
+        self.poller = (Stream if self.streaming else Poller)(addresses, profile.timing, boot, instance, submit, evidence_kind)
         self.connected, self.reason, self.connections = False, 'serial_unavailable', 0
 
     def connection(self, connected, now, reason=None):
@@ -41,11 +43,12 @@ class Engine:
         if type(raw) is not bytes or not 1 <= len(raw) <= MAX_READ: raise ValueError('invalid_sonar_read')
         replies = self.codec.feed(raw)
         if type(replies) is not list or len(replies) > MAX_REPLIES: raise ValueError('unbounded_sonar_decoder')
-        for reply in replies: valid_reply(reply)
+        if not self.streaming:
+            for reply in replies: valid_reply(reply)
         for reply in replies: self.poller.receive(reply, received_us)
 
     def poll(self, port, clock=monotonic_us):
-        if not self.connected: return
+        if not self.connected or self.streaming: return
         request = self.poller.next_request(clock())
         if request is None: return
         try:
@@ -70,13 +73,11 @@ class Engine:
 
 
 def run(config, state_dir, journal_path, stop, archive_path=None):
-    # No production profile exists yet. Missing/unknown configuration therefore
-    # only publishes real service availability; it never opens any serial port.
     with Worker(state_dir, 'sonar', stop, config=config) as worker:
         history = AsyncHistory(journal_path, worker.boot, worker.instance, Client(state_dir, worker.boot))
         publisher = Publisher(worker)
         publisher.update('STARTING', {'reason': 'sonar_starting'})
-        engine = port = archive = None
+        engine = port = archive = control = None
         history.start(); publisher.start()
         try:
             try:
@@ -95,6 +96,10 @@ def run(config, state_dir, journal_path, stop, archive_path=None):
                                      archive=disabled_status(config['storage'].get('sonar_recording_enabled',False),reason)))
                     stop.wait(.1)
                 return
+            if engine.streaming:
+                from .sonar_params import Control
+                control = Control(state_dir)
+                engine.codec.on_control = control.reply
             next_open = checkpoint = 0
             delay = 1
             accepted_before = 0
@@ -117,6 +122,7 @@ def run(config, state_dir, journal_path, stop, archive_path=None):
                     try:
                         # Drain old input before TX and never poll into a flood
                         # of old frames. Limit all work per loop iteration.
+                        if control: control.tick(port)
                         readable = select.select([port.fileno()], [], [], .005)[0]
                         if readable:
                             raw = port.read(MAX_READ)
@@ -125,16 +131,20 @@ def run(config, state_dir, journal_path, stop, archive_path=None):
                         else: engine.poll(port)
                         if engine.poller.counters['measurements'] > accepted_before: delay = 1
                     except (OSError, ValueError):
+                        if control: control.fail()
                         port.close(); port = None
                         engine.connection(False, monotonic_us(), 'serial_io_or_decoder_failed')
                         next_open = monotonic_us() + delay * 1000000; delay = min(delay * 2, 30)
-                else: stop.wait(.01)
+                else:
+                    if control: control.tick(None)
+                    stop.wait(.01)
                 now = monotonic_us()
                 engine.poller.tick(now)
                 if now >= checkpoint:
                     publisher.update('RUNNING' if engine.connected else 'ERROR', engine.status(now))
                     checkpoint = now + 100000
         finally:
+            if control: control.close()
             if port is not None:
                 port.close()
                 engine.connection(False, monotonic_us(), 'worker_stopped')

@@ -5,6 +5,7 @@ encoder settings without a key. The allowed routes are fixed here on the
 server; configuration cannot widen them.
 An unreadable, invalid or over-broad file disables the mode instead of failing.
 """
+from .sonar_params import PATHS as SONAR_PARAMS
 import ipaddress
 import os
 import re
@@ -118,6 +119,7 @@ class LanMonitor:
 
     @staticmethod
     def route_allowed(method, path):
+        if method in ('GET', 'PUT') and path in SONAR_PARAMS: return True
         if method in ('GET', 'HEAD'): return path in GET_ROUTES
         if method == 'POST': return CREATE.fullmatch(path) is not None
         if method == 'DELETE': return SESSION.fullmatch(path) is not None
@@ -126,7 +128,7 @@ class LanMonitor:
 
     @staticmethod
     def settings_allowed(path):
-        return path in SETTINGS_ROUTES
+        return path in SETTINGS_ROUTES or path in SONAR_PARAMS
 
     @staticmethod
     def owner(ip):

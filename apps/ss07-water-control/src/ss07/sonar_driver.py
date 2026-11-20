@@ -12,6 +12,7 @@ measurements. Reply time means the host read containing the complete frame.
 from dataclasses import dataclass
 from types import MappingProxyType
 
+from . import sonar_v11
 from .config import ConfigError
 from .sonar_core import Timing
 from .snapshots import DIRECTIONS
@@ -27,14 +28,15 @@ class Profile:
 
     def __post_init__(self):
         if (not isinstance(self.protocol_id, str) or not 1 <= len(self.protocol_id) <= 256
-                or not isinstance(self.timing, Timing)
+                or not isinstance(self.timing, (Timing, sonar_v11.StreamTiming))
                 or any(not callable(fn) for fn in (self.prepare, self.codec, self.open_transport))):
             raise ValueError('invalid_sonar_driver_profile')
 
 
 # Populated in source only after reviewing a real protocol and adapter. Config
 # strings are identifiers, never module names, shell commands or import paths.
-PROFILES = MappingProxyType({})
+PROFILES = MappingProxyType({sonar_v11.PROTOCOL: Profile(sonar_v11.PROTOCOL, sonar_v11.StreamTiming(),
+    sonar_v11.prepare, sonar_v11.Decoder, sonar_v11.open_u10)})
 
 
 def resolve(config):

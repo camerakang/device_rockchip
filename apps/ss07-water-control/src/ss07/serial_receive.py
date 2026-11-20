@@ -28,21 +28,23 @@ def usb_parent(path):
     raise ConfigError('timecode_adapter_is_not_usb')
 
 
-def identify(config):
-    binding = config['timecode']['binding']
+def identify(config, role='timecode', usb_id=None):
+    binding = config[role]['binding']
     if not isinstance(binding, str) or re.fullmatch(r'/dev/serial/by-(id|path)/[^/\s]+', binding) is None:
         raise ConfigError('timecode_binding_unconfigured')
-    parameters(config['timecode']['uart'])
+    parameters(config[role]['uart'])
     target = Path(binding).resolve(strict=True)
     if re.fullmatch(r'/dev/tty(?:USB|ACM)[0-9]+', str(target)) is None:
         raise ConfigError('timecode_requires_usb_serial_device')
     info = target.stat()
     if not stat.S_ISCHR(info.st_mode):
         raise ConfigError('timecode_binding_not_character_device')
-    other = config['sonar']['binding']
+    other = config['sonar' if role == 'timecode' else 'timecode']['binding']
     if other and Path(other).exists() and Path(other).stat().st_rdev == info.st_rdev:
         raise ConfigError('timecode_sonar_adapter_conflict')
     physical = usb_parent((Path('/sys/class/tty') / target.name / 'device').resolve(strict=True))
+    if usb_id and tuple((physical / key).read_text().strip().lower() for key in ('idVendor', 'idProduct')) != usb_id:
+        raise ConfigError('unexpected_sonar_usb_adapter')
     for interface in physical.glob('*:*/bInterfaceClass'):
         if interface.read_text().strip().lower() == '0e':
             raise ConfigError('camera_serial_interface_refused')
@@ -81,11 +83,13 @@ def identify(config):
 
 class ReceivePort:
     """Own an already opened O_RDONLY tty. Tests use a PTY, not a production flag."""
+    access_mode = os.O_RDONLY
+
     def __init__(self, fd, uart):
         self.fd = fd
         self.exclusive = False
         try:
-            if fcntl.fcntl(fd, fcntl.F_GETFL) & os.O_ACCMODE != os.O_RDONLY or not os.isatty(fd):
+            if fcntl.fcntl(fd, fcntl.F_GETFL) & os.O_ACCMODE != self.access_mode or not os.isatty(fd):
                 raise ConfigError('read_only_tty_required')
             speed = parameters(uart)
             fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -116,8 +120,11 @@ class ReceivePort:
             self.close()
             raise
 
-    def read(self):
-        return os.read(self.fd, MAX_READ)
+    def fileno(self):
+        return self.fd
+
+    def read(self, size=MAX_READ):
+        return os.read(self.fd, min(size, MAX_READ))
 
     def close(self):
         if self.fd is not None:
@@ -133,12 +140,17 @@ class ReceivePort:
     def __exit__(self, *args): self.close()
 
 
-def open_port(config):
-    target, identity, physical = identify(config)
-    fd = os.open(str(target), os.O_RDONLY | os.O_NOCTTY | os.O_NONBLOCK | os.O_CLOEXEC | os.O_NOFOLLOW)
+class SonarPort(ReceivePort):
+    access_mode = os.O_RDWR
+
+
+def open_port(config, role='timecode', usb_id=None):
+    target, identity, physical = identify(config, role, usb_id)
+    port_type = SonarPort if role == "sonar" else ReceivePort
+    fd = os.open(str(target), port_type.access_mode | os.O_NOCTTY | os.O_NONBLOCK | os.O_CLOEXEC | os.O_NOFOLLOW)
     try:
         current = os.fstat(fd)
-        after, after_identity, after_physical = identify(config)
+        after, after_identity, after_physical = identify(config, role, usb_id)
         if (after != target or after_physical != physical
                 or (current.st_rdev, current.st_ino) != (identity.st_rdev, identity.st_ino)
                 or (current.st_rdev, current.st_ino) != (after_identity.st_rdev, after_identity.st_ino)):
@@ -146,4 +158,4 @@ def open_port(config):
     except Exception:
         os.close(fd)
         raise
-    return ReceivePort(fd, config['timecode']['uart'])
+    return port_type(fd, config[role]['uart'])

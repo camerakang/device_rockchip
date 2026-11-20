@@ -109,6 +109,9 @@ def validate(config):
                  if n["address"] is not None]
     if len(set(addresses)) != len(addresses):
         raise ConfigError("duplicate sonar address")
+    from . import sonar_v11
+    if config['sonar']['vendor_protocol'] == sonar_v11.PROTOCOL:
+        sonar_v11.prepare(config)
     url = config['sdi']['rtsp_url']
     if url is not None:
         try:

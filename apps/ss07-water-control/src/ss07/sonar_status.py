@@ -6,6 +6,7 @@ from .config_runtime import fingerprint
 from .snapshots import DIRECTIONS, u64
 from .sonar_core import Poller, REASON, validate_event
 from .sonar_driver import resolve
+from .sonar_v11 import Stream, StreamTiming
 from .sonar_archive_worker import disabled_status
 
 
@@ -104,7 +105,8 @@ def inspect(config, worker, now, boot):
                 raise ValueError('sonar_sample_identity_mismatch')
             if sample['kind'] == 'MEASUREMENT' and last.get(d) != u64(sample['received_monotonic_us']):
                 raise ValueError('sonar_receive_time_mismatch')
-        poller = Poller(addresses, profile.timing, boot, worker['instance_id'], lambda sample: None)
+        collector = Stream if isinstance(profile.timing, StreamTiming) else Poller
+        poller = collector(addresses, profile.timing, boot, worker['instance_id'], lambda sample: None, 'device_observation')
         poller.latest, poller.last_received = payload['samples'], last
         poller.invalidated = set(invalidated) if state == 'RUNNING' else set(DIRECTIONS)
         readings = poller.status(now)

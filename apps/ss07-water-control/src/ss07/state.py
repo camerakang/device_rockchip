@@ -220,6 +220,7 @@ class State:
         self.started = time.monotonic()
         self.seq = 0
         self.lock = threading.Lock()
+        self.state_dir = state_dir
         self.workers = SnapshotReader(state_dir, self.boot_id)
 
     def configuration(self):
