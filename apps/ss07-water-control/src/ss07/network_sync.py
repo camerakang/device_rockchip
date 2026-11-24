@@ -180,7 +180,6 @@ def watch():
                 return target, tuple(version(root / n) for n in (CONFIG,CERT[1:],KEY[1:],
                         'etc/ss07-tls/network-ca.key','etc/ss07-tls/network-ca.crt',LIVE))
             current = signature()
-            restarted_media = False
             if current != previous or time.monotonic() >= next_check:
                 address = sync(root, interfaces, grp.getgrnam('ss07-gateway').gr_gid)
                 after = signature()
@@ -196,7 +195,6 @@ def watch():
                         subprocess.run(['/bin/systemctl','reset-failed',*UNITS], timeout=10, check=True)
                     action = 'restart' if active and address is not None else 'try-restart'
                     subprocess.run(['/bin/systemctl',action,*UNITS], timeout=90, check=True)
-                    restarted_media = True
                 previous = after
                 next_check = time.monotonic() + 3600
                 next_sdi_check = 0
@@ -208,7 +206,7 @@ def watch():
                 next_sdi_check = time.monotonic() + (60 if sdi_host else 15)
                 if sdi_changed:
                     print('sdi encoder:', sdi_host, flush=True)
-                    if not restarted_media and subprocess.run(['/bin/systemctl','is-active','--quiet','ss07.target']).returncode == 0:
+                    if subprocess.run(['/bin/systemctl','is-active','--quiet','ss07.target']).returncode == 0:
                         subprocess.run(['/bin/systemctl','try-restart','ss07-media.service'], timeout=60, check=True)
         except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as exc:
             print('network sync:', str(exc), flush=True)
