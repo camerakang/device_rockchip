@@ -8,6 +8,7 @@
   "properties": {
     "schema_version": {"const": 1, "type": "integer"},
     "enabled": {"type": "boolean"},
-    "allow_cidrs": {"type": "array", "maxItems": 16, "items": {"type": "string", "description": "IPv4 network, strict form, prefix length 1-32"}}
+    "allow_cidrs": {"type": "array", "maxItems": 16, "items": {"type": "string", "description": "IPv4 network, strict form, prefix length 1-32"}},
+    "follow_interface": {"type": "boolean", "description": "When true, automatically allow the active interface IPv4 subnet published by ss07-network-sync."}
   }
 }

@@ -16,6 +16,7 @@ import time
 from .config import decode_json
 
 PRINCIPAL = 'lan-monitor'
+LIVE_NETWORK = '/run/ss07-network/effective.json'
 PEER_HEADER = 'X-SS07-Peer'  # Set by the HTTPS gateway from the TCP peer, replacing any client value.
 GET_ROUTES = frozenset(('/api/v1/status', '/api/v1/streams', '/api/v1/sonars', '/api/v1/timecode', '/api/v1/events',
                         '/api/v1/media/sessions', '/api/v1/sdi/encoder'))
@@ -30,7 +31,26 @@ def log(message):
     print('lan-monitor: ' + message, flush=True)
 
 
-def load(path):
+def _read_live_subnet(live_path):
+    if live_path is None: return None
+    try: fd = os.open(str(live_path), os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    except OSError: return None
+    try:
+        with os.fdopen(fd, 'rb') as stream:
+            info = os.fstat(stream.fileno())
+            if (not stat.S_ISREG(info.st_mode) or info.st_nlink != 1 or info.st_mode & 0o022
+                    or info.st_uid not in (0, os.geteuid())):
+                return None
+            value = decode_json(stream.read(4097), max_bytes=4096)
+    except (OSError, ValueError): return None
+    if type(value) is not dict or not isinstance(value.get('subnet'), str): return None
+    try: network = ipaddress.IPv4Network(value['subnet'], strict=True)
+    except ValueError: return None
+    if network.prefixlen < 8: return None
+    return network
+
+
+def load(path, live_path=LIVE_NETWORK):
     """Return (enabled, reason, networks); never raises for a bad file."""
     if path is None: return False, 'not_configured', ()
     try: fd = os.open(str(path), os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
@@ -44,12 +64,16 @@ def load(path):
                 return False, 'file_not_owner_controlled', ()
             value = decode_json(stream.read(4097), max_bytes=4096)
     except (OSError, ValueError): return False, 'file_invalid', ()
-    if (type(value) is not dict or set(value) != {'schema_version', 'enabled', 'allow_cidrs'}
+    keys = set(value) if type(value) is dict else set()
+    if (type(value) is not dict or not {'schema_version', 'enabled', 'allow_cidrs'} <= keys
+            or keys - {'schema_version', 'enabled', 'allow_cidrs', 'follow_interface'}
             or type(value['schema_version']) is not int or value['schema_version'] != 1
-            or type(value['enabled']) is not bool or type(value['allow_cidrs']) is not list):
+            or type(value['enabled']) is not bool or type(value['allow_cidrs']) is not list
+            or ('follow_interface' in value and type(value['follow_interface']) is not bool)):
         return False, 'schema_invalid', ()
     if not value['enabled']: return False, 'disabled', ()
-    if not value['allow_cidrs']: return False, 'allow_cidrs_empty', ()
+    follow = value.get('follow_interface', False)
+    if not value['allow_cidrs'] and not follow: return False, 'allow_cidrs_empty', ()
     if len(value['allow_cidrs']) > MAX_CIDRS: return False, 'too_many_cidrs', ()
     networks = []
     for item in value['allow_cidrs']:
@@ -59,24 +83,34 @@ def load(path):
         except ValueError: return False, 'cidr_invalid', ()
         if network.prefixlen == 0: return False, 'cidr_any_refused', ()
         networks.append(network)
+    if follow:
+        live_net = _read_live_subnet(live_path)
+        if live_net is not None and live_net not in networks:
+            networks.append(live_net)
+        if not networks:
+            return False, 'interface_subnet_pending', ()
     return True, None, tuple(networks)
 
 
 class LanMonitor:
     """Re-reads the file at most once per second, so removing or disabling it takes effect without restart."""
 
-    def __init__(self, path=None, interval=1.0):
-        self.path, self.interval = path, interval
+    def __init__(self, path=None, interval=1.0, live_path=LIVE_NETWORK):
+        self.path, self.interval, self.live_path = path, interval, live_path
         self.lock = threading.Lock()
         self.denied_at, self.denied_count = -1e9, 0
         self.checked_at, self.signature = time.monotonic(), self._signature()
-        self.enabled, self.reason, self.networks = load(path)
+        self.enabled, self.reason, self.networks = load(path, live_path)
+
+    def _stat_key(self, target):
+        if target is None: return None
+        try: info = os.stat(str(target), follow_symlinks=False)
+        except OSError: return 'missing'
+        return (info.st_ino, info.st_size, info.st_mtime_ns, info.st_mode, info.st_uid)
 
     def _signature(self):
         if self.path is None: return None
-        try: info = os.stat(str(self.path), follow_symlinks=False)
-        except OSError: return 'missing'
-        return (info.st_ino, info.st_size, info.st_mtime_ns, info.st_mode, info.st_uid)
+        return (self._stat_key(self.path), self._stat_key(self.live_path))
 
     def refresh(self):
         if self.path is None: return
@@ -88,7 +122,7 @@ class LanMonitor:
             if signature == self.signature: return
             self.signature = signature
             before = self.describe()
-            self.enabled, self.reason, self.networks = load(self.path)
+            self.enabled, self.reason, self.networks = load(self.path, self.live_path)
         if self.describe() != before: log(self.describe())
 
     def state(self):

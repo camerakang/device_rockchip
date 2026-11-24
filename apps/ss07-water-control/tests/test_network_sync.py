@@ -5,7 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import test_provisioning
-from ss07 import gateway, media, rtsp_access
+from ss07 import gateway, lan_monitor, media, rtsp_access
 from ss07.auth import Auth
 from ss07.config import ConfigError
 from ss07.network_sync import CONFIG, KEY, CERT, LIVE, policy, sync
@@ -30,10 +30,10 @@ class DynamicTests(unittest.TestCase):
         self.key = self.root / KEY[1:]
         self.cert = self.root / CERT[1:]
 
-    def change(self, ip=None):
+    def change(self, ip=None, prefixlen=24):
         addrs = ['127.0.0.1','169.254.1.2'] + ([ip] if ip else [])
         return sync(self.root, [dict(ifname='eth0',flags=['UP'],addr_info=[
-            dict(local=a,scope='global',family='inet') for a in addrs])],os.getegid(),os.geteuid())
+            dict(local=a,prefixlen=prefixlen,scope='global',family='inet') for a in addrs])],os.getegid(),os.geteuid())
 
     def test_move_and_disconnect(self):
         original_key = self.key.read_bytes()
@@ -69,6 +69,20 @@ class DynamicTests(unittest.TestCase):
             gateway.load(self.path,root=self.root)
         with patch('ss07.gateway.wait_for_address',side_effect=lambda _:self.change('10.10.32.214')):
             self.assertEqual(gateway.load(self.path,root=self.root,wait=5)['listen_ip'],'10.10.32.214')
+
+    def test_lan_monitor_follows_interface_subnet(self):
+        lan_path = self.root / 'etc/ss07-gateway/lan-monitor.json'
+        lan_path.write_text(json.dumps(dict(schema_version=1, enabled=True, allow_cidrs=[], follow_interface=True)))
+        lan_path.chmod(0o644)
+        mon = lan_monitor.LanMonitor(lan_path, interval=0, live_path=self.root / LIVE)
+        self.assertFalse(mon.allows('10.10.32.11'))
+        self.assertEqual(mon.reason, 'interface_subnet_pending')
+        self.change('192.168.3.233', prefixlen=24)
+        self.assertTrue(mon.allows('192.168.3.20'))
+        self.assertFalse(mon.allows('10.10.32.11'))
+        self.change('10.10.32.213', prefixlen=24)
+        self.assertTrue(mon.allows('10.10.32.11'))
+        self.assertFalse(mon.allows('192.168.3.20'))
 
     def test_unsafe_files_never_rotated(self):
         for path, mode in ((self.key,0o644),(self.cert,0o666),(self.path,0o666)):

@@ -31,7 +31,7 @@ def policy(raw):
     return name, port
 
 
-def select_ip(interfaces, name):
+def select_addr(interfaces, name):
     for iface in interfaces:
         if iface.get('ifname') != name or 'UP' not in iface.get('flags', []): continue
         for addr in iface.get('addr_info', []):
@@ -40,8 +40,15 @@ def select_ip(interfaces, name):
                 continue
             ip = ipaddress.IPv4Address(addr['local'])
             if int(ip) >> 24 != 0 and not (ip.is_loopback or ip.is_link_local or ip.is_multicast or ip.is_reserved or ip.is_unspecified):
-                return str(ip)
-    return None
+                prefixlen = addr.get('prefixlen')
+                subnet = (str(ipaddress.IPv4Interface('%s/%d' % (ip, prefixlen)).network)
+                          if type(prefixlen) is int and 8 <= prefixlen <= 32 else None)
+                return str(ip), subnet
+    return None, None
+
+
+def select_ip(interfaces, name):
+    return select_addr(interfaces, name)[0]
 
 
 def resolved(ip, port):
@@ -68,10 +75,23 @@ def issuer(directory, uid):
         write_file(key, material, 0o600)
     owned(key, uid, mode=0o600)
     if not cert.exists():
-        material = subprocess.check_output(['/usr/bin/openssl','req','-new','-x509','-sha256',
-            '-days','3650','-key',str(key),'-subj','/CN=SS-07 network CA',
-            '-addext','basicConstraints=critical,CA:TRUE,pathlen:0',
-            '-addext','keyUsage=critical,keyCertSign,cRLSign'], timeout=10)
+        # OpenSSL 1.1.1 drops earlier -addext flags when repeated; use a config file so CA:TRUE is preserved.
+        with tempfile.TemporaryDirectory(prefix='ss07-ca-') as tmp:
+            config = Path(tmp) / 'ca.cnf'
+            config.write_text(
+                '[req]\n'
+                'distinguished_name = dn\n'
+                'x509_extensions = v3_ca\n'
+                'prompt = no\n\n'
+                '[dn]\n'
+                'CN = SS-07 network CA\n\n'
+                '[v3_ca]\n'
+                'basicConstraints = critical,CA:TRUE,pathlen:0\n'
+                'keyUsage = critical,keyCertSign,cRLSign\n'
+                'subjectKeyIdentifier = hash\n'
+            )
+            material = subprocess.check_output(['/usr/bin/openssl', 'req', '-new', '-x509', '-sha256',
+                '-days', '3650', '-key', str(key), '-config', str(config)], timeout=10)
         write_file(cert, material, 0o644)
     owned(cert, uid)
     return key, cert
@@ -109,7 +129,7 @@ def sync(root, interfaces, gid, uid=0):
     name, port = policy(raw)
     live.parent.mkdir(mode=0o755, exist_ok=True)
     owned(live.parent, uid, directory=True)
-    ip = select_ip(interfaces, name)
+    ip, subnet = select_addr(interfaces, name)
     if ip is None:
         if live.exists(): live.unlink()
         return None
@@ -131,7 +151,9 @@ def sync(root, interfaces, gid, uid=0):
         blob = issue(key, ip, ca_key, ca_cert)
         verify(blob)
         write_file(cert, blob, 0o644, uid, cert.stat().st_gid)
-    snapshot = json.dumps({'interface': name, 'gateway': effective}, sort_keys=True).encode()
+    record = {'interface': name, 'gateway': effective}
+    if subnet is not None: record['subnet'] = subnet
+    snapshot = json.dumps(record, sort_keys=True).encode()
     if not live.exists() or read_regular(live, 4096) != snapshot:
         write_file(live, snapshot, 0o644)
     return ip
@@ -148,7 +170,7 @@ def watch():
             def signature():
                 raw = decode_json(read_regular(root / CONFIG, 4096))
                 if not isinstance(raw, dict): raise ConfigError('invalid gateway policy')
-                target = select_ip(interfaces, policy(raw)[0]) if raw.get('schema_version') != 1 else 'static'
+                target = select_addr(interfaces, policy(raw)[0]) if raw.get('schema_version') != 1 else 'static'
                 def version(path):
                     try: s = path.lstat()
                     except FileNotFoundError: return None
