@@ -1,0 +1,10 @@
+#!/bin/sh
+# Install/refresh the root watcher on an already provisioned SS-07 board.
+set -eu
+test "$(id -u)" = 0
+install -o root -g root -m 0644 /opt/ss07/current/tools/ss07-network-sync.service /etc/systemd/system/ss07-network-sync.service
+systemctl daemon-reload
+systemctl enable ss07-network-sync.service ss07-gateway.service
+systemctl restart ss07-network-sync.service
+systemctl is-enabled ss07-network-sync.service
+systemctl is-enabled ss07-gateway.service

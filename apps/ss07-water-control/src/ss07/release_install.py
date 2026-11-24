@@ -76,6 +76,10 @@ class SystemBackend:
                 or any(n not in RUN_UNITS + ('ss07-release-recover.service',) for n in units)
                 or action == 'enable' and tuple(units) != ('ss07.target',)):
             raise InstallError('invalid_lifecycle_action')
+        # The target pulls in gateway, but its explicit enablement is also
+        # required on installed boards (including upgrades of older images).
+        if action == 'enable':
+            units = tuple(units) + ('ss07-gateway.service',)
         subprocess.run(['/bin/systemctl', '--no-ask-password', action] + list(units), check=True,
                        timeout=90, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
@@ -412,6 +416,7 @@ class Installer:
                 target_baseline = dict(baseline, _running_units=starting,
                     _supported_services=[n for n in ORDER if UNITS[n] in target_units])
                 self._wait(manifest['version'], load_config(safe_path(self.root, 'etc/ss07-active/system.json')), started, target_baseline)
+                if 'ss07.target' in running: self.backend.command('enable', ['ss07.target'])
                 value['service_health_verified'] = True
             value['phase'] = 'COMMITTED'; save(path, value)
             return dict(version=manifest['version'], operation_id=identity, activated=bool(running),

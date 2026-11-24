@@ -193,7 +193,7 @@ def main():
             from .rtsp_access import load as load_rtsp
             from .worker import stop_event
             run(args.desired_config, args.active_config, args.journal_dir, args.state_dir, args.socket_dir,
-                load_gateway(args.gateway_config), pwd.getpwnam(args.maintenance_user).pw_uid, stop_event(),
+                load_gateway(args.gateway_config, wait=30), pwd.getpwnam(args.maintenance_user).pw_uid, stop_event(),
                 rtsp_profile=load_rtsp(args.rtsp_config))
             return 0
         elif args.command == 'api-client':
@@ -265,7 +265,7 @@ def main():
             gateway = None
             if getattr(args, 'gateway_config', None):
                 from .gateway import load as load_gateway
-                gateway = load_gateway(args.gateway_config)
+                gateway = load_gateway(args.gateway_config, wait=30 if args.command in ('serve', 'media-worker', 'gateway-worker') else 0)
             if args.command == 'validate':
                 result = {'valid': True, 'revision': revision(config), 'hardware_verified': False}
             elif args.command == 'check-cameras':

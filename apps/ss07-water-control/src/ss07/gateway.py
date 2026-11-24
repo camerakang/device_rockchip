@@ -5,6 +5,7 @@ import re
 import subprocess
 import tempfile
 import time
+from time import sleep as wait_for_address
 from contextlib import ExitStack
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -36,9 +37,30 @@ def validate(value):
     return value
 
 
-def load(path):
-    with open(path, 'rb') as source:
-        return validate(decode_json(source.read(4097), max_bytes=4096))
+def load(path, *, root=Path('/'), wait=0):
+    from .network_sync import LIVE, owned, policy, resolved
+    from .release_restore import read_regular, safe_path
+    path = Path(path)
+    deadline = time.monotonic() + wait
+    while True:
+        value = decode_json(read_regular(path, 4096))
+        if not isinstance(value, dict) or value.get('schema_version') != 2:
+            return validate(value)
+        interface, port = policy(value)
+        owner = 0 if root == Path('/') else root.stat().st_uid
+        owned(path, owner)
+        live = safe_path(root, LIVE)
+        try:
+            owned(live.parent, owner, directory=True)
+            owned(live, owner)
+            row = decode_json(read_regular(live, 4096))
+            gateway = validate(row['gateway'])
+            if row['interface'] == interface and gateway == resolved(gateway['listen_ip'], port):
+                return gateway
+        except FileNotFoundError:
+            pass
+        if time.monotonic() >= deadline: raise ConfigError('gateway_awaiting_interface_address')
+        wait_for_address(1)
 
 
 def render(config, gateway):

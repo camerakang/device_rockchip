@@ -13,7 +13,7 @@ from urllib.parse import urlsplit
 
 from .accounts import validate_accounts
 from .config import decode_json, revision, validate
-from .gateway import render, validate as validate_gateway
+from .gateway import render, load as load_gateway
 from .release_restore import read_regular, safe_path
 
 
@@ -56,7 +56,7 @@ def check(root=Path('/'), groups=None, addresses=None):
         raise ProvisionError('active_configuration_permissions')
     accounts_path = safe_path(root, 'etc/ss07-credentials/accounts.json')
     accounts = validate_accounts(decode_json(read_regular(accounts_path)))
-    gateway = validate_gateway(decode_json(read_regular(safe_path(root, 'etc/ss07-gateway/network.json'))))
+    gateway = load_gateway(safe_path(root, 'etc/ss07-gateway/network.json'), root=root)
     render(active, gateway)  # Includes port conflict validation.
     from .rtsp_access import load as load_rtsp, check_ports
     rtsp = load_rtsp(safe_path(root, 'etc/ss07-gateway/rtsp.json'))

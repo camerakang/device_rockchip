@@ -96,3 +96,47 @@ python3 tools/test-auth-integration.py --camera-test /path/ss07-camera-test \
 联测需要已验证的原生测试源构建、GStreamer 测试插件、Node 支持 WebSocket 的版本、OpenSSL 及 Chromium。仅测试脚本可以替换数据盘 gate；生产没有允许写系统盘的开关。测试创建一次性证书、随机账户和 Chromium 临时配置，不安装系统信任。输入始终为 synthetic_test，业务状态继续报告硬件未就绪。验证摘要及残余门槛见 `evidence/auth-validation.json`、`evidence/auth-integration.json` 和交付进度。
 
 实现依据：Python 官方 http.server 部署限制、OWASP Password Storage/Session Management/CSRF 指南、Caddy 官方 Caddyfile/JSON 文档及 MediaMTX v1.21.2 OpenAPI；实际依赖锁定见 `packaging/dependencies.lock.json`。
+
+## 0.10.16：DHCP 换址与静态 IP
+
+原有 `schema_version: 1` 的 `network.json` 继续按明确指定的 listen_ip、ice_ip、public_origin 和证书路径工作。固定 IP 或使用单位 CA 的部署可以保持原样。自适应模式改用以下完整文件，网卡名以板上的 `ip -br -4 addr` 为准：
+
+```json
+{"schema_version":2,"interface":"eth0","port":8443}
+```
+
+此配置不修改 Linux 的 DHCP 设置。同步服务每 3 秒查看指定接口，只选择有效的全局作用域 IPv4；如果有多个，取内核列出的第一个合格地址。未取得地址时撤下运行快照，服务启动最多等待 30 秒，再按 systemd 的重试间隔继续。换址时 root 校验证书和私钥，发布新快照，重启媒体、API、网关和配置协调器。已有 WebRTC/RTSP 会话会中断；MoBoCon 应使用重新发现的地址重新拉流。板端内部调用仍走回环。
+
+**已激活板升级**（维护窗口，保留 SSH 或串口管理通道）：
+
+1. 备份 `/etc/ss07-gateway/network.json` 和整个 `/etc/ss07-tls` 到仅 root 可读的位置，保留属主和权限。按《安装与恢复》使用独立校验过的摘要安装 0.10.16 ARM64 包。如果旧静态地址已失效，先在维护网络恢复原有静态服务或使用既有离线安装流程；不要在旧服务不健康时强行跳过安装健康检查。
+2. 确认系统具备 iproute2、OpenSSL 和原有的服务私钥。默认位置为 `/etc/ss07-tls/server.key`（root:ss07-gateway，0640）和 `server.crt`（root 属主、不可组写或其他用户写）。若原静态配置使用自定义路径，先按此要求准备默认证书对。
+3. 执行下列命令。同步器安装脚本会执行 daemon-reload、设置两个服务开机自启并启动同步器。若接口不是 eth0，先把示例中的接口名改为现场名称。
+
+```sh
+sudo /opt/ss07/current/tools/install-network-sync
+sudo install -o root -g root -m 0644 /opt/ss07/current/config/gateway.interface.example.json /etc/ss07-gateway/network.json.next
+sudo mv -T /etc/ss07-gateway/network.json.next /etc/ss07-gateway/network.json
+journalctl -u ss07-network-sync -n 20 --no-pager
+cat /run/ss07-network/effective.json
+sudo /usr/bin/python3 -I /opt/ss07/current/tools/ss07-release.py check-ready
+```
+
+首次进入自适应模式会生成**每板独立**的 CA，并用原服务私钥签发叶证书。通过已验证的管理通道把板上的 `/etc/ss07-tls/network-ca.crt` 交给 MoBoCon；核对 SHA-256 指纹后信任该 CA。只分发 CA 公共证书，禁止分发 `network-ca.key`（root 0600）或服务私钥。客户端若固定了旧叶证书，需要一次性调整为信任设备 CA。后续换址仍用同一 CA，不再手动重签或更新客户端信任。备份新增的 CA 密钥和证书，不要在不同板之间复制。
+
+**板端验收**：记录一次当前结果，再换到另一个已授权网段，等 DHCP 得到新地址后重复。也需验证断网开机再接线，以及正常重启两种情况。
+
+```sh
+ip -br -4 addr
+systemctl is-enabled ss07-gateway.service
+systemctl is-enabled ss07-network-sync.service
+systemctl is-active ss07-network-sync ss07-gateway ss07-media ss07-api ss07-application
+cat /run/ss07-network/effective.json
+ss -lntu
+# NEW_IP 填当前接口地址
+sudo openssl verify -CAfile /etc/ss07-tls/network-ca.crt -verify_ip "$NEW_IP" /etc/ss07-tls/server.crt
+# 在允许访问的客户端上，指定已核对的 CA 公共证书
+curl --noproxy '*' --cacert ./network-ca.crt "https://$NEW_IP:8443/api/v1/streams"
+```
+
+核对 HTTPS、ICE UDP 监听和已启用的原生 RTSP 监听均为新 IP。用 MoBoCon 打开一路 WHEP，核对实际 ICE 对端并确认持续出帧；启用 RTSP 时也应按接口返回的新地址实拉一路。换址不自动扩大 `lan-monitor.json` 的客户端网段授权；遇到 401/403 应区分客户端权限和 TLS/监听故障。首次安装仍需正常 provisioning 和显式 activate。回退旧版本前，先停用同步器，恢复备份的静态配置和证书对、确认静态地址在本机，再按原流程重启受影响服务并执行 check-ready。

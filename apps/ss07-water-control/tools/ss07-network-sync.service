@@ -1,0 +1,18 @@
+[Unit]
+Description=SS-07 reconcile DHCP address and HTTPS certificate
+After=network.target ss07-release-recover.service
+[Service]
+Type=simple
+ExecStart=/opt/ss07/current/tools/ss07-network-sync
+Restart=on-failure
+RestartSec=15
+RuntimeDirectory=ss07-network
+RuntimeDirectoryMode=0755
+ProtectSystem=strict
+ReadWritePaths=/etc/ss07-tls /run/ss07-network
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+UMask=0022
+[Install]
+WantedBy=multi-user.target
