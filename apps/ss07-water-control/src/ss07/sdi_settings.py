@@ -246,8 +246,8 @@ class Provider:
 
     def get(self):
         from urllib.parse import urlsplit
-        from .sdi import load_encoder
-        url = self.config_source()['sdi']['rtsp_url']
+        from .sdi import load_encoder, resolve_sdi_url
+        url = resolve_sdi_url(self.config_source()['sdi']['rtsp_url'])
         if url is None: raise EncoderError('SDI_ENCODER_NOT_CONFIGURED')
         try: credentials = load_encoder(self.path)
         except (OSError, ValueError): raise EncoderError('SDI_ENCODER_CREDENTIALS_INVALID')

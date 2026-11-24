@@ -9,6 +9,7 @@ from urllib.error import URLError
 from urllib.request import ProxyHandler, build_opener
 
 from .config import ConfigError, decode_json
+from .sdi import resolve_sdi_url
 from .snapshots import DIRECTIONS
 from .worker import Worker, monotonic_us, terminate
 
@@ -38,7 +39,7 @@ def render(config, gateway=None):
                        'c=IN IP4 127.0.0.1\r\nt=0 0\r\nm=video %d RTP/AVP 96\r\n'
                        'a=rtpmap:96 H264/90000\r\na=fmtp:96 packetization-mode=1\r\n') % port,
         }
-    paths['sdi'] = {'source': config['sdi']['rtsp_url'] or 'publisher',
+    paths['sdi'] = {'source': resolve_sdi_url(config['sdi']['rtsp_url']) or 'publisher',
                     'rtspTransport': 'tcp'}
     return {
         'logLevel': 'warn', 'logDestinations': ['stdout'],
@@ -137,7 +138,7 @@ def run(config, state_dir, binary, stop, gateway=None, rtsp_profile=None, accoun
     if check.stdout.decode().strip() != VERSION:
         raise ConfigError('MediaMTX version must be ' + VERSION)
     with Worker(state_dir, 'media', stop, config=config) as worker:
-        from .sdi import SdiObserver
+        from .sdi import SdiObserver, resolve_sdi_url
         sdi = SdiObserver(config, settings(config)['rtsp_port'], sdi_encoder, stop)
         delay = 1
         while not stop.is_set():

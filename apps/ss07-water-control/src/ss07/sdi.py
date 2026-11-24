@@ -8,6 +8,7 @@ without decoding. Both run in background threads and never block the media loop.
 """
 import base64
 import http.client
+import ipaddress
 import json
 import math
 import os
@@ -17,13 +18,15 @@ import stat
 import struct
 import threading
 import time
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, urlunsplit
 
 from .config import decode_json
 
 SIGNALS = ('present', 'no_signal', 'unknown')
 MODELS = ('avmatrix-se2017',)
 STALE_S = 10.0
+SDI_LIVE = '/run/ss07-network/sdi-encoder.json'
+MAC_RE = re.compile(r'^[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}$')
 
 
 def load_encoder(path):
@@ -37,11 +40,51 @@ def load_encoder(path):
                 or info.st_uid not in (0, os.geteuid())):
             raise ValueError('SDI encoder credentials must be owner-controlled and not world-readable')
         value = decode_json(stream.read(4097), max_bytes=4096)
-    if (type(value) is not dict or set(value) != {'schema_version', 'model', 'username', 'password'}
+    keys = set(value) if type(value) is dict else set()
+    if (type(value) is not dict or not {'schema_version', 'model', 'username', 'password'} <= keys
+            or keys - {'schema_version', 'model', 'username', 'password', 'mac'}
             or value['schema_version'] != 1 or value['model'] not in MODELS
             or not all(isinstance(value[k], str) and 0 < len(value[k]) <= 64 for k in ('username', 'password'))):
         raise ValueError('invalid SDI encoder credentials')
+    if 'mac' in value:
+        if not isinstance(value['mac'], str) or MAC_RE.fullmatch(value['mac']) is None:
+            raise ValueError('invalid SDI encoder MAC address')
+        value = dict(value, mac=value['mac'].lower())
     return value
+
+
+def resolve_sdi_url(url, live_path=SDI_LIVE):
+    """Apply root-published discovered SDI encoder host while keeping scheme, port and path."""
+    if url is None or live_path is None:
+        return url
+    try: fd = os.open(str(live_path), os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    except OSError: return url
+    try:
+        with os.fdopen(fd, 'rb') as stream:
+            info = os.fstat(stream.fileno())
+            if (not stat.S_ISREG(info.st_mode) or info.st_nlink != 1 or info.st_mode & 0o022
+                    or info.st_uid not in (0, os.geteuid())):
+                return url
+            row = decode_json(stream.read(4097), max_bytes=4096)
+    except (OSError, ValueError):
+        return url
+    if type(row) is not dict or not isinstance(row.get('host'), str):
+        return url
+    try:
+        ip = ipaddress.IPv4Address(row['host'])
+    except ValueError:
+        return url
+    if int(ip) >> 24 == 0 or ip.is_loopback or ip.is_link_local or ip.is_multicast or ip.is_reserved or ip.is_unspecified:
+        return url
+    parsed = urlsplit(url)
+    host = str(ip)
+    if parsed.hostname == host:
+        return url
+    netloc = host + (':%d' % parsed.port if parsed.port else '')
+    if parsed.username is not None:
+        auth = parsed.username + (':' + parsed.password if parsed.password is not None else '')
+        netloc = auth + '@' + netloc
+    return urlunsplit((parsed.scheme, netloc, parsed.path, parsed.query, parsed.fragment))
 
 
 def classify(text):
@@ -245,7 +288,7 @@ class SdiObserver:
     """Owned by the media worker; None-safe when the SDI source is not configured."""
 
     def __init__(self, config, rtsp_port, encoder_path, stop):
-        url = config['sdi']['rtsp_url']
+        url = resolve_sdi_url(config['sdi']['rtsp_url'])
         self.meter = self.encoder = None
         self.error = None
         if url is None: return
