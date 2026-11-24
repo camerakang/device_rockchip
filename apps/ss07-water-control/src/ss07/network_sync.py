@@ -104,7 +104,7 @@ def issue(key, ip, ca_key, ca_cert):
                               'subjectAltName=IP:%s,IP:127.0.0.1\n' % ip)
         csr = subprocess.check_output(['/usr/bin/openssl','req','-new','-key',str(key),
                                        '-subj','/CN=SS-07'], timeout=10)
-        return subprocess.check_output(['/usr/bin/openssl','x509','-req','-sha256','-days','365',
+        return subprocess.check_output(['/usr/bin/openssl','x509','-req','-sha256','-days','3650',
             '-CA',str(ca_cert),'-CAkey',str(ca_key),'-set_serial',str(secrets.randbits(128) or 1),
             '-extfile',str(extensions)], input=csr, timeout=10, stderr=subprocess.DEVNULL)
 
@@ -143,7 +143,9 @@ def sync(root, interfaces, gid, uid=0):
     def verify(blob):
         for addr in (ip, '127.0.0.1'):
             validate_tls(blob, keyraw, addr)
-        subprocess.run(['/usr/bin/openssl','verify','-CAfile',str(ca_cert),'-purpose','sslserver'],
+        # Boards without an RTC battery reset their clock on cold boot, which can be earlier
+        # than network-ca.crt's notBefore; verify chain and purpose without failing on clock skew.
+        subprocess.run(['/usr/bin/openssl','verify','-no_check_time','-CAfile',str(ca_cert),'-purpose','sslserver'],
                        input=blob, check=True, timeout=5, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:
         verify(read_regular(cert, 131072))
