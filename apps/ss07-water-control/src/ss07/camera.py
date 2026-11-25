@@ -7,17 +7,19 @@ import subprocess
 import time
 from pathlib import Path
 
+from .camera_bindings import resolve_channel
 from .config import ConfigError, decode_json
 from .media import rtp_port
 from .snapshots import DIRECTIONS, SnapshotReader, u64
 from .worker import Worker, monotonic_us, terminate
 
 
-def command(config, channel, binary):
+def command(config, channel, binary, binding_override=None):
     if channel not in DIRECTIONS:
         raise ConfigError('unknown camera channel')
     camera = config['cameras'][channel]
-    mode, binding = camera['mode'], camera['binding']
+    mode = camera['mode']
+    binding = binding_override if binding_override is not None else camera['binding']
     if mode is None or binding is None:
         raise ConfigError('camera_unconfigured')
     if mode['fourcc'] != 'H264':
@@ -76,7 +78,7 @@ def telemetry(raw, previous=None, now=None):
 def run(config, channel, state_dir, binary, stop):
     with Worker(state_dir, 'camera.' + channel, stop, config=config) as worker:
         try:
-            argv = command(config, channel, binary)
+            command(config, channel, binary)
         except ConfigError as exc:
             while not stop.is_set():
                 worker.emit('UNAVAILABLE', {'reason': str(exc)})
@@ -88,7 +90,12 @@ def run(config, channel, state_dir, binary, stop):
             worker.emit('STARTING', {'reason': 'opening_camera'})
             started = time.monotonic()
             try:
-                check_identity(config['cameras'][channel]['binding'])
+                effective, is_fallback = resolve_channel(config, channel)
+                target_binding = effective or config['cameras'][channel]['binding']
+                if is_fallback:
+                    print(f'camera.{channel}: auto-fallback to {target_binding}', flush=True)
+                check_identity(target_binding)
+                argv = command(config, channel, binary, binding_override=target_binding)
                 proc = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                         start_new_session=True, bufsize=0)
                 previous, pending, last_output = None, b'', monotonic_us()

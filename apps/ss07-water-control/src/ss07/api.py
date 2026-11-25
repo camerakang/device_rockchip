@@ -26,6 +26,7 @@ ASSETS = {'/': ('index.html', 'text/html; charset=utf-8'),
 from .sonar_params import PATHS as SONAR_PARAMS, exchange as sonar_exchange, valid as valid_param
 
 SDI_ENCODER = '/api/v1/sdi/encoder'
+CAMERA_BINDINGS = '/api/v1/cameras/bindings'
 
 
 
@@ -284,12 +285,13 @@ class Handler(BaseHTTPRequestHandler):
                         data = dict(authenticated=False, authentication_required=True, role=None, permissions=[], csrf_token=None)
             self.reply(200, {'data': data}, headers); return
         if path != '/healthz':
-            permission = 'maintain' if path in SONAR_PARAMS or path in ('/api/v1/config', '/api/v1/logs', SDI_ENCODER) else (
+            permission = 'maintain' if path in SONAR_PARAMS or path in ('/api/v1/config', '/api/v1/logs', SDI_ENCODER, CAMERA_BINDINGS) else (
                 'recordings.read' if path.startswith(('/api/v1/recordings','/api/v1/sonars/archives')) or path in ('/api/v1/timecode/history', '/api/v1/sonars/history') else 'monitor')
             self.authorize(permission)
         if path == '/api/v1/logs': self.logs(); return
         if path in SONAR_PARAMS: self.sonar_params(path, None); return
         if path == SDI_ENCODER: self.sdi_encoder(None); return
+        if path == CAMERA_BINDINGS: self.camera_bindings(None); return
         from .recording_http import handle as recording_request
         if recording_request(self): return
         from .timecode_http import history
@@ -541,6 +543,113 @@ class Handler(BaseHTTPRequestHandler):
         if status != 200: raise AuthError(result,status)
         self.reply(200,{'data':result})
 
+    def camera_bindings(self, body):
+        """Read (body None) or update USB camera channel bindings and apply live."""
+        import copy
+        from .camera_bindings import discover_usb_cameras, resolve_all, validate_bindings_patch
+        from .config import ConfigError, load as load_config, revision as config_revision
+        from .snapshots import DIRECTIONS
+
+        state = self.server.state
+        try:
+            desired = load_config(state.config_path) if state.config_path else copy.deepcopy(state.config)
+            active = load_config(state.active_path) if state.active_path else desired
+        except (OSError, ConfigError):
+            raise AuthError('CONFIG_UNAVAILABLE', 503)
+
+        def build_payload(cfg_desired, cfg_active, changed=None):
+            devices = discover_usb_cameras()
+            resolved = resolve_all(cfg_active, devices=devices)
+            streams_data = state.data('/api/v1/streams') or {}
+            avail_by_ch = {
+                s['channel_id']: s.get('availability') == 'available'
+                for s in streams_data.get('streams', [])
+                if isinstance(s, dict) and 'channel_id' in s
+            }
+            assigned_by_binding = {
+                resolved[ch]['effective_binding']: ch
+                for ch in DIRECTIONS
+                if resolved[ch]['effective_binding']
+            }
+            channels = []
+            for ch in DIRECTIONS:
+                entry = resolved[ch]
+                channels.append({
+                    'channel_id': ch,
+                    'configured_binding': cfg_desired['cameras'][ch].get('binding'),
+                    'effective_binding': entry['effective_binding'],
+                    'fallback': entry['fallback'],
+                    'device_node': entry['device_node'],
+                    'available': avail_by_ch.get(ch, entry['effective_binding'] is not None),
+                })
+            dev_list = [
+                dict(d, assigned_to=assigned_by_binding.get(d['binding']))
+                for d in devices
+            ]
+            out = {
+                'revision': config_revision(cfg_desired),
+                'channels': channels,
+                'devices': dev_list,
+            }
+            if changed is not None:
+                out['changed'] = changed
+            return out
+
+        if body is None:
+            self.reply(200, {'data': build_payload(desired, active)})
+            return
+
+        if (type(body) is not dict or set(body) != {'expected_revision', 'bindings'}
+                or not isinstance(body['expected_revision'], str)):
+            self.reply(422, {'error': {'code': 'INVALID_CAMERA_BINDINGS',
+                                       'message': 'invalid_camera_bindings',
+                                       'details': ['body must be {"expected_revision": str, "bindings": {...}}']}})
+            return
+        merged, details = validate_bindings_patch(desired['cameras'], body['bindings'])
+        if details:
+            self.reply(422, {'error': {'code': 'INVALID_CAMERA_BINDINGS',
+                                       'message': 'invalid_camera_bindings',
+                                       'details': details}})
+            return
+        if self.server.maintenance is None:
+            raise AuthError('MAINTENANCE_UNAVAILABLE', 503)
+
+        candidate = copy.deepcopy(desired)
+        changed = []
+        for ch in DIRECTIONS:
+            if candidate['cameras'][ch].get('binding') != merged[ch]:
+                candidate['cameras'][ch]['binding'] = merged[ch]
+                changed.append(ch)
+
+        if changed:
+            actor_name = self.principal['username'] if self.principal else 'lan-monitor'
+            actor = {'username': actor_name, 'role': 'maintainer'}
+            try:
+                upd = self.server.maintenance.request(
+                    actor, 'config.update',
+                    {'candidate': candidate, 'expected_revision': body['expected_revision']}
+                )
+            except (OSError, ValueError):
+                raise AuthError('MAINTENANCE_RESULT_UNCERTAIN', 503)
+            if 'error' in upd:
+                err = upd['error']
+                raise AuthError(err['code'], err['status'] if err['status'] in (403, 404, 409, 422, 503) else 503)
+            new_rev = upd['data']['revision']
+            try:
+                app_res = self.server.maintenance.request(
+                    actor, 'config.apply',
+                    {'expected_revision': new_rev, 'expected_active_revision': config_revision(active)}
+                )
+            except (OSError, ValueError):
+                raise AuthError('MAINTENANCE_RESULT_UNCERTAIN', 503)
+            if 'error' in app_res:
+                err = app_res['error']
+                raise AuthError(err['code'], err['status'] if err['status'] in (403, 404, 409, 422, 503) else 503)
+            desired = candidate
+            active = candidate
+
+        self.reply(200, {'data': build_payload(desired, active, changed=changed)})
+
     def do_PUT(self):
         if self.path == '/api/v1/config': self.maintenance_write('config.update')
         elif self.path in SONAR_PARAMS:
@@ -549,6 +658,9 @@ class Handler(BaseHTTPRequestHandler):
         elif self.path == SDI_ENCODER:
             self.authorize('maintain', mutate=True)
             self.sdi_encoder(self.json_body(4096))
+        elif self.path == CAMERA_BINDINGS:
+            self.authorize('maintain', mutate=True)
+            self.camera_bindings(self.json_body(4096))
         else: self.deny_write()
 
     do_PATCH = deny_write
